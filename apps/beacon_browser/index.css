@@ -64,6 +64,7 @@ body {
 .beaconliste .beacon .signalstaerke {
   float: right;
   width: auto;
+  color: blue;
 }
 
 .text {
