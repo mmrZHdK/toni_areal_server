@@ -19,6 +19,7 @@ function fuelleKnoten( inKnoten ) {
   
   var nachbarn = window.ToniGraph.gibNachbarn( inKnoten );
   console.log( "-- nachbarn:" + nachbarn );
+  
   nachbarn.forEach( function( nachbar ) {
     var $nachbarLi = $( '<li><a href="#" class="weg" id="' + nachbar + '">zu ' + nachbar + '</a></li>' );
     $nachbarListe.append( $nachbarLi );

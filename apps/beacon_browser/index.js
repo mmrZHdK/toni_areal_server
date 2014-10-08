@@ -12,9 +12,13 @@ $( document ).ready( function() {
     
     inBeacons.forEach( function( beacon ) {
       console.log( 'beacon:' + beacon );
-      $beaconListe.append( $( '<li class="beacon"><span class="ident">' + beacon.major + '.Stock / Beacon ' + beacon.minor + '</span><span class="signalstaerke">' + beacon.rssi + '</span><div class="clear"></div></li>' ) );
+      $beaconListe.append( $( '<li class="beacon"><div class="ident">' + beacon.major + '.Stock / Beacon ' + beacon.minor + '</div><div class="signalstaerke">' + beacon.rssi + '</div><div class="balken ' + beacon.proximity + '" style="width:' + ( 100 + beacon.rssi ) + '%">&nbsp;</div></li>' ) );
     } );
     
   })
   
+  window.BeaconManager.updateBeacons( [
+        { major:3, minor:12, proximity:'far', rssi:-72 },
+        { major:3, minor:14, proximity:'near', rssi:-61 }
+  ] );
 } );

@@ -2,7 +2,8 @@ console.log( '--- Start ToniGraph Installation ---' );
 
 window.ToniGraph = ( function() {
   
-  var graph = [ [301,302],
+  var graph = [
+    [301,302],
     [301,313],
     [302,303],
     [302,314],
@@ -52,7 +53,8 @@ window.ToniGraph = ( function() {
     [426,427],
     [427,428],
     [428,429],
-    [429,430] ]; //private
+    [429,430]
+  ]; //private
   
   return { //exposed to public
     
