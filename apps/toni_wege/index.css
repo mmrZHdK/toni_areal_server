@@ -25,6 +25,15 @@ body {
   text-align: center;
   overflow: hidden;
 }
+.menuzeile .icon {
+  float: left;
+  width: 1.25em;
+  margin: -0.25em 0;
+}
+.menuzeile .icon img {
+  width: 100%;
+}
+
 
 .scroller {
   position: absolute;
