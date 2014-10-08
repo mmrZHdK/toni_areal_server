@@ -1,29 +1,5 @@
-body {
-  box-sizing: border-box;
-  
-  padding: 0;
-  margin: 0;
-  
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 100%;
-}
-
-.clear {
-  clear: both;
-}
-
 .menuzeile {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  
-  padding: 1em 0.5em 0.5em;
   background-color: #ddb;
-  font-size: 1.5em;
-  font-face: bold;
-  text-align: center;
-  overflow: hidden;
 }
 .menuzeile .icon {
   float: left;
@@ -32,20 +8,6 @@ body {
 }
 .menuzeile .icon img {
   width: 100%;
-}
-
-
-.scroller {
-  position: absolute;
-  top: 4em;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-.content {
-  background-color: white;
 }
 
 .knoten .nummer {
@@ -77,16 +39,4 @@ body {
 }
 .knoten .weg.zurueck {
   background-color: #fdd;
-}
-
-.text {
-  margin-top: 1em;
-  padding: 1.25em;
-  color: #999;
-}
-.text h1 {
-  margin: 1em 0 0;
-  color: #999;
-  font-size: 1em;
-  font-weight: bold;
 }
