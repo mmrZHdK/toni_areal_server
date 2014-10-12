@@ -1,0 +1,22 @@
+.menubutton#back {
+  display: none;
+  width: 4em;
+}
+.menubutton#back a {
+  color: white;
+  text-decoration: none;
+}
+
+.seite {
+  padding: 1em 5%;
+  background-color: #ddf;
+}
+.seite img {
+  float: left;
+  width: 40%;
+  margin: 0 5% 1em 0;
+}
+.seite h1 {
+  margin-top: 0;
+  font-size: 1.5em;
+}

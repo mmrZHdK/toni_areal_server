@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 88]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/style.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+
+<form action="danke.php" method="post" id="form" enctype="multipart/form-data">
+<div class="parentsparent">
+     <div class="nav">
+            <div class="mittig"> 
+                <img id="photoIcon" class="transparent" src="img/photo.png" width="40" height="40">
+                <img id="mangelIcon" class="transparent" src="img/beschreiben.png" width="40" height="40">
+                <img id="locationIcon" class="transparent" src="img/location.png" width="40" height="40">
+                <img id="nameIcon" class="transparent" src="img/name.png" width="40" height="40">
+                <img id="sendIcon" class="transparent" src="img/send.png" width="40" height="40">
+            </div>
+    </div>
+
+<div class="parent">
+   
+
+    <div id="slidr-div">
+        <div class="intro1" data-slidr="one">
+            <div class="mittig">
+                <br> <a href="#intro2">Toni <br>
+                wie neu</a>
+            </div>
+        </div>
+
+
+        <div class="intro2" data-slidr="two">
+            <div class="rechts"><a name="intro2"></a></div>
+            <div class="mittig">
+                <br>
+                Mit dieser App <br>
+                melden Sie Mängel <br>
+                im Toni-Areal in <br>
+                wenigen 5 Schritten
+            </div>
+        </div>
+
+
+        <div class="intro3" data-slidr="three">
+            <div class="mittig">
+                <div class="rechts"><a name="intro3"></a></div>
+                <br>
+                <div class ="mittig">
+                    <img src="img/photo.png" width="30" height="30">
+                    <br>1. Foto hinzufügen
+                    <br>
+                    <img src="img/beschreiben.png" width="30" height="30">
+                    <br>2. Mängel beschreiben
+                    <br>
+                    <img src="img/location.png" width="30" height="30">
+                    <br>3. Ort angeben
+                    <br>
+                    <img src="img/name.png" width="30" height="30">
+                    <br>4. Name angeben
+                    <br>
+                    <img src="img/send.png" width="30" height="30">
+                    <br>5. Ab die Post!
+                    <br>
+                    <br>
+                    Start!
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="photo">
+        <div class="mittig">
+        <div class="rechts"><a name="photo"></a></div>
+            <br>
+            Foto hinzufügen<br
+            <a href="#mangel"><img src="img/photo_gr.png" height="100"></a> 
+            <br>
+            <br>
+            <label for="file"></label>
+            <input type="file" name="file" id="file"><br>
+            <div id="imageerror" class="error">Bitte File auswählen!</div>
+            <div id="imagepreview"></div>
+        </div>
+    </div>
+
+
+    <div class="mangel">
+        <div class="mittig">
+        <div class="rechts"><a name="mangel"></a></div>
+            <br>
+            Mängel beschreiben<br>
+            <a href="#location"><img src="img/mangel_gr.png" height="100"></a>
+                            <label>
+                                <span><br><br></span>
+                                    <select name="kategorie" class="dropdown-select">
+                                        <option value="Auswaehlen">Art des Mängels auswählen...</option>
+                                        <option value="Drucker">Drucker</option>
+                                        <option value="Fenster">Fenster</option>
+                                        <option value="Lüftung / Klimaanlage">Lüftung / Klimaanlage</option>
+                                        <option value="Sonnenstoren">Sonnenstoren</option>
+                                        <option value="Technisches Problem">Technisches Problem (iMacs, Beamer, Audio-Geräte)</option>
+                                        <option value="Toiletten">Toiletten</option>
+                                        <option value="Verschmutzung">Verschmutzung</option>
+                                    </select><br><br>
+                            </label>   
+                            <label>
+                                <textarea data-slide="4" class="required" name="beschreibung" type="text" placeholder="Beschreibung des Mängels" class="feld" size="50" maxlength="100"></textarea>
+                                <div class="error">Error Text</div>
+
+                            </label>
+                                  
+
+        </div>
+    </div>
+
+
+    <div class="location">
+        <div class="rechts"><a name="location"></a></div>
+        <div class="mittig">
+            <br>
+            Ort des Mängels<br>
+            <input type="text" class="required" data-slide="5" name="location" placeholder="z.B. 4 T0" />      
+            <div class="error">Error Text</div>
+
+        </div>
+    </div>
+
+
+    <div class="name">
+        <div class="rechts"><a name="name"></a></div>
+        <div class="mittig">
+            <br>
+            Ihr Name<br>
+            <input type="text" name="name" placeholder="Name" /><br /><br />
+            <input type="text" name="vorname" placeholder="Vorname" />         
+        </div>
+    </div>
+
+    <div class="send">
+        <div class="rechts"><a name="send"></a></div>
+        <div class="mittig">
+            <br>
+            Senden<br>
+            <a href="#danke"><img src="img/send.png"></a>
+                 <input type="submit" name="submit" value="Submit">
+        </div>
+    </div>
+
+    <div class="danke">
+        <div class="mittig">
+            <br> Danke
+        </div>
+    </div>
+
+
+
+</div>
+</div>
+</form>
+
+
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script type="text/javascript" src="/js/vendor/slidr.min.js"></script>
+        <script src="js/main.js"></script>
+        
+    </body>
+</html>

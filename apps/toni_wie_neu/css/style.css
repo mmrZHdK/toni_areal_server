@@ -1,0 +1,327 @@
+body {
+  margin: 0px;
+  padding: 0px;
+  font-size: 0.8em;
+  font-weight: 300; 
+  font-family: 'Roboto', sans-serif;
+  color: #f6f0e7;
+}
+
+.mittig {
+  text-align: center;
+}
+
+.rechts {
+  text-align: right;
+}
+
+.nav {
+  height: 55px;
+  width: 100%;
+  border: 0px solid white;
+  position: fixed;
+  z-index: 11;
+  bottom: 0px;
+}
+
+.transparent {
+  opacity: ;
+}
+
+img:hover {
+  opacity: 1;
+} 
+
+a:link {
+  text-decoration: none;
+  color: #f6f0e7;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+
+/* ------ PAGES ------ */
+
+.parentsparent{
+  position: absolute;
+width: 100%;
+height: 100%;
+overflow: hidden;
+}
+
+.parent {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  border: 0px solid silver;
+  /*overflow: hidden;*/
+}
+
+#slidr-div {
+  height: 100%;
+}
+
+.intro1 {
+  width: 100%;
+  height: 100%;
+  background-color: #e8615d;
+  position: absolute;
+  float: left;
+  font-size: 2em;
+  display: block;
+}
+
+.intro2 {
+  width: 100%;
+  height: 100%;
+  border: 0px solid black;
+  background-color: #e8615d;
+  position: relative;
+  float: left;
+  left: 100%;
+  top: 0px; 
+  font-size: 2em;
+  display: block;
+}
+
+.intro3 {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #6eb8aa;
+  left: 200%; 
+  top: 0px;
+  font-weight: 300;
+  display: block;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #3c766a;
+  left: 300%; 
+  top: 0px; 
+  display: block;
+}
+
+.mangel {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #db4946;
+  left: 400%; 
+  top: 0px; 
+  display: block;
+}
+
+.location {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #f3e4cc;
+  left: 500%; 
+  top: 0px; 
+  display: block;
+}
+
+.name {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #6eb8aa;
+  left: 600%; 
+  top: 0px; 
+  display: block;
+}
+
+.send {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #3c766a;
+  left: 700%; 
+  top: 0px;
+  display: block; 
+}
+
+.danke {
+  width: 100%;
+  height: 100%;
+  border: 0px solid green;
+  position: absolute;
+  background-color: #c23e3f;
+  left: 800%; 
+  top: 0px; 
+  display: block;
+}
+
+.erfolg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #e8615d;
+  display: block;
+}
+
+
+/* ------ FORMULAR ------ */
+
+.feld {
+  background-color: #f6f0e7; 
+  font-family: 'Roboto', sans-serif;
+  width: 70%; 
+  height: 30%;
+  border: 0px solid #ddd;
+  color: #db4946;
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+}
+
+.dropdown {
+  background-color: #f6f0e7;  
+  border: 0px solid #ddd;
+  font-family: 'Roboto', sans-serif;
+  font-size: 
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 28px;
+  width: 70%;
+  background: #f2f2f2;
+  border: 1px solid;
+  border-color: white #f7f7f7 #f5f5f5;
+  border-radius: 3px;
+  @include linear-gradient(top, transparent, rgba(black, .06));
+  @include box-shadow(0 1px 1px rgba(black, .08));
+}
+
+.dropdown-select {
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  width: 70%;
+  margin: 0;
+  padding: 0.4em 0.4em 0.4em 0.4em;
+  height: 28px;
+  line-height: 14px;
+  font-size: 1em;
+  color: #db4946;
+  background: #f2f2f2;
+  background: rgba(black, 0) !important;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;}
+}
+
+.button {
+  background-color: #f6f0e7; 
+  color: #db4946;
+  width: 200px; 
+  border: 0px;
+}
+
+
+/*
+.bootstrap-frm {
+    margin-left:auto;
+    margin-right:auto;
+
+    max-width: 500px;
+    background: #f6f0e7;
+    padding: 20px 30px 20px 30px;
+    font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #888;
+    text-shadow: 1px 1px 1px #FFF;
+    border:1px solid #DDD;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.bootstrap-frm h1 {
+    font: 25px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #DADADA;
+    margin: -10px -30px 30px -30px;
+    color: #888;
+}
+.bootstrap-frm h1>span {
+    display: block;
+    font-size: 11px;
+}
+.bootstrap-frm label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.bootstrap-frm label>span {
+    float: left;
+    width: 20%;
+    text-align: right;
+    padding-right: 10px;
+    margin-top: 10px;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+.bootstrap-frm input[type="text"], .bootstrap-frm input[type="email"], .bootstrap-frm textarea, .bootstrap-frm select{
+    border: 0px solid #CCC;
+    color: #888;
+    height: 20px;
+    line-height:15px;
+    margin-bottom: 16px;
+    margin-right: 6px;
+    margin-top: 2px;
+    outline: 0 none;
+    padding: 5px 0px 5px 5px;
+    width: 70%;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;    
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.bootstrap-frm select {
+    background: #FFF url('down-arrow.png') no-repeat right;
+    background: #FFF url('down-arrow.png') no-repeat right;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 70%;
+    height: 35px;
+    line-height:15px;
+}
+.bootstrap-frm textarea{
+    height:100px;
+    padding: 5px 0px 0px 5px;
+    width: 70%;
+}
+.bootstrap-frm .button {
+    background: #FFF;
+    border: 0px solid #CCC;
+    padding: 10px 25px 10px 25px;
+    color: #333;
+    border-radius: 4px;
+}
+.bootstrap-frm .button:hover {
+    color: #333;
+    background-color: #EBEBEB;
+    border-color: #ADADAD;
+}*/
+
+.error {
+  display: none;
+}
