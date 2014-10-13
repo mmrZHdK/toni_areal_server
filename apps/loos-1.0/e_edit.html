@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+       <!-- <link rel="stylesheet" href="css/main.css"> -->
+        <link rel="stylesheet" href="css/s_style.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/1.0.24/firebase.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here --> 
+        <section class="navi"> 
+            <button class="menuebutton">
+               <img src="img/hamburgerico.svg">
+            </button>
+            <div class="titel">
+                <p>Toni loos</p>
+            </div>
+            <button class="addButton">
+                M
+            </button>
+        </section>
+        
+
+        <nav class="menue">
+          <ul>
+            <p> Meine Einträge</p>
+            <li>
+              <a href="" data-event="default">Aktion A</a>
+            </li>
+            <li>
+              <a href="" data-event="default">Aktion B</a>
+            </li>
+          </ul>
+        </nav>
+
+        <section class="scrollbox">
+        <section class="page" id="edit">
+        
+
+            <form id="formDefault" method="post" action="">
+                <div class="e_wrapper">
+                    <div class="newEintrag">NEUER EINTRAG</div>
+                </div>
+                <div class="e_wrapper">
+                    <div class="ed_title_titel">
+                        <p>TITEL</p>
+                        <h4>ca. 20 ZEICHEN</h4>
+                    </div>
+                    <div class="ed_titel_new">
+                        <textarea type="text" placeholder="fürabebier" id="title" maxlength="20" row="3"  style='text-transform:uppercase'required="true" autocorrect="off"></textarea>
+                    </div>
+                </div>
+                
+                <div class="e_wrapper">
+                    <div class="ed-sDate-titel">
+                        <p>START</p>
+                        <p>ENDE</p>
+                    </div>
+                    <div class="ed-sDate">
+
+                        <input type="date" placeholder="Startdatum" id="startdatum"  autocorrect="off"></input>
+
+                        <input type="time" placeholder="Startzeit" id="startzeit" value="12:00" autocorrect="off"></input>
+                    </div>
+                    <div class="ende">
+                        <input type="date" placeholder="Enddatum" id="enddatum" autocorrect="off"></input>
+                        <input type="time" placeholder="Endzeit" id="endzeit" value="16:00" autocorrect="off"></input>
+                    </div>
+                </div>
+
+                <div class="e_wrapper">
+                    <div class="ed-ort-titel">
+                        <p>ORT</p>
+                    </div>
+                    <div class="ed-ort">
+                        <input type="text" placeholder="Etage" id="etage" autocorrect="off" maxlength="3" style='text-transform:uppercase'required="true">
+                        <input type="text" placeholder="Raum" id="raum" maxlength="4" autocorrect="off" style='text-transform:uppercase'required="true"></input>
+                        
+                    </div>
+                   <h4>ÉTAGE: 3 ZEICHEN  -  RAUMNR: 4 ZEICHEN</h4>
+                </div>
+
+
+                <div class="e_wrapper">
+                    <div class="ed_landmark_titel">
+                        <p>LANDMARK</p>
+                        <h4>30 ZEICHEN</h4>
+                    </div>
+                    <div class="ed_landmark">
+                        <textarea type="text" placeholder="bei der langen treppe links" rows="2" id="landmark" autocorrect="off" maxlength="30" style='text-transform:uppercase'required="true"></textarea>
+                    </div>
+                </div>
+
+                <div class="e_wrapper">
+                    <div class="ed_inkurze_titel">
+                        <p>DEIN EVENT IN KÜRZE</p>
+                        <h4>40 ZEICHEN</h4>
+                    </div>
+
+                    <!-- WIRD DIE TEXTAREA AN DEN SERVER ÜBERMITTELT? -->
+                    <div class="ed_inkurze">
+                        <textarea placeholder="z.B. hier wird einfach getrunken" form="formDefault"  id="inkurze" autocorrect="off" maxlength="40" rows="3" style='text-transform:uppercase'required="true"></textarea>
+                    </div>
+                </div>
+
+                <div class="e_wrapper">
+                    <div class="ed_bgc_titel">
+                        <p>WELCHE FARBE SOLL DEIN EINTRAG ALS HINTERGRUND HABEN?</p>
+                        
+                    </div>
+
+                    
+                    <div class="ed_bgc">
+                        <input type="radio" name="bg_color" id="bg_c_rot">
+                        <input type="radio" name="bg_color" id="bg_c_violet">
+                        <input type="radio" name="bg_color" id="bg_c_grun">
+                        <input type="radio" name="bg_color" id="bg_c_gelb">
+                    </div>
+                    <h4>WÄHLE EINE FARBE AUS</h4>
+                </div>
+
+                <div class="e_wrapper">
+                    <div class="ed_fgc_titel">
+                        <p>WELCHE FARBE SOLL DIE SCHRIFT DEINES EINTRAGES HABEN?</p>
+                        
+                    </div>
+
+                    
+                    <div class="ed_fgc">
+                        <input type="radio" name="font_color" id="font_c_rot">
+                        <input type="radio" name="font_color" id="font_c_white">
+                        <input type="radio" name="font_color" id="font_c_pink">
+                        <input type="radio" name="font_color" id="font_c_blue">
+                    </div>
+                    <h4>WÄHLE EINE FARBE AUS</h4>
+                </div>
+                
+                <button id="submitButton" type="submit" class="submit" autocorrect="off">EINTRAG ERSTELLEN</button>
+
+
+                <!--
+                <div class="ed-sTime">
+                    <input type="time" placeholder="Startzeit" id="startzeit" value="12:00" autocorrect="off"></input>
+                </div>
+                <div class="ed-eDate">
+                    <p>ENDE</p>
+                    <input type="date" placeholder="Enddatum" id="enddatum" autocorrect="off"></input>
+                </div>
+                <div class="ed-eTime">
+                    <input type="time" placeholder="Endzeit" id="endzeit" autocorrect="off"></input>
+                </div>
+                <div class="ed-etage">
+                    <p>ORT</p>
+                    <input type="text" placeholder="Etage" id="etage" autocorrect="off"></input>
+                </div>
+                <div class="ed-raum">
+                    <input type="text" placeholder="Raum" id="raum" autocorrect="off"></input>
+                </div>
+                <div class="ed-landmark">
+                    <p>LANDMARK</p>
+                    <input type="text" placeholder="Landmark" id="landmark" autocorrect="off"></input>
+                </div>
+                
+
+                <div class="ed_inkurze">
+                    <p>DEIN EVENT IN KÜRZE</p>
+                    <input type="text" placeholder="in Kürze" id="inkurze" autocorrect="off">
+                </div>
+                <div class="ed_bg_color">
+                    <input type="radio" name="bg_color" id="bg_c_rot">
+                    <input type="radio" name="bg_color" id="bg_c_blau">
+                    <input type="radio" name="bg_color" id="bg_c_grun">
+                    <input type="radio" name="bg_color" id="bg_c_gelb">
+                </div>
+                <div class="ed_font_color">
+                    <input type="radio" name="font_color" id="font_c_rot">
+                    <input type="radio" name="font_color" id="font_c_blau">
+                    <input type="radio" name="font_color" id="font_c_grun">
+                    <input type="radio" name="font_color" id="font_c_gelb">
+                </div>
+                 <div class="ed-camera">
+                    <input type="file" accept="image/*" capture="camera" id="camera" placeholder="Bild">
+                </div>
+                
+                <button id="submitButton" type="submit" class="submit" autocorrect="off">Eintrag erstellen</button> -->
+            </form> 
+            <button id="cancle" type="submit" class="submit" autocorrect="off">ABBRECHEN</button>
+        
+        </section>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/clamp.js"></script>
+        
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
