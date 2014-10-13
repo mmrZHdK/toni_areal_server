@@ -1,0 +1,15 @@
+<!--<input type="range" class="zoom-range" ng-model="data.zoom">-->
+<tm-map id="map-pane-{{data.currentFloor}}" 
+class="map-pane" 
+ng-class="
+{
+	'hide-room-labels' : data.hideRoomLabels, 
+	'hide-icons-all' : data.hideIconsAll, 
+	'hide-icons-food' : data.hideIconsFood, 
+	'hide-icons-copy' : data.hideIconsCopy, 
+	'hide-icons-surf' : data.hideIconsSurf,
+	'hide-icons-toilets' : data.hideIconsToilets,
+	'hide-icons-elevators' : data.hideIconsElevators,
+	'hide-icons-recycle' : data.hideIconsRecycle
+}
+"></tm-map> 

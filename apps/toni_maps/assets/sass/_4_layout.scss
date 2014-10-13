@@ -1,0 +1,505 @@
+
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+	color: $c-text-dark;
+	background: $c-dark-0;
+	font-family: $font-text;
+	font-weight: 400;
+	font-size: 14px;
+	overflow: hidden;
+	position: relative;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing:    border-box;
+    box-sizing:         border-box;
+}
+
+/* -------------------------------------------------------------------------------------- *
+ * GRID SETTINGS
+ * -------------------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------------------------------- *
+ * MAIN LAYOUT ELEMENTS
+ * -------------------------------------------------------------------------------------- */
+
+#wrapper-all { 
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%; 
+	height: 100%; 
+	z-index: 40;
+
+	&.side-menu-offset { left: 200px; }	
+}
+
+.view-container { @include clearfix;  position: absolute; width: 100%; height: 100%; z-index: 10; }
+
+#side-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 100%;
+	background: $c-ui-bright-1;
+	z-index: 50;
+	@include box-shadow(rgba(black,0.5) 3px 3px 5px);
+	
+	.side-menu-inner { margin-top: 25px; display: block; }
+
+	ul {
+		list-style: none;
+		margin: 0; 
+		padding: 0;
+	}
+	
+	li { 
+		position: relative;
+		height: 40px; 	
+		background: $c-white;
+		margin: 10px;	
+		
+		.checkbox-text { 
+			position: absolute;
+			left: 10px;
+			top: 20px;
+			font-weight: bold;
+			display: block;
+			height: 20px;
+			width: 150px;
+			text-decoration: none;
+			font-size: 12px;
+			
+		}
+
+		.switchery {
+			display: block;
+			position: absolute;
+			top: 0px;
+			right: 0px;
+		}
+	}
+
+	
+}
+
+/* -------------------------------------------------------------------------------------- */
+ 
+
+/* -------------------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------------------- *
+ * MAP MODULE
+ * -------------------------------------------------------------------------------------- */
+
+.map-pane { display: block; width: 100%; height: 100%; }
+
+.hide-room-labels  g#LABELS_ROOMS { opacity: 0; }
+
+.hide-icons-all g#FOOD, 
+.hide-icons-all g#COPY, 
+.hide-icons-all g#SURF, 
+.hide-icons-all g#TOILETS, 
+.hide-icons-all g#ELEVATORS, 
+.hide-icons-all g#RECYCLE { opacity: 0; }
+
+.hide-icons-food  g#FOOD { opacity: 0; }
+.hide-icons-copy  g#COPY { opacity: 0; }
+.hide-icons-surf  g#SURF { opacity: 0; }
+.hide-icons-toilets  g#TOILETS { opacity: 0; }
+.hide-icons-elevators  g#ELEVATORS { opacity: 0; }
+.hide-icons-recycle  g#RECYCLE { opacity: 0; }
+
+
+g#LABELS g { opacity: 1; }
+
+g#FOOD, 
+g#COPY, 
+g#SURF, 
+g#TOILETS, 
+g#ELEVATORS, 
+g#RECYCLE { opacity: 1; }
+
+
+
+// SVG MAPS
+
+svg { 
+	background: $c-dark-0; 
+	-webkit-backface-visibility: initial !important;
+	-webkit-transform-origin: 50% 50%;
+}
+.svg-floor{ fill:$c-svg-floor; }
+.svg-room{ fill:$c-svg-room; }
+.svg-outside{ fill:$c-svg-outside; }
+.svg-air{ fill: $c-svg-air; }
+.svg-label{ fill:$c-svg-label; }
+.svg-labelfill{ fill:$c-svg-labelfill; }
+.svg-background { fill:$c-svg-background; stroke:$c-svg-background; stroke-width:6; stroke-miterlimit:10;  }
+.svg-plant {fill: $c-svg-plant;}
+.svg-plant-bg { fill:$c-svg-plant-bg; }
+
+.svg-stairway-horz {fill:url(#pattern-stairway-horz); stroke:$c-svg-background; stroke-width:0.2; }
+.svg-stairway-vert {fill:url(#pattern-stairway-vert); stroke:$c-svg-background; stroke-width:0.2; }
+.svg-stairway-dark{fill-rule:evenodd;clip-rule:evenodd;fill:$c-svg-background;}
+.svg-stairway-bright{fill-rule:evenodd;clip-rule:evenodd;fill:$c-svg-floor;}
+
+.svg-room.highlighted { fill: $c-svg-highlight; }
+
+/* -------------------------------------------------------------------------------------- */
+
+
+
+
+/* -------------------------------------------------------------------------------------- *
+ * ROOM SEARCH MODULE
+ * -------------------------------------------------------------------------------------- */
+
+.room-search-container { position: absolute; width: 100%; height: 100%; z-index: 95; pointer-events:none; }
+
+.room-search-box {
+		position: absolute;
+		display: block;
+		width: 95%;
+		height: 40px;
+		left: 2.5%;
+		top: 25px;
+		background: $c-white;
+		pointer-events:auto;
+		@include box-shadow(rgba(black,0.4) 0px 3px 5px);
+		z-index: 70;
+
+
+		.icon-search {
+			position: absolute;
+			top: 1px;
+			left: 10px;
+			display: block;
+			height: 40px;
+			width: 40px;
+			z-index: 80;
+			font-size: 22px;
+			color: $c-text-dark;
+		}
+
+		.btn-cancel-roomsearch, .btn-cancel-roomfind {
+			position: absolute;
+			display: block;
+			top: 30px;
+			right: 5px;
+			height: 40px;
+			width: 40px;
+			z-index: 80;
+			font-size: 32px;
+			color: $c-text-dark;
+			cursor: pointer;
+		}
+
+		.btn-cancel-roomsearch { opacity: 0; }
+
+		.btn-cancel-roomfind { top: -5px; right: 0; }
+
+		input {
+			position: absolute;
+			height: 40px;
+			width: 100%;
+			padding-left: 45px;
+			top: 0;
+			z-index: 75;
+			border: 0;
+			font-weight: 800;
+			font-size: 25px;
+			background: $c-white;
+			color: $c-text-dark;
+			text-transform: uppercase;
+		}
+		
+
+
+		&.active {
+			height: 85px;
+			width: 100%;
+			left: 0;
+			top: 0;
+
+			input { height: 60px; top: 25px; padding-left: 10px; border-top: 1px solid $c-ui-bright-2; }
+			.icon-search { opacity: 0; top: 10px; left: -20px; }
+			.btn-cancel-roomsearch { opacity: 1; }
+			.btn-cancel-roomfind { top: 35px; right: 5px; }
+		}
+}
+
+
+input::-webkit-input-placeholder {
+    color:    $c-text-dark;
+    opacity: 1 !important;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: none;
+    padding-top: 5px;
+}
+
+input::-moz-placeholder {
+    color:    $c-text-dark;
+    opacity: 1 !important;
+    font-weight: normal;
+    font-size: 18px;
+    text-transform: none;
+    padding-top: 5px;
+}
+
+
+.room-search-results {
+	position: absolute;
+	display: block;
+	top: 85px;
+	left: 0;
+	width: 100%;
+	background: $c-ui-bright-1;
+	pointer-events:auto;
+	z-index: 65;
+}
+
+.room-search-result-item {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: $h-result-item;
+	margin-bottom: 10px;
+	cursor: pointer;
+	background: $c-white;
+
+	.room-text { 
+		position: absolute;
+		top: 10px;
+		left: 10px;
+	}
+
+	.room-nr { font-size: 18px; font-weight: 800; text-transform: uppercase; }
+	.room-nr.special-room { font-size: 18px; margin-top: 10px; text-transform: none; }
+
+	.room-desc { font-size: 14px; color: $c-text-bright; }
+
+	.floor { 
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: $h-result-item;
+		width: $h-result-item;
+		font-size: 30px;
+		font-weight: 800;
+		text-align: center;
+		padding-top: 10px;
+		background: $c-ui-bright-2;
+	}
+}
+
+.scroll-pane {
+	position:absolute; z-index:1;
+	top: 10px; bottom: 10px;
+	width:94%;
+	left: 3%;
+	overflow:hidden;
+
+	display: none;
+	&.visible { display: block; }
+}
+
+.scroller {
+	position: relative;
+	width:100%;
+	ul { position: relative; }
+	ul li { display: block; background: yellow; height: 30px; margin-bottom: 5px; }
+}
+
+/* -------------------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------------------------------- *
+ * CONTROLS MODULE
+ * -------------------------------------------------------------------------------------- */
+
+.controls-container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 89;
+	pointer-events:none;	
+}
+
+.black-bg { background: rgba(black,0.5); width: 100%; height: 100%; position: absolute; z-index: 99; display: none; pointer-events: auto; }
+.side-menu-offset .black-bg { display: block; }
+
+.btn-more, .btn-my-position { 
+	display: block; position: absolute; bottom: $h-bottom-bar + 10px; font-size: 20px; cursor: pointer; pointer-events:auto;
+	.fa-circle { @include text-shadow(rgba(black, 0.4) 0px 0px 5px); }
+}
+.btn-more { left: 5px; }
+.btn-my-position { right: 5px; }
+
+.bottom-bar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: $h-bottom-bar;
+	background: $c-white;
+	@include box-shadow(rgba(black,0.4) 0px -3px 5px);
+	pointer-events:auto;
+	z-index: 60;
+}
+
+.room-display {
+	position: absolute;
+	display: block;
+	top: 0; 
+	left: 0;
+	height: $h-bottom-bar;
+	width: 165px;
+	padding: 10px;
+
+	.room-nr { font-size: 20px; text-transform: uppercase; font-weight: 800; }
+	.room-nr.special-room { font-size: 18px; margin-top: 10px; text-transform: none; }
+	.room-desc { font-size: 12px; }
+}
+
+.btn-route {
+	position: absolute;
+	display: block;
+	height: $h-bottom-bar;
+	width: 80px;
+	top: 0;
+	right: $h-bottom-bar + 10px;
+	padding-top: 15px;
+	text-align: center;
+	background: $c-accent-2;
+}
+
+.floor-navigation {
+	position: absolute;
+	display: block;
+	height: $h-bottom-bar;
+	width: $h-bottom-bar;
+	top: 0;
+	right: 5px;
+	overflow: visible;
+
+	.btn-floor-flyout {
+		position: absolute;
+		display: block;
+		height: $h-bottom-bar;
+		width: $h-bottom-bar;
+		background: $c-ui-bright-2;
+		cursor: pointer;
+
+		font-size: 30px;
+		font-weight: 800;
+		text-align: center;
+		padding-top: 8px;
+	}
+
+	.floors-flyout {
+		position: absolute;
+		display: block;
+		height: $h-floor-flyout-item * 8;
+		width: $h-bottom-bar;
+		top: -($h-floor-flyout-item * 8);
+		z-index: -1;
+		@include box-shadow(rgba(black,0.4) -3px -3px 5px);
+
+		ul.floor-labels { 
+			position: absolute;
+			top: 0; left: 0;
+			list-style: none; margin: 0; padding: 0; 
+			z-index: 20;
+		}
+		li {
+			display: block;
+			height: $h-floor-flyout-item;
+			width: $h-bottom-bar;
+
+			border-bottom: 1px solid $c-ui-bright-2;
+			font-size: 20px;
+			font-weight: normal;
+			text-align: center;
+			padding-top: 12px;
+			background: $c-white;
+		}
+
+		.noUi-target {
+			height: $h-floor-flyout-item * 7;
+			width: $h-bottom-bar;
+			border: 0;
+			z-index: 30;
+
+			.noUi-base {
+				width: $h-bottom-bar;
+			}
+
+			.noUi-handle {
+				height: $h-floor-flyout-item;
+				width: $h-bottom-bar;
+				left: 0;
+				top: 0;
+				border: 0;
+
+				font-size: 30px;
+				font-weight: 800;
+				text-align: center;
+				padding-top: 2px;
+				background: $c-accent-2;
+				color: scale-lightness($c-accent-2,40);
+				cursor: pointer;
+			}
+
+
+		}
+	}
+
+}
+
+
+
+
+/* -------------------------------------------------------------------------------------- *
+ * ITEMS
+ * -------------------------------------------------------------------------------------- */
+
+input {
+    -webkit-appearance: none;
+    border-radius: 0;
+}
+
+/* -------------------------------------------------------------------------------------- *
+ * TYPO
+ * -------------------------------------------------------------------------------------- */
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6  {
+	color: $c-title;
+	word-wrap: break-word;
+	line-height: 1.3em;
+	font-family: $font-title;
+
+	a { color: $c-title !important; text-decoration: none; }
+	&:first-child { margin-top: 0; }
+}
+
+h1 { font-size: $fz-title-1; font-weight: 300; margin-bottom: 15px; }
+h2 { font-size: $fz-title-2; font-weight: 300; margin-bottom: 10px; }
+h3 { font-size: $fz-title-3; line-height: 1.2em; margin-bottom: 5px; font-weight: bold; }
+
+p { margin: 0; line-height: 1.6em; margin-bottom: 12px; }
+p:empty { display: none;}
+a, a:visited { color: $c-link; }
+
+p.lead { font-size: 18px; line-height: 1.6em;}

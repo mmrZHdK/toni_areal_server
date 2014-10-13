@@ -1,0 +1,16 @@
+<span class="icon-search">
+	<i class="fa fa-search"></i>
+</span>
+<a class="btn-cancel-roomsearch" ng-show="searchActive && !findingActive" ng-click="roomSearchLoseFocus()">
+	<i class="fa fa-close"></i>
+</a>
+<a class="btn-cancel-roomfind" ng-show="findingActive" ng-click="roomFindCancel()">
+	<i class="fa fa-close"></i>
+</a>
+
+<input id="room-search-box" type="text" name="roomSearchQuery" placeholder="Raum suchen..."
+ng-model="roomSearchQuery"
+ng-change="loadRoomSearchResults()"
+ng-focus="roomSearchHasFocus()"
+ng-blur="deactivateInputField()"
+/>

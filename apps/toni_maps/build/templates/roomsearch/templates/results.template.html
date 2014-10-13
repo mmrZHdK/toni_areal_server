@@ -1,0 +1,10 @@
+
+
+<div id="room-search-result-scroll-pane" class="scroll-pane" ng-iscroll="room-search-result-scroll-pane" ng-iscroll-delay='50' ng-class="{visible: showList}">
+
+	<div class="scroller">
+
+		<tm-room-search-result-item ng-repeat="room in rooms" class="room-search-result-item container" ng-click="selectRoom(room)"></tm-room-search-result-item>
+
+	</div>
+</div>

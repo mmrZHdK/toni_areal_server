@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="toniMapsModule"> <!--<![endif]-->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="author" content="Exoweb.ch - Robert Krieg" />
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="">
+
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta name="msapplication-TileColor" content="#be0415">
+    <meta name="msapplication-TileImage" content="build/img/icons/touch_icons/win8-tile-icon.png">
+
+    <link rel="shortcut icon"                    href="build/img/icons/touch_icons/favicon.ico" />
+    <link rel="apple-touch-icon"                 href="build/img/icons/touch_icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed"                 href="build/img/icons/touch_icons/apple-touch-icon-57x57-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"   href="build/img/icons/touch_icons/apple-touch-icon-72x72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="build/img/icons/touch_icons/apple-touch-icon-114x114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="build/img/icons/touch_icons/apple-touch-icon-144x144-precomposed.png" />
+
+
+    <title>Toni Maps</title>
+
+
+
+    <link rel="stylesheet" type="text/css" href="build/css/grid.css" />
+    <link rel="stylesheet" type="text/css" href="build/css/master.css" />
+    <script src="build/js/libs/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+
+</head>
+
+
+<body class="">
+
+        <!-- ___________________________________________________________________________________________________________________________ -->
+
+
+        <div id="side-menu" class="side-menu" ng-controller="SideMenuController as sideMenuCtrl" ng-show="data.showSideMenu">
+
+            <tm-side-menu class="side-menu-inner"></tm-side-menu>
+
+        </div>
+
+        <div id="wrapper-all" class="wrapper-all" ng-controller="WrapperController as wrapperController">
+
+            <div class="black-bg" ng-click="toggleSideMenu()"></div>
+
+            <div class="room-search-container" ng-controller="RoomSearchController as roomSearchCtrl">
+                <tm-room-search-box class="room-search-box" ng-class="{active: searchActive}"></tm-room-search-box>
+                <tm-room-search-results class="room-search-results" ng-show="searchActive" ng-style="resultlistheight"></tm-room-search-results>
+            </div>
+
+            <div class="controls-container" ng-controller="ControlBarController as controlBarCtrl">
+                <a class="btn-more" ng-click="toggleSideMenu()">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                        <i class="fa fa-bars fa-stack-1x"></i>
+                    </span>
+                </a>
+
+                <a class="btn-my-position" ng-click="startPositioning()" ng-class="{ 'positioning-active' : isPositioningMode }">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                        <i class="fa fa-location-arrow fa-stack-1x"></i>
+                    </span>
+                </a>
+
+                <div class="bottom-bar container">
+                    <tm-room-display class="room-display" ng-show="data.roomFindMode"></tm-room-display>
+
+                    <a class="btn-route" href="" ng-show="data.roomFindMode">
+                        <i class="fa fa-arrow-right fa-2x fa-inverse"></i>
+                    </a>
+
+                    <tm-floor-navigation class="floor-navigation"></tm-floor-navigation>
+                </div>
+            </div>
+
+            <div ng-view class="view-container " ng-class="data.nextFloorIsHigher ? 'go-down' : 'go-up'" ng-click="roomSearchLoseFocus()"></div>
+        </div>
+
+
+        <!-- ___________________________________________________________________________________________________________________________ -->
+
+        <!-- javascript libraries -->
+
+        <script type="text/javascript" src="build/js/libs/libs.js"></script>
+        <!-- own scripts -->
+        <script type="text/javascript" src="build/js/app.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,10 @@
+	<div class="room-text">
+		<div class="room-nr" ng-class="{'special-room' : room.additionalDescription.length > 0}">
+			{{room.additionalDescription.length > 0 ? room.additionalDescription : room.signalRoomNr}}
+		</div>
+		<div class="room-desc" ng-hide="room.additionalDescription.length > 0">{{room.additionalDescription.length > 0 ? '' : room.roomDescription }}</div>
+	</div>
+	
+	<div class="floor">
+		{{room.floor}}
+	</div>

@@ -1,0 +1,63 @@
+// ---------------------------------------------------------------------------
+// Fonts
+// ---------------------------------------------------------------------------
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,700);
+
+$font-text: 'Open Sans', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+$font-title: 'Open Sans', Helvetica, 'Helvetica Neue', Arial, sans-serif;
+
+
+// ---------------------------------------------------------------------------
+// MEASUREMENTS
+// ---------------------------------------------------------------------------
+
+$m-default: 30px;
+$m-small:   10px;
+
+$h-bottom-bar : 60px;
+$h-floor-flyout-item : 50px;
+$h-result-item: 60px;
+
+// ---------------------------------------------------------------------------
+// COLORS
+// ---------------------------------------------------------------------------
+
+//SHEME 1
+$c-dark-0:			#222021;
+$c-dark-1:			#373435;
+$c-dark-2:			#403c3e;
+$c-dark-3:			#595959;
+$c-bright-1:		#e2ddd7;
+$c-bright-2:		#e2ddd7;
+$c-bright-3:		#bdbdbd;
+$c-bright-4:		#a5a5a5;
+$c-accent-1:		#088ddc;
+$c-accent-2:		#c41b34;
+$c-white:			#fff;
+
+$c-ui-dark-1:		$c-dark-3;
+$c-ui-bright-1:		$c-bright-3;
+$c-ui-bright-2:		$c-bright-4;
+
+$c-text-dark:		$c-dark-1;
+$c-text-bright:		$c-bright-4;
+
+$c-svg-floor: 		$c-bright-1;
+$c-svg-room: 		$c-dark-2;
+$c-svg-outside: 	$c-bright-2;
+$c-svg-air: 		$c-dark-1;
+$c-svg-label: 		$c-accent-1;
+$c-svg-labelfill: 	$c-white;
+$c-svg-background: 	$c-dark-1;
+$c-svg-plant: 		$c-dark-2;
+$c-svg-plant-bg: 	$c-dark-1;
+$c-svg-highlight: 	$c-accent-2;
+
+
+$c-title:			$c-text-dark;
+$c-link:			$c-text-dark;
+
+$fz-title-1:  		32px;
+$fz-title-2:  		22px;
+$fz-title-3:  		14px;

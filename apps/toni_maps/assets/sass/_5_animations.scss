@@ -1,0 +1,167 @@
+.room-search-results {
+    -webkit-transform: translateZ(0); // active hardware acc.
+    transition: all 0.2s ease-out; -webkit-transition: all 0.2s ease-out;
+    top: 85px;
+}
+
+.room-search-results.ng-hide {
+    top: 600px;
+}
+
+.room-search-box {
+	-webkit-transform: translateZ(0); // active hardware acc.
+	transition: all 0.2s ease-out; -webkit-transition: all 0.2s ease-out;
+	input, .icon-search { transition: all 0.2s ease-out; }
+	.icon-search { transition-duration: 0.1s; -webkit-transition-duration: 0.1s; }
+	.btn-cancel { transition-duration: 0.1s; -webkit-transition-duration: 0.1s; }
+
+	&.active {
+		.icon-search { transition-duration: 0.1s; -webkit-transition-duration: 0.1s; 	}
+	}
+}
+
+
+
+.room-search-result-item.animated {
+    -webkit-animation-duration: 0.3s;
+     animation-duration: 0.3s;
+}
+
+#wrapper-all { 
+    -webkit-transform: translateZ(0); 
+    transition: all 0.3s ease; -webkit-transition: all 0.3s ease;
+    transition-delay: 0.1s; -webkit-transition-delay: 0.1s;
+    &.side-menu-offset {  } 
+}
+
+#side-menu {
+    -webkit-transform: translateZ(0); 
+    transition: all 0.3s ease; -webkit-transition: all 0.3s ease;
+    left: 0;
+
+    &.ng-hide { 
+        left: -200px; 
+    }
+
+    
+}
+
+
+
+.view-container.ng-leave { animation-duration: 1s; -webkit-animation-duration: 1s; }
+.view-container.ng-enter { animation-duration: 1s; -webkit-animation-duration: 1s; }
+
+.view-container.ng-leave {
+    transform: translateZ(0); // active hardware acc.
+    animation-iteration-count: 1;
+    transform-origin: 50% 50%;
+    -webkit-transform: translateZ(0);
+    -webkit-animation: mainScreenLeaveAnim linear 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-transform-origin: 50% 50%;
+    z-index: 20;
+}
+
+
+.view-container.ng-enter {
+    visibility: hidden;
+    transform: translateZ(0); // active hardware acc.
+    animation-iteration-count: 1;
+    animation-delay: 1s;
+    transform-origin: 50% 50%;
+    -webkit-transform: translateZ(0);
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 1s;
+    -webkit-transform-origin: 50% 50%;
+    z-index: 1;
+}
+
+
+
+.view-container.ng-leave.go-up {
+    animation: mainScreenLeaveAnimToTop linear 1s;
+    -webkit-animation: mainScreenLeaveAnimToTop linear 1s;
+}
+
+.view-container.ng-enter.go-up {
+    animation: mainScreenEnterAnimFromBottom linear 1s;
+    -webkit-animation: mainScreenEnterAnimFromBottom linear 1s;
+}
+
+.view-container.ng-leave.go-down {
+    animation: mainScreenLeaveAnimToBottom linear 1s;
+    -webkit-animation: mainScreenLeaveAnimToBottom linear 1s;
+}
+
+.view-container.ng-enter.go-down {
+    animation: mainScreenEnterAnimFromTop linear 1s;
+    -webkit-animation: mainScreenEnterAnimFromTop linear 1s;
+}
+
+@keyframes mainScreenEnterAnimFromTop{
+    0% { transform:  scale(1.6,1.6); }
+    50% { visibility: visible; }
+    100% { transform:  scale(1.0,1.0); }
+}
+
+@keyframes mainScreenLeaveAnimToBottom{
+    0% { transform:  scale(1.0,1.0); }
+    50% { opacity: 1; }
+    100% { transform:  scale(0.6,0.6); opacity: 0; }
+}
+
+@-webkit-keyframes mainScreenEnterAnimFromTop{
+    0% { -webkit-transform:  scale(1.6,1.6); }
+    5% { visibility: visible; }
+    100% { -webkit-transform:  scale(1.0,1.0); }
+}
+
+@-webkit-keyframes mainScreenLeaveAnimToBottom{
+    0% { -webkit-transform:  scale(1.0,1.0); }
+    50% { opacity: 1; }
+    100% { -webkit-transform:  scale(0.6,0.6); opacity: 0; }
+}
+
+@keyframes mainScreenEnterAnimFromBottom{
+    0% { transform:  scale(0.6,0.6); }
+    5% {visibility: visible; }
+    100% { transform:  scale(1.0,1.0); }
+}
+
+@keyframes mainScreenLeaveAnimToTop{
+    0% { transform:  scale(1.0,1.0); }
+    50% { opacity: 1; }
+    100% { transform:  scale(1.6,1.6); opacity: 0; }
+}
+
+
+@-webkit-keyframes mainScreenEnterAnimFromBottom {
+    0% { -webkit-transform:  scale(0.6,0.6); }
+    5% { visibility: visible; }
+    100% { -webkit-transform:  scale(1.0,1.0); }
+}
+
+@-webkit-keyframes mainScreenLeaveAnimToTop {
+    0% { -webkit-transform:  scale(1.0,1.0); }
+    50% { opacity: 1; }
+    100% { -webkit-transform:  scale(1.6,1.6); opacity: 0; }
+}
+
+
+.floors-flyout {
+    transition: all 0.2s ease; -webkit-transition: all 0.2s ease;
+    -webkit-transform: translateZ(0); // active hardware acc.
+    
+    top: -($h-floor-flyout-item * 8);
+
+}
+
+.floors-flyout.ng-hide {
+    top: 0;
+    box-shadow: none;
+    --webkit-box-shadow: none;
+}
+
+g#LABELS g { 
+    transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out;
+}
