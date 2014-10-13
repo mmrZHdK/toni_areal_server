@@ -7,6 +7,6 @@ var Backbone = require('backbone'),
 Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
-  url: './api/search/',
+  url: 'http://insights.lukasgaechter.ch/api/search/',
   model: Room
 });
