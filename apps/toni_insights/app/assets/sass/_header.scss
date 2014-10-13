@@ -1,0 +1,46 @@
+.header {
+    position: absolute;
+    top: 0;
+    z-index: 5000;
+    width: 100%;
+    line-height: $header-height;
+    height: $header-height;
+    border-bottom: 1px solid $dark;
+
+    overflow-x: hidden;
+
+    font-size: 1.5em;
+    color: $dark;
+    text-align: center;
+
+    a {
+        position: absolute;
+        top: 0;
+        display: block;
+        height: $header-height;
+        line-height: $header-height;
+        width: $header-height;
+        color: $white;
+        text-transform: uppercase;
+        text-align: center;
+        text-decoration: none;
+        color: $dark;
+
+        &:focus {
+            background: rgba($dark, 0.66);
+        }
+    }
+
+}
+
+.header-center {
+    width: 100%;
+}
+
+.header-left {
+    left: 0;
+}
+
+.header-right {
+    right: 0;
+}

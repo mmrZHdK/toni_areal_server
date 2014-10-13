@@ -1,0 +1,9 @@
+{{#if this.length}}
+    {{#each this}}
+        <div class="stream-element">
+           {{entryRefId}}: {{textTeaser}}
+        </div>
+    {{/each}}
+{{else}}
+    <p>Keine Einträge gefunden...</p>
+{{/if}}

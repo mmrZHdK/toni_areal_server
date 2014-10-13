@@ -1,0 +1,94 @@
+.room-search {
+    @extend .clearfix;
+}
+
+.input-box {
+    float: left;
+}
+
+.input-letter {
+    width: 100%;
+    font-size: 60px;
+    line-height: 60px;
+    padding: 0;
+    display: block;
+    background: $nickel;
+    border: none;
+    text-align: center;
+    text-transform: uppercase;
+    @include font-condensed;
+}
+
+.input-letter-double {
+}
+
+.input-dot {
+    float: left;
+    font-size: 60px;
+}
+
+.input-text-teaser,
+.input-text-content {
+    border: 0;
+    outline: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.input-text-teaser {
+
+    text-align: center;
+    font-size: 30px;
+    text-transform: uppercase;
+
+    @include font-condensed;
+}
+
+.input-text-content {
+    border: none;
+    line-height: 1em;
+    padding: 8px 20px;
+    font-size: 24px;
+    @include font-condensed;
+}
+
+.slider-color {
+    margin: 8px 0 16px 0;
+}
+
+label {
+    @include font-bold;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    line-height: 1.8em;
+    background: $dark;
+    color: $white;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    @include font-bold;
+}
+
+
+.button-file {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+
+    input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+    }
+}
+

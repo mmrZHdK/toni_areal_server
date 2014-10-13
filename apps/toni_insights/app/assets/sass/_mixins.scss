@@ -1,0 +1,24 @@
+@mixin font-base {
+    font-family: $font-name;
+    font-style: normal;
+}
+
+@mixin font-base-condensed {
+    font-family: $font-name-condensed;
+    font-style: normal;
+}
+
+@mixin font-normal {
+    @include font-base;
+    font-weight: $font-normal-weight;
+}
+
+@mixin font-bold {
+    @include font-base;
+    font-weight: $font-bold-weight;
+}
+
+@mixin font-condensed {
+    @include font-base-condensed;
+    font-weight: $font-black-weight;
+}

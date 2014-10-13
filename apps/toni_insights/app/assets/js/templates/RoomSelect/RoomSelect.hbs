@@ -1,0 +1,20 @@
+<div class="row">
+    {{#if comingFromLoader}}
+        <div class="col-xs-12">
+            <div class="js-failureNotification box box-failure">
+                <div class="row">
+                    <div class="col-xs-7">
+                        <span>Dein Standort konnte nicht ermittelt werden.</span>
+                    </div>
+                    <div class="col-xs-5">
+                        <a href="" class="button js-loaderTryAgain">Nochmal versuchen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+    <div class="col-xs-8 col-xs-offset-2">
+        <p>Gib eine Raumnummer ein:</p>
+    </div>
+    <div id="vRoomSearch" class="room-search col-xs-8 col-xs-offset-2"></div>
+</div>

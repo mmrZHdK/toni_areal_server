@@ -1,0 +1,186 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    @include font-normal;
+    color: $dark;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow-x: hidden;
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+
+    z-index: 0;
+}
+
+/* .secondary {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+.secondary-left {
+    left: -100%;
+
+    z-index: 1000;
+}
+
+.secondary-right {
+    left: 100%;
+
+    z-index: 2000;
+}
+
+.sidebar {
+}
+
+.upload {
+} */
+
+
+.container-content {
+    position: absolute;
+    width: 100%;
+    margin-top: $header-height;
+}
+
+.content-view {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.content {
+    @extend .clearfix;
+    padding: 2%;
+}
+
+.upload-form-container {
+    @extend .clearfix;
+}
+
+.choose-upload-type {
+    background: $dark;
+}
+
+/*a*/.select-upload-type {
+    display: block;
+    padding-top: 10px;
+    float: left;
+    width: 25%;
+    height: 18vw;
+    line-height: 2em;
+    text-align: center;
+    color: $nickel;
+
+    &:hover {
+        color: $white;
+    }
+
+    &.menu-current {
+        color: $white;
+    }
+}
+
+.menu-icon {
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    &:before {
+    }
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-element {
+    margin-bottom: 2px;
+
+    a {
+        display: block;
+        line-height: 2.4em;
+        padding: 0 1em;
+        background: $white;
+
+        font-size: 1.2em;
+        @include font-bold;
+        color: $black;
+    }
+}
+
+
+h1 {
+    text-transform: uppercase;
+    margin-top: 14px;
+    margin-bottom: 0.4em;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+a, a:hover {
+    color: $dark;
+    text-decoration: none;
+}
+
+
+
+.box {
+    padding: $grid-gutter-width;
+}
+
+.box-failure {
+    background: $carrara;
+}
+
+.stream-element {
+    background: $dark;
+    color: $white;
+    float: left;
+
+    .text-content {
+        line-height: 1em;
+    }
+}
+
+.stream-element-picture {
+    width: 30%;
+}
+
+.stream-element-text {
+    font-size: 30px;
+    padding: 10px 20px;
+    @include font-condensed;
+}
+
+.content-hidden {
+    display: none;
+    opacity: 0;
+}
+
+.room-bottom {
+    margin-bottom: 1em;
+}
+
+.room-top {
+    margin-top: 1em;
+}
