@@ -3,7 +3,8 @@ body {
   background-color: #ded8cb;
   color: black;
   font-family: "Helvetica Neue";
-  font-size: 12pt; }
+  font-size: 12pt;
+}
 
 .menubar {
   position: fixed;
@@ -11,27 +12,31 @@ body {
   width: 100%;
   z-index: 1;
   display: block;
-  background-color: #ded8cb; }
-  .menubar #idMenu {
-    background-image: url(../img/pfeil.png);
-    background-size: 8px 10px;
-    background-repeat: no-repeat;
-    background-position: 2px;
-    margin: 15px 0 0 15px;
-    padding-left: 15px;
-    font-size: 12pt;
-    text-decoration: none;
-    color: black; }
+  background-color: #ded8cb;
+}
+.menubar #idMenu {
+  background-image: url(../img/pfeil.png);
+  background-size: 8px 10px;
+  background-repeat: no-repeat;
+  background-position: 2px;
+  margin: 15px 0 0 15px;
+  padding-left: 15px;
+  font-size: 12pt;
+  text-decoration: none;
+  color: black;
+}
 
 .menubar-in {
   top: 0;
   -webkit-transition: top 0.5s;
-  transition: top 0.5s; }
+  transition: top 0.5s;
+}
 
 .menubar_out_bottom {
   top: 340px;
   -webkit-transition: top 0.5s;
-  transition: top 0.5s; }
+  transition: top 0.5s;
+}
 
 .info {
   position: absolute;
@@ -40,88 +45,103 @@ body {
   height: 340px;
   top: 0;
   overflow: hidden;
-  background-color: #ded8cb; }
-  .info h1 {
-    font-size: 26pt;
-    color: black;
-    height: 80px;
-    background: white;
-    margin: 0;
-    padding: 15px 15px 0px 15px;
-    text-shadow: 3px 2px 3px rgba(141, 141, 134, 0.52);
-    background-image: url(../img/strichli.gif);
-    background-size: 15px 1px;
-    background-repeat: no-repeat;
-    background-position: 15px 80px; }
-  .info p {
-    padding: 15px;
-    margin: 0;
-    background-image: url(../img/strichli.gif);
-    background-size: 15px 1px;
-    background-repeat: no-repeat;
-    background-position: 15px bottom; }
+  background-color: #ded8cb;
+}
+.info h1 {
+  font-size: 26pt;
+  color: black;
+  height: 80px;
+  background: white;
+  margin: 0;
+  padding: 15px 15px 0px 15px;
+  text-shadow: 3px 2px 3px rgba(141, 141, 134, 0.52);
+  background-image: url(../img/strichli.gif);
+  background-size: 15px 1px;
+  background-repeat: no-repeat;
+  background-position: 15px 80px;
+}
+.info p {
+  padding: 15px;
+  margin: 0;
+  background-image: url(../img/strichli.gif);
+  background-size: 15px 1px;
+  background-repeat: no-repeat;
+  background-position: 15px bottom;
+}
 
 .info_out_top {
   top: -342px;
   -webkit-transition: top 0.5s;
-  transition: top 0.5s; }
+  transition: top 0.5s;
+}
 
 .info-in {
   top: 0;
   -webkit-transition: top 0.5s;
-  transition: top 0.5s; }
+  transition: top 0.5s;
+}
 
 .swiper-container-in {
   top: 25px;
   -webkit-transition: top 0.5s;
-  transition: top 0.5s; }
+  transition: top 0.5s;
+}
 
 .swiper-container_out_bottom {
   top: 360px;
   -webkit-transition: top 0.5s;
-  transition: top 0.5s; }
+  transition: top 0.5s;
+}
 
 .karte {
   height: 100%;
   margin: 0px;
   overflow: auto;
-  background-color: white; }
+  background-color: white;
+}
 
 .openNewTab {
   position: relative;
   padding: 10px 0px 10px 15px;
   height: 100px;
-  height: 50px; }
-  .openNewTab p {
-    float: left;
-    padding-left: 15px;
-    width: 150px;
-    text-decoration: underline; }
-  .openNewTab img {
-    float: left;
-    width: 35px;
-    height: 35px;
-    padding-top: 3px; }
+  height: 50px;
+}
+.openNewTab p {
+  float: left;
+  padding-left: 15px;
+  width: 150px;
+  text-decoration: underline;
+}
+.openNewTab img {
+  float: left;
+  width: 35px;
+  height: 35px;
+  padding-top: 3px;
+}
 
 .header {
-  position: relative; }
+  position: relative;
+}
 
 .bild img {
-  width: 100%; }
+  width: 100%;
+}
 
 .karteTitle {
   background: rgba(222, 216, 203, 0.6);
   position: relative;
   height: 65px;
-  margin-top: -140px; }
-  .karteTitle h1 {
-    margin: 0;
-    margin-left: 15px;
-    font-size: 26pt;
-    text-shadow: 0px 0px 11px white;
-    font-weight: lighter;
-    white-space: nowrap;
-    padding-top: 10px; }
+  margin-top: -140px;
+}
+.karteTitle h1 {
+  margin: 0;
+  margin-left: 15px;
+  font-size: 26pt;
+  text-shadow: 0px 0px 11px white;
+  font-weight: lighter;
+  white-space: nowrap;
+  padding-top: 10px;
+}
 
 .karteInfo {
   position: relative;
@@ -129,73 +149,91 @@ body {
   margin-bottom: 20px;
   background: rgba(222, 216, 203, 0.8);
   padding-top: 10px;
-  padding-bottom: 10px; }
-  .karteInfo p {
-    width: 145px;
-    float: left;
-    border-right: 1px solid #7c7c7c; }
-  .karteInfo img {
-    width: 45px !important;
-    height: 45px !important;
-    float: left;
-    margin: 0 10px 0 11px; }
+  padding-bottom: 10px;
+}
+.karteInfo p {
+  width: 145px;
+  float: left;
+  border-right: 1px solid #7c7c7c;
+}
+.karteInfo img {
+  width: 45px !important;
+  height: 45px !important;
+  float: left;
+  margin: 0 10px 0 11px;
+}
 
 .infoRechts {
   float: right !important;
   width: 100px !important;
-  border: none !important; }
+  border: none !important;
+}
 
 .zusatzInfos {
   border-top: 1px solid #7c7c7c;
   margin-left: 15px;
-  margin-right: 15px; }
+  margin-right: 15px;
+}
 
 ul {
   list-style-type: none;
-  padding: 0 !important; }
-  ul li {
-    margin-top: 10px; }
+  padding: 0 !important;
+}
+ul li {
+  margin-top: 10px;
+}
 
 a {
   text-decoration: none;
-  color: black; }
+  color: black;
+}
 
 p {
-  margin: 0; }
+  margin: 0;
+}
 
 .ybf {
-  display: none !important; }
+  display: none !important;
+}
 
 .ybi {
-  background-color: transparent !important; }
+  background-color: transparent !important;
+}
 
 .ybr {
   overflow: visible !important;
-  height: auto !important; }
+  height: auto !important;
+}
 
 .ybx {
   padding: 15px !important;
-  display: block; }
+  display: block;
+}
 
 .ybh {
-  display: none; }
+  display: none;
+}
 
 .pipesText {
   font-size: 12pt;
   color: black;
   font-family: helvetica !important;
-  font-weight: lighter !important; }
+  font-weight: lighter !important;
+}
 
 div.pipesTitle a {
   color: black;
   font-weight: lighter;
-  pointer-events: none; }
+  pointer-events: none;
+}
 div.pipesTitle h1 {
   font-size: 12pt;
   font-weight: lighter;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 div.pipesTitle h2 {
-  display: none; }
+  display: none;
+}
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
@@ -211,12 +249,14 @@ button,
 input,
 select,
 textarea {
-  color: #222; }
+  color: #222;
+}
 
 html {
   font-size: 1em;
   line-height: 1.4;
-  height: 100%; }
+  height: 100%;
+}
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -225,11 +265,13 @@ html {
  */
 ::-moz-selection {
   background: #b3d4fc;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 ::selection {
   background: #b3d4fc;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 /*
  * A better looking default horizontal rule
@@ -240,7 +282,8 @@ hr {
   border: 0;
   border-top: 1px solid #ccc;
   margin: 1em 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
@@ -250,7 +293,8 @@ audio,
 canvas,
 img,
 video {
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 /*
  * Remove default fieldset styles.
@@ -258,13 +302,15 @@ video {
 fieldset {
   border: 0;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*
  * Allow only vertical resizing of textareas.
  */
 textarea {
-  resize: vertical; }
+  resize: vertical;
+}
 
 /* ==========================================================================
    Browse Happy prompt
@@ -273,7 +319,8 @@ textarea {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
-  padding: 0.2em 0; }
+  padding: 0.2em 0;
+}
 
 /* ==========================================================================
    Author's custom styles
@@ -289,20 +336,23 @@ textarea {
   border: 0;
   overflow: hidden;
   /* IE 6/7 fallback */
-  *text-indent: -9999px; }
+  *text-indent: -9999px;
+}
 
 .ir:before {
   content: "";
   display: block;
   width: 0;
-  height: 150%; }
+  height: 150%;
+}
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
 .hidden {
   display: none !important;
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
@@ -315,7 +365,8 @@ textarea {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px; }
+  width: 1px;
+}
 
 /*
  * Extends the .visuallyhidden class to allow the element to be focusable
@@ -328,13 +379,15 @@ textarea {
   margin: 0;
   overflow: visible;
   position: static;
-  width: auto; }
+  width: auto;
+}
 
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
 .invisible {
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /*
  * Clearfix: contain floats
@@ -352,17 +405,20 @@ textarea {
   content: " ";
   /* 1 */
   display: table;
-  /* 2 */ }
+  /* 2 */
+}
 
 .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 /*
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
  */
 .clearfix {
-  *zoom: 1; }
+  *zoom: 1;
+}
 
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
@@ -370,9 +426,11 @@ textarea {
    Modify as content requires.
    ========================================================================== */
 @media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */ }
+  /* Style adjustments for viewports that meet the condition */
+}
 @media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */ }
+  /* Style adjustments for high resolution devices */
+}
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -383,17 +441,21 @@ textarea {
     color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
-    text-shadow: none !important; }
+    text-shadow: none !important;
+  }
 
   a,
   a:visited {
-    text-decoration: underline; }
+    text-decoration: underline;
+  }
 
   a[href]:after {
-    content: " (" attr(href) ")"; }
+    content: " (" attr(href) ")";
+  }
 
   abbr[title]:after {
-    content: " (" attr(title) ")"; }
+    content: " (" attr(title) ")";
+  }
 
   /*
    * Don't show links for images, or javascript/internal links
@@ -401,34 +463,41 @@ textarea {
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
-    content: ""; }
+    content: "";
+  }
 
   pre,
   blockquote {
     border: 1px solid #999;
-    page-break-inside: avoid; }
+    page-break-inside: avoid;
+  }
 
   thead {
     display: table-header-group;
-    /* h5bp.com/t */ }
+    /* h5bp.com/t */
+  }
 
   tr,
   img {
-    page-break-inside: avoid; }
+    page-break-inside: avoid;
+  }
 
   img {
-    max-width: 100% !important; }
+    max-width: 100% !important;
+  }
 
   @page {
-    margin: 0.5cm; }
+    margin: 0.5cm;
+  }
   p,
   h2,
   h3 {
     orphans: 3;
-    widows: 3; }
+    widows: 3;
+  }
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-
-/*# sourceMappingURL=main.css.map */
+    page-break-after: avoid;
+  }
+}
