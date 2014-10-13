@@ -1,0 +1,433 @@
+body {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto Slab', sans-serif;
+  margin: 0;
+  font-weight: 300;
+  overflow: hidden;
+  background-color: #535559;
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+#pagesWrapper {
+  position: absolute;
+  top: 4em;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 4em);
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: 0;
+}
+
+#pages {
+  display: block;
+  position: relative;
+  width: 300%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1;
+}
+#pages li {
+  display: block;
+  width: calc(100% / 3);
+  height: 100%;
+  float: left;
+  z-index: 2;
+}
+#pages .page {
+  display: block;
+  width: 100%;
+  height: 100%;
+  float: left;
+  overflow-y: scroll;
+  z-index: 3;
+}
+#pages #mensa {
+  background-color: #535559;
+}
+#pages #mensa #mensaLoading {
+  margin: 1em;
+}
+#pages #mensa #mensaLoading #mensaLoadingImg {
+  width: 3em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#pages #mensa .mensaTile {
+  background-color: #F4F4E9;
+  width: calc(100% - 2em);
+  padding: 0.5em;
+  margin: 0.5em auto;
+  overflow: hidden;
+  display: none;
+}
+#pages #mensa .mensaTile span {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.5em;
+  height: 1.5em;
+  font-weight: 400;
+  margin-bottom: 0.5em;
+}
+#pages #mensa .mensaTile p {
+  margin: 0;
+  font-weight: 300;
+}
+#pages #mensa .mensaTileDate {
+  width: calc(100% - 2em);
+  padding: 0.5em;
+  margin: 0.5em;
+  color: #F4F4E9;
+  font-weight: 300;
+  font-size: 0.75em;
+  text-align: right;
+}
+#pages #mensa .mensaTile.next {
+  font-weight: 400;
+  text-align: right;
+}
+#pages #mensa .mensaTile.next:active {
+  background-color: #d4d4cc;
+}
+#pages #agenda {
+  background-color: #535559;
+}
+#pages #agenda #agendaLoading {
+  margin: 1em;
+}
+#pages #agenda #agendaLoading #agendaLoadingImg {
+  width: 3em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#pages #agenda .agendaTile {
+  background-color: #F4F4E9;
+  width: calc(100% - 2em);
+  padding: 0.5em;
+  margin: 0.5em auto;
+  display: none;
+}
+#pages #agenda .agendaTile span {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.5em;
+  height: 1.5em;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#pages #agenda .agendaTile p {
+  margin: 0.5em 0;
+  font-weight: 300;
+  max-height: 9em;
+  width: 100%;
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#pages #agenda .agendaTile a {
+  color: #000;
+  font-weight: 400;
+}
+#pages #agenda .agendaTile b {
+  font-weight: 300;
+}
+#pages #agenda .agendaTile .eventDateAndTime {
+  font-weight: 300;
+}
+#pages #agenda .agendaTile:active {
+  background-color: #d4d4cc;
+}
+#pages #agenda .agendaTileDate {
+  background: none;
+  color: #F4F4E9;
+  width: calc(100% - 2em);
+  padding: 0.5em;
+  margin: 0.5em;
+  font-weight: 300;
+  font-size: 0.75em;
+  text-align: right;
+}
+#pages #agenda .agendaTileLoadMore {
+  font-weight: 400;
+  text-align: right;
+}
+#pages #tram {
+  background-color: #535559;
+}
+#pages #tram .tramLoadingImg {
+  width: 3em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#pages #tram .tramTile {
+  background-color: #F4F4E9;
+  width: calc(100% - 2em);
+  padding: 0.5em;
+  margin: 0.5em auto;
+}
+#pages #tram .tramTile span {
+  display: inline-block;
+  width: 100%;
+  line-height: 1.5em;
+  margin-bottom: 0.5em;
+  height: 1.5em;
+  font-weight: 400;
+}
+#pages #tram .tramTile table {
+  border-collapse: collapse;
+  margin-bottom: 0.25em;
+}
+#pages #tram .tramTile td {
+  margin: 0.5em 0;
+  line-height: 1.5;
+  padding: 0;
+  font-weight: 300;
+}
+#pages #tram .tramTile tr {
+  width: 100%;
+}
+#pages #tram .tramTile .tramNr {
+  text-align: right;
+  width: 5em;
+}
+#pages #tram .tramTile .tramType {
+  text-align: right;
+  width: 2.5em;
+}
+#pages #tram .tramDepartureInfo {
+  width: calc(100% - 2em);
+  padding: 0.5em;
+  margin: 0.5em;
+  color: #F4F4E9;
+  font-weight: 300;
+  font-size: 0.75em;
+  text-align: right;
+}
+
+.header {
+  font-family: 'Roboto', sans-serif;
+  background-color: #82D8D8;
+  height: 4em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 900;
+}
+.header span {
+  color: #F4F4E9;
+  display: inline-block;
+  text-align: center;
+  line-height: 2;
+  height: 2em;
+  font-weight: 100;
+  font-size: 2em;
+  width: 100%;
+}
+.header #info {
+  position: absolute;
+  color: #F4F4E9;
+  margin: 0.5em;
+  width: 3em;
+  left: 0;
+  top: 0;
+}
+.header #refresh {
+  position: absolute;
+  color: #F4F4E9;
+  margin: 0.5em 0.5em 0.5em 3.5em;
+  width: 3em;
+  left: 0;
+  top: 0;
+}
+.header #menu {
+  position: absolute;
+  text-align: right;
+  padding-right: 1.5em;
+  line-height: 1.8;
+  right: 0;
+  top: 0;
+  width: auto;
+  font-weight: 100;
+}
+.header #hamburger {
+  position: absolute;
+  color: #F4F4E9;
+  margin: 1em 0.66em;
+  width: 2em;
+  height: 2em;
+  right: 0;
+  top: 0;
+}
+.header .menu {
+  font-size: 2em;
+  width: calc(100% - 0.5em);
+  text-align: right;
+  color: #F4F4E9;
+  line-height: 1.5em;
+  font-weight: 100;
+  margin-right: 0.5em;
+}
+
+#popupBg {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin: 0;
+  padding: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+}
+
+#popupInfo {
+  position: fixed;
+  background-color: #F4F4E9;
+  overflow: hidden;
+  margin: 0 0.5em;
+  height: 0;
+  width: calc(100% - 1em);
+  top: 0;
+  z-index: 1000;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#popupInfo #closeInfo {
+  width: 2em;
+  margin: 1em 1em;
+}
+#popupInfo p {
+  overflow: auto;
+  display: block;
+  margin: 0.5em 1em 1em 1em;
+  font-weight: 300;
+  height: calc(100% - 5.5em);
+}
+#popupInfo a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+#popupInfo.popup {
+  height: calc(100% - 1em);
+  margin: 0.5em;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#popupEvent {
+  position: fixed;
+  background-color: #F4F4E9;
+  overflow: hidden;
+  margin: 0 0.5em;
+  height: 0;
+  width: calc(100% - 1em);
+  bottom: 0;
+  z-index: 1001;
+  background-color: #f4f4e9;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+#popupEvent #eventImgOverlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(244, 244, 233, 0.9);
+  z-index: 1002;
+}
+#popupEvent #eventImgLoader {
+  display: none;
+}
+#popupEvent #closeEvent {
+  width: 2em;
+  margin: 1em;
+}
+#popupEvent #eventContainer {
+  margin: 0 1em 1em 1em;
+  width: calc(100% - 2em);
+  height: calc(100% - 5em);
+  overflow: auto;
+  z-index: 1003;
+}
+#popupEvent span {
+  display: block;
+  margin: 0.5em 0;
+  width: 100%;
+  line-height: 1.5em;
+  font-weight: 400;
+  border-bottom: 1px solid #b4b4af;
+}
+#popupEvent p {
+  display: inline-block;
+  margin: 0.5em 0;
+  overflow: auto;
+  font-weight: 300;
+  overflow: auto;
+}
+#popupEvent a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 400;
+}
+#popupEvent b {
+  font-weight: 400;
+}
+#popupEvent iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#popupEvent.popup {
+  height: calc(100% - 1em);
+  margin: 0.5em;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
