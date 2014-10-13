@@ -10,11 +10,11 @@ body {
     background-position: center;
 
     
-    filter: saturate(25%) blur(0.4px);
-	-webkit-filter: saturate(25%) blur(0.4px);
-	-moz-filter: saturate(25%) blur(0.4px);
-	-o-filter: saturate(25%) blur(0.4px);
-	-ms-filter: saturate(25%) blur(0.4px);
+    filter: saturate(25%) blur(0.2px);
+	-webkit-filter: saturate(25%) blur(0.2px);
+	-moz-filter: saturate(25%) blur(0.2px);
+	-o-filter: saturate(25%) blur(0.2px);
+	-ms-filter: saturate(25%) blur(0.2px);
 }
 
 
