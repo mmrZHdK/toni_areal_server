@@ -1,0 +1,201 @@
+.backbutton#back {
+  display: none;
+  padding: 1em;
+  width: 50%;
+  border-color: #EEE8CC;
+  border: none;
+  font-size: 1.1em;
+  font-family: "Arial", Arial, sans-serif;
+  background: #FF9933;
+  color: #EEE8CC;
+}
+
+.backbutton#back a {
+  color: white;
+  text-decoration: none;
+}
+
+.seite {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
+.seite .picture {
+  float: left;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  margin: 0 5% 1em 0;
+  position: absolute;
+}
+
+.arrow {
+  position: absolute;
+  float: right;
+  width: 20%;
+  height: 20%;
+}
+
+.arrow img {
+  width: 100%;
+}
+
+
+/* --- All the Arrows --- */
+
+
+#arrow1 {
+  right: 6em;
+  top: 15em;
+}
+
+#arrow2 {
+  right: 2em;
+  top: 14em;
+}
+
+#arrow3 {
+  right: 12em;
+  top: 16em;
+}
+
+#arrow4 {
+  right: 5em;
+  top: 14em;
+}
+
+#arrow5 {
+  right: 0.5em;
+  top: 17em;
+}
+
+#arrow6 {
+  right: 12em;
+  top: 12em;
+}
+
+#arrow7 {
+  right: 6.5em;
+  top: 13em;
+}
+
+#arrow8 {
+  right: 1em;
+  top: 9em;
+}
+
+#arrow9 {
+  right: 3em;
+  top: 14em;
+}
+
+#arrow10 {
+  right: 10em;
+  top: 15em;
+}
+
+#arrow11 {
+  right: 12em;
+  top: 15em;
+}
+
+#arrow12 {
+  right: 6.2em;
+  top: 14em;
+}
+
+#arrow13 {
+  right: 1em;
+  top: 15em;
+}
+
+#arrow14 {
+  right: 1.5em;
+  top: 12em;
+}
+
+#arrow15 {
+  right: 11em;
+  top: 12em;
+}
+
+#arrow16 {
+  right: 6.5em;
+  top: 13em;
+}
+
+#arrow17 {
+  right: 12em;
+  top: 12em;
+}
+
+#arrow18 {
+  right: 7.5em;
+  top: 13.5em;
+}
+
+#arrow19 {
+  right: 12em;
+  top: 13.5em;
+}
+
+#arrow20 {
+  right: 1.5em;
+  top: 9.5em;
+}
+
+#arrow21 {
+  right: 2em;
+  top: 13.5em;
+}
+
+#arrow22 {
+  right: 6.5em;
+  top: 14.5em;
+}
+
+#arrow23 {
+  right: 5em;
+  top: 10.5em;
+}
+
+#arrow24 {
+  right: 12.5em;
+  top: 13em;
+}
+
+#arrow25 {
+  right: 5em;
+  top: 12em;
+}
+
+#arrow26 {
+  right: 8.5em;
+  top: 12em;
+}
+
+#arrow27 {
+  right: 12.7em;
+  top: 14.5em;
+}
+
+#arrow28 {
+  right: 4.5em;
+  top: 11em;
+}
+
+#arrow29 {
+  right: 1.5em;
+  top: 9em;
+}
+
+#arrow30 {
+  right: 1em;
+  top: 14.8em;
+}
+
+
+
+
