@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="268.5px" height="196px" viewBox="180.25 90.75 268.5 196" enable-background="new 180.25 90.75 268.5 196"
+	 xml:space="preserve">
+<polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" points="375.25,286.75 180.25,286.75 180.25,90.75 375.25,90.75 
+	448.75,90.75 448.75,176.75 375.25,176.75 "/>
+<circle id="kreis1" onmouseover="this.style.stroke = '#ff0000'; this.style['stroke-width'] = 5;" onmouseout="this.style.stroke = '#000000'; this.style['stroke-width'] = 1;" fill="#002FE7" stroke="#000000" cx="200.151" cy="122.531" r="6.945"/>
+<circle id="kreis2" fill="#002FE7" cx="233.286" cy="227.095" r="9.127"/>
+<circle id="kreis3" fill="#002FE7" cx="380.905" cy="110.826" r="8.73"/>
+</svg>
