@@ -3,7 +3,8 @@ body {
   background-color: #fff;
   color: black;
   font-family: "Helvetica Neue";
-  font-size: 12pt; }
+  font-size: 12pt;
+}
 
 .menubar {
   position: fixed;
@@ -15,7 +16,8 @@ body {
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3);
   -moz-box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3);
-  box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3); }
+  box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3);
+}
 
 .backbar {
   position: fixed;
@@ -27,45 +29,53 @@ body {
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3);
   -moz-box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3);
-  box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3); }
-  .backbar input {
-    border: none;
-    background: none;
-    color: #0099ff;
-    float: left;
-    padding-top: 5px; }
+  box-shadow: 0px 0px 4px 2px rgba(48, 48, 48, 0.3);
+}
+.backbar input {
+  border: none;
+  background: none;
+  color: #0099ff;
+  float: left;
+  padding-top: 5px;
+}
 
 .swiper-container {
-  top: 50px; }
+  top: 50px;
+}
 
 .karte {
   height: 100%;
   margin: 0px;
   overflow: auto;
-  background-color: white; }
+  background-color: white;
+}
 
 .openNewTab {
   position: relative;
   padding: 10px 0px 10px 25px;
   height: 100px;
-  height: 50px; }
-  .openNewTab p {
-    float: left;
-    padding-left: 25px;
-    width: 150px;
-    text-decoration: underline; }
-  .openNewTab img {
-    float: left;
-    width: 35px;
-    height: 35px;
-    padding-top: 3px; }
+  height: 50px;
+}
+.openNewTab p {
+  float: left;
+  padding-left: 25px;
+  width: 150px;
+  text-decoration: underline;
+}
+.openNewTab img {
+  float: left;
+  width: 35px;
+  height: 35px;
+  padding-top: 3px;
+}
 
 .googleMaps, .detail {
   position: absolute;
   top: 0px;
   bottom: 30px;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+}
 
 .header {
   position: relative;
@@ -84,124 +94,151 @@ body {
   /* IE10+ */
   background: linear-gradient(to bottom, #777777 0%, #545454 70%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#777777', endColorstr='#545454',GradientType=0 );
-  /* IE6-9 */ }
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#777777', endColorstr='#545454',GradientType=0 );
+  /* IE6-9 */
+}
 
 .bild {
   -webkit-box-shadow: 0px 0px 7px 2px #303030;
   -moz-box-shadow: 0px 0px 7px 2px #303030;
-  box-shadow: 0px 0px 7px 2px #303030; }
-  .bild img {
-    width: 100%; }
+  box-shadow: 0px 0px 7px 2px #303030;
+}
+.bild img {
+  width: 100%;
+}
 
 .verguenstigung {
   width: 100%;
   z-index: 100;
-  height: 60px; }
-  .verguenstigung p {
-    color: black;
-    text-align: center;
-    padding: 10px 25px 0px 20px;
-    line-height: 1.2; }
+  height: 60px;
+}
+.verguenstigung p {
+  color: black;
+  text-align: center;
+  padding: 10px 25px 0px 20px;
+  line-height: 1.2;
+}
 
 .karteTitle {
   position: relative;
   height: 65px;
   border-bottom: 1px solid #909090;
   margin: 0px 25px 20px 25px;
-  padding: 20px 0 20px 0; }
-  .karteTitle h1 {
-    margin: 0;
-    text-align: center;
-    font-size: 42pt;
-    font-weight: lighter;
-    white-space: nowrap; }
-  .karteTitle h2 {
-    margin: 0;
-    padding: 0;
-    margin-bottom: -15px;
-    font-size: 12pt;
-    text-align: center;
-    font-weight: lighter; }
+  padding: 20px 0 20px 0;
+}
+.karteTitle h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 42pt;
+  font-weight: lighter;
+  white-space: nowrap;
+}
+.karteTitle h2 {
+  margin: 0;
+  padding: 0;
+  margin-bottom: -15px;
+  font-size: 12pt;
+  text-align: center;
+  font-weight: lighter;
+}
 
 .karteInfo {
   position: relative;
   height: 40px;
-  padding: 30px 0px 30px 25px; }
-  .karteInfo p {
-    color: #fff;
-    width: 150px;
-    float: left; }
-  .karteInfo img {
-    width: 35px !important;
-    height: 47px !important;
-    float: left;
-    margin: 0  10px 0  0; }
+  padding: 30px 0px 30px 25px;
+}
+.karteInfo p {
+  color: #fff;
+  width: 150px;
+  float: left;
+}
+.karteInfo img {
+  width: 35px !important;
+  height: 47px !important;
+  float: left;
+  margin: 0  10px 0  0;
+}
 
 .infoRechts {
   float: right !important;
   width: 100px !important;
-  border: none !important; }
+  border: none !important;
+}
 
 .zusatzInfos {
   border-top: 1px solid #7c7c7c;
   border-bottom: 1px solid #7c7c7c;
   margin: 0px 25px 20px 25px;
-  padding-top: 15px; }
+  padding-top: 15px;
+}
 
 .mittagsmenu {
   padding-top: 20px;
   background-image: url(../img/pfeilunten.png);
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: 30px 9px; }
+  background-size: 30px 9px;
+}
 
 ul {
   list-style-type: none;
-  padding: 0 !important; }
-  ul li {
-    margin-top: 10px; }
+  padding: 0 !important;
+}
+ul li {
+  margin-top: 10px;
+}
 
 a {
   text-decoration: none;
-  color: black; }
+  color: black;
+}
 
 p {
-  margin: 0; }
+  margin: 0;
+}
 
 .ybf {
-  display: none !important; }
+  display: none !important;
+}
 
 .ybi {
-  background-color: transparent !important; }
+  background-color: transparent !important;
+}
 
 .ybr {
   overflow: visible !important;
-  height: auto !important; }
+  height: auto !important;
+}
 
 .ybx {
   padding: 25px !important;
-  display: block; }
+  display: block;
+}
 
 .ybh {
-  display: none; }
+  display: none;
+}
 
 .pipesText {
   font-size: 12pt;
   color: black;
   font-family: helvetica !important;
-  font-weight: lighter !important; }
+  font-weight: lighter !important;
+}
 
 .pipesTitle a {
   color: black;
   font-weight: lighter;
-  pointer-events: none !important; }
+  pointer-events: none !important;
+}
 .pipesTitle h1 {
   font-size: 12pt;
   font-weight: bolder;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 .pipesTitle h2 {
-  display: none; }
+  display: none;
+}
 
 /*! HTML5 Boilerplate v4.3.0 | MIT License | http://h5bp.com/ */
 /*
@@ -217,12 +254,14 @@ button,
 input,
 select,
 textarea {
-  color: #222; }
+  color: #222;
+}
 
 html {
   font-size: 1em;
   line-height: 1.4;
-  height: 100%; }
+  height: 100%;
+}
 
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -231,11 +270,13 @@ html {
  */
 ::-moz-selection {
   background: #b3d4fc;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 ::selection {
   background: #b3d4fc;
-  text-shadow: none; }
+  text-shadow: none;
+}
 
 /*
  * A better looking default horizontal rule
@@ -246,7 +287,8 @@ hr {
   border: 0;
   border-top: 1px solid #ccc;
   margin: 1em 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
@@ -256,7 +298,8 @@ audio,
 canvas,
 img,
 video {
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 /*
  * Remove default fieldset styles.
@@ -264,13 +307,15 @@ video {
 fieldset {
   border: 0;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 /*
  * Allow only vertical resizing of textareas.
  */
 textarea {
-  resize: vertical; }
+  resize: vertical;
+}
 
 /* ==========================================================================
    Browse Happy prompt
@@ -279,7 +324,8 @@ textarea {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
-  padding: 0.2em 0; }
+  padding: 0.2em 0;
+}
 
 /* ==========================================================================
    Author's custom styles
@@ -294,20 +340,23 @@ textarea {
   background-color: transparent;
   border: 0;
   overflow: hidden;
-  /* IE 6/7 fallback */ }
+  /* IE 6/7 fallback */
+}
 
 .ir:before {
   content: "";
   display: block;
   width: 0;
-  height: 150%; }
+  height: 150%;
+}
 
 /*
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
 .hidden {
   display: none !important;
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
@@ -320,7 +369,8 @@ textarea {
   overflow: hidden;
   padding: 0;
   position: absolute;
-  width: 1px; }
+  width: 1px;
+}
 
 /*
  * Extends the .visuallyhidden class to allow the element to be focusable
@@ -333,13 +383,15 @@ textarea {
   margin: 0;
   overflow: visible;
   position: static;
-  width: auto; }
+  width: auto;
+}
 
 /*
  * Hide visually and from screenreaders, but maintain layout
  */
 .invisible {
-  visibility: hidden; }
+  visibility: hidden;
+}
 
 /*
  * Clearfix: contain floats
@@ -357,10 +409,12 @@ textarea {
   content: " ";
   /* 1 */
   display: table;
-  /* 2 */ }
+  /* 2 */
+}
 
 .clearfix:after {
-  clear: both; }
+  clear: both;
+}
 
 /*
  * For IE 6/7 only
@@ -372,9 +426,11 @@ textarea {
    Modify as content requires.
    ========================================================================== */
 @media only screen and (min-width: 35em) {
-  /* Style adjustments for viewports that meet the condition */ }
+  /* Style adjustments for viewports that meet the condition */
+}
 @media print, (-o-min-device-pixel-ratio: 5 / 4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
-  /* Style adjustments for high resolution devices */ }
+  /* Style adjustments for high resolution devices */
+}
 /* ==========================================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
@@ -385,17 +441,21 @@ textarea {
     color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
-    text-shadow: none !important; }
+    text-shadow: none !important;
+  }
 
   a,
   a:visited {
-    text-decoration: underline; }
+    text-decoration: underline;
+  }
 
   a[href]:after {
-    content: " (" attr(href) ")"; }
+    content: " (" attr(href) ")";
+  }
 
   abbr[title]:after {
-    content: " (" attr(title) ")"; }
+    content: " (" attr(title) ")";
+  }
 
   /*
    * Don't show links for images, or javascript/internal links
@@ -403,34 +463,41 @@ textarea {
   .ir a:after,
   a[href^="javascript:"]:after,
   a[href^="#"]:after {
-    content: ""; }
+    content: "";
+  }
 
   pre,
   blockquote {
     border: 1px solid #999;
-    page-break-inside: avoid; }
+    page-break-inside: avoid;
+  }
 
   thead {
     display: table-header-group;
-    /* h5bp.com/t */ }
+    /* h5bp.com/t */
+  }
 
   tr,
   img {
-    page-break-inside: avoid; }
+    page-break-inside: avoid;
+  }
 
   img {
-    max-width: 100% !important; }
+    max-width: 100% !important;
+  }
 
   @page {
-    margin: 0.5cm; }
+    margin: 0.5cm;
+  }
   p,
   h2,
   h3 {
     orphans: 3;
-    widows: 3; }
+    widows: 3;
+  }
 
   h2,
   h3 {
-    page-break-after: avoid; } }
-
-/*# sourceMappingURL=main.css.map */
+    page-break-after: avoid;
+  }
+}
