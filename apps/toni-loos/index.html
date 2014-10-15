@@ -22,6 +22,7 @@
 
         <link rel="stylesheet" href="css/normalize.css">
          <link rel="stylesheet" href="css/RubberBand.css">
+         <link rel="stylesheet" type="text/css" href="css/sweet-alert.css">
        <!-- <link rel="stylesheet" href="css/main.css"> -->
         <link rel="stylesheet" href="css/s_style.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -75,8 +76,33 @@
            <section class="page" id="home">
           
 
-
-                <div id="eventlist-placeholder"></div>
+                    <div>
+                        <div class="e_cover_Overview" id="heute-Cover">
+                        <div class="e_title_Overview">
+                        <!-- <p>HEUTE</p> -->
+                        </div>
+                    </div>
+                
+                <div id="eventlist-placeholderHeute"></div>
+                
+                <div>
+                    <div class="e_cover_Overview" id="morgen">
+                    <div class="e_title_Overview">
+                    <!-- <p>MORGEN</p> -->
+                    </div>
+                    </div>
+                </div>
+                <div id="eventlist-placeholderMorgen"></div>
+                </div>
+                
+                <div>
+                    <div class="e_cover_Overview" id="ubermorgen-Cover">
+                    <div class="e_title_Overview">
+                    <!-- <p>ÜBERMORGEN</p> -->
+                    </div>
+                    </div>
+                </div>
+                <div id="eventlist-placeholderUbermorgen"></div>
                 
                 <!-- DEFAULT E-COVER
                 <div class="e_cover" data-color="#3CB1C7;">
@@ -111,6 +137,10 @@
         <script src="js/clamp.js"></script>
         <script src="js/velocity.js"></script>
         <script src="js/velocity.ui.js"></script>
+        <script src="js/sweet-alert.min.js"></script>
+        <script src="js/date.js"></script>
+        <script src="js/waypoints.js"></script>
+
 
         
         

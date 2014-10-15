@@ -78,8 +78,8 @@ $content_f_blue: #28AAFF;
 $grau: #eeeeee;
 $bg-c-navi: #065FC6; //orange
 
-$c-menue: #000000;
-$bg: #ffffff;
+$c-menue: #ffffff;
+$bg: #000000;
 
 $width-halfe: 50%;
 
@@ -233,8 +233,8 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
   float: left;
   width: 13%;
   margin-top: 1.25em;
-  margin-right: 0.3em;
-  margin-left: 0.3em;
+  // margin-right: 0.3em;
+  // margin-left: 0.3em;
   padding: 0.25em;
   color: white;
   background-color: rgba( 0,0,0,0.0 );
@@ -243,17 +243,17 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 }
 .addButton{
   float: right;
-  margin-right: 0.3em;
+ // margin-right: 0em;
   
 }
 
 .cancleButton{
-	display: block;
+	display: none;
 	 float: right;
   width: 13%;
   margin-top: 1.25em;
-  margin-right: 0.3em;
-  margin-left: 0.3em;
+  // margin-right: 0.3em;
+  // margin-left: 0.3em;
   padding: 0.25em;
   color: white;
   background-color: rgba( 0,0,0,0.0 );
@@ -285,12 +285,12 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
   top: 0;
   left: $width-halfe/2;
   right: 5%;
-  background-color: $bg;
+  background-color: $c-menue;
   //border-right: 1px solid #aaa;
 
   @include menuFont;
 
-  color: $c-menue;
+  color: $bg-c-navi;
 
 //SCHATTEN RECHTS
 //   -webkit-box-shadow: inset -6px 0px 11px -3px rgba(0,0,0,0.23);
@@ -364,6 +364,8 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 .e_cover{
 	height: 200px;
 	position:relative;
+	background-color: #000000;
+	overflow: hidden;
 	//background-color: attr(data-color);
 	//background-color: #3CB1C7;
 	//color: #ffffff;
@@ -374,6 +376,27 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
   	//padding-right: 1em;
 }
 
+.e_cover_Overview{
+
+	position:relative;
+	background-color: $bg-c-navi;
+	overflow: hidden;
+	//padding-bottom: 1em;
+}
+
+.e_title_Overview{
+	 //170
+	margin-top: 0em;
+	//color: #C0D016;
+	color: #ffffff;
+	-ms-word-break: break-all;
+    word-break: break-all;
+
+     // Non standard for webkit
+     //word-break: break-word;
+	
+
+}
 .e_title {
 	height: 8.5em; //170
 	
@@ -382,8 +405,9 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	 overflow: hidden;
 
 }
-.e_title p{
+.e_title p {
 	@include coverFont;
+	
 	
 	margin: 0 auto;
 	margin-top: 0.1em;
@@ -395,8 +419,19 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
     word-break: break-all;
 
      // Non standard for webkit
-     word-break: break-word;
-	} 
+     //word-break: break-word;
+} 
+	.e_title_Overview p{
+		@include navifont;
+		text-align: center;
+		padding-top: 0.1em;
+		padding-left: 0.5em;
+		padding-bottom: 0.1em;
+		margin-top: 0.1em;
+		margin-bottom: 0.1em;
+		
+
+}
 
 .sTime{
 	@include coverFont;
@@ -409,9 +444,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	//padding-top: 0.5em;
 	-ms-word-break: break-all;
     word-break: break-all;
-
-     // Non standard for webkit
-     word-break: break-word;
+    //word-break: break-word;
 
 	
 	
@@ -430,24 +463,24 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 .etage, .raum, .landmark, .inkurze, .eTime{
 	float: left;
 	display: inline-block;
-	width: 29%;
+	width: 40%;
 	padding-left: 0.5em;
 	margin-top: -0.3em;
 
 }
-.etage, .raum, .eTime{
+.etage, .eTime{
 	margin-top: -0.7em;
 	//margin-bottom: -0.7em;
 }
 .eTime{
-	
+	float: right;
 	text-align: right;
-	//padding-left: 0em;
+	padding-right: 0.8em;
 }
 .raum{
 	
-	text-align: center;
-	padding-left: 0em;
+	text-align: left;
+	//padding-left: 0em;
 }
 
 .etage p, .raum p, .landmark p, .inkurze p, .eTime p{
@@ -467,7 +500,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 }
 
 
-.landmark{
+.raum{
 	width: 90%;
 
 }
@@ -483,11 +516,13 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 
 .e_content {
 	display: none;
-	height: 280px;
+	//height: 280px;
 	//overflow: auto;
 	@include contentFont;
 	
 	word-wrap:break-word;
+	overflow: hidden;
+	padding-bottom: 1em;
 
 	//height: 200px;
 	position:relative;
@@ -496,6 +531,9 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	//border-bottom: 1px solid red;
   	//border-top: 0;
   	//border-bottom: 1;
+  	-ms-word-break: break-all;
+    word-break: break-all;
+    //word-break: break-word;
 }
  
 @mixin t-mid-to-left{
@@ -594,6 +632,11 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
     -moz-transition-timing-function: 		ease-out;
     -o-transition-timing-function: 			ease-out;
     transition-timing-function: 			ease-out;
+
+     -webkit-transition-duration: 	400ms;
+    -moz-transition-duration: 		400ms;
+    -o-transition-duration: 		400ms;
+    transition-duration: 			400ms;
 }
 
 .pushDown {
@@ -614,9 +657,11 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	position: absolute;
 	display: inline-block;
 	font-family: $standartFont;
-	font-weight: $bold;
+	font-weight: $extraBold;
+	letter-spacing: 0.1em;
+	font-size: 1.0em;
 	padding: 0 1em;
-	height: 1150px;;
+	height: 1220px;;
 	//margin: 1em;
 	background-color: #ffffff;
 	//height: auto;
@@ -692,7 +737,7 @@ input[type="radio"]{
 .e_wrapper{
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid rgba( 0,0,0,0.5 );
+	border-bottom: 4px solid rgba( 9,96,198,1 );
 	margin-bottom: 1em;
 }
 
@@ -703,7 +748,7 @@ input[type="radio"]{
 	//margin: 1em;
 	padding-top: 1em;
 	padding-bottom: 1em;
-	font-size: 1.5em;
+	font-size: 1em;
 	//background-color: orange;
 	//margin-left: -1.5em;
 }
@@ -767,6 +812,7 @@ input[type="radio"]{
 
 #startzeit, #endzeit{
 	width: 25%;
+
 }
 
 //_______________INPUT ORT
@@ -800,13 +846,16 @@ input[type="radio"]{
 
 
 #etage{
-	width:38%;
-	padding-bottom: 1.5em;
+	width:100%;
+	margin-left: 0.5em;
+	
 }
 	
 
 #raum{
-	width: 39%;
+	
+	width: 100%;
+	margin-left: 0.5em;
 }
 
 //_______________INPUT LANDMARK
@@ -835,6 +884,7 @@ input[type="radio"]{
 }
 #landmark{
 	width: 100%;
+	margin-left: 0.5em;
 }
 
 //_______________INPUT INKÜRZE
@@ -863,6 +913,7 @@ input[type="radio"]{
 }
 #inkurze{
 	width: 100%;
+	margin-left: 0.5em;
 }
 
 //_______________INPUT BG COLOR
@@ -995,12 +1046,16 @@ background: $content_f_blue;
 	width: 90%;
 	font-family: $standartFont;
 	font-weight: $bold;
-	padding: 0.5em 2em 0.5em 2em;
+	letter-spacing: 0.1em;
+	font-size: 1.2em;
+	background-color: #065FC6;
+	color: #F8EFEF;
+	padding: 1em 0.5em 1em 0.5em;
 	margin: 0.7em;
 	border-radius: 0px 0px 0px 0px;
 -moz-border-radius: 0px 0px 0px 0px;
 -webkit-border-radius: 0px 0px 0px 0px;
-border: 1px solid #000000;
+	border: 0;
 }
 // .ed_inkurze,
 // .ed-image,

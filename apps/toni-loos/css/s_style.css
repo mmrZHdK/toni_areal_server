@@ -118,8 +118,6 @@ textarea {
   float: left;
   width: 13%;
   margin-top: 1.25em;
-  margin-right: 0.3em;
-  margin-left: 0.3em;
   padding: 0.25em;
   color: white;
   background-color: transparent;
@@ -128,16 +126,13 @@ textarea {
 
 .addButton {
   float: right;
-  margin-right: 0.3em;
 }
 
 .cancleButton {
-  display: block;
+  display: none;
   float: right;
   width: 13%;
   margin-top: 1.25em;
-  margin-right: 0.3em;
-  margin-left: 0.3em;
   padding: 0.25em;
   color: white;
   background-color: transparent;
@@ -175,7 +170,7 @@ textarea {
   letter-spacing: 0.1em;
   color: #f8efef;
   font-size: 1em;
-  color: black;
+  color: #065fc6;
   display: block;
   -webkit-transform: translate(-50%, 0px);
   webkit-transition-timing-function: ease-out;
@@ -211,7 +206,7 @@ textarea {
   padding: 0.5em 0;
   padding-left: 0.75em;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .scrollbox {
@@ -238,6 +233,21 @@ textarea {
 .e_cover {
   height: 200px;
   position: relative;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.e_cover_Overview {
+  position: relative;
+  background-color: #065fc6;
+  overflow: hidden;
+}
+
+.e_title_Overview {
+  margin-top: 0em;
+  color: #ffffff;
+  -ms-word-break: break-all;
+  word-break: break-all;
 }
 
 .e_title {
@@ -258,7 +268,20 @@ textarea {
   padding-right: 0.1em;
   -ms-word-break: break-all;
   word-break: break-all;
-  word-break: break-word;
+}
+
+.e_title_Overview p {
+  font-family: "Open Sans";
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #f8efef;
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: 0.1em;
+  padding-left: 0.5em;
+  padding-bottom: 0.1em;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
 }
 
 .sTime {
@@ -273,28 +296,28 @@ textarea {
   padding-left: 0.2em;
   -ms-word-break: break-all;
   word-break: break-all;
-  word-break: break-word;
 }
 
 .etage, .raum, .landmark, .inkurze, .eTime {
   float: left;
   display: inline-block;
-  width: 29%;
+  width: 40%;
   padding-left: 0.5em;
   margin-top: -0.3em;
 }
 
-.etage, .raum, .eTime {
+.etage, .eTime {
   margin-top: -0.7em;
 }
 
 .eTime {
+  float: right;
   text-align: right;
+  padding-right: 0.8em;
 }
 
 .raum {
-  text-align: center;
-  padding-left: 0em;
+  text-align: left;
 }
 
 .etage p, .raum p, .landmark p, .inkurze p, .eTime p {
@@ -313,7 +336,7 @@ textarea {
   font-weight: 800;
 }
 
-.landmark {
+.raum {
   width: 90%;
 }
 
@@ -324,15 +347,18 @@ textarea {
 
 .e_content {
   display: none;
-  height: 280px;
   font-family: "Open Sans";
   font-weight: 800;
   letter-spacing: 0.02em;
   font-size: 1.7em;
   line-height: 1.1em;
   word-wrap: break-word;
+  overflow: hidden;
+  padding-bottom: 1em;
   position: relative;
   background-color: #3CB1C7;
+  -ms-word-break: break-all;
+  word-break: break-all;
 }
 
 .showmenue {
@@ -415,6 +441,10 @@ textarea {
   -moz-transition-timing-function: ease-out;
   -o-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
+  -webkit-transition-duration: 400ms;
+  -moz-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-duration: 400ms;
 }
 
 .pushDown {
@@ -430,9 +460,11 @@ textarea {
   position: absolute;
   display: inline-block;
   font-family: "Open Sans";
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  font-size: 1.0em;
   padding: 0 1em;
-  height: 1150px;
+  height: 1220px;
   background-color: #ffffff;
   top: 0;
   left: 0;
@@ -474,7 +506,7 @@ input[type="radio"] {
 .e_wrapper {
   float: left;
   width: 100%;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 4px solid #0960c6;
   margin-bottom: 1em;
 }
 
@@ -484,7 +516,7 @@ input[type="radio"] {
   width: 100%;
   padding-top: 1em;
   padding-bottom: 1em;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .ed_title_titel {
@@ -565,12 +597,13 @@ input[type="radio"] {
 }
 
 #etage {
-  width: 38%;
-  padding-bottom: 1.5em;
+  width: 100%;
+  margin-left: 0.5em;
 }
 
 #raum {
-  width: 39%;
+  width: 100%;
+  margin-left: 0.5em;
 }
 
 .ed_landmark_titel {
@@ -598,6 +631,7 @@ input[type="radio"] {
 
 #landmark {
   width: 100%;
+  margin-left: 0.5em;
 }
 
 .ed_inkurze_titel {
@@ -625,6 +659,7 @@ input[type="radio"] {
 
 #inkurze {
   width: 100%;
+  margin-left: 0.5em;
 }
 
 .ed_bgc_titel {
@@ -725,12 +760,16 @@ input[type="radio"] {
   width: 90%;
   font-family: "Open Sans";
   font-weight: 700;
-  padding: 0.5em 2em 0.5em 2em;
+  letter-spacing: 0.1em;
+  font-size: 1.2em;
+  background-color: #065FC6;
+  color: #F8EFEF;
+  padding: 1em 0.5em 1em 0.5em;
   margin: 0.7em;
   border-radius: 0px 0px 0px 0px;
   -moz-border-radius: 0px 0px 0px 0px;
   -webkit-border-radius: 0px 0px 0px 0px;
-  border: 1px solid #000000;
+  border: 0;
 }
 
 #try {

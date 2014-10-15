@@ -1,9 +1,36 @@
 var rootRef;
 // root zur Firebase Datenbank
 rootRef = new Firebase('https://incandescent-inferno-8047.firebaseio.com/');
+
+
+
+//START DER ZEITKISTE
+/////////
+///////
+//////
 function todayDate () {
 //Heutiges Datum
-var fullDate = new Date();console.log(fullDate);
+var fullDate = Date.today().add(0).days();
+console.log(fullDate);
+var twoDigitMonth = fullDate.getMonth()+1+"";if(twoDigitMonth.length==1)  twoDigitMonth="0" +twoDigitMonth;
+var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1) twoDigitDate="0" +twoDigitDate;
+var currentDate = fullDate.getFullYear() + twoDigitMonth + twoDigitDate;
+console.log(currentDate);
+return currentDate;
+}
+function tomorrowDate () {
+//Heutiges Datum
+var fullDate = Date.today().add(1).days();
+console.log(fullDate);
+var twoDigitMonth = fullDate.getMonth()+1+"";if(twoDigitMonth.length==1)  twoDigitMonth="0" +twoDigitMonth;
+var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1) twoDigitDate="0" +twoDigitDate;
+var currentDate = fullDate.getFullYear() + twoDigitMonth + twoDigitDate;
+console.log(currentDate);
+return currentDate;
+}
+function tomorrowPlusOneDate () {
+//Heutiges Datum
+var fullDate = Date.today().add(2).days();
 console.log(fullDate);
 var twoDigitMonth = fullDate.getMonth()+1+"";if(twoDigitMonth.length==1)  twoDigitMonth="0" +twoDigitMonth;
 var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1) twoDigitDate="0" +twoDigitDate;
@@ -42,6 +69,45 @@ function todayEndDateAndTime (){
     console.log(timeAndDate);
     return timeAndDate;
 }
+function tomorrowStartDateAndTime (){
+    //var aktuelleZeit = currentTime();
+    var aktuelleZeit = 0000;
+    var currentDate = tomorrowDate();
+    var timeAndDate = currentDate + aktuelleZeit;//currentTime();
+    console.log("HEUTIGES STARTDATUM MIT ZEIT")
+    console.log(timeAndDate);
+    return timeAndDate;
+}
+
+
+function tomorrowEndDateAndTime (){
+    var currentDate = tomorrowDate();
+    var timeAndDate = currentDate +2+3+5+9;
+    console.log("HEUTIGES ENDDATUM")
+    console.log(timeAndDate);
+    return timeAndDate;
+}
+
+function tomorrowPlusOneStartDateAndTime (){
+    //var aktuelleZeit = currentTime();
+    var aktuelleZeit = 0000;
+    var currentDate = tomorrowPlusOneDate();
+    var timeAndDate = currentDate + aktuelleZeit;//currentTime();
+    console.log("HEUTIGES STARTDATUM MIT ZEIT")
+    console.log(timeAndDate);
+    return timeAndDate;
+}
+
+
+function tomorrowPlusOneEndDateAndTime (){
+    var currentDate = tomorrowPlusOneDate();
+    var timeAndDate = currentDate +2+3+5+9;
+    console.log("HEUTIGES ENDDATUM")
+    console.log(timeAndDate);
+    return timeAndDate;
+}
+
+
 
 
 
@@ -55,6 +121,23 @@ function creatDateAndTime(sDatesTime){
         return sDatesTime;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ENDE DER ZEITKISTE
+/////////
+///////
+//////
 //Funktion um die Elemente aus der Datenbank zu holen und sie in die
 //Variable events zu schreiben und an renderEventList als Parameter mitzugeben
 //Brauch ich wahrscheinlich nicht mehr --> lädt alle heutigen Events rein!
@@ -76,8 +159,26 @@ function displayAllEvents() {
     });
 }
 */
-function displayEvents() {
-    var newRootRef = rootRef.startAt(todayStartDateAndTime()).endAt(todayEndDateAndTime());
+
+function coverheute(){
+    $cover = $('<div class="e_cover" >' + '</div>');
+    $titel = $('<div class="e_title">' + ("<p>") + "TONI LOOS" + ("</p>") + '</div>');
+    $cover.append( $titel );
+    $startzeit = $('<div class="sTime">' + "HEUTE" + '</div>');
+    $cover.append( $startzeit );
+    
+    $eintrag = $('<div class="eintrag">' + '</div>')
+    $eintrag.appendTo('#eventlist-placeholder');
+    $eintrag.append( $cover.css( "background-color", "#000000").css( "color", "#FFFFFF" ) );
+
+  
+  }
+
+
+
+function displayEvents(todayStartDateAndTime, todayEndDateAndTime, htmlPlaceHolderDiv) {
+        //coverheute();
+    var newRootRef = rootRef.startAt(todayStartDateAndTime).endAt(todayEndDateAndTime);
     newRootRef.on("child_added", function(snapshot) {
         //Jeder Event wird als Packe abgespeichert
         console.log(snapshot);
@@ -87,7 +188,7 @@ function displayEvents() {
         console.log("gits e Snapshot?");
         console.log(events);
         //events = snapshot.val();
-        renderEventList(events)
+        renderEventList(events, htmlPlaceHolderDiv)
         });
 
         
@@ -96,17 +197,21 @@ function displayEvents() {
 
 //Jetzt wird durch jedes Packe durchgezählt und die Klasse
 // displayEventItem gestartet
-function renderEventList(events) {
+function renderEventList(events, htmlPlaceHolderDiv) {
+  console.log("Lenge vom Events" + events.length);
     $.each(events,function(i,eventItem) {
         console.log("chunter is rendere ine?")
         console.log(eventItem)
-        displayEventItem(eventItem);
+
+
+
+        displayEventItem(eventItem, htmlPlaceHolderDiv);
     });
 }
 //css( "background-color", eventItem.hintergrundfarbe).css( "color", eventItem.schriftfarbe )
 //Hier werden die Covers und die Contents mit HTML erstellt und 
 //mit den passenden Daten aus Firebase gefüllt
-function displayEventItem(eventItem) {
+function displayEventItem(eventItem, htmlPlaceHolderDiv) {
     console.log(eventItem.sDatum);
     $cover = $('<div class="e_cover" >' + '</div>');
     $titel = $('<div class="e_title">' + ("<p>") + eventItem.titel + ("</p>") + '</div>');
@@ -114,19 +219,19 @@ function displayEventItem(eventItem) {
     $startzeit = $('<div class="sTime">' + eventItem.startzeit + '</div>');
     $cover.append( $startzeit );
     
+    
     $eintrag = $('<div class="eintrag">' + '</div>')
-    $eintrag.appendTo('#eventlist-placeholder');
+    $eintrag.appendTo(htmlPlaceHolderDiv);
     $eintrag.append( $cover.css( "background-color", eventItem.hintergrundfarbe).css( "color", eventItem.schriftfarbe ) );
 
     $content = $('<div class="e_content" >' + '</div>');
     $etage = $('<div class="etage">' + ("<h3>") + "ÉTAGE" + ("</h3>") + ("<p>") + eventItem.etage + ("</p>") + '</div>');
     $content.append( $etage );
-    $raum = $('<div class="raum">' + ("<h3>") + "RAUM" + ("</h3>") + ("<p>") + eventItem.raum + ("</p>") + '</div>');
-    $content.append( $raum );
+    
     $endzeit = $('<div class="eTime">' + ("<h3>") + "ENDZEIT" + ("</h3>") + ("<p>")+ eventItem.endzeit + ("</p>") + '</div>');
     $content.append( $endzeit );
-    $landmark = $('<div class="landmark">' + ("<h3>") + "LANDMARK" + ("</h3>") + ("<p>") + eventItem.landmark + ("</p>") + '</div>');
-    $content.append( $landmark );
+    $raum = $('<div class="raum">' + ("<h3>") + "RAUM" + ("</h3>") + ("<p>") + eventItem.raum + ("</p>") + '</div>');
+    $content.append( $raum );
     $inkurze = $('<div class="inkurze">' + ("<h3>") + "IN KÜRZE" + ("</h3>") + ("<p>") + eventItem.inKurze + ("</p>") + '</div>');
     $content.append( $inkurze );
     
@@ -141,6 +246,7 @@ function displayEventItem(eventItem) {
 
 
 $(document).ready(function(){
+  
     //Hier kommt ein Reload Button hin --> location.reload(true);
     //$seite wird deklariert und initialisiert mit einer html section und zwei klassen sowie einer ID
     // setInterval(function() {
@@ -167,28 +273,99 @@ $(document).ready(function(){
 //Gibt dem INPUT Feld das aktuelle Startdatum mit!
 
 
+    // swal({
+    //   title: "Error!",
+    //   text: "Here's my error message!",
+    //   type: "error",
+    //   confirmButtonText: "Cool"
+    // });
+// $('#heute-Cover').waypoint(function() {
+//   alert('100 pixels from the top heute');
+//   $(".titel").text("HEUTE");
+// }, { offset: 100 })
+
+// $('#morgen').waypoint(function() {
+//   alert('100 pixels from the top heute');
+//   $(".titel").text("ÜBERMORGEN");
+// }, { offset: 200 })
+// $('#ubermorgen-cover').waypoint(function() {
+//   alert('100 pixels from the top morgen');
+// }, { offset: 100 });
+
+
+$(".scrollbox").on("scroll", function(){
+
+if($(".page#home").is(":visible") ){
+  $('#heute-Cover').waypoint(function() {
+  $(".titel").text("HEUTE");
+  console.log("heute cover drin ==")
+}, { offset: 200 });
+  $('#morgen').waypoint(function() {
+  $(".titel").text("MORGEN");
+  console.log("morgen cover drin ==")
+}, { offset: 200 });
+  $('#ubermorgen-Cover').waypoint(function() {
+  $(".titel").text("ÜBERMORGEN");
+  console.log("übermorgen cover drin ==")
+}, { offset: 200 });
+};
+});
+
+
+
+
 $(".menuebutton").load('img/hamburger2-01.svg',function(response){});
 $(".addButton").load('img/plus2-01.svg',function(response){});
+$(".cancleButton").load('img/plus2-01.svg',function(response){});
 
 
 
     var $seite = $( '<section class="scrollbox out_right" id="edit"></section>' );
-
     //edit page ins home reinladen
+
     $( ".addButton" ).click(function( e ) {
         
+        $(".titel").text("EINTRAG").velocity({
+                             duration: 5000,
+                             
+                         },"easeInSine");
         
-        $(this).velocity({
         
+        $(".addButton").hide();
+        $(".cancleButton").show();
+        $(".cancleButton").velocity({
+            display: "block",
             rotateZ: "45deg",
             duration: 5000,
-            opacity: 0
+            //opacity: 0
             
+        });
+        $(".cancleButton").on("click", function(){
+                         $( '.page#home' ).show().velocity({
+                            duration: 5000
+                         });
+                         $seite.addClass( 'out_right' );
+                         $seite.remove();
+                         $(".titel").text("TONI LOOS").velocity({
+                
+                             
+                             duration: 5000
+                             
+                         });
+                         $(".cancleButton").hide();
+                         
+                         $(".addButton").velocity({
+                
+                             rotateZ: "0deg",
+                             duration: 5000,
+                             opacity: 1
+                         }).show();
+                         
         });
         //$(".addButton").hide();
     
         
-
+        $(".scrollbox").scrollTop();
 
         console.log( '> click @ Button element' );
         
@@ -199,47 +376,93 @@ $(".addButton").load('img/plus2-01.svg',function(response){});
         $seite.load( 'e_edit.html #edit', function( e ) { 
             //$(".navi.titel").scrollIntoView(true);
             $("#cancle").click(function(){
-         $( '.page#home' ).show();
-                    $seite.addClass( 'out_right' );
-                    $seite.remove();
-                    $(".addButton").velocity({
+
+                        $( '.page#home' ).show();
+                         $seite.addClass( 'out_right' );
+                         
+                         $(".titel").text("TONI LOOS").velocity({
+                
+                             
+                             duration: 5000
+                             
+                         });
+                         $seite.remove();
+                         $(".cancleButton").hide();
+                         
+                         $(".addButton").velocity({
+                
+                             rotateZ: "0deg",
+                             duration: 5000,
+                             opacity: 1
+                         }).show();
+
         
-                        rotateZ: "0deg",
-                        duration: 5000,
-                        opacity: 1
-                    });
     });
             console.log( '> complete @ $seite.load' );
             // Seite ist geladen worden, starte Slide Animation
             $seite.removeClass( 'out_right' );
+            $('.page#home').velocity({
+                            duration: 5000, 
+                         });
             $('.page#home').hide();
             //$( '.page#home' ).addClass( 'out_left_new' );
             //$( '.navi#addButton').remove();
             //$( '.menubutton#back' ).show();
             document.getElementById('startdatum').value = new Date().toISOString().substring(0, 10);
-document.getElementById('enddatum').value = new Date().toISOString().substring(0, 10);
+            document.getElementById('enddatum').value = new Date().toISOString().substring(0, 10);
+            
+            
+            $("#startdatum").on("focusout", function(){
+              var startzeitDatum = document.getElementById('startdatum').value;
+              document.getElementById('enddatum').value = startzeitDatum;
+              console.log("enddatum" + " " + enddatum);
+            })
+
+            $("#startzeit").on("focusout", function(){
+              var startzeitElement = document.getElementById('startzeit').value;
+              document.getElementById('endzeit').value = startzeitElement;
+              console.log("endzeit" + " " + endzeit);
+            })
+            
+            
 
 
             $( '#formDefault' ).on("click" , "#submitButton", function( e ) {
                 console.log( "WICHTIG" + '> click @ .menubutton#back' );
-                if($("#title").val() != 0){
+                console.log("hhz" + $("#title").val())
+                if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()=="" || $("#landmark").val()=="" || $("#inkurze").val()==""){
                     // Schiebe Seiten wieder raus
-
-                    $( '.page#home' ).show();
-                    $seite.addClass( 'out_right' );
-                    //$seite.remove();
-                    $(".addButton").velocity({
-        
-                        rotateZ: "0deg",
-                        duration: 5000,
-                        opacity: 1
+                    swal({
+                      title: "BITTE ALLE FELDER AUSFÜLLEN",
+                      //text: "BITTE ALLE FELDER AUSFÜLLEN!",
+                      type: "",
+                      confirmButtonText: "LOOS"
                     });
+                    
                     //$(".addButton").show();
                     //$( '.page#home' ).addClass( 'out_right' );
                     //$( '.page#edit' ).addClass( 'out_left_new' );
                     //$( '.menubutton#back' ).hide();
+                } else {
+                         $( '.page#home' ).show().velocity({
+                            duration: 5000
+                         });
+                         $seite.addClass( 'out_right' );
+                         //$seite.remove();
+                         $(".titel").text("TONI LOOS").velocity({
+                            duration: 5000
+                         });
+                         $(".cancleButton").hide();
+                         
+                         $(".addButton").velocity({
+                
+                             rotateZ: "0deg",
+                             duration: 5000,
+                             opacity: 1
+                         }).show();
+
                 }
-                $(".navi.titel").scrollIntoView(true);
+                //$(".navi.titel").scrollIntoView(true);
             });
 
         });
@@ -357,7 +580,9 @@ document.getElementById('enddatum').value = new Date().toISOString().substring(0
 
     $(document).on("submit", "#formDefault", function (e) {
         e.preventDefault();
-        
+        if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()=="" || $("#landmark").val()=="" || $("#inkurze").val()=="") {
+            return
+        }
 
         // HANI ICH IRGENDWIE E ID BECHO? JA? -> EDIT MODE, NEI -> INSERT MODE
 
@@ -418,28 +643,56 @@ document.getElementById('enddatum').value = new Date().toISOString().substring(0
         // rootRef.push().setWithPriority(data, sDatesTime);
 
         //inputfelder werden geleert
-        $("#title").val(' ');
-        $("#startdatum").val(' ');
-        $("#startzeit").val(' ');
-        $("#enddatum").val(' ');
-        $("#endzeit").val(' ');
-        $("#inkurze").val(' ');
-        //$("#camera").val(' ');
+        $("#title").val('');
+        $("#startdatum").val('');
+        $("#startzeit").val('');
+        $("#enddatum").val('');
+        $("#endzeit").val('');
+        $("#inkurze").val('');
+        //$("#camera").val('');
         //displayEvents();
     });
-    
+      function tagesAnzeige(){
+      var tagesAnzeige = {
+    "bild" : "",
+    "enddatum" : "2014-10-14",
+    "endzeit" : "22:00",
+    "etage" : "7",
+    "hintergrundfarbe" : "#000000",
+    "inKurze" : "CHÄS BROT U DS TRINKE",
+    "landmark" : "NACHEM LANGE GANG",
+    "raum" : "E.33",
+    "schriftfarbe" : "#FFFFFF",
+    "startdatum" : "2014-10-14",
+    "startzeit" : "HEUTE",
+    "titel" : "TONI LOOS"}
+    return tagesAnzeige;
+    }
     //
     //displayAllEvents();
     currentTime();
-    displayEvents();
+    //coverheute();
+    function htmlPlaceHolderDivHeute(){
+      var place = "#eventlist-placeholderHeute";
+      return place;
+    }function htmlPlaceHolderDivMorgen(){
+      var place = "#eventlist-placeholderMorgen";
+      return place;
+    }function htmlPlaceHolderDivUbermorgen(){
+      var place = "#eventlist-placeholderUbermorgen";
+      return place;
+    }
 
+    displayEvents(todayStartDateAndTime(),todayEndDateAndTime(),htmlPlaceHolderDivHeute());
+    displayEvents(tomorrowStartDateAndTime(),tomorrowEndDateAndTime(),htmlPlaceHolderDivMorgen());
+    displayEvents(tomorrowPlusOneStartDateAndTime(),tomorrowPlusOneEndDateAndTime(),htmlPlaceHolderDivUbermorgen());
 
 
 
 
 
     //covers ansteuern und content zeigen
-    $("#eventlist-placeholder").on("click", ".eintrag", function(event){
+    $("#eventlist-placeholderHeute, #eventlist-placeholderMorgen, #eventlist-placeholderUbermorgen").on("click", ".eintrag", function(event){
         event.stopPropagation();
         event.preventDefault();
         var element = $(this).closest(".eintrag").find(".e_content");

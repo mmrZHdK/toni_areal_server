@@ -57,23 +57,24 @@
         
 
             <form id="formDefault" method="post" action="">
-                <div class="e_wrapper">
-                    <div class="newEintrag">NEUER EINTRAG</div>
-                </div>
+                
+                    <div class="newEintrag"></div>
+                
                 <div class="e_wrapper">
                     <div class="ed_title_titel">
-                        <p>TITEL</p>
-                        <h4>ca. 20 ZEICHEN</h4>
+                        <p>TITEL*</p>
+                        
                     </div>
                     <div class="ed_titel_new">
-                        <textarea type="text" placeholder="fürabebier" id="title" maxlength="20" row="3"  style='text-transform:uppercase'required="true" autocorrect="off"></textarea>
+                        <textarea type="text" placeholder="DEIN TITEL" id="title" maxlength="20" row="3"  style='text-transform:uppercase'required="true" autocorrect="off" ></textarea>
                     </div>
+                    <h4>ca. 20 ZEICHEN</h4>
                 </div>
                 
                 <div class="e_wrapper">
                     <div class="ed-sDate-titel">
-                        <p>START</p>
-                        <p>ENDE</p>
+                        <p>START*</p>
+                        <p>ENDE*</p>
                     </div>
                     <div class="ed-sDate">
 
@@ -89,37 +90,40 @@
 
                 <div class="e_wrapper">
                     <div class="ed-ort-titel">
-                        <p>ORT</p>
-                    </div>
-                    <div class="ed-ort">
-                        <input type="text" placeholder="Etage" id="etage" autocorrect="off" maxlength="3" style='text-transform:uppercase'required="true">
-                        <input type="text" placeholder="Raum" id="raum" maxlength="4" autocorrect="off" style='text-transform:uppercase'required="true"></input>
+                        <p>ETAGE*</p>
                         
                     </div>
-                   <h4>ÉTAGE: 3 ZEICHEN  -  RAUMNR: 4 ZEICHEN</h4>
+                    <div class="ed-ort">
+                        <textarea type="text" placeholder="AUF WELCHER ETAGE IST DEIN ANLASS?" id="etage" rows="3" autocorrect="off" maxlength="5" style='text-transform:uppercase'required="true"></textarea>
+                      
+                        
+                    </div>
+                   <h4>ÉTAGE: 5 ZEICHEN </h4>
                 </div>
 
 
                 <div class="e_wrapper">
                     <div class="ed_landmark_titel">
-                        <p>LANDMARK</p>
-                        <h4>30 ZEICHEN</h4>
+                        <p>RAUM*</p>
+                        
                     </div>
                     <div class="ed_landmark">
-                        <textarea type="text" placeholder="bei der langen treppe links" rows="2" id="landmark" autocorrect="off" maxlength="30" style='text-transform:uppercase'required="true"></textarea>
+                        <textarea type="text" placeholder="IN WELCHEM RAUM IST DEIN ANLASS" rows="3" id="raum" autocorrect="off" maxlength="30" style='text-transform:uppercase'required="true"></textarea>
                     </div>
+                    <h4>30 ZEICHEN</h4>
                 </div>
 
                 <div class="e_wrapper">
                     <div class="ed_inkurze_titel">
-                        <p>DEIN EVENT IN KÜRZE</p>
-                        <h4>40 ZEICHEN</h4>
+                        <p>BESCHREIBE DEINEN ANLASS*</p>
+                        
                     </div>
 
                     <!-- WIRD DIE TEXTAREA AN DEN SERVER ÜBERMITTELT? -->
                     <div class="ed_inkurze">
-                        <textarea placeholder="z.B. hier wird einfach getrunken" form="formDefault"  id="inkurze" autocorrect="off" maxlength="40" rows="3" style='text-transform:uppercase'required="true"></textarea>
+                        <textarea placeholder="BESCHREIBE HIER KURZ WAS AN DEINEM ANLASS SO LÄUFT" form="formDefault"  id="inkurze" autocorrect="off" maxlength="70" rows="5" style='text-transform:uppercase'required="true"></textarea>
                     </div>
+                    <h4>70 ZEICHEN</h4>
                 </div>
 
                 <div class="e_wrapper">
@@ -203,7 +207,7 @@
                 
                 <button id="submitButton" type="submit" class="submit" autocorrect="off">Eintrag erstellen</button> -->
             </form> 
-            <button id="cancle" type="submit" class="submit" autocorrect="off">ABBRECHEN</button>
+           
         
         </section>
     </section>
