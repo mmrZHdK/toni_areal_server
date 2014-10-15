@@ -7,7 +7,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
@@ -57,19 +59,19 @@
                     </li>
                     <li id="menu-history">
                         <div class="menu-list-item">
-                            <a href="#">
+                            <a href="#keypad">
                                 <div class="menu-logo">
-                                    <img src="logos/history.svg">
+                                    <img src="logos/keypad_white.svg">
                                 </div>
                                 <div class="menu-text">
-                                    <p>VERLAUF</p>
+                                    <p>NUMMER EINGEBEN</p>
                                 </div>
                             </a>
                         </div>
                     </li>
                     <li id="menu-about">
                         <div class="menu-list-item">
-                            <a href="#">
+                            <a href="#about">
                                 <div class="menu-logo">
                                     <img src="logos/about.svg">
                                 </div>
@@ -83,35 +85,65 @@
 
             </div>
             <div class="article">
+                <div id="notification-article"><p>FUNKTION NOCH NICHT IMPLEMENTIERT</p></div>
                 <div id="content">
+
                 </div>
             </div>
-            <div class="list"></div>
+            <div class="list">
+                <div id="listContainer"></div>
+            </div>
             <div class="keypad">
-                <img id="keypadBackground" src="">
-                <div id="inputContainer">
-                    <p>Beitragsnummer:</p>
-                    <div id="keypadInput"></div>
+                <div id="keypadContainer">
+                    <div id="notification"><p>KEIN BEITRAG UNTER DIESER NUMMER</p></div>
+                    <img id="keypadBackground" src="">
+                    <div id="inputContainer">
+                        <p>Beitragsnummer:</p>
+                        <div id="inputfields">
+                            <div id="input0" class="input"></div>
+                            <div id="input1" class="input"></div>
+                            <div id="input2" class="input"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="myKeypad">
+                        <div class="key" data-key="1"></div>
+                        <div class="key" data-key="2"></div>
+                        <div class="key" data-key="3"></div>
+                        <div class="key" data-key="4"></div>
+                        <div class="key" data-key="5"></div>
+                        <div class="key" data-key="6"></div>
+                        <div class="key" data-key="7"></div>
+                        <div class="key" data-key="8"></div>
+                        <div class="key" data-key="9"></div>
+                        <div class="key" data-key="empty"></div>
+                        <div class="key" data-key="0"></div>
+                        <div class="key" data-key="delete"></div>
+                    </div>
                 </div>
-
-
-                <div id="myKeypad">
-                    <div class="key" data-key="1"></div>
-                    <div class="key" data-key="2"></div>
-                    <div class="key" data-key="3"></div>
-                    <div class="key" data-key="4"></div>
-                    <div class="key" data-key="5"></div>
-                    <div class="key" data-key="6"></div>
-                    <div class="key" data-key="7"></div>
-                    <div class="key" data-key="8"></div>
-                    <div class="key" data-key="9"></div>
-                    <div class="key" data-key="empty"></div>
-                    <div class="key" data-key="0"></div>
-                    <div class="key" data-key="delete"></div>
-                </div>
-
             </div>
 
+            <div class="about">
+                <div id="aboutContainer">
+                    <img id="aboutBackgroundImg" src="">
+                    <div id="text-about">
+                        <p>
+                            Wie wurde das Toni-Areal früher genutzt? Was ist heute noch davon sichtbar? Was haben sich Architekten, Gestalter und Planer beim Umbau überlegt?
+                        </p>
+                        <p>
+                            In dieser Web App erfährst du, was es ferner noch über das Toni-Areal zu wissen gibt.
+                        </p>
+                        <p>
+                            Wie funktioniert's? Erkunde das Toni-Areal auf eigene Faust und halte nach Nummernschilder ausschau. Die Nummer führt dich direkt zum ortsbezogenen Inhalt. Oder du stöberst durch die Liste «Alle Beiträge».
+                        </p>
+                        <p>
+                            Konzept & Umsetzung: Thierry Seiler, Student in der Vertiefung Interaction Design an der ZHdK.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
 

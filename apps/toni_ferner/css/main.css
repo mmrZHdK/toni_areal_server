@@ -126,8 +126,8 @@ p {
 
 /* ALLES WAS MENU DISPLAY BETRIFFT */
 .menu {
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    top: 0px;
     left: -80%;
     width: 80%;
     min-height: 100%;
@@ -201,7 +201,7 @@ p {
 .article {
     position: absolute;
     left: 0;
-    top: 50px;
+    top: 0px;
     bottom: 0;
     width: 100%;
     background-color: #ffffff;
@@ -209,6 +209,8 @@ p {
 }
 
 #content {
+    position: relative;
+    top: 50px;
     padding: 10px;
 }
 
@@ -342,6 +344,11 @@ p {
     overflow-y: scroll;
 }
 
+.listContainer {
+    position: relative;
+    top: 50px;
+}
+
 
 #article-list {
     margin: 0;
@@ -349,6 +356,25 @@ p {
     width: 100%;
     height: 100%;
     margin-left: -40px;
+}
+
+#article-list li:first-child div{
+    display: block;
+    width: 100%;
+    height: 25px;
+    background-color: white;
+    border-bottom: 1px solid black;
+}
+
+#article-list li:first-child div p{
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: black;
+    font-size: 0.8em;
+    text-align: center;
 }
 
 #article-list a {
@@ -434,7 +460,29 @@ p {
 
 }
 
-/*ALLES WAS LIST HEADER DISPLAY BETRIFFT */
+#notification-article {
+    position: fixed;
+    display: block;
+    top: 0px;
+    width: 100%;
+    height: 25px;
+    background-color: white;
+    border-bottom: 1px solid black;
+    z-index: 10;
+}
+
+#notification-article p{
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: black;
+    font-size: 0.8em;
+    text-align: center;
+}
+
+/*ALLES WAS HEADER DISPLAY BETRIFFT */
 .header {
     position: fixed;
     top: 0;
@@ -490,12 +538,11 @@ p {
     line-height: 3em;
 }
 
-
-/*ALLES WAS LIST KEYPAD DISPLAY BETRIFFT */
-.keypad {
+/*ALLES WAS ABOUT DISPLAY BETRIFFT */
+.about {
     position: absolute;
     left: 200%;
-    top: 50px;
+    top: 40px;
     bottom: 0;
     width: 101%;
     background-color: #f5f5f5;
@@ -503,8 +550,80 @@ p {
     overflow-x: hidden;
 }
 
+#aboutContainer {
+    height: 100%;
+}
+
+#aboutContainer img {
+    position: absolute;
+    top:0;
+    width: auto;
+    height: 100%;
+    opacity: 0.1;
+}
+
+#text-about {
+    padding: 20px 10px 0px 10px;
+
+    position: absolute;
+    top: 0;
+}
+
+#text-about p {
+    font-family: 'Droid Serif', serif;
+    font-style: italic;
+    font-weight: 400;    font-size: 1.2em;
+    margin-bottom: 1.2em;
+}
+
+#text-about p:last-child {
+    font-size: 0.8em;
+    margin-bottom: 1.2em;
+}
+
+
+/*ALLES WAS KEYPAD DISPLAY BETRIFFT */
+.keypad {
+    position: absolute;
+    left: 200%;
+    height: 100%;
+    top: 0px;
+    bottom: 0;
+    width: 101%;
+    background-color: #f5f5f5;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#keypadContainer {
+    height: 100%;
+}
+
+
+#notification {
+    position: fixed;
+    display: block;
+    top: 0px;
+    width: 100%;
+    height: 25px;
+    background-color: white;
+    border-bottom: 1px solid black;
+    z-index: 10;
+}
+
+#notification p{
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    color: black;
+    font-size: 0.8em;
+    text-align: center;
+}
+
 .keypad img {
-    max-width: 100%;
+    width: auto;
     height: 100%;
 }
 
@@ -525,23 +644,40 @@ p {
 
 #myKeypad {
     position: absolute;
-    bottom: -3px;
+    bottom: 0px;
     width: 100%;
     height: 50%;
 }
 
-#keypadInput {
-    float: left;
-    width: 100%;
-    height: 45px;
+#inputfields {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    right: 0;
     margin: 0 auto;
+}
+
+.input {
+    float: left;
+    width: 29.5%;
+    height: 45px;
     border: 1px solid rgba(255, 255, 255, 1);
     background-color: white;
-    opacity: 0.9;
+    margin: 0px 2% 0 2%;
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     text-align: center;
     font-size: 2em;
+    opacity: 0.9;
+}
+
+
+#input0 {
+    margin-left: 0;
+}
+
+#input2 {
+    margin-right: 0;
 }
 
 .key {
@@ -595,7 +731,13 @@ p {
     text-align: center;
     font-size: 2em;
     margin: 0;
-    line-height: 2em;
+    position: relative;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translateY(-50%) translateX(-50%);
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
 }
 
 .key:nth-child(10) p {
@@ -606,7 +748,6 @@ p {
     font-size: 1em;
     line-height: 3.5em;
 }
-
 
 
 /* ==========================================================================

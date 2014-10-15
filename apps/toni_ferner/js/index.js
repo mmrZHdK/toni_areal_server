@@ -3,6 +3,7 @@
 var myDatabase = new Firebase("https://toni-ferner.firebaseio.com/");
 var currentArticleKey;
 var userFavArray = [];
+var inputArray = [];
 var codes = [   "456",
                 "123",
                 "789",
@@ -16,16 +17,51 @@ var userID;
 
 // keypad input validieren & artikel aufbauen
 function validateInput(obj) {
-    var inputValues = $("#keypadInput").text();
+
+    var inputValues = arrayToString(inputArray);
+    console.log(inputValues);
+    if(inputValues.length >= 3) {
+        if ($.inArray(inputValues, codes) != -1) {
+            setTimeout(function() {
+                Finch.navigate("article/" + inputValues);
+                $("#input0, #input1, #input2").text("");
+                inputArray = [];
+            }, 500);
+        } else {
+            $("#notification").animate({"top": "50px", opacity:"show"}, 500);
+            setTimeout(function() {
+                $("#notification").animate({"top": "0px", opacity:"show"}, 500);
+            }, 1800);
+            setTimeout(function() {
+                console.log("kaka");
+                $("#input0, #input1, #input2").text("");
+                inputArray = [];
+            }, 500);
+        }
+    }
+    /*
+    var inputValues = $("#keypadInput").find("p").text();
+    console.log(inputValues);
     if(inputValues.length >= 3) {
         if($.inArray(inputValues, codes) != -1) {
             Finch.navigate("article/"+inputValues);
-            $("#keypadInput").text("");
+            $("#keypadInput").child().text("");
         }
         else {
-            $("#keypadInput").text("");
+            $("#keypadInput").child().text("");
+            $("#keypadInputBehind").child().text("000");
         }
     }
+    */
+    function arrayToString(array) {
+        var pipi = "";
+        $.each(array, function(i, item) {
+            console.log(item);
+            pipi +=  item.toString();
+        })
+        return pipi;
+    }
+
 }
 
 // URL holen
@@ -107,10 +143,12 @@ function displayArticle(data, key) {
     $.each(featureLogos, function(index, item) {
         var $featureLogo = $("<div></div>").attr({"class": "featureLogo", "id": featureLogos[index].name});
         if(item.name == "favorites" && $.inArray(key, userFavArray) != -1) {
-            $featureLogo.addClass("favorites-true");
+            $featureLogo.append($("<img src='logos/favorites_true.svg'>"));
+            $featureLogo.append($("<p></p>").text("ALS FAVORIT HINZUGEFÜGT"));
+        } else {
+            $featureLogo.append($("<img src='" + featureLogos[index].url + "'>"));
+            $featureLogo.append($("<p></p>").text(featureLogos[index].text));
         }
-        $featureLogo.append($("<img src='" + featureLogos[index].url + "'>"));
-        $featureLogo.append($("<p></p>").text(featureLogos[index].text));
         $featureLogoContainer.append($featureLogo);
         $featureLogo.on("click", function() {
             callFeature(featureLogos[index].name, key);
@@ -132,9 +170,17 @@ function callFeature(task, key) {
         }
 
     } else if (task == "share") {
+        console.log("share");
+        $("#notification-article").animate({"top": "50px", opacity:"show"}, 500);
+        setTimeout(function() {
+            $("#notification-article").animate({"top": "0px", opacity:"show"}, 500);
+        }, 1800);
 
     } else if (task == "similar") {
-
+        $("#notification-article").animate({"top": "50px", opacity:"show"}, 500);
+        setTimeout(function() {
+            $("#notification-article").animate({"top": "0px", opacity:"show"}, 500);
+        }, 1800);
     }
 }
 
@@ -147,7 +193,9 @@ function addToFavorites(task, key) {
 
     usersRef.set(userFavArray);
 
-    $("#"+task).addClass("favorites-true");
+    //$("#"+task).addClass("favorites-true");
+    $("#"+task).find("img").attr("src", "logos/favorites_true.svg");
+    $("#"+task).find("p").text("ALS FAVORIT HINZUGEFÜGT");
     console.log("Added article " + key + " to Database");
 }
 
@@ -162,7 +210,9 @@ function removeFromFavorites(task, key) {
 
     usersRef.set(userFavArray);
 
-    $("#"+task).removeClass("favorites-true");
+    //$("#"+task).removeClass("favorites-true");
+    $("#"+task).find("img").attr("src", "logos/favorites.svg");
+    $("#"+task).find("p").text("ALS FAVORIT HINZUFÜGEN");
     console.log("Removed article" + key + " from Database");
 }
 
@@ -180,7 +230,21 @@ function buildKeyboard() {
         $p = $("<p>" + $keyData + "</p>").addClass("keyTag");
         $key.append($p);
 
+
         $key.on("touchend", function() {
+
+
+            if($keyData == "delete") {
+                inputArray.pop();
+                $("#input" + inputArray.length).text("");
+                console.log("Input array: " + inputArray);
+                console.log("InputArray length: " + inputArray.length);
+            } else if ($keyData != "delete" && $keyData != "empty") {
+                $("#input" + inputArray.length).text($keyData);
+                inputArray.push($keyData);
+                validateInput();
+            }
+            /*
             var keyPadInputText = $("#keypadInput").text();
             if($keyData == "delete") {
                 keyPadInputText = keyPadInputText.slice(0, -1);
@@ -190,14 +254,27 @@ function buildKeyboard() {
                 $("#keypadInput").text(keyPadInputText + $keyData);
                 validateInput();
             }
+            */
         });
     });
 
     //Define Image Background
-    $.get("./content/keypadImages.json", setBackground);
+    /*
+    $.ajax({
+        url: "content/keypadImages.json",
+        type: "json",
+        success: setBackground,
+        error: error
+    });
+    */
+
+    setBackground();
+
 
     function setBackground(data) {
-        $("#keypadBackground").attr("src",data.image1)
+        console.log("hole  background JSON");
+        $("#keypadBackground").attr("src", "img/keypad1.png");
+        $("#aboutBackgroundImg").attr("src", "img/keypad1.png");
     }
 
     // Remove border Header
@@ -214,27 +291,54 @@ var screenToLogoUrl = {
     "menu": "logos/burger.svg",
     "keypad": "logos/keypad.svg",
     "back": "logos/arrow_left.svg",
-    "cross": "logos/cross.svg"
+    "cross": "logos/cross.svg",
+    "info": "logos/about_black.svg"
 }
 
-var mainScreens = ["article", "list", "keypad"];
+var mainScreens = ["article", "list", "keypad", "about"];
 
 
 function setView(screenType, inDir,  url) {
     currentScreens[1] = screenType;
-
+    var $screenType = $("." + screenType);
     $.each(mainScreens, hideAndPark);
 
-    $("." + screenType).css("left", "0");
-    $("." + screenType).show();
-
-    if(lastScreen == "menu") {
-        $(".header").css("left", "0");
-        $("." + lastScreenType).css("left", "0%");
-        $(".menu").css("left", "-80%");
+    //Artikel anzeigen aus Keypad heraus
+    if(lastScreen == null || lastScreen == "keypad" && screenType == "article") {
+        $screenType.css("left", "0");
+        $screenType.animate({ opacity:"show"}, 500);
+    } else if(lastScreen == "menu") {
+        $screenType.css("left", "80%").show();
+        $(".header").animate({"left": 0, opacity:"show"}, 500).show();
+        $("." + lastScreenType).animate({"left": "-80%", opacity:"show"}, 500).show();
+        $screenType.animate({"left": 0, opacity:"show"}, 500).show();
     } else if(screenType == "menu") {
-        $(".header").css("left", "80%");
-        $("." + lastScreenType).css("left", "80%").show();
+        //$(".header").css("left", "80%");
+        $("." + lastScreenType).css("left", "0").show();
+        $screenType.css("left", "-80%").show();
+        $("." + lastScreenType).animate({left: "80%", opacity:"show"}, 500).show();
+        $screenType.animate({left: 0, opacity:"show"}, 500).show();
+        $(".header").animate({left: "80%", opacity:"show"}, 500);
+        //$("." + lastScreenType).css("left", "80%").show();
+    } else if(lastScreenType == "list" && screenType == "article") {
+        $("." + lastScreenType).css("left", "0").show()
+        $("." + lastScreenType).animate({left: "-100%", opacity:"show"}, 500).show();
+        $screenType.css("left", "100%").show()
+        $screenType.animate({left: 0, opacity:"show"}, 500).show();
+    } else if (lastScreenType == "article" && screenType == "list") {
+        $("." + lastScreenType).css("left", "0").show()
+        $("." + lastScreenType).animate({left: "100%", opacity:"show"}, 500).show();
+        $screenType.css("left", "-100%").show()
+        $screenType.animate({left: 0, opacity:"show"}, 500).show();
+    } else if (screenType == "keypad") {
+        $screenType.css("left", "0");
+        $screenType.animate({ opacity:"show"}, 500);
+    } else if (lastScreenType == "keypad") {
+        $screenType.css("left", "0");
+        $screenType.animate({ opacity: "show"}, 500);
+    } else {
+        $screenType.css("left", "0");
+        $screenType.animate({ opacity:"show"}, 500);
     }
 
     // Tracking of Last Screen
@@ -250,20 +354,23 @@ function setView(screenType, inDir,  url) {
 
 function setButtonControls(leftButton, rightButton) {
     var herbert = lastScreen;
-    var vreni = lastArticle;
+    var vreni = lastArticle; //  = URL article/123/true
     $leftButton = $("#leftButton");
     $rightButton = $("#rightButton");
 
     $leftButton.off();
     $rightButton.off();
 
-
     if(rightButton == "back") {
-       $rightButton.on("click", function() {
-           if(herbert == "menu")
-            goTo(vreni);
-           else
-            goTo(herbert);
+        $rightButton.on("click", function () {
+            if (herbert == "menu")
+                goTo(vreni);
+            else
+                goTo(herbert);
+        });
+    } else if (rightButton == "info") {
+        $rightButton.on("click", function() {
+            goTo("info");
         });
     } else {
         $rightButton.on("click", function() {
@@ -273,6 +380,9 @@ function setButtonControls(leftButton, rightButton) {
 
     if(leftButton == "back") {
         $leftButton.on("click", function() {
+            if(lastArticle == null) {
+                goTo("menu");
+            }
             goTo(herbert);
         });
     } else {
@@ -286,31 +396,17 @@ function setButtonViews(leftButton, rightButton) {
     $leftButton = $("#leftButton");
     $rightButton = $("#rightButton");
 
+    $leftButton.html("");
+    $rightButton.html("");
+
     if(rightButton != "") {
-        $rightButton.html("");
         $rightButton.append("<img src='" + screenToLogoUrl[rightButton] + "'></a>");
     }
 
+
     if(leftButton != "") {
-        $leftButton.html("");
         $leftButton.append("<img src='" + screenToLogoUrl[leftButton] + "'></a>");
     }
-}
-
-function prepareNeighborViews(leftScreen, rightScreen) {
-    $leftScreen = $("#"+leftScreen);
-    $rightScreen = $("#"+rightScreen);
-
-    if(leftScreen == "menu") {
-        $leftScreen.css("left", "-80%");
-    }
-    else {
-        leftScreen.css("left", "-100%");
-    }
-
-    $("#" + rightScreen).css("left", "100%");
-    $leftScreen.show();
-    $rightScreen.show();
 }
 
 function hideAndPark(index, item) {
@@ -337,6 +433,9 @@ function showList() {
     });
 
     function buildList(articles) {
+        console.log(Object.keys(articles).length);
+        var $listInfo = $("<li></li>").html("<div><p>ALLE BEITRÄGE</p></div>");
+        $list.append($listInfo);
         $.each(articles, getArticle)
     }
 
@@ -378,6 +477,8 @@ function showFavList() {
     });
 
     function buildList(articleIds) {
+        var infoText = $("<li></li>").html("<div><p>MEINE FAVORITEN</p></div>");
+        $list.append(infoText);
         $.each(articleIds, function(i, item) {
             myDatabase.once("value", function (snapshot) {
                 getArticle(item, snapshot.val().articles[item]);
@@ -418,16 +519,18 @@ $(document).ready(function() {
         showArticle(bindings.articleId);
 
         url = "/article/" + bindings.articleId;
+        urltolist = "/article/" + bindings.articleId + "/" + bindings.direction
         backToList = bindings.direction;
         if(backToList == "true") {
-            setButtonControls("back", "keypad");
-            setButtonViews("back", "keypad");
+            setButtonControls("back", "");
+            setButtonViews("back", "");
+            setView("article", "", urltolist);
         }
         else {
             setButtonControls("menu", "keypad");
-            setButtonViews("menu", "keypad")
+            setButtonViews("menu", "keypad");
+            setView("article", "", url);
         }
-        setView("article", "", url);
     });
 
     Finch.route("/menu", function() {
@@ -444,8 +547,8 @@ $(document).ready(function() {
     });
 
     Finch.route("/", function(bindings) {
-        setButtonControls("menu", "back");
-        setButtonViews("menu", "cross");
+        setButtonControls("menu", "about");
+        setButtonViews("menu", "info");
         setView("keypad", bindings.direction);
     });
 
@@ -460,6 +563,12 @@ $(document).ready(function() {
         url = "/list/" + bindings.listType;
         setView("list", "", url);
 
+    });
+
+    Finch.route("/about", function(bindings) {
+        setButtonControls("menu", "back");
+        setButtonViews("menu", "cross");
+        setView("about", bindings.direction);
     });
 
 
@@ -498,7 +607,6 @@ $(document).ready(function() {
 
         console.log(userFavArray);
         });
-
 });
 
 
