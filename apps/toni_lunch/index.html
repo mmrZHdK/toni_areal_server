@@ -49,8 +49,9 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
         </div>
 
         <div class="menubar menubar-in">
-            <FORM><INPUT Type="button" VALUE="Zurück" onClick="history.go(-1);return true;"></FORM>
-            <a id="idMenu" href="#">Info Campus Card</a>
+<!--             <FORM><INPUT Type="button" VALUE="Zurück" onClick="history.go(-1);return true;"></FORM>
+ -->            
+          <div class="pagination"></div>
             
         </div>
             
@@ -58,29 +59,38 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
               <div class="swiper-wrapper">
                 <div class="swiper-slide"> 
                   <div class="karte">
+
                     <div class="header">
+                      
+                      <div class="karteTitle"> <!-- erster Streifen -->
+                        <h2>Molki</h2><h1>Mensa</h1>
+                      </div>
                       <div class="bild">
                         <img src="img/mensa.jpg" alt="mensa"/>
                       </div>
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>Mensa Molki</h1>
-                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMapMensa" href="maps.html?mapId=mensa" target="_self">
-                          
+
                           <img class="maps" src="img/maps.png" alt="googleMaps"/>
                           <p>Pfingstweidstr. 96,<br /> 8005 Zürich</p>
+                          
                           <p class="infoRechts">Im<br />Toniareal</p>
                         </a>
                       </div> <!-- end zweiter Streifen -->
+                    
                     </div>  <!-- end header -->
                    
                     <div class="mittagsmenu">
+                        
                       <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"7539b0cab3095dcd23909ec397b70239","_btype":"list","pipe_params":{"dateinput1":"today"},"width":"100%","height":"auto"}</script>
                     </div>
 
                     <div class="zusatzInfos">
-                      <ul>
+                      <div class="verguenstigung">
+                          <p>Campus Card<br /> Vergünstigung!</p>
+                        </div>
+                        <ul>
                         <li>Montag bis Freitag: 11.00-14.00 Uhr</li>
                         <li>Mittagsservice, 11.30-13.45 Uhr</li>
                       </ul>
@@ -92,12 +102,13 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                   
                 <div class="karte">
                     <div class="header">
+                      <div class="karteTitle"> <!-- erster Streifen -->
+                        <h2>Bistro</h2><h1>Chez Toni</h1>
+                      </div>
                       <div class="bild">
                         <img src="img/chezToni.jpg" alt="chezToni"/>
                       </div>
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>Bistro chez Toni</h1>
-                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMapEquinox" href="maps.html?mapId=bistro" target="_self">
                         
@@ -124,12 +135,14 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                 <div class="swiper-slide"> 
                   <div class="karte">
                     <div class="header">
-                      <div class="bild">
-                        <img src="img/equinox.jpg" alt="equinox"/>
-                      </div>
+                      
                       <div class="karteTitle"> <!-- erster Streifen -->
                         <h1>Equinox</h1>
                       </div>
+                      <div class="bild">
+                        <img src="img/equinox.jpg" alt="equinox"/>
+                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMapEquinox" href="maps.html?mapId=equinox" target="_self">
                         
@@ -145,6 +158,9 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                     </div>
 
                     <div class="zusatzInfos">
+                      <div class="verguenstigung">
+                        <p>Campus Card<br />Vorteile:</p>
+                      </div>
                       <ul>
                         <li>Mittagsangebot<br />
                           Business Lunch Spezial (Vorspeise oder Suppe und Hauptgang) CHF 39.00</li>
@@ -160,12 +176,14 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                 <div class="swiper-slide">
                   <div class="karte">
                     <div class="header">
-                      <div class="bild">
-                        <img src="img/4akt.jpg" alt="4akt"/>
-                      </div>
+                      
                       <div class="karteTitle"> <!-- erster Streifen -->
                         <h1>4. Akt</h1>
                       </div>
+                      <div class="bild">
+                        <img src="img/4akt.jpg" alt="4akt"/>
+                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMap4akt" href="maps.html?mapId=4akt" target="_self">
                         
@@ -186,6 +204,9 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                     </div>
 
                     <div class="zusatzInfos">
+                      <div class="verguenstigung">
+                        <p>Campus Card<br />Rabatt:</p>
+                      </div>
                       <ul>
                         <li>Mittagsangebot<br />
                         Mo–Fr, 11.00–14.00 Uhr, CHF 3.00 Rabatt auf gekennzeichnete Menüs</li>
@@ -202,12 +223,14 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                 <div class="swiper-slide">
                   <div class="karte">
                     <div class="header">
+                      
+                      <div class="karteTitle"> <!-- erster Streifen -->
+                        <h2>Brasserie</h2><h1>Bernoulli</h1>
+                      </div>
                       <div class="bild">
                         <img src="img/bernoulli.jpg" alt="bernoulli"/>
                       </div>
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>Brasserie Bernoulli</h1>
-                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMapBernoulli" href="maps.html?mapId=bernoulli" target="_self">
                         
@@ -228,6 +251,9 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                     </div>
 
                     <div class="zusatzInfos">
+                      <div class="verguenstigung">
+                        <p>Campus Card<br />Spezialangebot:</p>
+                      </div>
                       <ul>
                         <li>Abendangebot<br />
                         Zum Abendessen 1 Glas Schaumwein gratis</li>
@@ -239,12 +265,14 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                 <div class="swiper-slide">
                   <div class="karte">
                     <div class="header">
-                      <div class="bild">
-                        <img src="img/lunch5.jpg" alt="lunch5"/>
-                      </div>
+                      
                       <div class="karteTitle"> <!-- erster Streifen -->
                         <h1>Lunch 5</h1>
                       </div>
+                      <div class="bild">
+                        <img src="img/lunch5.jpg" alt="lunch5"/>
+                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMapLunch5" href="maps.html?mapId=lunch5" target="_self">
                         
@@ -265,6 +293,9 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                     </div>
 
                     <div class="zusatzInfos">
+                      <div class="verguenstigung">
+                        <p>Campus Card<br />10% Rabatt!</p>
+                      </div>
                       <ul>
                         <li>10 % Rabatt auf alle Konsumationen</li>
                       </ul>
@@ -275,12 +306,14 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                 <div class="swiper-slide">
                   <div class="karte">
                     <div class="header">
-                      <div class="bild">
-                        <img src="img/westend.jpg" alt="westend"/>
-                      </div>
+                      
                       <div class="karteTitle"> <!-- erster Streifen -->
                         <h1>Westend</h1>
                       </div>
+                      <div class="bild">
+                        <img src="img/westend.jpg" alt="westend"/>
+                      </div>
+                      
                       <div class="karteInfo"> <!-- zweiter Streifen -->
                         <a class="openMapWestend" href="maps.html?mapId=westend" target="_self">
                         
@@ -301,6 +334,9 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
                     </div>
 
                     <div class="zusatzInfos">
+                      <div class="verguenstigung">
+                        <p>Spezielle<br />Menükarte:</p>
+                      </div>
                       <ul>
                         <li>Mittagsangebot<br />
                         Mo–Fr, 11.00–15.00 Uhr, spezielle Campus-Menükarte mit täglich wechselnden Gerichten, zwischen CHF 8.50 und CHF 15.00 inkl. Softgetränk (0.3 l) offen</li>
@@ -314,7 +350,7 @@ Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der
               </div> <!-- end swiper-wrapper -->
             </div> <!-- end swiper-container -->
               
-            <div class="pagination"></div>
+            
         <script>
           var mySwiper = new Swiper('.swiper-container',{
             pagination: '.pagination',

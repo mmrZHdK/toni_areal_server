@@ -20,7 +20,7 @@ Basic Swiper Styles
 	margin:0 auto;
 	position:absolute;
 	/*top:6em;*/
-	bottom:30px;
+	bottom:0px;
 	overflow:hidden;
 	-webkit-backface-visibility:hidden;
 	-moz-backface-visibility:hidden;
@@ -135,13 +135,17 @@ Pagination Styles
   width: 8px;
   height: 8px;
   border-radius: 10px;
-  background: rgba(71,65,20,1);
+  background: #0099ff;
   margin: 0 10px;
   cursor: pointer;
 }
 .swiper-active-switch {
- /* background: #e59c00;*/
-  background: #0099ff;
-  width: 8px;
-  height: 8px;
+	border-radius: 0px;
+	border: 1px solid #0099ff;
+	height: 6px; 
+    width: 6px; 
+    padding: 0px; 
+    background-color: #fff; 
+    -webkit-transform: rotate(45deg) skew(0deg); 
+    transform: rotate(45deg) skew(0deg);
 }
