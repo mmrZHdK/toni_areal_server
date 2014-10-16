@@ -1,0 +1,11 @@
+{
+    "context": "Rampe",
+    "title": "Ein Miniatur-Lastwagen half bei der Formfindung",
+    "media": {"type": "img", "src": ["img/rampe1.png", "img/rampe2.png", "img/rampe3.png"]},
+    "text": [
+        "Zu Zeiten der Toni-Molkerei musste ein Tanklastwagen mit Anhänger die Rampe rauf- und runterfahren können. Kommt der Lastwagen rauf, schaffen es alle Fahrzeuge, also auch jene der Mitarbeiter. Denn das Dach der Fabrik funktionierte damals noch als Parkdeck.",
+        "Um die optimale Form der Rampe zu berechnen, behalf half sich der Ingenieur mit einer einfachen Methode aus: Er liess ein Miniatur-Lastwagen herstellen, mit dem er auf dem Papier die Schleifen fuhr, während ein Mitarbeiter die Radspuren nachzeichnete. So kamen sie empirisch in kurzer Zeit zur besten Form."
+      ],
+    "link": "http://www.ingbaukunst.ch/file/429/1-2014_Gespraech_DJBaenziger-2.pdf",
+    "related": "dachgarten.json"
+}

@@ -1,0 +1,12 @@
+{
+    "context": "Signaletik",
+    "title": "Eine Schrift mit Vergangenheit",
+    "media": {"type": "img", "src": ["img/signaletik1.png"]},
+    "text": [
+        "Die Schrift AREAL, welche für die Signaletik im Toni-Areal verwendet wird, stammt aus der Feder der Luzerner Agentur «BIV & HI».",
+        "Ursprünglich entsprang die Schrift allerdings der «U.S. Intelligence Unit». Diese suchte einen Nachfolger für die auf ihrem Top-Secret-Stempel verwendete Schrift, da diese bspw. durch Filme zu einem Klischee verkommen ist. Eine Umfrage bei Mitarbeitern ergab allerdings, dass niemand den bekannten Stempel auf seinem Schreibtisch missen möchte - und so fand die AREAL vorerst keine Verwendung.",
+        "Für die Beschriftung im Toni-Areal allerdings schien sie perfekt. Binnenland beschreibt die Schrift folgendermassen: «Slim uppercase letters with a vertical feel—that do not create the appearance of being condensed—and a strong, distinctive character in the formulation of letters.»"
+    ],
+    "link": "http://www.binnenland.ch/font/about/Areal-BL",
+    "related": ["rampe.json", "dachgarten.json", "milchannahme.json"]
+}

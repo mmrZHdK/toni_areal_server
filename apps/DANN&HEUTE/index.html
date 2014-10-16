@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, target-densitydpi=device-dpi, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <!--
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        -->
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
+        <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif:700italic,400italic|Raleway:900|Open+Sans:400,800' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div id="application">
+            <div class="header">
+                <div id="leftButton"></div>
+                <div id="headerText">DANN & HEUTE</div>
+                <div id="rightButton"></div>
+            </div>
+            <div class="menu">
+                <ul id="menu-list">
+                    <li id="menu-all-articles">
+                            <a href="#list/all">
+                                <div class="menu-list-item">
+                                    <div class="menu-logo">
+                                        <img src="logos/all_articles.svg">
+                                    </div>
+                                    <div class="menu-text">
+                                        <p>ALLE BEITRÄGE</p>
+                                    </div>
+                                </div>
+                            </a>
+                    </li>
+                    <li id="menu-favorites">
+                        <div class="menu-list-item">
+                            <a href="#list/favorites">
+                                <div class="menu-logo">
+                                    <img src="logos/favorites-menu.svg">
+                                </div>
+                                <div class="menu-text">
+                                    <p>FAVORITEN</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li id="menu-history">
+                        <div class="menu-list-item">
+                            <a href="#keypad">
+                                <div class="menu-logo">
+                                    <img src="logos/keypad_white.svg">
+                                </div>
+                                <div class="menu-text">
+                                    <p>NUMMER EINGEBEN</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li id="menu-about">
+                        <div class="menu-list-item">
+                            <a href="#about">
+                                <div class="menu-logo">
+                                    <img src="logos/about.svg">
+                                </div>
+                                <div class="menu-text">
+                                    <p>ÜBER TONI FERNER</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="article">
+                <div id="notification-article"><p>FUNKTION NOCH NICHT IMPLEMENTIERT</p></div>
+                <div id="content">
+
+                </div>
+            </div>
+            <div class="list">
+                <div id="listContainer"></div>
+            </div>
+            <div class="keypad">
+                <div id="keypadContainer">
+                    <div id="notification"><p>KEIN BEITRAG UNTER DIESER NUMMER</p></div>
+                    <img id="keypadBackground" src="">
+                    <div id="inputContainer">
+                        <p>Beitragsnummer:</p>
+                        <div id="inputfields">
+                            <div id="input0" class="input"></div>
+                            <div id="input1" class="input"></div>
+                            <div id="input2" class="input"></div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="myKeypad">
+                        <div class="key" data-key="1"></div>
+                        <div class="key" data-key="2"></div>
+                        <div class="key" data-key="3"></div>
+                        <div class="key" data-key="4"></div>
+                        <div class="key" data-key="5"></div>
+                        <div class="key" data-key="6"></div>
+                        <div class="key" data-key="7"></div>
+                        <div class="key" data-key="8"></div>
+                        <div class="key" data-key="9"></div>
+                        <div class="key" data-key="empty"></div>
+                        <div class="key" data-key="0"></div>
+                        <div class="key" data-key="delete"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about">
+                <div id="aboutContainer">
+                    <img id="aboutBackgroundImg" src="">
+                    <div id="text-about">
+                        <p>
+                            Wie wurde das Toni-Areal früher genutzt? Was ist heute noch davon sichtbar? Was haben sich Architekten, Gestalter und Planer beim Umbau überlegt?
+                        </p>
+                        <p>
+                            In dieser Web App erfährst du, was es ferner noch über das Toni-Areal zu wissen gibt.
+                        </p>
+                        <p>
+                            Wie funktioniert's? Erkunde das Toni-Areal auf eigene Faust und halte nach Nummernschilder ausschau. Die Nummer führt dich direkt zum ortsbezogenen Inhalt. Oder du stöberst durch die Liste «Alle Beiträge».
+                        </p>
+                        <p>
+                            Konzept & Umsetzung: Thierry Seiler, Student in der Vertiefung Interaction Design an der ZHdK.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="js/clamp.js"></script>
+        <script src="js/jquery.cookie.js"></script>
+        <script src="js/finchjs/finch.js"></script>
+        <script src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/owl.carousel.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X');ga('send','pageview');
+        </script>
+    </body>
+</html>
