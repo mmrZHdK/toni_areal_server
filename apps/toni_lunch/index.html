@@ -3,362 +3,335 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TONI lunch</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, minimal-ui" /> -->
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-        
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TONI lunch</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, minimal-ui" /> -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/idangerous.swiper.css">
-        <link rel="apple-touch-startup-image" href="img/splashscreen.png">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/idangerous.swiper.css">
+    <link rel="apple-touch-startup-image" href="img/splashscreen.png">
+  
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+
+  <script src="js/jquery-1.10.1.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/idangerous.swiper.js"></script>
+  <script src="js/utils.js"></script>
       
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-
-        <script src="js/jquery-1.10.1.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script src="js/idangerous.swiper.js"></script>
-        <script src="js/utils.js"></script>
-      
         
-        <div class="info info_out_top">
-            <h1>Campus Card</h1>
 
-            <p>Besondere Angebote im Kreis 5:<br />
-
-Diese besonderen Angebote gelten ab September 2014 für alle Angehörigen des Campus Toni-Areal mit Campus Card. 
-<br />
-Die Angebote können von den GastronomInnen bei Bedarf angepasst werden. Bei der Bestellung bitte die Campus Card vorweisen.</p>
-        </div>
-
-        <div class="menubar menubar-in">
-<!--             <FORM><INPUT Type="button" VALUE="Zurück" onClick="history.go(-1);return true;"></FORM>
- -->            
-          <div class="pagination"></div>
+  <div class="menubar">          
+    <div class="pagination"></div>
+  </div>
             
-        </div>
-            
-            <div class="swiper-container swiper-container-in">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide"> 
-                  <div class="karte">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"> 
+        <div class="karte">
 
-                    <div class="header">
-                      
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h2>Molki</h2><h1>Mensa</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/mensa.jpg" alt="mensa"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMapMensa" href="maps.html?mapId=mensa" target="_self">
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h2>Molki</h2><h1>Mensa</h1>
+            </div>
+            <div class="bild">
+              <img src="img/mensa.jpg" alt="mensa"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMapMensa" href="maps.html?mapId=mensa" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Pfingstweidstr. 96,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Im<br />Toniareal</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
+         
+          <div class="mittagsmenu">
+            <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"7539b0cab3095dcd23909ec397b70239","_btype":"list","pipe_params":{"dateinput1":"today"},"width":"100%","height":"auto"}</script>
+          </div>
 
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Pfingstweidstr. 96,<br /> 8005 Zürich</p>
-                          
-                          <p class="infoRechts">Im<br />Toniareal</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    
-                    </div>  <!-- end header -->
-                   
-                    <div class="mittagsmenu">
-                        
-                      <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"7539b0cab3095dcd23909ec397b70239","_btype":"list","pipe_params":{"dateinput1":"today"},"width":"100%","height":"auto"}</script>
-                    </div>
+          <div class="zusatzInfos">
+            <div class="verguenstigung">
+                <p>Campus Card<br /> Vergünstigung!</p>
+              </div>
+              <ul>
+              <li>Montag bis Freitag: 11.00-14.00 Uhr</li>
+              <li>Mittagsservice, 11.30-13.45 Uhr</li>
+            </ul>
+          </div>
 
-                    <div class="zusatzInfos">
-                      <div class="verguenstigung">
-                          <p>Campus Card<br /> Vergünstigung!</p>
-                        </div>
-                        <ul>
-                        <li>Montag bis Freitag: 11.00-14.00 Uhr</li>
-                        <li>Mittagsservice, 11.30-13.45 Uhr</li>
-                      </ul>
-                    </div>
+        </div> <!-- end Karte -->
+      </div> <!-- end swiper-slide -->
 
-                  </div> <!-- end Karte -->
-                </div> <!-- end swiper-slide -->
-                <div class="swiper-slide"> 
-                  
-                <div class="karte">
-                    <div class="header">
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h2>Bistro</h2><h1>Chez Toni</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/chezToni.jpg" alt="chezToni"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMapEquinox" href="maps.html?mapId=bistro" target="_self">
-                        
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Pfingstweidstr. 96,<br /> 8005 Zürich</p>
-                          <p class="infoRechts">Im<br />Toniareal</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    </div>  <!-- end header -->
+      <div class="swiper-slide">
+      <div class="karte">
 
-                    <div class="mittagsmenu">
-                      <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"fbee3007bed89b3b8f0cca629381f5b0","_btype":"list","width":"100%","height":"auto"}</script>
-                    </div>
-                    
-                    <div class="zusatzInfos">
-                      <ul>
-                        <li>Montag - Freitag: 8:00–20:30 Uhr</li>
-                        <li>Samstag: 9:00-15:00 Uhr</li>
-                      </ul>
-                    </div>
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h2>Bistro</h2><h1>Chez Toni</h1>
+            </div>
+            <div class="bild">
+              <img src="img/chezToni.jpg" alt="chezToni"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMapEquinox" href="maps.html?mapId=bistro" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Pfingstweidstr. 96,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Im<br />Toniareal</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
 
-                  </div> <!-- end Karte -->
-               </div> <!-- end swiper-slide -->
-                <div class="swiper-slide"> 
-                  <div class="karte">
-                    <div class="header">
-                      
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>Equinox</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/equinox.jpg" alt="equinox"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMapEquinox" href="maps.html?mapId=equinox" target="_self">
-                        
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Turbinenstr. 20,<br /> 8005 Zürich</p>
-                          <p class="infoRechts">Fussweg:<br /> 12 Minuten</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    </div>  <!-- end header -->
+          <div class="mittagsmenu">
+            <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"fbee3007bed89b3b8f0cca629381f5b0","_btype":"list","width":"100%","height":"auto"}</script>
+          </div>
+          
+          <div class="zusatzInfos">
+            <ul>
+              <li>Montag - Freitag: 8:00–20:30 Uhr</li>
+              <li>Samstag: 9:00-15:00 Uhr</li>
+            </ul>
+          </div>
 
-                    <div class="mittagsmenu">
-                      <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"3a4690ef8ab95983dc1038c79740857f","_btype":"list","width":"100%","height":"100%"}</script>
-                    </div>
+        </div> <!-- end Karte -->
+     </div> <!-- end swiper-slide -->
 
-                    <div class="zusatzInfos">
-                      <div class="verguenstigung">
-                        <p>Campus Card<br />Vorteile:</p>
-                      </div>
-                      <ul>
-                        <li>Mittagsangebot<br />
-                          Business Lunch Spezial (Vorspeise oder Suppe und Hauptgang) CHF 39.00</li>
-                        <li>Mittagsangebot<br />
-                          Burger Combo (Beefburger, Veggieburger oder Club Sandwich) mit Wasser (0.5 l) und Kaffee nach Wahl CHF 40.00
-                        <li>Abendangebot<br />
-                          Friday Night BBQ (unlimited Food and Wine) CHF 65.00</li>
-                      </ul>
-                    </div>
+      <div class="swiper-slide"> 
+        <div class="karte">
 
-                  </div> <!-- end Karte -->
-                </div> <!-- end swiper-slide -->
-                <div class="swiper-slide">
-                  <div class="karte">
-                    <div class="header">
-                      
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>4. Akt</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/4akt.jpg" alt="4akt"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMap4akt" href="maps.html?mapId=4akt" target="_self">
-                        
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Heinrichstr. 262,<br /> 8005 Zürich</p>
-                          <p class="infoRechts">Fussweg:<br /> 12 Minuten</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    </div>  <!-- end header -->
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h1>Equinox</h1>
+            </div>
+            <div class="bild">
+              <img src="img/equinox.jpg" alt="equinox"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMapEquinox" href="maps.html?mapId=equinox" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Turbinenstr. 20,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Fussweg:<br /> 12 Minuten</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
 
-                    <div class="mittagsmenu">
-                      <div class="openNewTab">
-                        <a class="openPDF4akt" href="detail.html?mapId=4akt" target="_self">
-                          <img class="imgMenu" src="img/menu.png" alt="menu"/>
-                          <p>Menü als PFD öffnen</p>
-                        </a>
-                      </div>
-                    </div>
+          <div class="mittagsmenu">
+            <script src="http://l.yimg.com/rt/pps/listbadge_1.8.js">{"pipe_id":"3a4690ef8ab95983dc1038c79740857f","_btype":"list","width":"100%","height":"100%"}</script>
+          </div>
 
-                    <div class="zusatzInfos">
-                      <div class="verguenstigung">
-                        <p>Campus Card<br />Rabatt:</p>
-                      </div>
-                      <ul>
-                        <li>Mittagsangebot<br />
-                        Mo–Fr, 11.00–14.00 Uhr, CHF 3.00 Rabatt auf gekennzeichnete Menüs</li>
-                        <li>after school Rabatt<br />
-                        Mo–Do, ab 15.00 Uhr, nicht vor und an Feiertagen, 20 % Rabatt auf alle Konsumationen</li>
-                      </ul>
-                    </div>
+          <div class="zusatzInfos">
+            <div class="verguenstigung">
+              <p>Campus Card<br />Vorteile:</p>
+            </div>
+            <ul>
+              <li>Mittagsangebot<br />
+                Business Lunch Spezial (Vorspeise oder Suppe und Hauptgang) CHF 39.00</li>
+              <li>Mittagsangebot<br />
+                Burger Combo (Beefburger, Veggieburger oder Club Sandwich) mit Wasser (0.5 l) und Kaffee nach Wahl CHF 40.00
+              <li>Abendangebot<br />
+                Friday Night BBQ (unlimited Food and Wine) CHF 65.00</li>
+            </ul>
+          </div>
 
-                  </div> <!-- end Karte -->
-                </div> <!-- end swiper-slide -->
-                  
+        </div> <!-- end Karte -->
+      </div> <!-- end swiper-slide -->
 
+      <div class="swiper-slide">
+        <div class="karte">
 
-                <div class="swiper-slide">
-                  <div class="karte">
-                    <div class="header">
-                      
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h2>Brasserie</h2><h1>Bernoulli</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/bernoulli.jpg" alt="bernoulli"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMapBernoulli" href="maps.html?mapId=bernoulli" target="_self">
-                        
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Hardturmstr. 261,<br /> 8005 Zürich</p>
-                          <p class="infoRechts">Fussweg:<br /> 7 Minuten</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    </div>  <!-- end header -->
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h1>4. Akt</h1>
+            </div>
+            <div class="bild">
+              <img src="img/4akt.jpg" alt="4akt"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMap4akt" href="maps.html?mapId=4akt" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Heinrichstr. 262,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Fussweg:<br /> 12 Minuten</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
 
-                    <div class="mittagsmenu">
-                      <div class="openNewTab">
-                        <a class="openJPGBernoulli" href="detail.html?mapId=bernoulli" target="_self">
-                          <img class="imgMenu" src="img/menu.png" alt="menu"/>
-                          <p>Menü als JPG öffnen</p>
-                        </a>
-                      </div>
-                    </div>
+          <div class="mittagsmenu">
+            <div class="openNewTab">
+              <a class="openPDF4akt" href="detail.html?mapId=4akt" target="_self">
+                <img class="imgMenu" src="img/menu.png" alt="menu"/>
+                <p>Menü als PFD öffnen</p>
+              </a>
+            </div>
+          </div>
 
-                    <div class="zusatzInfos">
-                      <div class="verguenstigung">
-                        <p>Campus Card<br />Spezialangebot:</p>
-                      </div>
-                      <ul>
-                        <li>Abendangebot<br />
-                        Zum Abendessen 1 Glas Schaumwein gratis</li>
-                      </ul>
-                    </div>
+          <div class="zusatzInfos">
+            <div class="verguenstigung">
+              <p>Campus Card<br />Rabatt:</p>
+            </div>
+            <ul>
+              <li>Mittagsangebot<br />
+              Mo–Fr, 11.00–14.00 Uhr, CHF 3.00 Rabatt auf gekennzeichnete Menüs</li>
+              <li>after school Rabatt<br />
+              Mo–Do, ab 15.00 Uhr, nicht vor und an Feiertagen, 20 % Rabatt auf alle Konsumationen</li>
+            </ul>
+          </div>
 
-                  </div> <!-- end Karte -->
-                </div> <!-- end swiper-slide -->
-                <div class="swiper-slide">
-                  <div class="karte">
-                    <div class="header">
-                      
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>Lunch 5</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/lunch5.jpg" alt="lunch5"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMapLunch5" href="maps.html?mapId=lunch5" target="_self">
-                        
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Förrlibuckstr. 62,<br /> 8005 Zürich</p>
-                          <p class="infoRechts">Fussweg:<br /> 2 Minuten</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    </div>  <!-- end header -->
+        </div> <!-- end Karte -->
+      </div> <!-- end swiper-slide -->
 
-                    <div class="mittagsmenu">
-                      <div class="openNewTab">
-                        <a class="openPDFLunch5" href="detail.html?mapId=lunch5" target="_self">
-                          <img class="imgMenu" src="img/menu.png" alt="menu"/>
-                          <p>Menü als PFD öffnen</p>
-                        </a>
-                      </div>
-                    </div>
+      <div class="swiper-slide">
+        <div class="karte">
 
-                    <div class="zusatzInfos">
-                      <div class="verguenstigung">
-                        <p>Campus Card<br />10% Rabatt!</p>
-                      </div>
-                      <ul>
-                        <li>10 % Rabatt auf alle Konsumationen</li>
-                      </ul>
-                    </div>
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h2>Brasserie</h2><h1>Bernoulli</h1>
+            </div>
+            <div class="bild">
+              <img src="img/bernoulli.jpg" alt="bernoulli"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMapBernoulli" href="maps.html?mapId=bernoulli" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Hardturmstr. 261,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Fussweg:<br /> 7 Minuten</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
 
-                  </div> <!-- end Karte -->
-                </div> <!-- end swiper-slide -->
-                <div class="swiper-slide">
-                  <div class="karte">
-                    <div class="header">
-                      
-                      <div class="karteTitle"> <!-- erster Streifen -->
-                        <h1>Westend</h1>
-                      </div>
-                      <div class="bild">
-                        <img src="img/westend.jpg" alt="westend"/>
-                      </div>
-                      
-                      <div class="karteInfo"> <!-- zweiter Streifen -->
-                        <a class="openMapWestend" href="maps.html?mapId=westend" target="_self">
-                        
-                          <img class="maps" src="img/maps.png" alt="googleMaps"/>
-                          <p>Förrlibuckstr. 180,<br /> 8005 Zürich</p>
-                          <p class="infoRechts">Fussweg:<br /> 2 Minuten</p>
-                        </a>
-                      </div> <!-- end zweiter Streifen -->
-                    </div>  <!-- end header -->
+          <div class="mittagsmenu">
+            <div class="openNewTab">
+              <a class="openJPGBernoulli" href="detail.html?mapId=bernoulli" target="_self">
+                <img class="imgMenu" src="img/menu.png" alt="menu"/>
+                <p>Menü als JPG öffnen</p>
+              </a>
+            </div>
+          </div>
 
-                    <div class="mittagsmenu">
-                      <div class="openNewTab">
-                        <a class="openPDFWestend" href="detail.html?mapId=westend" target="_self">
-                          <img class="imgMenu" src="img/menu.png" alt="menu"/>
-                          <p>Menü als PFD öffnen</p>
-                        </a>
-                      </div>
-                    </div>
+          <div class="zusatzInfos">
+            <div class="verguenstigung">
+              <p>Campus Card<br />Spezialangebot:</p>
+            </div>
+            <ul>
+              <li>Abendangebot<br />
+              Zum Abendessen 1 Glas Schaumwein gratis</li>
+            </ul>
+          </div>
 
-                    <div class="zusatzInfos">
-                      <div class="verguenstigung">
-                        <p>Spezielle<br />Menükarte:</p>
-                      </div>
-                      <ul>
-                        <li>Mittagsangebot<br />
-                        Mo–Fr, 11.00–15.00 Uhr, spezielle Campus-Menükarte mit täglich wechselnden Gerichten, zwischen CHF 8.50 und CHF 15.00 inkl. Softgetränk (0.3 l) offen</li>
-                        <li>after school Rabatt<br />
-                        Di–Fr, ab 15.00 Uhr, 20 % Rabatt auf alle Getränke und Shishas</li>
-                      </ul>
-                    </div>
+        </div> <!-- end Karte -->
+      </div> <!-- end swiper-slide -->
 
-                  </div> <!-- end Karte -->
-                </div> <!-- end swiper-slide -->
-              </div> <!-- end swiper-wrapper -->
-            </div> <!-- end swiper-container -->
+      <div class="swiper-slide">
+        <div class="karte">
+
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h1>Lunch 5</h1>
+            </div>
+            <div class="bild">
+              <img src="img/lunch5.jpg" alt="lunch5"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMapLunch5" href="maps.html?mapId=lunch5" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Förrlibuckstr. 62,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Fussweg:<br /> 2 Minuten</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
+
+          <div class="mittagsmenu">
+            <div class="openNewTab">
+              <a class="openPDFLunch5" href="detail.html?mapId=lunch5" target="_self">
+                <img class="imgMenu" src="img/menu.png" alt="menu"/>
+                <p>Menü als PFD öffnen</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="zusatzInfos">
+            <div class="verguenstigung">
+              <p>Campus Card<br />10% Rabatt!</p>
+            </div>
+            <ul>
+              <li>10 % Rabatt auf alle Konsumationen</li>
+            </ul>
+          </div>
+
+        </div> <!-- end Karte -->
+      </div> <!-- end swiper-slide -->
+
+      <div class="swiper-slide">
+        <div class="karte">
+
+          <div class="header">
+            <div class="karteTitle"> <!-- erster Streifen -->
+              <h1>Westend</h1>
+            </div>
+            <div class="bild">
+              <img src="img/westend.jpg" alt="westend"/>
+            </div>
+            <div class="karteInfo"> <!-- zweiter Streifen -->
+              <a class="openMapWestend" href="maps.html?mapId=westend" target="_self">
+                <img class="maps" src="img/maps.png" alt="googleMaps"/>
+                <p>Förrlibuckstr. 180,<br /> 8005 Zürich</p>
+                <p class="infoRechts">Fussweg:<br /> 2 Minuten</p>
+              </a>
+            </div> <!-- end zweiter Streifen -->
+          </div>  <!-- end header -->
+
+          <div class="mittagsmenu">
+            <div class="openNewTab">
+              <a class="openPDFWestend" href="detail.html?mapId=westend" target="_self">
+                <img class="imgMenu" src="img/menu.png" alt="menu"/>
+                <p>Menü als PFD öffnen</p>
+              </a>
+            </div>
+          </div>
+
+          <div class="zusatzInfos">
+            <div class="verguenstigung">
+              <p>Spezielle<br />Menükarte:</p>
+            </div>
+            <ul>
+              <li>Mittagsangebot<br />
+              Mo–Fr, 11.00–15.00 Uhr, spezielle Campus-Menükarte mit täglich wechselnden Gerichten, zwischen CHF 8.50 und CHF 15.00 inkl. Softgetränk (0.3 l) offen</li>
+              <li>after school Rabatt<br />
+              Di–Fr, ab 15.00 Uhr, 20 % Rabatt auf alle Getränke und Shishas</li>
+            </ul>
+          </div>
+
+        </div> <!-- end Karte -->
+      </div> <!-- end swiper-slide -->
+    </div> <!-- end swiper-wrapper -->
+  </div> <!-- end swiper-container -->
               
             
-        <script>
-          var mySwiper = new Swiper('.swiper-container',{
-            pagination: '.pagination',
-            loop:true,
-            grabCursor: true,
-            paginationClickable: true
-          })
-        </script>
+  <script>
+    var mySwiper = new Swiper('.swiper-container',{
+      pagination: '.pagination',
+      loop:true,
+      grabCursor: true,
+      paginationClickable: true
+    })
+  </script>
 
-    </body>
+  </body>
 </html>
