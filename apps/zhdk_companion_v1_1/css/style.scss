@@ -4,7 +4,8 @@ body {
 	left: 0;
 	height: 100%;
 	width: 100%;
-	font-family: 'Roboto Slab', sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
 	margin: 0;
 	font-weight: 300;
 	overflow: hidden;
@@ -12,32 +13,32 @@ body {
 }
 .roboto {
 	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
 }
 
 #pagesWrapper {
 	position: absolute;
+	overflow: hidden;
 	top: 4em;
 	left: 0;
 	width: 100%;
 	height: calc(100% - 4em);
-	overflow: hidden;
-	-webkit-overflow-scrolling: touch;
 	z-index: 0;
 }
 
 #pages {
 	display: block;
+	overflow: hidden;
 	position: relative;
 	width: 300%;
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	overflow: hidden;
-	-webkit-overflow-scrolling: touch;
 	z-index: 1;
 
 	li {
 		display: block;
+		overflow: hidden;
 		width: calc(100% / 3);
 		height: 100%;
 		float: left;
@@ -46,30 +47,33 @@ body {
 
 	.page {
 		display: block;
-		width: 100%;
+		width: 99.75%;
 		height: 100%;
 		float: left;
+		overflow-x: hidden;
 		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
 		z-index: 3;
 	}
 	#mensa {
 		background-color: #535559;
 
 		#mensaLoading {
-			margin: 1em;
+			margin: 3em 1em 1em 1em;
 
 			#mensaLoadingImg {
-				width: 3em;
 				display: block;
+				width: 2.6em;
+				height: 2.6em;
 				margin-left: auto;
 				margin-right: auto;
 			}
 		}
 		.mensaTile {
-			background-color: #F4F4E9;
+			background-color: #F0F4F7;
 			width: calc(100% - 2em);
-			padding: 0.5em;
-			margin: 0.5em auto;
+			padding: 0.5em 1em;
+			margin: 1px 0;
 			overflow: hidden;
 			display: none;
 
@@ -78,7 +82,7 @@ body {
 				width: 100%;
 				line-height: 1.5em;
 				height: 1.5em;
-				font-weight: 400;
+				font-weight: 700;
 				margin-bottom: 0.5em;
 			}
 			p {
@@ -90,27 +94,46 @@ body {
 			width: calc(100% - 2em);
 			padding: 0.5em;
 			margin: 0.5em;
-			color: #F4F4E9;
+			color: #F0F4F7;
 			font-weight: 300;
 			font-size: 0.75em;
 			text-align: right;
 		}
 		.mensaTile.next {
-			font-weight: 400;
-			text-align: right;
-		}
-		.mensaTile.next:active {
-			background-color: #d4d4cc;
+			background-color: #535559;
+			margin: 0.5em 0;
+			height: 3em;
+			width: calc(100% - 2em);
+			// span {
+			// 	float: none;
+			// 	display: block;
+			// 	font-weight: 300;
+			// 	text-align: right;
+			// 	color: #F0F4F7;
+			// 	height: 4em;
+			// 	width: auto;
+			// 	margin-right: 1em;
+			// 	line-height: 4em;
+			// 	font-size: 0.75em;
+			// }
+			.mensaNextIcon {
+				float: none;
+				margin: 0 auto;
+				display: block;
+				width: 3em;
+				height: 3em;
+			}
 		}
 	}
 	#agenda {
 		background-color: #535559;
 
 		#agendaLoading {
-			margin: 1em;
+			margin: 3em 1em 1em 1em;
 			
 			#agendaLoadingImg {
-				width: 3em;
+				width: 2.6em;
+				height: 2.6em;
 				display: block;
 				margin-left: auto;
 				margin-right: auto;
@@ -118,10 +141,10 @@ body {
 		}
 
 		.agendaTile {
-			background-color: #F4F4E9;
+			background-color: #F0F4F7;
 			width: calc(100% - 2em);
-			padding: 0.5em;
-			margin: 0.5em auto;
+			padding: 0.5em 1em;
+			margin: 1px 0;
 			display: none;
 
 			span {
@@ -129,7 +152,7 @@ body {
 				width: 100%;
 				line-height: 1.5em;
 				height: 1.5em;
-				font-weight: 400;
+				font-weight: 700;
 				white-space: nowrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
@@ -139,27 +162,52 @@ body {
 				font-weight: 300;
 				max-height: 9em;
 				width: 100%;
-				white-space: pre-line;
+				white-space: pre-wrap;
 				overflow: hidden;
 				text-overflow: ellipsis;
 			}
 			a {
 				color: #000;
-				font-weight: 400;
+				text-decoration: none;
+				font-weight: 300;
 			}
 			b {
 				font-weight: 300;
 			}
-			.eventDateAndTime {
-				font-weight: 300;
+			.eventTimeIcon {
+				float: left;
+				display: block;
+				width: 1em;
+				height: 1em;
+				margin: 0.25em 0.5em 0.25em 0;
 			}
-		}
-		.agendaTile:active {
-			background-color: #d4d4cc;
+			.eventDateAndTime {
+				float: left;
+				display: inline-block;
+				height: 1.5em;
+				line-height: 1.5em;
+				font-weight: 300;
+				width: auto;
+			}
+			.eventLocationIcon {
+				float: left;
+				display: block;
+				width: 0.8em;
+				height: 1.15em;
+				margin: 0.15em 0.5em 0.2em 0.5em;
+			}
+			.eventLocation {
+				display: flex;
+				width: auto;
+				height: 1.5em;
+				line-height: 1.5em;
+				font-weight: 300;
+				text-overflow: ellipsis;
+			}
 		}
 		.agendaTileDate {
 			background: none;
-			color: #F4F4E9;
+			color: #F0F4F7;
 			width: calc(100% - 2em);
 			padding: 0.5em;
 			margin: 0.5em;
@@ -168,25 +216,59 @@ body {
 			text-align: right;
 		}
 		.agendaTileLoadMore {
-			font-weight: 400;
-			text-align: right;
+			background-color: #535559;
+			margin: 0.5em 0;
+			height: 3em;
+			width: calc(100% - 2em);
+			// span {
+			// 	float: right;
+			// 	display: block;
+			// 	font-weight: 300;
+			// 	text-align: right;
+			// 	color: #F0F4F7;
+			// 	height: 4em;
+			// 	width: auto;
+			// 	margin-right: 1em;
+			// 	line-height: 4em;
+			// 	font-size: 0.75em;
+			// }
+			.agendaNextIcon {
+				float: none;
+				margin: 0 auto;
+				display: block;
+				width: 3em;
+				height: 3em;
+			}
 		}
 	}
 	#tram {
 		background-color: #535559;
 
+		.tramInfo {
+			background: none;
+			width: calc(100% - 2em);
+			padding: 0.5em;
+			margin: 0.5em;
+			color: #F0F4F7;
+			font-weight: 300;
+			font-size: 0.75em;
+			text-align: right;
+			height: 1.5em;
+		}
+
 		.tramLoadingImg {
-			width: 3em;
+			width: 2.6em;
+			height: 2.6em;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
 		}
 
 		.tramTile {
-			background-color: #F4F4E9;
+			background-color: #F0F4F7;
 			width: calc(100% - 2em);
-			padding: 0.5em;
-			margin: 0.5em auto;
+			padding: 0.5em 1em;
+			margin: 1px 0;
 
 			span {
 				display: inline-block;
@@ -194,15 +276,16 @@ body {
 				line-height: 1.5em;
 				margin-bottom: 0.5em;
 				height: 1.5em;
-				font-weight: 400;
+				font-weight: 700;
 			}
 			table {
+				width: 100%;
 				border-collapse: collapse;
-				margin-bottom: 0.25em;
 			}
 			td {
 				margin: 0.5em 0;
-				line-height: 1.5;
+				line-height: 1.5em;
+				height: 1.5em;
 				padding: 0;
 				font-weight: 300;
 			}
@@ -211,28 +294,22 @@ body {
 			}
 			.tramNr {
 				text-align: right;
-				width: 5em;
+				width: 3em;
 			}
 			.tramType {
 				text-align: right;
-				width: 2.5em;
+				width: 2em;
 			}
-		}
-		.tramDepartureInfo {
-			width: calc(100% - 2em);
-			padding: 0.5em;
-			margin: 0.5em;
-			color: #F4F4E9;
-			font-weight: 300;
-			font-size: 0.75em;
-			text-align: right;
+			p {
+				margin: 0;
+			}
 		}
 	}
 }
 
-.header {
+#header {
 	font-family: 'Roboto', sans-serif;
-	background-color: #82D8D8;
+	background-color: #81A65F;
 	height: 4em;
 	position: absolute;
 	top: 0;
@@ -241,8 +318,17 @@ body {
 	overflow: hidden;
 	z-index: 900;
 
+	-webkit-box-shadow: 0px 0px 5px 5px rgba(83,85,89,0.08);
+	-moz-box-shadow: 0px 0px 5px 5px rgba(83,85,89,0.08);
+	box-shadow: 0px 0px 5px 5px rgba(83,85,89,0.08);
+
+	-webkit-transition: background-color 0.1s;
+	-moz-transition: background-color 0.1s;
+	-o-transition: background-color 0.1s;
+	transition: background-color 0.1s;
+
 	span {
-		color: #F4F4E9;
+		color: #F0F4F7;
 		display: inline-block;
 		text-align: center;
 		line-height: 2;
@@ -253,24 +339,26 @@ body {
 	}
 	#info {
 		position: absolute;
-		color: #F4F4E9;
-		margin: 0.5em;
-		width: 3em;
+		color: #F0F4F7;
+		margin: 0.7em;
+		width: 2.6em;
+		height: 2.6em;
 		left: 0;
 		top: 0;
 	}
 	#refresh {
 		position: absolute;
-		color: #F4F4E9;
-		margin: 0.5em 0.5em 0.5em 3.5em;
-		width: 3em;
+		color: #F0F4F7;
+		margin: 0.7em 0.7em 0.7em 3.7em;
+		width: 2.6em;
+		height: 2.6em;
 		left: 0;
 		top: 0;
 	}
 	#menu {
 		position: absolute;
 		text-align: right;
-		padding-right: 1.5em;	
+		padding-right: 2em;	
 		line-height: 1.8;
 		right: 0;
 		top: 0;
@@ -279,10 +367,10 @@ body {
 	}
 	#hamburger {
 		position: absolute;
-		color: #F4F4E9;
-		margin: 1em 0.66em;
-		width: 2em;
-		height: 2em;
+		color: #F0F4F7;
+		margin: 1.2em 1em;
+		width: 1.8em;
+		height: 1.8em;
 		right: 0;
 		top: 0;
 	}
@@ -290,11 +378,35 @@ body {
 		font-size: 2em;
 		width: calc(100% - 0.5em);
 		text-align: right;
-		color: #F4F4E9;
+		color: #F0F4F7;
 		line-height: 1.5em;
 		font-weight: 100;
 		margin-right: 0.5em;
 	}
+}
+#header.mensa {
+	background-color: #81A65F;
+
+	-webkit-transition: background-color 0.1s;
+	-moz-transition: background-color 0.1s;
+	-o-transition: background-color 0.1s;
+	transition: background-color 0.1s;
+}
+#header.agenda {
+	background-color: #D15357;
+
+	-webkit-transition: background-color 0.1s;
+	-moz-transition: background-color 0.1s;
+	-o-transition: background-color 0.1s;
+	transition: background-color 0.1s;
+}
+#header.tram {
+	background-color: #588BB3;
+
+	-webkit-transition: background-color 0.1s;
+	-moz-transition: background-color 0.1s;
+	-o-transition: background-color 0.1s;
+	transition: background-color 0.1s;
 }
 
 #popupBg {
@@ -309,10 +421,22 @@ body {
 	left: 0;
 	z-index: 999;
 }
+#headerBg {
+	display: none;
+	position: fixed;
+	background-color: rgba(0,0,0,0.2);
+	margin: 0;
+	padding: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 899;
+}
 
 #popupInfo {
 	position: fixed;
-	background-color: #F4F4E9;
+	background-color: #F0F4F7;
 	overflow: hidden;
 	margin: 0 0.5em;
 	height: 0;
@@ -332,10 +456,13 @@ body {
 
 	#closeInfo {
 		width: 2em;
+		height: 2em;
 		margin: 1em 1em;
 	}
 	p {
-		overflow: auto;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
 		display: block;
 		margin: 0.5em 1em 1em 1em;
 		font-weight: 300;
@@ -343,8 +470,7 @@ body {
 	}
 	a {
 		color: #000;
-		text-decoration: none;
-		font-weight: 400;
+		font-weight: 300;
 	}
 }
 #popupInfo.popup {
@@ -364,14 +490,14 @@ body {
 
 #popupEvent {
 	position: fixed;
-	background-color: #F4F4E9;
+	background-color: #F0F4F7;
 	overflow: hidden;
 	margin: 0 0.5em;
 	height: 0;
 	width: calc(100% - 1em);
 	bottom: 0;
 	z-index: 1001;
-	background-color: rgb(244, 244, 233);	
+	background-color: #F0F4F7;	
 
 	-webkit-transform: translateZ(0);
 	-moz-transform: translateZ(0);
@@ -383,28 +509,43 @@ body {
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 
-	#eventImgOverlay {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(244, 244, 233, 0.9);
-		z-index: 1002;
-	}
-
 	#eventImgLoader {
 		display: none;
 	}
 
 	#closeEvent {
 		width: 2em;
+		height: 2em;
 		margin: 1em;	
 	}
 	#eventContainer {
 		margin: 0 1em 1em 1em;
 		width: calc(100% - 2em);
 		height: calc(100% - 5em);
-		overflow: auto;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		-webkit-overflow-scrolling: touch;
 		z-index: 1003;
+	}
+	.eventLocationIconDetail {
+		float: left;
+		display: block;
+		width: 0.8em;
+		height: 1.15em;
+		margin: 0.15em 0.5em 0.2em 0;
+	}
+	.eventDateIconDetail {
+		float: left;
+		display: block;
+		width: 1em;
+		height: 1em;
+		margin: 0.25em 0.5em 0.25em 0;
+	}
+	.eventLocationDetail {
+		font-weight: 300;
+	}
+	.eventDateDetail {
+		font-weight: 300;
 	}
 	span {
 		display: block;
@@ -419,17 +560,20 @@ body {
 		margin: 0.5em 0;
 		overflow: auto;
 		font-weight: 300;
-		overflow: auto;
 	}
 	a {
 		color: #000;
-		text-decoration: none;
-		font-weight: 400;
+		font-weight: 300;
 	}
 	b {
 		font-weight: 400;
 	}
 	iframe {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	img {
 		display: block;
 		width: 100%;
 		height: auto;
