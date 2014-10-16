@@ -326,10 +326,6 @@ textarea {
   margin-top: -0.8em;
 }
 
-.etage p {
-  padding-left: 0.7em;
-}
-
 .etage h3, .raum h3, .landmark h3, .inkurze h3, .eTime h3 {
   font-size: 0.6em;
   font-family: "Open Sans";
@@ -464,7 +460,7 @@ textarea {
   letter-spacing: 0.1em;
   font-size: 1.0em;
   padding: 0 1em;
-  height: 1220px;
+  height: 1260px;
   background-color: #ffffff;
   top: 0;
   left: 0;
@@ -569,6 +565,7 @@ input[type="radio"] {
 }
 
 #startzeit, #endzeit {
+  float: right;
   width: 25%;
 }
 
@@ -679,34 +676,47 @@ input[type="radio"] {
 }
 
 .ed_bgc {
-  float: center;
+  display: -webkit-inline-box;
+  float: left;
   text-align: center;
   width: 100%;
   margin-top: 1em;
 }
 
 #bg_c_rot {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #cf3933;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 #bg_c_violet {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #720ce8;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 #bg_c_grun {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #44919a;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 #bg_c_gelb {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #ebd942;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 .ed_fgc_titel {
@@ -726,34 +736,51 @@ input[type="radio"] {
 }
 
 .ed_fgc {
-  float: center;
+  display: -webkit-inline-box;
+  float: left;
   text-align: center;
   width: 100%;
   margin-top: 1em;
 }
 
 #font_c_rot {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #f70707;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 #font_c_white {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: white;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 #font_c_pink {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #f90859;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
 }
 
 #font_c_blue {
-  width: 4em;
+  width: 3.5em;
   height: 3em;
   background: #28aaff;
+  margin: 0 0.35em;
+  margin-bottom: 1em;
+  border: 1px solid #999;
+}
+
+.clickedColor {
+  border: 2px solid #065fc6 !important;
 }
 
 #submitButton, #cancle {

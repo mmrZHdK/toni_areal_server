@@ -489,7 +489,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	margin-top: -0.8em;
 }
 .etage p {
-	padding-left: 0.7em;
+	//padding-left: 0.7em;
 }
 
 .etage h3, .raum h3, .landmark h3, .inkurze h3, .eTime h3{
@@ -661,7 +661,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	letter-spacing: 0.1em;
 	font-size: 1.0em;
 	padding: 0 1em;
-	height: 1220px;;
+	height: 1260px;;
 	//margin: 1em;
 	background-color: #ffffff;
 	//height: auto;
@@ -739,6 +739,9 @@ input[type="radio"]{
 	width: 100%;
 	border-bottom: 4px solid rgba( 9,96,198,1 );
 	margin-bottom: 1em;
+// 	border-radius: 		5px  ;
+// -moz-border-radius: 	5px  ;
+// -webkit-border-radius: 	5px  ;
 }
 
 .newEintrag{
@@ -811,6 +814,8 @@ input[type="radio"]{
 	
 
 #startzeit, #endzeit{
+	float: right;
+	//padding-right: 0.0em;
 	width: 25%;
 
 }
@@ -918,6 +923,8 @@ input[type="radio"]{
 
 //_______________INPUT BG COLOR
 
+
+
 .ed_bgc_titel{
 	float: left;
 	width: 100%;
@@ -936,12 +943,14 @@ input[type="radio"]{
 
 
 .ed_bgc{
-	float: center;
+	display: -webkit-inline-box;
+	float: left;
 	text-align: center;
 	width: 100%;
 	//background-color: blue;
 	//line-height: 3em;
 	margin-top: 1em;
+
 }
 // $content_bg_red: #CF3933;
 // $content_bg_violet: #720CE8;
@@ -958,25 +967,38 @@ input[type="radio"]{
 // 	margin: 1em;
 // }
 #bg_c_rot{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_bg_red;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
+
 //height: 20%;
 } 
 #bg_c_violet{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background:$content_bg_violet;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 }
 #bg_c_grun{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_bg_green;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 }
 #bg_c_gelb {
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_bg_yellow;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 
 // border-radius: 0 0 0 0;
 //  background-color: red;
@@ -1008,38 +1030,58 @@ background: $content_bg_yellow;
 
 }
 .ed_fgc{
-	float: center;
+	display: -webkit-inline-box;
+	float: left;
 	text-align: center;
 	width: 100%;
 	//background-color: blue;
 	//line-height: 3em;
 	margin-top: 1em;
+
+
 }
 
 
 
 #font_c_rot{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_f_red;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 //height: 20%;
 } 
 #font_c_white{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_f_white;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 }
 #font_c_pink{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_f_pink;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 }
 #font_c_blue{
-width: 4em;
+width: 3.5em;
 height: 3em;
 background: $content_f_blue;
+margin: 0 0.35em;
+margin-bottom: 1em;
+border: 1px solid #999;
 
 
+}
+
+.clickedColor{
+	border: 2px solid #065fc6 !important;
+	//background: #ffffff !important;
 }
 
 #submitButton, #cancle{

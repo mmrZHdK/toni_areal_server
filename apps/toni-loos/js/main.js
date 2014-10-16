@@ -1,8 +1,9 @@
 var rootRef;
 // root zur Firebase Datenbank
 rootRef = new Firebase('https://incandescent-inferno-8047.firebaseio.com/');
-
-
+ var fontColor;
+ var bgColor;
+ 
 
 //START DER ZEITKISTE
 /////////
@@ -218,7 +219,7 @@ function displayEventItem(eventItem, htmlPlaceHolderDiv) {
     $cover.append( $titel );
     $startzeit = $('<div class="sTime">' + eventItem.startzeit + '</div>');
     $cover.append( $startzeit );
-    
+
     
     $eintrag = $('<div class="eintrag">' + '</div>')
     $eintrag.appendTo(htmlPlaceHolderDiv);
@@ -246,6 +247,8 @@ function displayEventItem(eventItem, htmlPlaceHolderDiv) {
 
 
 $(document).ready(function(){
+
+
   
     //Hier kommt ein Reload Button hin --> location.reload(true);
     //$seite wird deklariert und initialisiert mit einer html section und zwei klassen sowie einer ID
@@ -298,15 +301,15 @@ $(".scrollbox").on("scroll", function(){
 if($(".page#home").is(":visible") ){
   $('#heute-Cover').waypoint(function() {
   $(".titel").text("HEUTE");
-  console.log("heute cover drin ==")
+  //console.log("heute cover drin ==")
 }, { offset: 200 });
   $('#morgen').waypoint(function() {
   $(".titel").text("MORGEN");
-  console.log("morgen cover drin ==")
+  //console.log("morgen cover drin ==")
 }, { offset: 200 });
   $('#ubermorgen-Cover').waypoint(function() {
   $(".titel").text("ÜBERMORGEN");
-  console.log("übermorgen cover drin ==")
+  //console.log("übermorgen cover drin ==")
 }, { offset: 200 });
 };
 });
@@ -398,6 +401,8 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
         
     });
+              auswahlBGFarbe();
+              auswahlFontFarbe();
             console.log( '> complete @ $seite.load' );
             // Seite ist geladen worden, starte Slide Animation
             $seite.removeClass( 'out_right' );
@@ -409,14 +414,14 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
             //$( '.navi#addButton').remove();
             //$( '.menubutton#back' ).show();
             document.getElementById('startdatum').value = new Date().toISOString().substring(0, 10);
-            document.getElementById('enddatum').value = new Date().toISOString().substring(0, 10);
+            //document.getElementById('enddatum').value = new Date().toISOString().substring(0, 10);
             
             
-            $("#startdatum").on("focusout", function(){
-              var startzeitDatum = document.getElementById('startdatum').value;
-              document.getElementById('enddatum').value = startzeitDatum;
-              console.log("enddatum" + " " + enddatum);
-            })
+            // $("#startdatum").on("focusout", function(){
+            //   var startzeitDatum = document.getElementById('startdatum').value;
+            //   document.getElementById('enddatum').value = startzeitDatum;
+            //   console.log("enddatum" + " " + enddatum);
+            // })
 
             $("#startzeit").on("focusout", function(){
               var startzeitElement = document.getElementById('startzeit').value;
@@ -428,9 +433,9 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
 
             $( '#formDefault' ).on("click" , "#submitButton", function( e ) {
-                console.log( "WICHTIG" + '> click @ .menubutton#back' );
-                console.log("hhz" + $("#title").val())
-                if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()=="" || $("#landmark").val()=="" || $("#inkurze").val()==""){
+                //console.log( "WICHTIG" + '> click @ .menubutton#back' );
+                //console.log("hhz" + $("#title").val())
+                if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()==""  || $("#inkurze").val()==""){
                     // Schiebe Seiten wieder raus
                     swal({
                       title: "BITTE ALLE FELDER AUSFÜLLEN",
@@ -447,6 +452,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                          $( '.page#home' ).show().velocity({
                             duration: 5000
                          });
+                         //$(".page#home").scrollTop();
                          $seite.addClass( 'out_right' );
                          //$seite.remove();
                          $(".titel").text("TONI LOOS").velocity({
@@ -496,44 +502,107 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 //  margin: 1em;
 // }
     function auswahlBGFarbe(){
-        if($("#bg_c_rot").prop('checked') == true){
-            var color = "#CF3933";
-            return color;
-        } else if ($("#bg_c_violet").prop('checked') == true){
-            var color = "#720CE8";
-            return color;
-        } else if ($("#bg_c_grun").prop('checked') == true){
-            var color = "#44919A";
-            return color;
-        } else if ($("#bg_c_gelb").prop('checked') == true){
-            var color = "#EBD942";
-            return color;
-        } else {
-            var color = "#44919A";
-            return color;
-        }
+        $("#bg_c_rot").on("click",function(e){
+          bgColor = "#CF3933";
+          console.log("ischer clicked dr rot")
+          
+          $( this ).addClass( "clickedColor" );
+          $( "#bg_c_violet" ).removeClass( "clickedColor" );
+          $( "#bg_c_grun" ).removeClass( "clickedColor" );
+          $( "#bg_c_gelb" ).removeClass( "clickedColor" );
+        });
+
+        $("#bg_c_violet").click(function(){
+          bgColor = "#720CE8";
+          console.log("ischer clicked dr violette")
+          $( this ).addClass( "clickedColor" );
+          $( "#bg_c_rot" ).removeClass( "clickedColor" );
+          $( "#bg_c_grun" ).removeClass( "clickedColor" );
+          $( "#bg_c_gelb" ).removeClass( "clickedColor" );
+        });
+        $("#bg_c_grun").click(function(){
+          bgColor = "#44919A";
+          console.log("ischer clicked dr grün")
+          $( this ).addClass( "clickedColor" );
+          $( "#bg_c_rot" ).removeClass( "clickedColor" );
+          $( "#bg_c_violet" ).removeClass( "clickedColor" );
+          $( "#bg_c_gelb" ).removeClass( "clickedColor" );
+        
+        });
+        $("#bg_c_gelb").click(function(){
+          bgColor =  "#EBD942";
+          console.log("ischer clicked dr gelb")
+          $( this ).addClass( "clickedColor" );
+          $( "#bg_c_rot" ).removeClass( "clickedColor" );
+          $( "#bg_c_violet" ).removeClass( "clickedColor" );
+          $( "#bg_c_grun" ).removeClass( "clickedColor" );
+        //  return color;
+        
+        });
+
+
+
+
+        // if($("#bg_c_rot").is.clicked = true){
+        //   var color = "#CF3933";
+        //   console.log("ischer clicked dr rot")
+        //     return color;
+        //   } else if ($("#bg_c_violet").prop('checked') == true){
+        //     var color = "#720CE8";
+        //     return color;
+        // } else if ($("#bg_c_grun").prop('checked') == true){
+        //     var color = "#44919A";
+        //     return color;
+        // } else if ($("#bg_c_gelb").prop('checked') == true){
+        //     var color = "#EBD942";
+        //     return color;
+        // } else {
+        //     var color = "#44919A";
+        //     return color;
+        // }
     }
 
 
 
     //edit zuklappen
    function auswahlFontFarbe(){
-        if($("#font_c_rot").prop('checked') == true){
-            var color = "#931818";
-            return color;
-        } else if ($("#font_c_white").prop('checked') == true){
-            var color = "#F5F5F5";
-            return color;
-        } else if ($("#font_c_pink").prop('checked') == true){
-            var color = "#E03F75";
-            return color;
-        } else if ($("#font_c_blue").prop('checked') == true){
-            var color = "#5E9DFF";
-            return color;
-        } else {
-            var color = "#F70707";
-            return color;
-        }
+       $("#font_c_rot").on("click",function(e){
+          fontColor = "#931818";
+          console.log("ischer clicked dr rot")
+          $( this ).addClass( "clickedColor" );
+          $( "#font_c_white" ).removeClass( "clickedColor" );
+          $( "#font_c_pink" ).removeClass( "clickedColor" );
+          $( "#font_c_blue" ).removeClass( "clickedColor" );
+
+        
+        });
+        $("#font_c_white").on("click",function(e){
+          fontColor = "#F5F5F5";
+          console.log("ischer clicked dr violette")
+          $( this ).addClass( "clickedColor" );
+          $( "#font_c_rot" ).removeClass( "clickedColor" );
+          $( "#font_c_pink" ).removeClass( "clickedColor" );
+          $( "#font_c_blue" ).removeClass( "clickedColor" );
+        
+        });
+        $("#font_c_pink").on("click",function(e){
+          fontColor = "#E03F75";
+          console.log("ischer clicked dr grün")
+          $( this ).addClass( "clickedColor" );
+          $( "#font_c_rot" ).removeClass( "clickedColor" );
+          $( "#font_c_white" ).removeClass( "clickedColor" );
+          $( "#font_c_blue" ).removeClass( "clickedColor" );
+        
+        });
+        $("#font_c_blue").on("click",function(e){
+          fontColor =  "#5E9DFF";
+          console.log("ischer clicked dr gelb")
+          $( this ).addClass( "clickedColor" );
+          $( "#font_c_rot" ).removeClass( "clickedColor" );
+          $( "#font_c_white" ).removeClass( "clickedColor" );
+          $( "#font_c_pink" ).removeClass( "clickedColor" );
+        
+        });
    };
 
 
@@ -592,16 +661,16 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         var titel       =   ($("#title").val()).toUpperCase();
         var sDatum      =   $("#startdatum").val();
         var sZeit       =   $("#startzeit").val();
-        var eDatum      =   $("#enddatum").val();
+        //var eDatum      =   $("#enddatum").val();
         var eZeit       =   $("#endzeit").val();
 
         var eEtage      =   ($("#etage").val()).toUpperCase();
         var eRaum       =   ($("#raum").val()).toUpperCase();
-        var eLandmark   =   ($("#landmark").val()).toUpperCase();
+        //var eLandmark   =   ($("#landmark").val()).toUpperCase();
 
         var inkurze     =   ($("#inkurze").val()).toUpperCase();
-        var bgColor     =   auswahlBGFarbe();
-        var fontColor   =   auswahlFontFarbe();
+       
+        //var fontColor   =   auswahlFontFarbe();
         console.log("weli BG Farb isches??" + " " + bgColor);
         console.log("weli Font Farb isches??" + " " + fontColor);
         var camera      =   ("");//uploadImage();
@@ -618,7 +687,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
         //EDIT MODE? -> SET... (update item), INSERT MODE? -> push (new item)
 
-        var cnewRootRef = rootRef.push().setWithPriority({titel: titel, startdatum: sDatum, startzeit: sZeit, enddatum: eDatum, endzeit: eZeit, etage: eEtage, raum: eRaum, landmark: eLandmark, inKurze: inkurze, hintergrundfarbe: bgColor, schriftfarbe: fontColor, bild: camera},sDatesTime);
+        var cnewRootRef = rootRef.push().setWithPriority({titel: titel, startdatum: sDatum, startzeit: sZeit, endzeit: eZeit, etage: eEtage, raum: eRaum, inKurze: inkurze, hintergrundfarbe: bgColor, schriftfarbe: fontColor, bild: camera},sDatesTime);
 
         // var myEvents = JSON.parse(localStorage.getItem('myEvents'));
         
@@ -646,7 +715,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $("#title").val('');
         $("#startdatum").val('');
         $("#startzeit").val('');
-        $("#enddatum").val('');
+        //$("#enddatum").val('');
         $("#endzeit").val('');
         $("#inkurze").val('');
         //$("#camera").val('');

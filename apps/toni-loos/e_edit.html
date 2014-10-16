@@ -83,7 +83,7 @@
                         <input type="time" placeholder="Startzeit" id="startzeit" value="12:00" autocorrect="off"></input>
                     </div>
                     <div class="ende">
-                        <input type="date" placeholder="Enddatum" id="enddatum" autocorrect="off"></input>
+                        <!-- <input type="date" placeholder="Enddatum" id="enddatum" autocorrect="off"></input> -->
                         <input type="time" placeholder="Endzeit" id="endzeit" value="16:00" autocorrect="off"></input>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
                     <!-- WIRD DIE TEXTAREA AN DEN SERVER ÜBERMITTELT? -->
                     <div class="ed_inkurze">
-                        <textarea placeholder="BESCHREIBE HIER KURZ WAS AN DEINEM ANLASS SO LÄUFT" form="formDefault"  id="inkurze" autocorrect="off" maxlength="70" rows="5" style='text-transform:uppercase'required="true"></textarea>
+                        <textarea placeholder="BESCHREIBE HIER KURZ,  WAS AN DEINEM ANLASS SO LÄUFT" form="formDefault"  id="inkurze" autocorrect="off" maxlength="70" rows="5" style='text-transform:uppercase'required="true"></textarea>
                     </div>
                     <h4>70 ZEICHEN</h4>
                 </div>
@@ -134,10 +134,19 @@
 
                     
                     <div class="ed_bgc">
-                        <input type="radio" name="bg_color" id="bg_c_rot">
-                        <input type="radio" name="bg_color" id="bg_c_violet">
+                        <div id="bg_c_rot"></div>
+                        <div id="bg_c_violet"></div>
+                        <div id="bg_c_grun"></div>
+                        <div id="bg_c_gelb"></div>
+                        <!-- 
+                        <button id="bg_c_rot"></button>
+                        <button id="bg_c_violet"></button>
+                        <button id="bg_c_grun"></button>
+                        <button id="bg_c_gelb"></button> -->
+                        <!-- <input type="radio" name="bg_color" id="bg_c_rot"> -->
+                        <!-- <input type="radio" name="bg_color" id="bg_c_violet">
                         <input type="radio" name="bg_color" id="bg_c_grun">
-                        <input type="radio" name="bg_color" id="bg_c_gelb">
+                        <input type="radio" name="bg_color" id="bg_c_gelb"> -->
                     </div>
                     <h4>WÄHLE EINE FARBE AUS</h4>
                 </div>
@@ -150,10 +159,18 @@
 
                     
                     <div class="ed_fgc">
-                        <input type="radio" name="font_color" id="font_c_rot">
+                        <div id="font_c_rot"></div>
+                        <div id="font_c_white"></div>
+                        <div id="font_c_pink"></div>
+                        <div id="font_c_blue"></div>
+                        <!-- <button id="font_c_rot" type="input"></button>
+                        <button id="font_c_white"></button>
+                        <button id="font_c_pink"></button>
+                        <button id="font_c_blue"></button> -->
+                        <!-- <input type="radio" name="font_color" id="font_c_rot">
                         <input type="radio" name="font_color" id="font_c_white">
                         <input type="radio" name="font_color" id="font_c_pink">
-                        <input type="radio" name="font_color" id="font_c_blue">
+                        <input type="radio" name="font_color" id="font_c_blue"> -->
                     </div>
                     <h4>WÄHLE EINE FARBE AUS</h4>
                 </div>
