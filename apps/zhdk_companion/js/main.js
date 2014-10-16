@@ -1,5 +1,12 @@
 $(document).ready(function() {
 
+var mySwiper = $('.swiper-container').swiper({
+    //Your options here:
+    mode:'horizontal',
+    loop: false
+    //etc..
+});
+
 var body = document.getElementById('body');
 var bodyEm = getEmPixels(body);
 var rem = getEmPixels();
@@ -27,9 +34,9 @@ var today = new Date(moment().valueOf()),
     agendaDayIndexOld = 0,
     eventTimeFromTo = null;
 
-$(window).on("orientationchange", function(event) {
-    location.reload();
-});
+// $(window).on("orientationchange", function(event) {
+//     location.reload();
+// });
 
 Date.prototype.getWeek = function() {
     var onejan = new Date(this.getFullYear(),0,1);
@@ -40,135 +47,53 @@ moment.locale("de");
 var months = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"];
 var dayOfWeek = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"];
 
-// ANIMATIONS
-
-
-//SNAPPING
-// var touchMoveFunction = debounce( function(e) {
-//     touchMove.x = e.originalEvent.changedTouches[0].clientX;
-//     touchMove.y = e.originalEvent.changedTouches[0].clientY;
-
-//     if(Math.abs(touchMove.x - touchStart.x) > 10 && Math.abs(touchMove.y - touchStart.y) < 100) {
-//         $pagesWrapper.animate({
-//             scrollLeft: scrollPosX + touchStart.x - touchMove.x
-//         }, 0);
-//     }
-// },16)
-
-$pagesWrapper.on('touchstart', function(e) {
-    touchEnded = false;
-    touchStart.x = e.originalEvent.changedTouches[0].clientX;
-    touchStart.y = e.originalEvent.changedTouches[0].clientY;
-    scrollPosX = $pagesWrapper.scrollLeft();
-});
-
-$pagesWrapper.on('touchmove', function(e) {
-    touchMove.x = e.originalEvent.changedTouches[0].clientX;
-    touchMove.y = e.originalEvent.changedTouches[0].clientY;
-
-    debounce(animateScroll(), 16, false);
-    
-});
-
-$pagesWrapper.on('touchend', function(e) {
-    touchEnded = true;
-    snapPages();
-});
-
-function animateScroll() {
-    if(Math.abs(touchMove.x - touchStart.x) > 10 && Math.abs(touchMove.y - touchStart.y) < 50) {
-        //window.requestAnimationFrame(function () { 
-            
-            if(!touchEnded) {
-                $pagesWrapper.animate({
-                    scrollLeft: scrollPosX + (touchStart.x - touchMove.x)*1.4
-                }, 10);
-                //$pagesWrapper.scrollLeft(scrollPosX + (touchStart.x - touchMove.x)*1.4);
-            }
-        //});
-    }
-};
-
-
-// $mensa.on('touchstart', function(e) {
-//     pullEnded = false;
-//     if($mensa.scrollTop() == 0) {
-//         pullStart.x = e.originalEvent.changedTouches[0].clientX;
-//         pullStart.y = e.originalEvent.changedTouches[0].clientY;
-//     }
-// });
-
-// $mensa.on('touchmove', function(e) {
-//     if($mensa.scrollTop() <= 0) {
-//         pullMove.x = e.originalEvent.changedTouches[0].clientX;
-//         pullMove.y = e.originalEvent.changedTouches[0].clientY;
-           
-//         if(!pullEnded) {
-//             console.log();
-//             $mensa.css('padding-top: ' + Math.abs(pullStart.y - pullMove.y));
-//         }
-//     }
-// });
-
-// $mensa.on('touchend', function(e) {
-//     pullEnded = true;
-//     console.log('pulled');
-// });
-
-
-
-var snapPages = function() {
-    scrollPosX = $pagesWrapper.scrollLeft();
-    if(scrollPosX/pagesWidth <= 0.5) {
-        $pagesWrapper.animate({
-            scrollLeft: 0
-        }, 140);
-        menuLabel = "mensa";
-    } else if(scrollPosX/pagesWidth > 0.5 && scrollPosX/pagesWidth <= 1.5) {
-        $pagesWrapper.animate({
-            scrollLeft: pagesWidth
-        }, 140);
-        menuLabel = "agenda";
-    } else if(scrollPosX/pagesWidth > 1.5 && scrollPosX/pagesWidth <= 2.5) {
-        $pagesWrapper.animate({
-            scrollLeft: pagesWidth*2
-        }, 140);
-        menuLabel = "tram";
-    }
-    $menu.html(menuLabel);
-};
-
 // MENU -----------------------------------------------------------------------------------
-// $pagesWrapper.scroll(function () {
-//     scrollPosX = $pagesWrapper.scrollLeft();
-//     if(scrollPosX/pagesWidth <= 0.5) {
-//     	menuChar = "mensa";
-//     } else if(scrollPosX/pagesWidth > 0.5 && scrollPosX/pagesWidth <= 1.5) {
-//     	menuChar = "agenda";
-//     } else if(scrollPosX/pagesWidth > 1.5 && scrollPosX/pagesWidth <= 2.5) {
-//     	menuChar = "tram";
-//     }
-//     $('#menu').html(menuChar);
-// }); 
+mySwiper.wrapperTransitionEnd(function () {
+    if(mySwiper.activeIndex === 0) {
+    	menuChar = "mensa";
+    } else if(mySwiper.activeIndex === 1) {
+    	menuChar = "agenda";
+    } else if(mySwiper.activeIndex === 2) {
+    	menuChar = "tram";
+    }
+    $('#menu').html(menuChar);
+}, true);
 // /MENU ----------------------------------------------------------------------------------
 // MENSA ----------------------------------------------------------------------------------
 
 $('#mensaLoadingImg').velocity({ rotateZ: "360deg"}, {loop: true});
 
-$.get('http://www.corsproxy.com/zfv.ch/de/microsites/gastronomie-im-toni-areal/menueplan', function(response) {
-    var $mensaData = $(response);
+var mensaloadCount = 0;
+var getMensaData = function() {
+    $.get('http://www.corsproxy.com/zfv.ch/de/microsites/gastronomie-im-toni-areal/menueplan', function(response) {
+        var $mensaData = $(response);
 
-    $('#mensaLoading').toggle(false);
+        $('#mensaLoading img').velocity("stop");
+        $('#mensaLoading').toggle(false);
 
-    if(today.getDay() == 6) {
-        today = new Date(moment().valueOf() +86400000*2);
-    }
-    if(today.getDay() == 0) {
-        today = new Date(moment().valueOf() + 86400000);
-    }
+        if(today.getDay() == 6) {
+            today = new Date(moment().valueOf() + 86400000*2);
+        }
+        if(today.getDay() == 0) {
+            today = new Date(moment().valueOf() + 86400000);
+        }
+        drawMensaMenu($mensaData, today);
 
-    drawMensaMenu($mensaData, today);
-});
+    }).fail(function() {
+        if (mensaloadCount < 5) {
+            mensaloadCount++;
+            getMensaData();
+        } else {
+            $('#mensaLoading img').velocity("stop");
+            $('#mensaLoading').toggle(false);
+            $('<div>', {
+                class: 'mensaTileDate roboto',
+                html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
+            }).appendTo('#mensa');
+        }
+    });
+};
+getMensaData();
 
 var drawMensaMenu = function($mensaData, mensaDate) {
 
@@ -251,10 +176,27 @@ $('#agendaLoadingImg').velocity({ rotateZ: "360deg"}, {loop: true});
 var eventsRangeFrom = moment(now).format("YYYY-MM-D");
 var eventsRangeTo = moment(now).add(4, 'M').format("YYYY-MM-D");
 
-$.getJSON( "http://www.zhdk.ch/?agenda/feed&mindate=" + eventsRangeFrom + "&maxdate=" + eventsRangeTo + "&format=json", null, function( data ) {
-    drawAgenda(data, 0, 24);
-    $('#agendaLoading').toggle(false);
-});
+var agendaloadCount = 0;
+var getAgendaData = function() {
+    $.getJSON( "http://www.zhdk.ch/?agenda/feed&mindate=" + eventsRangeFrom + "&maxdate=" + eventsRangeTo + "&format=json", null, function( data ) {
+        drawAgenda(data, 0, 24);
+        $('#agendaLoading img').velocity("stop");
+        $('#agendaLoading').toggle(false);
+    }).fail(function() {
+            if (agendaloadCount < 5) {
+            agendaloadCount++;
+            getAgendaData();
+        } else {
+            $('#agendaLoading img').velocity("stop");
+            $('#agendaLoading').toggle(false);
+            $('<div>', {
+                class: 'agendaTileDate roboto',
+                html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
+            }).appendTo('#agenda');
+        }
+    });
+};
+getAgendaData();
 
 var drawAgenda = function(data, fromEvent, toEvent) {
     for (indexLoad = fromEvent; indexLoad <= toEvent; ++indexLoad) {
@@ -396,22 +338,89 @@ $('#tramLoadingImg1').velocity({ rotateZ: "360deg"}, {loop: true});
 $('#tramLoadingImg2').velocity({ rotateZ: "360deg"}, {loop: true});
 $('#tramLoadingImg3').velocity({ rotateZ: "360deg"}, {loop: true});
 
-$.get('http://transport.opendata.ch/v1/connections?from=008591398&to=008503001', function(response) {
-    tramToAlt($(response));
-    $('#tramLoading0').toggle(false);
-});
-$.get('http://transport.opendata.ch/v1/connections?from=008591398&to=008576182', function(response) {
-    tramToTief($(response));
-    $('#tramLoading1').toggle(false);
-});
-$.get('http://transport.opendata.ch/v1/connections?from=008591135&to=008591428', function(response) {
-    tramToWerd($(response));
-    $('#tramLoading2').toggle(false);
-});
-$.get('http://transport.opendata.ch/v1/connections?from=008591135&to=008580522', function(response) {
-    tramToEsch($(response));
-    $('#tramLoading3').toggle(false);
-});
+var tramloadCount0 = 0;
+var getTram0Data = function() {
+    $.get('http://transport.opendata.ch/v1/connections?from=008591398&to=008503001', function(response) {
+        tramToAlt($(response));
+        $('#tramLoading0 img').velocity("stop");
+        $('#tramLoading0').toggle(false);
+    }).fail(function() {
+        if (tramloadCount0 < 5) {
+            tramloadCount0++;
+            getTram0Data();
+        } else {
+            $('#tramLoading0 img').velocity("stop");
+            $('#tramLoading0').toggle(false);
+            $('<p>', {
+                html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
+            }).appendTo('#toAltstettenTile');
+        }
+    });
+};
+getTram0Data();
+
+var tramloadCount1 = 0;
+var getTram1Data = function() {
+    $.get('http://transport.opendata.ch/v1/connections?from=008591398&to=008576182', function(response) {
+        tramToTief($(response));
+        $('#tramLoading1 img').velocity("stop");
+        $('#tramLoading1').toggle(false);
+    }).fail(function() {
+        if (tramloadCount1 < 5) {
+            tramloadCount1++;
+            getTram1Data();
+        } else {
+            $('#tramLoading1 img').velocity("stop");
+            $('#tramLoading1').toggle(false);
+            $('<p>', {
+                html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
+            }).appendTo('#toTiefenbrunnenTile');
+        }
+    });
+};
+getTram1Data();
+
+var tramloadCount2 = 0;
+var getTram2Data = function() {
+    $.get('http://transport.opendata.ch/v1/connections?from=008591135&to=008591428', function(response) {
+        tramToWerd($(response));
+        $('#tramLoading2 img').velocity("stop");
+        $('#tramLoading2').toggle(false);
+    }).fail(function() {
+        if (tramloadCount2 < 5) {
+            tramloadCount2++;
+            getTram2Data();
+        } else {
+            $('#tramLoading2 img').velocity("stop");
+            $('#tramLoading2').toggle(false);
+            $('<p>', {
+                html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
+            }).appendTo('#toWerdhoelzliTile');
+        }
+    });
+};
+getTram2Data();
+
+var tramloadCount3 = 0;
+var getTram3Data = function() {
+    $.get('http://transport.opendata.ch/v1/connections?from=008591135&to=008580522', function(response) {
+        tramToEsch($(response));
+        $('#tramLoading3 img').velocity("stop");
+        $('#tramLoading3').toggle(false);
+    }).fail(function() {
+        if (tramloadCount3 < 5) {
+            tramloadCount3++;
+            getTram3Data();
+        } else {
+            $('#tramLoading3 img').velocity("stop");
+            $('#tramLoading3').toggle(false);
+            $('<p>', {
+                html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
+            }).appendTo('#toEscherWyssPlatzTile');
+        }
+    });
+};
+getTram3Data();
         
 
 
@@ -514,27 +523,21 @@ $hamburger.click(function() {
 });
 $('#menuMensa').click(function() {
     $('div.header').velocity({ height: '4em', duration: 250});
-    $pagesWrapper.animate({
-        scrollLeft: 0
-    }, 400);
+    mySwiper.swipeTo(0, 400);
     $menu.html('mensa');
     $hamburger.velocity({ duration: 250, rotateZ: "0deg"});
     $hamburger.toggleClass("dropdown");
 });
 $('#menuAgenda').click(function() {
     $('div.header').velocity({ height: '4em', duration: 250});
-    $pagesWrapper.animate({
-        scrollLeft: pagesWidth
-    }, 400);
+    mySwiper.swipeTo(1, 400);
     $menu.html('agenda');
     $hamburger.velocity({ duration: 250, rotateZ: "0deg"});
     $hamburger.toggleClass("dropdown");
 });
 $('#menuTram').click(function() {
     $('div.header').velocity({ height: '4em', duration: 250});
-    $pagesWrapper.animate({
-        scrollLeft: pagesWidth*2
-    }, 400);
+    mySwiper.swipeTo(2, 400);
     $menu.html('tram');
     $hamburger.velocity({ duration: 250, rotateZ: "0deg"});
     $hamburger.toggleClass("dropdown");
@@ -542,7 +545,7 @@ $('#menuTram').click(function() {
 
 $('#refresh').click(function() {
     location.reload(true);
-    $('#refresh').velocity({ rotateZ: "1800deg"}, {duration: 5000});
+    $('#refresh').velocity({duration: 5000, rotateZ: "1800deg"}, {loop: true});
 });
 
 $('#mensaLoadingTile').click(function() {
@@ -584,25 +587,126 @@ $(window).on("navigate", function (event, data) {
 
 // /click functions -----------------------------------------------------------------------
 
-
-
 });
+
+/*
+----Important swipe commands---
+mySwiper.activeSlide() - returns the currently active slide (slide instance, HTMLElement)
+
+*/
+
+// OLD SNAPPING CRAP ---------------------------------------------------------------------
+// var touchMoveFunction = debounce( function(e) {
+//     touchMove.x = e.originalEvent.changedTouches[0].clientX;
+//     touchMove.y = e.originalEvent.changedTouches[0].clientY;
+
+//     if(Math.abs(touchMove.x - touchStart.x) > 10 && Math.abs(touchMove.y - touchStart.y) < 100) {
+//         $pagesWrapper.animate({
+//             scrollLeft: scrollPosX + touchStart.x - touchMove.x
+//         }, 0);
+//     }
+// },16)
+/*
+$pagesWrapper.on('touchstart', function(e) {
+    touchEnded = false;
+    touchStart.x = e.originalEvent.changedTouches[0].clientX;
+    touchStart.y = e.originalEvent.changedTouches[0].clientY;
+    scrollPosX = $pagesWrapper.scrollLeft();
+});
+
+$pagesWrapper.on('touchmove', function(e) {
+    touchMove.x = e.originalEvent.changedTouches[0].clientX;
+    touchMove.y = e.originalEvent.changedTouches[0].clientY;
+
+    debounce(animateScroll(), 16, false);
+    
+});
+
+$pagesWrapper.on('touchend', function(e) {
+    touchEnded = true;
+    snapPages();
+});
+
+function animateScroll() {
+    if(Math.abs(touchMove.x - touchStart.x) > 10 && Math.abs(touchMove.y - touchStart.y) < 50) {
+        //window.requestAnimationFrame(function () { 
+            
+            if(!touchEnded) {
+                $pagesWrapper.animate({
+                    scrollLeft: scrollPosX + (touchStart.x - touchMove.x)*1.4
+                }, 10);
+                //$pagesWrapper.scrollLeft(scrollPosX + (touchStart.x - touchMove.x)*1.4);
+            }
+        //});
+    }
+};
+*/
+
+// $mensa.on('touchstart', function(e) {
+//     pullEnded = false;
+//     if($mensa.scrollTop() == 0) {
+//         pullStart.x = e.originalEvent.changedTouches[0].clientX;
+//         pullStart.y = e.originalEvent.changedTouches[0].clientY;
+//     }
+// });
+
+// $mensa.on('touchmove', function(e) {
+//     if($mensa.scrollTop() <= 0) {
+//         pullMove.x = e.originalEvent.changedTouches[0].clientX;
+//         pullMove.y = e.originalEvent.changedTouches[0].clientY;
+           
+//         if(!pullEnded) {
+//             console.log();
+//             $mensa.css('padding-top: ' + Math.abs(pullStart.y - pullMove.y));
+//         }
+//     }
+// });
+
+// $mensa.on('touchend', function(e) {
+//     pullEnded = true;
+//     console.log('pulled');
+// });
+
+
+
+// var snapPages = function() {
+//     scrollPosX = $pagesWrapper.scrollLeft();
+//     if(scrollPosX/pagesWidth <= 0.5) {
+//         $pagesWrapper.animate({
+//             scrollLeft: 0
+//         }, 140);
+//         menuLabel = "mensa";
+//     } else if(scrollPosX/pagesWidth > 0.5 && scrollPosX/pagesWidth <= 1.5) {
+//         $pagesWrapper.animate({
+//             scrollLeft: pagesWidth
+//         }, 140);
+//         menuLabel = "agenda";
+//     } else if(scrollPosX/pagesWidth > 1.5 && scrollPosX/pagesWidth <= 2.5) {
+//         $pagesWrapper.animate({
+//             scrollLeft: pagesWidth*2
+//         }, 140);
+//         menuLabel = "tram";
+//     }
+//     $menu.html(menuLabel);
+// };
+
 // Debounce function
 // Returns a function, that, as long as it continues to be invoked, will not
 // be triggered. The function will be called after it stops being called for
 // N milliseconds. If `immediate` is passed, trigger the function on the
 // leading edge, instead of the trailing.
-function debounce(func, wait, immediate) {
-    var timeout;
-    return function() {
-        var context = this, args = arguments;
-        var later = function() {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
-    };
-};
+// function debounce(func, wait, immediate) {
+//     var timeout;
+//     return function() {
+//         var context = this, args = arguments;
+//         var later = function() {
+//             timeout = null;
+//             if (!immediate) func.apply(context, args);
+//         };
+//         var callNow = immediate && !timeout;
+//         clearTimeout(timeout);
+//         timeout = setTimeout(later, wait);
+//         if (callNow) func.apply(context, args);
+//     };
+// };
+// /OLD SNAPPING CRAP --------------------------------------------------------------------
