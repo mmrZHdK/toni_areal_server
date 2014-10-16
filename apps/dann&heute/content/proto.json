@@ -1,0 +1,12 @@
+{
+    "context": "",
+    "title": "",
+    "media": {"type": "img", "src": ["img/licht1.png", "img/licht2.png"]},
+    "text": [
+        "",
+        "",
+        ""
+    ],
+    "link": "",
+    "related": ["rampe.json", "dachgarten.json"]
+}
