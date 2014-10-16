@@ -1,0 +1,10 @@
+{
+    "context": "Schwarze Decke",
+    "title": "Hier hat Tutanchamun seine Spuren hinterlassen",
+    "media": {"type": "img", "src": ["img/tut1.jpg", "img/tut2.jpg"]},
+    "text": [
+        "Siehst du die schwarz bemalten Flächen an der Decke in der Eingangshalle? Das sind nicht etwa unvollendete Malerarbeiten, sondern Rückstände der Tutanchamun-Ausstellung, die hier im Jahr 2008 stattfand. Auch viele andere Events fanden hier in der Phase der Zwischennutzung statt. So zum Beispiel Modeschauen und Theaterproduktionen."
+    ],
+    "link": "",
+    "related": ["rampe.json", "dachgarten.json"]
+}

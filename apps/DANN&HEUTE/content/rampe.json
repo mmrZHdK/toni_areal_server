@@ -1,10 +1,11 @@
 {
     "context": "Rampe",
-    "title": "Ein Miniatur-Lastwagen half bei der Formfindung",
-    "media": {"type": "img", "src": ["img/rampe1.png", "img/rampe2.png", "img/rampe3.png"]},
+    "title": "Ein Miniatur-Lastwagen bestimmte die Form",
+    "media": {"type": "img", "src": ["img/rampe2.png", "img/rampe3.png", "img/rampe1.png"]},
     "text": [
-        "Zu Zeiten der Toni-Molkerei musste ein Tanklastwagen mit Anhänger die Rampe rauf- und runterfahren können. Kommt der Lastwagen rauf, schaffen es alle Fahrzeuge, also auch jene der Mitarbeiter. Denn das Dach der Fabrik funktionierte damals noch als Parkdeck.",
-        "Um die optimale Form der Rampe zu berechnen, behalf half sich der Ingenieur mit einer einfachen Methode aus: Er liess ein Miniatur-Lastwagen herstellen, mit dem er auf dem Papier die Schleifen fuhr, während ein Mitarbeiter die Radspuren nachzeichnete. So kamen sie empirisch in kurzer Zeit zur besten Form."
+        "Der Bau der Toni-Molkerei unterlag einem gedrängten Zeitplan. Um bei der Entwicklung der Rampe Zeit zu sparen, behalf sich der Ingenieur einer einfachen Methode.",
+        "Er liess sich ein massstabsgetreuer Miniatur-Lastwagen herstellen, mit dem er auf dem Papier die Schleifen fuhr, während ein Mitarbeiter die Radspuren nachzeichnete. So kamen sie in kurzer Zeit zur besten Form. Ohne komplizierte Mathematik, durch reine Empirie.",
+        "Was weiter erstaunt: Ebenso dem dichten Zeitplan geschuldet, wurde auch auf komplizierte Berechnungen der Gebäudestruktur verzichtet. Erst die Belastungstest mit der EMPA nach der Fertigstellung bewiesen die bauliche Sicherheit."
       ],
     "link": "http://www.ingbaukunst.ch/file/429/1-2014_Gespraech_DJBaenziger-2.pdf",
     "related": "dachgarten.json"

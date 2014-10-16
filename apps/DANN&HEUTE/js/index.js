@@ -145,7 +145,7 @@ function displayArticle(data, key) {
     $.each(featureLogos, function(index, item) {
         var $featureLogo = $("<div></div>").attr({"class": "featureLogo", "id": featureLogos[index].name});
         if(item.name == "favorites" && $.inArray(key, userFavArray) != -1) {
-            $featureLogo.append($("<img src='logos/favorites_true.svg'>"));
+            $featureLogo.append($("<img src='logos/favorites_true.svg'>").css("width", "55%"));
             $featureLogo.append($("<p></p>").text("ALS FAVORIT HINZUGEFÜGT"));
         } else {
             $featureLogo.append($("<img src='" + featureLogos[index].url + "'>"));
@@ -216,6 +216,7 @@ function removeFromFavorites(task, key) {
     usersRef.set(userFavArray);
 
     //$("#"+task).removeClass("favorites-true");
+    $("#"+task).find("img").attr("src", "");
     $("#"+task).find("img").attr("src", "logos/favorites.svg");
     $("#"+task).find("p").text("ALS FAVORIT HINZUFÜGEN");
     console.log("Removed article" + key + " from Database");
@@ -385,10 +386,13 @@ function setButtonControls(leftButton, rightButton) {
 
     if(leftButton == "back") {
         $leftButton.on("click", function() {
+            console.log(lastScreenType);
             if(lastArticle == null) {
-                goTo("menu");
+                console.log("kaka");
+                goTo("list");
+            } else {
+                goTo(herbert);
             }
-            goTo(herbert);
         });
     } else {
         $leftButton.on("click", function() {
@@ -561,7 +565,7 @@ $(document).ready(function() {
         showList();
         setButtonControls("menu", "keypad");
         setButtonViews("menu", "keypad");
-        setView("")
+        setView("list");
 
     });
 
