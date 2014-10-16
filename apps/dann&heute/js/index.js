@@ -170,11 +170,14 @@ function callFeature(task, key) {
         }
 
     } else if (task == "share") {
+       window.location = "mailto:?body=Habe über das Toni-Areal einen spannenden Beitrag gefunden: http://" + location.host + window.location.pathname + "#" +  lastArticle ;
         console.log("share");
+        /*
         $("#notification-article").animate({"top": "50px", opacity:"show"}, 500);
         setTimeout(function() {
             $("#notification-article").animate({"top": "0px", opacity:"show"}, 500);
         }, 1800);
+        */
 
     } else if (task == "similar") {
         $("#notification-article").animate({"top": "50px", opacity:"show"}, 500);

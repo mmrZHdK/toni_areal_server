@@ -6,4 +6,4 @@ CODES
 159: milchannahme
 753: signaletik
 258: statik
-159: stuetze
+555: stuetze
