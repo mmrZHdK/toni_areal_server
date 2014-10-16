@@ -5,9 +5,9 @@ $font-name-condensed: "nimbus-sans-condensed";
 
 
 $black: #1a1a1a;
-$white: #f2f2ed;
+$white: #fdfdfd;
 
-$dark: #40403f;
+$dark: #1C1C1B;
 
 $friar: #80807e;
 $nickel: #bfbfbc;
@@ -18,7 +18,7 @@ $font-normal-weight: 300;
 $font-bold-weight: 700;
 $font-black-weight: 900;
 
-$header-height: 50px;
+$header-height: 60px;
 
 
 // Override Bootstrap variables here (defaults from bootstrap-sass v3.1.1.1):
@@ -76,7 +76,7 @@ $font-family-sans-serif:  $font-name-condensed, "Helvetica Neue", Helvetica, Ari
 // $font-size-small:         ceil(($font-size-base * 0.85)) // ~12px
 
 $font-size-h1:            floor(($font-size-base * 1.6)); // ~36px
-$font-size-h2:            floor(($font-size-base * 1)); // ~30px
+$font-size-h2:            floor(($font-size-base * 1.2)); // ~30px
 // $font-size-h3:            ceil(($font-size-base * 1.7)) // ~24px
 // $font-size-h4:            ceil(($font-size-base * 1.25)) // ~18px
 // $font-size-h5:            $font-size-base

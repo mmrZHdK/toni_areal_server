@@ -3,7 +3,7 @@ node_modules
 dist
 .tmp
 .sass-cache
-app/build/
+app/build/*/temp
 app/bower_components
 test/bower_components
 vendor/

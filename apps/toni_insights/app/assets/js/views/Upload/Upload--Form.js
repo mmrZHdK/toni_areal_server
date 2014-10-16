@@ -2,6 +2,8 @@
 
 var Backbone = require('backbone'),
     $ = require('jquery'),
+    _ = require('underscore'),
+
     UserModel = require('../../models/UserModel'),
     UploadTypes = require('../../collections/UploadCollection'),
     PicturePostView = require('./Post/Picture'),
@@ -20,17 +22,18 @@ module.exports = Backbone.View.extend({
   },
 
   initialize: function(options) {
+    this.delegate = options.delegate;
     this.render(options.model);
   },
 
-  render: function(model) {
-    model.attributes.selectedRoomId = UserModel.get('selectedRoom');
+  render: function() {
+    this.model.attributes.selectedRoomId = UserModel.get('selectedRoom');
 
-    this.$el.html(template(model.attributes));
+    this.$el.html(template(this.model.attributes));
 
     var formContentEl = '.vFormContent';
 
-    switch (model.attributes.type) {
+    switch (this.model.attributes.type) {
       case 'text':
         var textPost = new TextPostView({
           el: this.$(formContentEl)
@@ -38,7 +41,10 @@ module.exports = Backbone.View.extend({
         break;
       case 'picture':
         var picturePost = new PicturePostView({
-          el: this.$(formContentEl)
+          el: this.$(formContentEl),
+          delegate: {
+            uploadFile: _.bind(this.triggerFormSubmit, this)
+          }
         });
         break;
       case 'video':
@@ -47,14 +53,13 @@ module.exports = Backbone.View.extend({
           el: this.$(formContentEl)
         });
         break;
-      case 'color':
-        var colorPost = new ColorPostView({
-          el: this.$(formContentEl)
-        });
-        break;
     }
 
     return this;
+  },
+
+  triggerFormSubmit: function() {
+    this.$('.js-postForm').submit();
   },
 
   submitForm: function(evt) {
@@ -63,14 +68,19 @@ module.exports = Backbone.View.extend({
     var formData = new FormData($(evt.target).get(0));
 
     $.ajax({
-      url: 'http://insights.dev/api/post/',
+      url: 'http://insights.lukasgaechter.ch/api/post/',
       data: formData,
       method: 'POST',
       processData: false,
       contentType: false,
-      success: function(data) {
+      success: _.bind(function(data) {
         console.log(data);
-      }
+
+        /**
+         * go back to Room view
+         */
+        this.delegate.restoreRoomView();
+      }, this)
     });
   }
 

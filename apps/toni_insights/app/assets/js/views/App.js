@@ -20,6 +20,7 @@ var $ = require('jquery'),
     ContentView = require('./Content'),
     RoomSelectView = require('./RoomSelect/RoomSelect'),
     UploadView = require('./Upload/Upload'),
+    UploadFormView = require('./Upload/Upload--Form'),
     RoomView = require('./Room/Room'),
 
     // Template
@@ -59,6 +60,10 @@ module.exports = Backbone.View.extend({
     },
     'vUpload': {
       'vRoomSelect': 'right',
+      'vRoom': 'right',
+      'vUploadForm': 'left'
+    },
+    'vUploadForm': {
       'vRoom': 'right'
     }
   },
@@ -159,7 +164,7 @@ module.exports = Backbone.View.extend({
          * animate
          */
         this.slideOutView(this.lastViewObj, direction, unLoadView);
-        this.slideInView(newViewObj.$el, direction, viewAlreadyInserted);
+        this.slideInView(newViewObj.$el, direction, viewAlreadyInserted, newViewObj);
       }
 
       else {
@@ -188,6 +193,7 @@ module.exports = Backbone.View.extend({
         duration: 450,
         easing: 'easeInOut',
         complete: _.bind(function() {
+          this.stopView(viewObj);
           if (unLoadView) {
             this.unsetView(viewObj);
           }
@@ -196,7 +202,7 @@ module.exports = Backbone.View.extend({
     );
   },
 
-  slideInView: function($view, direction, viewAlreadyInserted) {
+  slideInView: function($view, direction, viewAlreadyInserted, newViewObj) {
 
     /**
      * check if view is already applied
@@ -225,11 +231,24 @@ module.exports = Backbone.View.extend({
       {
         duration: 450,
         easing: 'easeInOutQuart',
-        complete: function() {
+        complete: _.bind(function() {
           // animation complete
-        }
+          this.startView(newViewObj);
+        }, this)
       }
     );
+  },
+
+  startView: function(viewObj) {
+    if ('undefined' !== typeof viewObj.start) {
+      viewObj.start();
+    }
+  },
+
+  stopView: function(viewObj) {
+    if ('undefined' !== typeof viewObj.stop) {
+      viewObj.stop();
+    }
   },
 
   unsetView: function(viewObj) {
@@ -254,7 +273,8 @@ module.exports = Backbone.View.extend({
       id: id,
       className: 'content-view',
       delegate: {
-        loadFailure: _.bind(this.loadRoomSelectView, this)
+        loadRoomSelectView: _.bind(this.loadRoomSelectView, this),
+        loadStreamView: _.bind(this.loadStreamView, this)
       }
     });
 
@@ -289,7 +309,8 @@ module.exports = Backbone.View.extend({
       className: 'content-view',
       comingFromLoader: comingFromLoader,
       delegate: {
-        requestLoaderView: _.bind(this.loadLoaderView, this)
+        requestLoaderView: _.bind(this.loadLoaderView, this),
+        loadRoomView: _.bind(this.prepareRoomView, this)
       }
     });
 
@@ -318,10 +339,15 @@ module.exports = Backbone.View.extend({
   loadRoomView: function(model) {
     var id = 'vRoom';
 
+    UserModel.set('selectedRoomName', model.attributes.roomNrHumanShort);
+
     this.roomView = new RoomView({
       id: id,
       className: 'content-view',
-      model: model
+      model: model,
+      delegate: {
+        loadUploadView: _.bind(this.loadUploadView, this)
+      }
     });
 
     this.loadView(id, this.roomView);
@@ -349,11 +375,27 @@ module.exports = Backbone.View.extend({
       id: id,
       className: 'content-view',
       delegate: {
-        submitUpload: _.bind(this.submitUpload, this)
+        restoreRoomView: _.bind(this.restoreRoomView, this),
+        loadUploadFormView: _.bind(this.loadUploadFormView, this)
       }
     });
 
     this.loadView(id, this.uploadView);
+  },
+
+  loadUploadFormView: function(model) {
+    var id = 'vUploadForm';
+
+    this.uploadFormView = new UploadFormView({
+      id: id,
+      className: 'content-view upload-form-container',
+      model: model,
+      delegate: {
+        restoreRoomView: _.bind(this.restoreRoomView, this)
+      }
+    });
+
+    this.loadView(id, this.uploadFormView);
   },
 
   loadPreviousView: function() {
@@ -366,10 +408,6 @@ module.exports = Backbone.View.extend({
 
   selectRoom: function() {
 
-  },
-
-  submitUpload: function() {
-    // upload files and shit
   }
 
 });

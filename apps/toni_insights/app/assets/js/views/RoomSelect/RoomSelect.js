@@ -2,7 +2,10 @@
 
 var Backbone = require('backbone'),
     $ = require('jquery'),
+    velocity = require('velocity'),
+
     RoomSearchView = require('./RoomSelect--Search'),
+
     template = require('../../templates/RoomSelect/RoomSelect.hbs');
 
 Backbone.$ = $;
@@ -10,7 +13,7 @@ Backbone.$ = $;
 module.exports = Backbone.View.extend({
 
   events: {
-    'click .js-loaderTryAgain' : 'requestLoaderView'
+    'click input': 'clickInput'
   },
 
   initialize: function(options) {
@@ -25,7 +28,8 @@ module.exports = Backbone.View.extend({
     }));
 
     var roomSearchView = new RoomSearchView({
-      el: this.$('#vRoomSearch')
+      el: this.$('#vRoomSearch'),
+      delegate: this.delegate
     });
 
     return this;
@@ -33,8 +37,32 @@ module.exports = Backbone.View.extend({
 
   requestLoaderView: function(evt) {
     evt.preventDefault();
-
     this.delegate.requestLoaderView();
+  },
+
+  clickInput: function(evt) {
+    this.moveForm();
+  },
+
+  moveForm: function() {
+    if (! $('.content').hasClass('is-moved')) {
+      var offsetY = $('.js-scrollTo').offset().top;
+      var headerHeight = $('.header').height();
+      var offset = 10;
+
+
+      $('.content').velocity({
+        top: -offsetY + offset + headerHeight + 'px'
+      }, {
+        complete: function() {
+          $(this).addClass('is-moved');
+        }
+      });
+    }
+  },
+
+  stop: function() {
+
   }
 
 });

@@ -1,3 +1,44 @@
-<div class="loadingAnimation">
-<img src="http://media1.giphy.com/media/PWevF5pfnQqkg/200.gif" />
+<div class="content">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 text-center">
+            <h1>Insights</h1>
+        </div>
+    </div>
+    <div class="row content-loader">
+        {{#if loadingStatus}}
+            <div class="js-loadingStatus text-center">
+                <div class="col-xs-8 col-xs-offset-2 text-center">
+                    <p class="large"><span class="black">Räume in deiner Umgebung</span><br>werden ermittelt...</p>
+                    {{#if beaconsFound}}
+                        <a href="#" class="button js-startStream">Stream starten</a>
+                    {{else}}
+                        <div class="row">
+                            <div class="col-xs-6 col-xs-offset-3 text-center">
+                                <div class="button button-spinner js-startStream">
+                                    <span class="spin-spin spinner js-spin"></span>
+                                    <span class="button-label">Start!</span>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                    <p class="subtle room-top">Um zu sehen, was in den Räumen um dich herum passiert, wird dein Standort ermittelt. Stelle dich in einen Gang für eine optimale Verbindung.</p>
+                </div>
+            </div>
+        {{else}}
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                <p class="large"><span class="black">Keine Räume</span> in deiner<br>direkten Umgebung gefunden.</p>
+            </div>
+            <div class="col-xs-6 col-xs-offset-3 text-center">
+                <a href="#" class="button js-loaderTryAgain">Nochmal versuchen</a>
+            </div>
+        {{/if}}
+    </div>
+    <!-- <a href="#" class="button js-startStream">Stream starten</a> -->
+    <div class="row fixed-bottom">
+        <div class="col-xs-8 col-xs-offset-2 text-center">
+            <a href="#" class="button js-searchRoom"><span class="icon-search"></span>Raum suchen</a>
+        </div>
+    </div>
 </div>
+
+

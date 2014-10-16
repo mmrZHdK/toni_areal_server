@@ -3,9 +3,13 @@
 var Backbone = require('backbone'),
     _ = require('underscore'),
     $ = require('jquery'),
+
     config = require('../../config'),
+
     UploadModel = require('../../models/UploadModel'),
+
     UploadCollection = require('../../collections/UploadCollection'),
+
     ChooseUploadView = require('./Upload--Choose'),
     UploadFormView = require('./Upload--Form'),
 
@@ -17,7 +21,8 @@ module.exports = Backbone.View.extend({
 
   className: 'upload',
 
-  initialize: function() {
+  initialize: function(options) {
+    this.delegate = options.delegate;
     this.uploadList = new UploadCollection(config.uploadTypes);
     this.render();
   },
@@ -35,22 +40,27 @@ module.exports = Backbone.View.extend({
     });
 
     // select first menu item
-    chooseUploadView.setCurrentMenuClass(1);
+    /*chooseUploadView.setCurrentMenuClass(1);
 
     // select the first model as a standard
     var selectedFormModel = this.uploadList.get(1);
 
     this.uploadFormView = new UploadFormView({
       model: selectedFormModel,
-      el: this.$('.vUploadForm')
-    });
+      el: this.$('.vUploadForm'),
+      delegate: this.delegate
+    });*/
 
     return this;
   },
 
   selectUploadType: function(model) {
     // load in new Upload view
-    this.uploadFormView.render(model);
+    this.delegate.loadUploadFormView(model);
+  },
+
+  stop: function() {
+
   }
 
 });

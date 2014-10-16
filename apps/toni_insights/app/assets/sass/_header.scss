@@ -5,12 +5,12 @@
     width: 100%;
     line-height: $header-height;
     height: $header-height;
-    border-bottom: 1px solid $dark;
 
     overflow-x: hidden;
 
     font-size: 1.5em;
-    color: $dark;
+    background: $dark;
+    color: $white;
     text-align: center;
 
     a {
@@ -24,11 +24,15 @@
         text-transform: uppercase;
         text-align: center;
         text-decoration: none;
-        color: $dark;
 
         &:focus {
             background: rgba($dark, 0.66);
         }
+    }
+
+    h1 {
+        line-height: $header-height;
+        margin: 0;
     }
 
 }

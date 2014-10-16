@@ -1,7 +1,10 @@
-<form action="http://insights.lukasgaechter.ch/api/file/post" enctype="multipart/form-data" method="post" class="js-postForm" id="upload">
+<form action="#" enctype="multipart/form-data" method="post" class="js-postForm" id="upload">
     <input type="hidden" name="roomId" value="{{selectedRoomId}}">
     <div class="vFormContent"></div>
-    <div class="col-xs-10 col-xs-offset-1">
-        <input type="submit" class="button" value="{{buttonText}}" />
-    </div>
+    <!-- TODO: remove this if -->
+    {{#if isActive}}
+        <div class="col-xs-10 col-xs-offset-1">
+            <input type="submit" class="button" value="{{buttonText}}" />
+        </div>
+    {{/if}}
 </form>

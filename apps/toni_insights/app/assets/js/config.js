@@ -6,7 +6,8 @@ module.exports = {
         'type': 'text',
         'view': 'UploadText',
         'buttonText': 'Text posten',
-        'iconId': 'icon-speech-bubble'
+        'iconId': 'icon-speech-bubble',
+        'isActive': true
       },
       {
         'id': 2,
@@ -14,7 +15,8 @@ module.exports = {
         'type': 'picture',
         'view': 'UploadPicture',
         'buttonText': 'Bild posten',
-        'iconId': 'icon-camera'
+        'iconId': 'icon-camera',
+        'isActive': true
       },
       {
         'id': 3,
@@ -22,7 +24,8 @@ module.exports = {
         'type': 'video',
         'view': 'UploadVideo',
         'buttonText': 'Video posten',
-        'iconId': 'icon-video'
+        'iconId': 'icon-video',
+        'isActive': false
       },
       {
         'id': 4,
@@ -30,7 +33,8 @@ module.exports = {
         'type': 'sound',
         'view': 'UploadSound',
         'buttonText': 'Sound posten',
-        'iconId': 'icon-microphone'
+        'iconId': 'icon-microphone',
+        'isActive': false
       }/*,
       {
         'id': 5,

@@ -1,13 +1,15 @@
-<div class="row">
-    {{#if this.length}}
-        <ul class="list list-room">
-            {{#each this}}
-                <li class="list-element">
-                    <a href="/#room/{{id}}" class="js-selectRoom" data-id="{{id}}">{{roomNrHumanShort}}</a>
-                </li>
-            {{/each}}
-        </ul>
-    {{else}}
-        <p>Keine Räume gefunden...</p>
-    {{/if}}
-</div>
+{{#if this.length}}
+    <ul class="list list-room">
+        {{#each this}}
+            <li class="list-element">
+                <a href="#" class="js-selectRoom clearfix" data-id="{{id}}">
+                    <span class="room-number">{{roomNrHumanShort}}</span>
+                    <span class="room-label">{{roomLabelHuman}}</span>
+                    <span class="room-navigate icon-arrow-right"></span>
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+{{else}}
+    <!--<p>Keine Räume gefunden...</p>-->
+{{/if}}

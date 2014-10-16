@@ -1,0 +1,27 @@
+.button {
+    display: block;
+    width: 100%;
+    line-height: 3em;
+    background: $dark;
+    color: $white;
+    border: none;
+    border-bottom: 3px solid #000;
+    border-radius: 3px;
+    text-align: center;
+    @include font-bold;
+}
+
+.button-spinner {
+    background: none;
+    border-bottom: 3px solid transparent;
+
+    @include transition(
+        background 0.3s ease-in-out,
+        border-color 0.3s ease-in-out
+    );
+
+    &.visible {
+        background: $dark;
+        border-color: #000;
+    }
+}

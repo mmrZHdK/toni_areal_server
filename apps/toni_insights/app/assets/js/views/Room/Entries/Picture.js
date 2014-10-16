@@ -9,7 +9,7 @@ Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
 
-  className: 'stream-element stream-element-picture',
+  className: 'stream-element stream-element-picture size66',
 
   render: function() {
 

@@ -8,6 +8,7 @@ var $ = require('jquery'),
  * global plugins
  */
 require('./vendor/nouislider.js');
+require('./vendor/masonry.js');
 
 Backbone.$ = $;
 

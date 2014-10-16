@@ -29,14 +29,14 @@ module.exports = Backbone.View.extend({
     });
 
     this.buttonRoomSelect = new HeaderButton({
-      iconName: 'eye',
+      iconName: 'search',
       id: 'button-roomselect',
       className: '',
       buttonAction: _.bind(this.buttonRoomSelectAction, this)
     });
 
     this.buttonStream = new HeaderButton({
-      iconName: 'location',
+      iconName: 'eye',
       id: 'button-stream',
       className: '',
       buttonAction: _.bind(this.buttonStreamAction, this)
@@ -57,7 +57,7 @@ module.exports = Backbone.View.extend({
         left: null,
         right: null,
         transition: _.bind(this.transitionToLoader, this),
-        name: 'Lade Position...'
+        name: 'Insights'
       },
       'vStream': {
         left: null,
@@ -67,7 +67,7 @@ module.exports = Backbone.View.extend({
       },
       'vRoomSelect': {
         left: this.buttonStream,
-        right: this.buttonBackRight,
+        right: null, //this.buttonBackRight,
         transition: _.bind(this.transitionToRoomSelect, this),
         name: 'Raumauswahl'
       },
@@ -75,13 +75,19 @@ module.exports = Backbone.View.extend({
         left: this.buttonRoomSelect,
         right: this.buttonUpload,
         transition: _.bind(this.transitionToRoom, this),
-        name: '{{STREAM}}'
+        name: 'Raum'
       },
       'vUpload': {
-        left: this.buttonRoomSelect,
+        left: null, //this.buttonRoomSelect,
         right: this.buttonUpload,
         transition: _.bind(this.transitionToUpload, this),
-        name: 'Inhalt hinzuf&uuml;gen'
+        name: 'Eintrag hinzuf&uuml;gen'
+      },
+      'vUploadForm': {
+        left: null,
+        right: this.buttonUpload,
+        transition: _.bind(this.transitionToUploadForm, this),
+        name:  'Eintrag hinzuf&uuml;gen'
       }
     };
 
@@ -105,6 +111,7 @@ module.exports = Backbone.View.extend({
      */
 
     var selectedRoom = UserModel.get('selectedRoom'),
+        selectedRoomName = UserModel.get('selectedRoomName'),
         leftButton = this.actions[newViewName].left,
         rightButton = this.actions[newViewName].right,
         name = this.actions[newViewName].name;
@@ -144,8 +151,9 @@ module.exports = Backbone.View.extend({
 
     if ('vRoom' === newViewName) {
       this.buttonUpload.setState('add');
+      name = selectedRoomName;
     }
-    else if ('vUpload' === newViewName) {
+    else if ('vUpload' === newViewName || 'vUploadForm' === newViewName) {
       this.buttonUpload.setState('close');
     }
 
@@ -162,11 +170,24 @@ module.exports = Backbone.View.extend({
 
   update: function(newViewName, lastViewName) {
     console.log('Header::update::from ' + lastViewName + ' to ' + newViewName);
+
     if ('self' !== lastViewName) {
       this.actions[newViewName].transition(lastViewName);
     }
 
-    this.prepare(newViewName);
+    if ('vLoader' == newViewName) {
+      this.hideHeader();
+    }
+    else {
+      if (this.$el.hasClass('hidden')) {
+        this.$el.removeClass('hidden');
+      }
+      this.prepare(newViewName);
+    }
+  },
+
+  hideHeader: function() {
+    this.$el.addClass('hidden');
   },
 
   removeButton: function(obj) {
@@ -188,8 +209,12 @@ module.exports = Backbone.View.extend({
     });
   },
 
+  transitionToUploadForm: function(lastViewName) {
+
+  },
+
   transitionToRoom: function(lastViewName) {
-    if ('vUpload' === lastViewName) {
+    if ('vUpload' === lastViewName || 'vUploadForm' === lastViewName) {
       this.buttonUpload.$el.velocity('reverse');
     }
   },

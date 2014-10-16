@@ -34,6 +34,10 @@ function getColor(val) {
 
 module.exports = Backbone.View.extend({
 
+  events: {
+
+  },
+
   initialize: function() {
     this.render();
   },
@@ -69,12 +73,18 @@ module.exports = Backbone.View.extend({
       });
 
       slider.ref = this.coloredInputs;
-
+      slider.el.on('slide', _.bind(this.blurInput, this));
       slider.el.on('slide', _.bind(slider.callback, slider));
       slider.el.on('change', _.bind(this.setInputValues, slider));
     }, this));
 
+    this.$('.js-slider').on('click', _.bind(this.blurInput, this));
+
     return this;
+  },
+
+  blurInput: function() {
+    this.$('input, textarea').blur();
   },
 
   setBackgroundColor: function() {

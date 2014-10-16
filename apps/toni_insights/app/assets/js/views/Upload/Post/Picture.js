@@ -8,13 +8,23 @@ Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
 
-  initialize: function() {
+  events: {
+    'change .js-fileInput': 'uploadFile'
+  },
+
+  initialize: function(options) {
+    this.delegate = options.delegate;
+
     this.render();
   },
 
   render: function() {
     this.$el.append(template());
     return this;
+  },
+
+  uploadFile: function() {
+    this.delegate.uploadFile();
   }
 
 });
