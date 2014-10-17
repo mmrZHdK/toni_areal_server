@@ -10,6 +10,8 @@
    Base styles: opinionated defaults
    ========================================================================== */
 
+
+
 html,
 button,
 input,
@@ -182,15 +184,32 @@ textarea {
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px; 
- 
     float:left;
     margin: 20px;
     cursor: pointer;
 }
+#hand{
+  z-index: 100;
+  position: absolute;
+  display: none;
+  top: 100px;
+  left:100px;
+}
+.pulse{
+  -webkit-transform: scale3d(1, 1, 1);
+            transform: scale3d(1, 1, 1);
+}
 
-.circle.selected {
-  border: 10px red;
-  background-color: red;
+.selected {
+  border: 2px solid white;
+  width: 30px;
+  height: 30px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px; 
+  float:left;
+  margin: 20px;
+  cursor: pointer;
 }
 
 .colorPickerSet{
@@ -236,6 +255,7 @@ ul {
   display: block;
   margin:   0 auto;
   margin-top: 0.6em;
+  overflow:hidden;
 
 }
 
@@ -260,7 +280,7 @@ ul {
 #status {
   display: block;
   float:left;
-  
+  color: white;
   background: #5C5C5B;
   border: 0;
   height:40px;
@@ -270,7 +290,7 @@ svg { cursor: pointer; }
 
 #send-status-button {
   display: block;
-  width: 50px;
+  width: 80px;
   cursor: pointer;
   display: block;
   padding: 0.75em;
@@ -346,13 +366,96 @@ svg { cursor: pointer; }
   transition: left 1s;
 }
 .footer{
-    position: absolute;
+    position: fixed;
+    z-index:10;
     bottom: 0;
     left: 0;
     width:100%;
     height: 4em;
     background: #3C3C3B;
     overflow: hidden;
+}
+#openMapIcon1{
+  float:right;
+  height:40px;
+  width:48px;
+  margin-right: 5px;
+  margin-top: 9px;
+}
+#openMapIcon2{
+  float:right;
+  height:40px;
+  width:48px;
+  margin-right: 5px;
+  margin-top: 9px;
+}
+
+#homeButtonIcon{
+  float:left;
+  height:40px;
+  width:48px;
+  margin-right: 15px;
+  margin-top: 9px;
+
+}
+#chatIcon1{
+  float:left;
+  height:40px;
+  width:48px;
+  margin-left: 5px;
+  margin-top: 9px;
+}
+#chatIcon2{
+  float:left;
+  height:40px;
+  width:48px;
+  margin-left: 5px;
+  margin-top: 9px;
+
+}
+
+#openMapButton{
+ 
+  display:block;
+  width: 40%;
+  float: left;
+
+}
+
+#closeMapButton{
+  
+  display:block;
+  float:left;
+  width: 40%;
+}
+
+/*-----Tabelle--------*/
+.chattabelle{
+width: 100%;
+
+margin: 0;
+padding: 0;
+border-bottom: 4px solid white;
+border-collapse: collapse;
+}
+
+.chatname{
+border-right: 4px solid white;
+padding: 30px 7px;
+text-transform: uppercase;
+color:white;
+}
+
+.chatmessage{
+padding: 3px 10px 3px 30px;
+color: white;
+font-size: 1.3em;
+}
+.chattime{
+width: 100px;
+text-align: right;
+padding: 10px;
+color: white;
 }
 
 
@@ -375,7 +478,7 @@ svg { cursor: pointer; }
 }
 .scrollbox .list li {
   display: block;
-  margin:5px 0px;
+  margin: 50px 0px;
   
 }
 
@@ -393,10 +496,7 @@ svg { cursor: pointer; }
 
   color: #E8E8E8;
   float:right;
-  padding: 25px 20px;
-
-
-
+  padding: 25px 5px;
 }
 
 .list-element-container{
@@ -408,9 +508,9 @@ svg { cursor: pointer; }
 
   color: white;
   float: left;
-  width: 200px;
-  font-size:1.5em;
-  padding: 20px 20px;
+
+  width: 60%;
+  padding: 25px 20px;
   margin:0;
   
 

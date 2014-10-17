@@ -56,9 +56,7 @@ $(document).ready(function(){
 });
 
 
-
-
-function loadListItems() {
+ function loadListItems() {
 	var alleEntries = loadAllStatusEntries(function(statusEntries) {
 		console.log('FERTIG GELADEN');
 		console.log(statusEntries.val());
@@ -69,13 +67,13 @@ function loadListItems() {
 
 		$.each(statusEntries.val(), function(id, statusEntry) {
 			var statusEntryHtml = '';
-			statusEntryHtml += '<li>';
-			statusEntryHtml += '<div class="list-element-container" style="background-color: '+ statusEntry.color +'">';
-            statusEntryHtml += '<div class="list-element-username" style="background-color: '+ statusEntry.color +'">' + statusEntry.username +'</div>';
-            statusEntryHtml += '<div class="list-element-status" style="background-color: '+ statusEntry.color +'">' + statusEntry.status +'</div>';	
-			statusEntryHtml += '<div class="list-element-time" style="background-color: '+ statusEntry.color +'">' + statusEntry.date +'</div>';
-			statusEntryHtml += "</div>";
-			statusEntryHtml += "</li>";
+			statusEntryHtml += '<table class="chattabelle" cellpadding="0" cellspacing="0">';
+			statusEntryHtml += '<tr>'
+            statusEntryHtml += '<td class="chatname" style="background-color: '+ statusEntry.color +'">' + statusEntry.username +'</td>';
+            statusEntryHtml += '<td class="chatmessage" style="background-color: '+ statusEntry.color +'">' + statusEntry.status +'</td>';	
+			statusEntryHtml += '<td class="chattime" style="background-color: '+ statusEntry.color +'">' + statusEntry.date +'<td>';
+			statusEntryHtml += '</tr>'
+			statusEntryHtml += "</table>";
 
 			placeHolder.prepend(statusEntryHtml);
 		});	

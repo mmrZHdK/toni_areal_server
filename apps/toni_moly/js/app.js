@@ -12,7 +12,7 @@ function loadAllStatusEntries(callback) {
 }
 
 function addStatusEntry(data) {
-	f.push(data);
+	f.push(data);	
 }
 
 
@@ -25,7 +25,13 @@ function removeLocation(callback, location) {
 }
 
 function addLocation(person) {
-	locations.push(person);
+	// alert(2)
+	if(localStorage.getItem("userId")){
+		locations.child(localStorage.getItem("userId")).remove();
+  		// itemRef.remove();
+	}
+	var uid = locations.push(person);
+	localStorage.setItem('userId',uid.name());
 }
 
 function saveToLocalStorage(key,value) {

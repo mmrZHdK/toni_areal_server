@@ -1,21 +1,73 @@
 var mapIsDisplayed = false;
 var paper;
+var hand = false;
 
 $(function() {
 	$("#openMapButton").on('click', function() {
 		if (mapIsDisplayed) {
+			$('body').css({background: 'white'});
 			paper.remove();
+			$("#hand").hide();
 			$("#statusPage").show();
 			mapIsDisplayed = false;
-			$("#openMapIcon").show();
+		
+			$("#chatIcon1").show();
+			$("#openMapIcon1").hide();
+			$("#openMapIcon2").show();
+			$("#chatIcon2").hide();
+
+			
+
 		} else {
+			$("#hand").show();
+			$("#hand").delay(2000).hide(0);
+			$('body').css({background: '#575756'});
 			$("#statusPage").hide();
 			drawMap();
 			mapIsDisplayed = true;
-			$("#openMapIcon").hide();
-			$("#closeMapIcon").show();
+			//$("#openMapIcon").hide();
+			
 
-			// show close map openMapIcon
+			$("#openMapIcon1").show();
+			$("#openMapIcon2").hide();
+			$("#chatIcon2").show();
+			$("#chatIcon1").hide();
+			
+		}
+		
+	});
+});
+
+$(function() {
+	$("#closeMapButton").on('click', function() {
+		if (mapIsDisplayed) {
+			$('body').css({background: 'white'});
+			paper.remove();
+			$("#hand").hide();
+			$("#statusPage").show();
+			mapIsDisplayed = false;
+		
+			$("#chatIcon1").show();
+			$("#openMapIcon1").hide();
+			$("#openMapIcon2").show();
+			$("#chatIcon2").hide();
+
+			
+
+		} else {
+			$("#hand").show();
+			$("#hand").delay(2000).hide(0);
+			$('body').css({background: '#575756'});
+			$("#statusPage").hide();
+			drawMap();
+			mapIsDisplayed = true;
+			//$("#openMapIcon").hide();
+			
+
+			$("#openMapIcon1").show();
+			$("#openMapIcon2").hide();
+			$("#chatIcon2").show();
+			$("#chatIcon1").hide();
 			
 		}
 		
@@ -23,11 +75,14 @@ $(function() {
 });
 
 
+
+
+
 function drawMap() {
 	// 568 is full height
-	paper = Raphael(0, 0, 320, 568);
+	paper = Raphael(0, 0, 320, 480);
 
-	var img = paper.image("img/map-04.png", 0, 0, 320, 568);
+	var img = paper.image("img/map-04.png", 0, 0, 320, 480);
 
 	var myCurrentLocation = undefined;
 
@@ -36,7 +91,7 @@ function drawMap() {
 		var person = paper.circle(x, y, 10);
 		var name = paper.text(x + 15, y - 15, name);
 		person.attr('fill', color);
-		return person;
+		return [person,name];
 	};
 
 	var savePerson = function(x, y, name, color) {
@@ -52,13 +107,14 @@ function drawMap() {
 
 	};
 
-	$(document).bind('click touchend', function(event) {
+	$("svg").bind('click touchend', function(event) {
 		
 		var x = event.clientX;
 		var y = event.clientY;
 
 		if (myCurrentLocation) {
-			myCurrentLocation.remove();
+			myCurrentLocation[0].remove();
+			myCurrentLocation[1].remove();
 
 		}
 		var color = localStorage.getItem('color')
