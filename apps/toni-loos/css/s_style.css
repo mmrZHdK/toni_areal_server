@@ -206,7 +206,7 @@ textarea {
   list-style: inside none;
 }
 
-.menue li a {
+#meineEintrage1, #meineEintrage2 {
   word-wrap: break-word;
   display: block;
   padding: 0.5em 0;

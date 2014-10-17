@@ -302,7 +302,7 @@ if($(".page#home").is(":visible") ){
   $('#heute-Cover').waypoint(function() {
   $(".titel").text("HEUTE");
   //console.log("heute cover drin ==")
-}, { offset: 200 });
+}, { offset: 400 });
   $('#morgen').waypoint(function() {
   $(".titel").text("MORGEN");
   //console.log("morgen cover drin ==")
@@ -469,6 +469,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                              duration: 5000,
                              opacity: 1
                          }).show();
+                         window.location.reload();
 
                 }
                 //$(".navi.titel").scrollIntoView(true);
@@ -486,7 +487,15 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $( ".scrollbox" ).toggleClass( "pushright" );
         //window.location.reload(true);
         $("#backMainApp").click(function(){
-          window.location.href="../../../index.html";
+          window.location.href="../../../toni_areal_server";
+        });
+        $("#meineEintrage1, #meineEintrage2").click(function (){
+          swal({
+                      title: "DIESER BEREICH IST ERST IN V.2 AKTIV",
+                      //text: "BITTE ALLE FELDER AUSFÜLLEN!",
+                      type: "",
+                      confirmButtonText: "OK"
+                    });
         });
     });
 
