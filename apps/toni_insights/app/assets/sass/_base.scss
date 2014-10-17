@@ -5,9 +5,10 @@
 body {
     @include font-normal;
     color: $dark;
+    background: $white;
 }
 
-.app {
+#app-container {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -27,47 +28,35 @@ body {
     z-index: 0;
 }
 
-/* .secondary {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    min-height: 100%;
-}
-
-.secondary-left {
-    left: -100%;
-
-    z-index: 1000;
-}
-
-.secondary-right {
-    left: 100%;
-
-    z-index: 2000;
-}
-
-.sidebar {
-}
-
-.upload {
-} */
-
-
 .container-content {
     position: absolute;
     width: 100%;
-    margin-top: $header-height;
+    min-height: 100%;
 }
 
 .content-view {
     position: absolute;
     top: 0;
     width: 100%;
+    min-height: 100%;
+    padding-top: $header-height;
 }
 
 .content {
-    @extend .clearfix;
-    padding: 2%;
+    padding-top: 10px;
+}
+
+#vRoomSelect .content {
+    padding-top: 25%;
+    position: relative;
+}
+
+#vUpload .content {
+    padding-top: 25%;
+}
+
+#vRoom .content {
+    padding-top: 35%;
 }
 
 .upload-form-container {
@@ -75,16 +64,17 @@ body {
 }
 
 .choose-upload-type {
-    background: $dark;
+    //background: $dark;
 }
 
 /*a*/.select-upload-type {
     display: block;
-    padding-top: 10px;
     float: left;
-    width: 25%;
-    height: 18vw;
+    height: 30vw;
+    padding-top: 1.4em;
+    margin-bottom: $grid-gutter-width;
     line-height: 2em;
+    background: $dark;
     text-align: center;
     color: $nickel;
 
@@ -111,18 +101,45 @@ ul {
     padding: 0;
 }
 
+.list-room {
+    margin-top: 1em;
+}
+
 .list-element {
-    margin-bottom: 2px;
+
+    $list-element-line-height: 3em;
 
     a {
         display: block;
-        line-height: 2.4em;
+        line-height: $list-element-line-height;
         padding: 0 1em;
-        background: $white;
+        background: $dark;
+        border-bottom: 2px solid $white;
 
-        font-size: 1.2em;
+        font-size: 1em;
+        color: $white;
+    }
+
+    .room-number,
+    .room-label,
+    .room-navigate {
+        display: block;
+        float: left;
+        line-height: $list-element-line-height;
+        height: $list-element-line-height;
+    }
+
+    .room-number {
+        width: 20%;
         @include font-bold;
-        color: $black;
+    }
+
+    .room-label {
+        @include font-normal;
+    }
+
+    .room-navigate {
+        float: right;
     }
 }
 
@@ -142,8 +159,6 @@ a, a:hover {
     text-decoration: none;
 }
 
-
-
 .box {
     padding: $grid-gutter-width;
 }
@@ -152,25 +167,6 @@ a, a:hover {
     background: $carrara;
 }
 
-.stream-element {
-    background: $dark;
-    color: $white;
-    float: left;
-
-    .text-content {
-        line-height: 1em;
-    }
-}
-
-.stream-element-picture {
-    width: 30%;
-}
-
-.stream-element-text {
-    font-size: 30px;
-    padding: 10px 20px;
-    @include font-condensed;
-}
 
 .content-hidden {
     display: none;
@@ -183,4 +179,39 @@ a, a:hover {
 
 .room-top {
     margin-top: 1em;
+}
+
+.large {
+    font-size: 1.4em;
+}
+
+.black {
+    @include font-condensed;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.subtle {
+    color: $friar;
+}
+
+.content-loader {
+    margin-top: 60px;
+}
+
+.fixed-bottom {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+}
+
+.fixed-middle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }

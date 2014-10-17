@@ -1,0 +1,12 @@
+{
+    "context": "Dachgarten",
+    "title": "Ein üppiger Garten, dessen Ziel nicht Wachstum, sondern Zerfall ist",
+    "media": {"type": "img", "src": ["img/dachgarten.png", "img/dachgarten1.jpg"]},
+    "text": [
+        "Wer sich gefragt hat, wieso die Blumenkisten verwittert und dem Zerfall nahe sind: Das ist pure Absicht.",
+        "Sind die Kisten erst einmal ganz zersetzt, soll der Garten zu einer Hügellandschaft anwachsen. Dazu wurden Stauden, Küchenkräuter und Kleingehölze zwei Jahre lang vorkultiviert und nun hier auf 30 Metern Höhe ausgesetzt.",
+        "Der Prozess eines Gartens beginnt für die Macher am scheinbaren Ende: mit dem Zerfall."
+    ],
+    "link": "        http://www.studiovulkan.ch/de/projekte/oeffentlicher-raum/detail/toni-areal",
+    "related": "rampe.json"
+}

@@ -103,6 +103,16 @@ textarea {
     box-sizing: border-box;
 }
 
+.imgwrapper{
+    position: relative;
+}
+
+.overlayimg{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 #bg {
   position: fixed; 
   top: 0; 
@@ -131,16 +141,20 @@ textarea {
     margin-right: auto;
 }
 .center{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    display:block;
+    margin:auto;
 }
 
 
 .logo{
+    position: absolute;
     float: left;
-     width: 215px;
-     margin-top: 10px;
+    left: 70px;
+    width: 180px;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
  }
 
 body {
@@ -149,7 +163,7 @@ body {
 
 .content{
     position: absolute;
-    top: 40px;
+    top: 22px;
     width: 320px;
     min-height: 500px;
     margin-bottom: 5px;
@@ -159,9 +173,14 @@ body {
     float: left;
     height: 100px;
     width: 100px;
-    background: gray;
     margin: 5px 0 0 5px;
     list-style: none;
+
+}
+
+.mehr{
+    overflow: hidden;
+
 }
 
 .buttonl{
@@ -170,6 +189,16 @@ body {
     width: 45px;
     margin: 7px 0 0 7px;
 
+}
+
+.naviimg{
+    width: ;
+    height: 100%;
+}
+
+.half{
+    width: 70%;
+    height: 40px;
 }
 
 .buttonr{
@@ -181,14 +210,29 @@ body {
 }
 
 .thumbphoto{
-    height: 100px;
-    max-width: 100px;
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    left: 100%;
+
+/*    background-position: center center;
+    background-size: cover;*/
+    overflow: hidden;
+}
+
+.thumbphoto2{
+    display: inline-block;
+    width: auto;
+    height: 100%;
+
+/*    background-position: center center;
+    background-size: cover;*/
     overflow: hidden;
 }
 
 .photo{
     position: absolute;
-    top: 46px;
+    top: 490px;
     left: 77px;
     width: 50%;
 }
@@ -196,7 +240,7 @@ body {
     width: 320px;
     min-height: 100px;
     position: absolute;
-    top: 230px;
+    top: 650px;
 }
 
 .name{
@@ -237,7 +281,17 @@ body {
     width: 320px;
     min-height: 100px;
     position: absolute;
-    top: 470px;
+    top: 20px;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.about{
+    position: absolute;
+    top: 420px;
+    min-width: 320px;
     font-size: 2em;
     color: white;
     text-align: center;
@@ -248,7 +302,6 @@ body {
     float: left;
     height: 160px;
     width: 310px;
-    background: gray;
     margin: 5px 0 0 5px;
     list-style: none;
 }

@@ -36,7 +36,6 @@ module.exports = Backbone.View.extend({
   setCurrentMenuClass: function(id) {
     this.$('a').removeClass('menu-current');
 
-
     this.$('*[data-menu-id="' + id + '"]').addClass('menu-current');
   }
 

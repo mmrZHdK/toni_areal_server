@@ -9,7 +9,7 @@ var Backbone = require('backbone'),
 
     EntryCollection = require('../../collections/EntryCollection'),
 
-    StreamView = require('./Stream'),
+    StreamView = require('./Room--Stream'),
 
     template = require('../../templates/Room/Room.hbs');
 
@@ -17,22 +17,30 @@ Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
 
-  initialize: function() {
+  initialize: function(options) {
+    this.delegate = options.delegate;
     this.roomEntryCollection = new EntryCollection();
   },
 
   render: function() {
+
     this.$el.html(template(this.model.attributes));
 
-    var streamView = new StreamView({
+    this.streamView = new StreamView({
       collection: this.roomEntryCollection,
       el: this.$('#vRoomEntries'),
-      parameter: {
-        id: this.model.attributes.id
-      }
+      parentAttributes: this.model.attributes,
+      delegate: this.delegate
     });
 
     return this;
+  },
+
+  stop: function() {
+
+  },
+
+  start: function() {
   }
 
 });

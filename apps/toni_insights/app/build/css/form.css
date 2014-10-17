@@ -1,0 +1,4 @@
+/* line 1, ../../assets/sass/form.scss */
+input[type="text"], textarea {
+  width: 100%;
+}

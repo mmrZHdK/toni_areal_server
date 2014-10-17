@@ -1,0 +1,12 @@
+{
+    "context": "Lichtkonzept",
+    "title": "Gefälle zwischen hell und dunkel",
+    "media": {"type": "img", "src": ["img/licht0.jpg", "img/licht1.png", "img/licht2.png"]},
+    "text": [
+        "Wer durch das Toni-Areal geht, dem wird es vielleicht aufgefallen: Helle Bereiche mit vielen aneinandergereihten Leuchtstoffröhren wechseln sich ab mit der gängigen, regelmässigen Anordnung von Lampen.",
+        "Und das ist selbstverständlich gewollt. Ein «Hybrid aus Kunstinstallation und technischer Infrastruktur» sei das Lichtkonzept, denn es entstand ohne Hinzufügen zusätzlicher Bauteile, sondern lediglich aus der unkonventionellen Anordnung und Gruppierung von ohnehin geplanten Leuchtkörpern.",
+        "Der Wechsel von hell zu weniger hell soll zur «Rhytmisierung des Wegerlebnisses» beitragen und die Nutzer in der Aneignung der Räume fördern."
+    ],
+    "link": "http://www.realities-united.de/#SHOWINFO,1,1",
+    "related": ["rampe.json", "dachgarten.json"]
+}

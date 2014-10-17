@@ -9,7 +9,9 @@ var UserModel = Backbone.Model.extend({
   defaults: {
     searchValEbene: '',
     searchValGang: '',
-    searchValRaum: ''
+    searchValRaum: '',
+    selectedRoomName: '',
+    selectedRoom: ''
   }
 });
 

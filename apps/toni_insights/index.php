@@ -1,33 +1,4 @@
-<?php
-
-/*
-define('BASE_PATH', __DIR__);
-define('BASE_URL', 'http://data.zhdk.ch/apps/toni_insights/');
-*/
-
-/**
- * @param  string  $filename
- * @return string
- */
-function asset_path($filename) {
-    $manifest_path = './app/build/css/temp/rev-manifest.json';
-
-    if (file_exists($manifest_path)) {
-        $manifest = json_decode(file_get_contents($manifest_path), TRUE);
-    } else {
-        $manifest = [];
-    }
-
-    if (array_key_exists($filename, $manifest)) {
-        return $manifest[$filename];
-    }
-
-    return $filename;
-}
-
-?>
-
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js">
 <head>
     <!-- TODO: find betters solution -->
@@ -39,10 +10,14 @@ function asset_path($filename) {
     <meta charset="utf-8">
     <title>Insights</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-    <link rel="stylesheet" href="./app/build/css/temp/<?php echo asset_path('main.css'); ?>">
+    <link rel="stylesheet" href="./app/build/css/main.css?<?php echo time(); ?>">
 
     <script src="//use.typekit.net/jmq6ukp.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
@@ -50,6 +25,6 @@ function asset_path($filename) {
 </head>
 <body>
     <div id="app-container"></div>
-    <script src="./app/build/js/app.js"></script>
+    <script src="./app/build/js/app.js?<?php echo time(); ?>"></script>
 </body>
 </html>

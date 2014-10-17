@@ -1,0 +1,12 @@
+{
+    "context": "Gebäudestruktur",
+    "title": "Ein Gebäude, das den Wandel schon in sich trägt",
+    "media": {"type": "img", "src": ["img/gstruktur1.jpg"]},
+    "text": [
+        "Bei der Planung der Toni-Molkerei in den 70-Jahren wurde auf eine grosse Flexibilität der Gebäudestruktur geachtet. Dies war notwenig, um neuen Maschinen und Produktionsweisen einfach und günstig Platz machen zu können.",
+        "So wurden die Stützen in einem grosszügigen Raster von 10 x 10 Meter angelegt und die Deckenarmierungen als Rost verlegt, sodass bei Bedarf der Beton dazwischen entfernt werden kann.",
+        "Diese Flexibilität half beim Umbau zum Hochschulcampus und war nicht zuletzt Grund, warum die Bausubstanz der Toni-Molkerei nicht abgebrochen, sondern weiterverwendet wurde. "
+    ],
+    "link": "http://www.ingbaukunst.ch/file/429/1-2014_Gespraech_DJBaenziger-2.pdf",
+    "related": ["rampe.json", "dachgarten.json", "milchannahme.json", "signaletik.json"]
+}

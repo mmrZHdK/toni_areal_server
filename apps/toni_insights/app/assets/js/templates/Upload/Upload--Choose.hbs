@@ -1,3 +1,16 @@
-{{#each this}}
-    <a href="" data-menu-id="{{id}}" class="js-select-upload-type select-upload-type"><span class="menu-icon {{iconId}}"></span>{{name}}</a>
-{{/each}}
+<div class="content">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 text-center">
+            <label>Eintragstyp wählen</label>
+            <div class="row">
+                {{#each this}}
+                    <div class="col-xs-6">
+                        <a href="#" data-menu-id="{{id}}" class="button js-select-upload-type select-upload-type">
+                            <span class="menu-icon {{iconId}}"></span>{{name}}
+                        </a>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</div>

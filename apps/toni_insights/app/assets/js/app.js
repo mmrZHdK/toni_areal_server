@@ -8,6 +8,8 @@ var $ = require('jquery'),
  * global plugins
  */
 require('./vendor/nouislider.js');
+require('./vendor/masonry.js');
+require('./vendor/jquery.getBackgroundSize.js');
 
 Backbone.$ = $;
 

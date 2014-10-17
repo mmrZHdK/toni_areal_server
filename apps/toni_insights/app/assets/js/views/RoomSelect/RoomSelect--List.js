@@ -13,7 +13,8 @@ module.exports = Backbone.View.extend({
     'click .js-selectRoom' : 'selectRoom'
   },
 
-  initialize: function() {
+  initialize: function(options) {
+    this.delegate = options.delegate;
     this.collection.on('reset', this.render, this);
   },
 
@@ -23,16 +24,23 @@ module.exports = Backbone.View.extend({
   },
 
   selectRoom: function(evt) {
+    evt.preventDefault();
+
+    var id = $(evt.currentTarget).data('id');
+
     /**
      * empty search results
      */
-    this.collection.reset();
-    this.collection.trigger('emptyCollection');
+    //this.collection.reset();
+    //this.collection.trigger('emptyCollection');
 
     /**
      * choose room and navigate to it
      */
-    UserModel.set('selectedRoom', $(evt.target).data('id'));
+    UserModel.set('selectedRoom', id);
+
+    Backbone.history.navigate('room/' + id, false);
+    this.delegate.loadRoomView(id);
   }
 
 });

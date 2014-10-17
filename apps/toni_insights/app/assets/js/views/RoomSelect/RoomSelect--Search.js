@@ -15,24 +15,31 @@ module.exports = Backbone.View.extend({
     'keyup .js-searchEbene': 'searchEbene',
     'keyup .js-searchGang': 'searchGang',
     'keyup .js-searchRaum': 'searchRaum',
-    'focus input': 'removeFailureNotification'
+    'keypress .js-searchRaum': 'onEnter',
+    'click input': 'clickInput'
   },
 
-  initialize: function() {
+  initialize: function(options) {
+    this.delegate = options.delegate;
     this.roomListCollection = new RoomListCollection();
-    this.listenTo(this.roomListCollection, 'emptyCollection', this.clearSearchInput);
+    //this.listenTo(this.roomListCollection, 'emptyCollection', this.clearSearchInput);
 
     this.roomList = new RoomListView({
       collection: this.roomListCollection,
       id: 'vRoomList',
-      className: 'col-xs-12'
+      className: 'col-xs-12',
+      delegate: options.delegate
     });
 
     this.render();
+
+    if ('' !== UserModel.attributes.selectedRoom && '' !== UserModel.attributes.searchValEbene) {
+      this.search();
+    }
   },
 
   render: function() {
-    this.$el.html(template());
+    this.$el.html(template(UserModel.toJSON()));
 
     /**
      * append rendered roomList after RoomSearch
@@ -43,45 +50,93 @@ module.exports = Backbone.View.extend({
   },
 
   search: function() {
+    var searchValue = this.getSearchValue();
+
+    this.roomListCollection.fetch({reset: true, data: {query: searchValue}});
+
+    return searchValue;
+  },
+
+  getSearchValue: function() {
     var keyEbene = UserModel.get('searchValEbene');
     var keyGang = UserModel.get('searchValGang');
     var keyRaum = UserModel.get('searchValRaum');
 
-    var key = keyEbene + '.' + keyGang + keyRaum;
-
-    this.roomListCollection.fetch({reset: true, data: {query: key}});
+    return keyEbene + '.' + keyGang + keyRaum;
   },
 
   /**
    * move to next input field upon keyup
    */
   searchEbene: function(evt) {
-    var key = $(evt.target).val();
-    UserModel.set('searchValEbene', key);
+    var key = $(evt.currentTarget).val();
 
+    this.readValues();
     this.search();
 
-    this.$('.js-searchGang').focus();
+    if (this.matchKey(key)) {
+      this.$('.js-searchGang').focus();
+    }
   },
 
   /**
    * move to next input field upon keyup
    */
   searchGang: function(evt) {
-    var key = $(evt.target).val();
-    UserModel.set('searchValGang', key);
+    var key = $(evt.currentTarget).val();
 
+    this.readValues();
     this.search();
 
-    this.$('.js-searchRaum').focus();
+    if (this.matchKey(key)) {
+      this.$('.js-searchRaum').focus();
+    }
   },
 
   searchRaum: function(evt) {
-    var key = $(evt.target).val();
-    UserModel.set('searchValRaum', key);
+    var key = $(evt.currentTarget).val();
 
-    this.search();
+    this.readValues();
+
+    if (this.matchKey(key)) {
+      this.search();
+    }
     // TODO: DECIDE: autoload RoomView when input is 2 keys
+  },
+
+  readValues: function() {
+    var valEbene = $('.js-searchEbene').val();
+    var valGang = $('.js-searchGang').val().toUpperCase();
+    var valRaum = $('.js-searchRaum').val().toUpperCase();
+
+    UserModel.set('searchValEbene', valEbene);
+    UserModel.set('searchValGang', valGang);
+    UserModel.set('searchValRaum', valRaum);
+  },
+
+  matchKey: function(key) {
+    return key.match(/(\d+|\w+)/);
+  },
+
+  submitSearch: function() {
+
+    var searchValue = this.search();
+    var roomModel = this.roomListCollection.findWhere({roomNrHumanShort: searchValue});
+
+    Backbone.history.navigate('room/' + roomModel.attributes.id, false);
+    this.delegate.loadRoomView(roomModel.attributes.id);
+  },
+
+  onEnter: function(evt) {
+    if (evt.keyCode == 10 || evt.keyCode == 13) {
+      evt.preventDefault();
+
+      this.submitSearch();
+    }
+  },
+
+  clickInput: function(evt) {
+    $(evt.currentTarget).select();
   },
 
   /**
@@ -90,10 +145,6 @@ module.exports = Backbone.View.extend({
   clearSearchInput: function() {
     this.$('input').val('');
     UserModel.set('searchVal', '');
-  },
-
-  removeFailureNotification: function() {
-
   }
 
 });

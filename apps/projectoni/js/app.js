@@ -7,29 +7,31 @@ function isLoggedIn() {
 
 // User Functions
 
-function currentProfile(callback) {
-	return userProfile(getCurrentProfileId(),callback);
+function getCurrentProfile(callback) {
+	return getUserProfile(getCurrentProfileId(),callback);
 }
 
-function userProfile(id,callback) {
+function getUserProfile(id,callback) {
 	return f.child(id).once('value', callback);
 }
 
-function loadAllProfiles(callback) {
+function getAllProfiles(callback) {
 	return f.once('value', callback);
 }
 
-function addProfile(id) {
+function addProfile(id, imgLink) {
 
 	var profile = {
-		name: 'name here',
-		email: 'email <here></here>',
-		website: '',
+		name: $('#name').val(),
+		surname: $('#surname').val(),		
+		email: $('#newemail').val(),
+		website: $('#website').val(),
+		descrp: $('#descrp').val(),
 		imageUrl: 'http://i.imgur.com/RDt7RuO.png',
 
 		fotos: {
-			foto1: 'http://i.imgur.com/o3qfnjm.png',
-			foto2: 'http://i.imgur.com/IRlsyAZ.png'
+			foto1: imgLink	,
+			foto2: ''
 		}
 
 	}
@@ -38,9 +40,27 @@ function addProfile(id) {
 }
 
 function getCurrentProfileId() {
-	return f.getAuth().uid.substring(f.getAuth().uid.length-2,f.getAuth().uid.length);
+	console.log(f.getAuth().uid);
+	var id = f.getAuth().uid.substring(f.getAuth().uid.indexOf(':')+1,f.getAuth().uid.length);
+	console.log(id);
+	return id;
 }
 
 function updateProfile(data) {
 	f.child(getCurrentProfileId()).set(data);
+}
+
+
+
+function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
 }

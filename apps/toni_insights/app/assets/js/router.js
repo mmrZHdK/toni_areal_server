@@ -21,7 +21,11 @@ module.exports = Backbone.Router.extend({
   },
 
   loadAppView: function() {
-    this.appView = new AppView();
+    this.appView = new AppView({
+      delegate: {
+        navigate: _.bind(this.navigate, this)
+      }
+    });
   },
 
   home: function() {
@@ -44,4 +48,5 @@ module.exports = Backbone.Router.extend({
     this.loadAppView();
     this.appView.loadRoomSelectView();
   }
+
 });

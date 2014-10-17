@@ -4,58 +4,38 @@
 $(document).ready(function(){
 	console.log(isLoggedIn());
 	
+	getAllProfiles(function(profiles) {
+		console.log("profiles ARE HERE");
+		console.log(profiles.val());
+
+		$.each(profiles.val(), function(profileId, profile) {
+			console.log(profileId);
+			$('#profilelist-placeholder').append('<li class="li mehr"><a href="profil.html?id='+profileId+'"><img class="thumbphoto" src="' + profile.fotos.foto1 + '"></img></a></li>');
+			$('#profilelist-placeholder').append('<li class="li mehr"><a href="profil.html?id='+profileId+'"><img class="thumbphoto" src="' + profile.fotos.foto2 + '"></img></a></li>');
+		});
+	});
+
+
 
 	// DAS ZB IM EDITSCREEN BRUCHE ODER SO (ODER AU FèR MEIN PROFIL ANZEIGEN)
-	currentProfile(function(myProfileNode) {
+	getCurrentProfile(function(myProfileNode) {
 		//Hier habe ich mein Profil
 		var myProfile = myProfileNode.val();
 
 		updateProfile(myProfile);
 
 
-		$('#myProfileinfos').append('<div>' + myProfile.name + '</div>');
-		$('#myProfileinfos').append('<div>' + myProfile.email + '</div>');
+		$('#myProfilename').append('<div class="name">' + myProfile.name + '</div>');
+		$('#myProfilename').append('<div class="name">' + myProfile.surname + '</div>');
+		$('#mydescrp').append('<div>' + myProfile.descrp + '</div>');
 		$('#myProfilephoto').append('<img class="photo" src="' + myProfile.imageUrl + '"></img>');
 		$('#myProjects').append('<img class="li" src="' + myProfile.fotos.foto1 + '"></img>');
 		$('#myProjects').append('<img class="li" src="' + myProfile.fotos.foto2 + '"></img>');
 	});
 
-	
-
-
-	loadAllProfiles(function(profiles) {
-		console.log("profiles ARE HERE");
-		console.log(profiles.val());
-
-		$.each(profiles.val(), function(i, profile) {
-			$('#profilelist-placeholder').append('<li class="li"><img class="thumbphoto" src="' + profile.fotos.foto1 + '"></img></li>');
-			$('#profilelist-placeholder').append('<li class="li"><img class="thumbphoto" src="' + profile.fotos.foto2 + '"></img></li>');
-		});
-	});
-
-
-
-
-
-	//ALSO ALLES DA UNE Ghört nöd da ane also las verschwinde im profil add screen oder so
-	/*var profile = {
-
-		name: 'Ursli',
-		email: 'info@asdasd.com',
-		imageUrl: 'http://asdasd.com',
-
-		fotos: {
-			foto1: 'asdasd',
-			foto2: 'asdas'
-		}
-
-	}
-
-	var profile = {};
-
-
-	profile.name = $('#name-feld').val();
-
-	updateProfile(getCurrent,profile);*/
+	// Click funktion
+	$('#btn-create').click(uploadImage);
 
 });
+
+

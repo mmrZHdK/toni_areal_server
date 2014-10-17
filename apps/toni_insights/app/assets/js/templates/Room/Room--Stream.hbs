@@ -1,9 +1,22 @@
-{{#if this.length}}
+{{#if this.collection.length}}
     {{#each this}}
         <div class="stream-element">
            {{entryRefId}}: {{textTeaser}}
         </div>
     {{/each}}
 {{else}}
-    <p>Keine Einträge gefunden...</p>
+    <div class="content">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                <p class="large">Der Raum <span class="black uppercase">{{this.parentAttributes.roomNrHumanShort}}</span> hat
+                <br>noch keine Einträge</p>
+
+            </div>
+        </div>
+        <div class="row fixed-bottom">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                <a href="#" class="button js-addEntry">Eintrag hinzufügen</a>
+            </div>
+        </div>
+    </div>
 {{/if}}

@@ -1,0 +1,293 @@
+
+
+body {
+
+	font-family: 'Roboto', sans-serif;
+	background-image: url(/img/background.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+
+    
+    filter: saturate(25%) blur(0.2px);
+	-webkit-filter: saturate(25%) blur(0.2px);
+	-moz-filter: saturate(25%) blur(0.2px);
+	-o-filter: saturate(25%) blur(0.2px);
+	-ms-filter: saturate(25%) blur(0.2px);
+}
+
+
+
+
+.content-padded {
+margin: 15px;
+}
+
+
+ul {
+
+	list-style: none;
+	-webkit-padding-start: 0px;
+}
+
+
+
+
+/* Bar unten */
+
+.bar-tab {
+bottom: 0;
+display: table;
+width: 100%;
+height: 100px;
+padding: 0;
+table-layout: fixed;
+/*border-top: 1px solid #ddd;*/
+border-bottom: 0;
+}
+
+
+.wartescreen
+{visibility: hidden;}
+
+
+.uploading .wartescreen {
+	visibility: visible;
+}
+
+.uploaded .wartescreen {
+	visibility: hidden;
+}
+
+.ladedings {
+	font-family: 'pacificoregular', Arial, sans-serif;
+font-size: 1.2em;
+color: #13161B;
+text-align: center;
+}
+
+
+/* Icons */
+
+
+
+.liste-icon, .wurfel-icon, .add-icon{
+	width: 55%;
+}
+
+.tab-label {
+	font-size: 0.7em;
+	color: #FFFF00;
+}
+
+.header-logo {
+	width:100%;
+}
+
+.bar-nav ~ .content {
+padding-top: 122px;
+}
+
+.bar-tab .tab-item {
+	color:#DFF8FF;
+}
+
+
+.wort {
+font-size: 1.2em;
+font-family: 'pacificoregular', Arial, sans-serif;
+text-align: left;
+border-bottom: 1px dotted #13161B;
+line-height: 2.5;
+}
+
+.beschreibung {
+	font-size: 0.9em;
+font-family: 'Roboto', sans-serif;
+/*text-align: justify;*/
+
+}
+
+.autor {
+	font-size: 0.6em;
+font-family: 'Roboto', sans-serif;
+text-align: justify;
+border-top: 1px dotted #13161B;
+line-height: 3.5
+
+
+}
+
+
+select, textarea, input[type="text"], input[type="search"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"] {
+font-size: 0.8em;
+width: 100%;
+font-family: 'Roboto', sans-serif;
+height: 35px;
+-webkit-appearance: none;
+padding: 0 10px;
+margin-bottom: 15px;
+line-height: 21px;
+background-color: #FFFF00;
+color: #13161B;
+border: 1px solid #13161B;
+border-radius: 0px;
+outline: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+font-size: 0.8em;
+-webkit-appearance: button;
+cursor: pointer;
+background-color: #13161B;
+color: #FFFF00;
+border: 1px solid #13161B;
+border-radius: 0px;
+outline: none;
+height: 35px;
+font-family: 'Roboto', sans-serif;
+text-align: left;
+padding-left: 10px;
+text-align: center;
+}
+
+
+
+.btn {
+font-size: 1.4em;
+width: 100%;
+background-color: #13161B;
+color: #FFFF00;
+border: 1px solid #13161B;
+border-radius: 0px;
+outline: none;
+height: 50px;
+font-family: 'pacificoregular', Arial, sans-serif;
+}
+
+::-webkit-input-placeholder {
+   color: rgba(6, 23, 52, 0.75);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: rgba(6, 23, 52, 0.75);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: rgba(6, 23, 52, 0.75);  
+}
+
+:-ms-input-placeholder {  
+   color: rgba(6, 23, 52, 0.75);  
+}
+
+.modal {
+	background-color: #FFFF00;
+
+}
+
+.modal .wort,.modal .autor,.modal .beschreibung {
+	color: #13161B;
+}
+
+.bar {
+position: fixed;
+right: 0;
+left: 0;
+z-index: 10;
+height: 101.9px;
+padding-right: 10px;
+padding-left: 10px;
+background-color: #FFFF00;
+/* border-bottom: 1px solid #ddd; */
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+
+.bar2 {
+position: fixed;
+right: 0;
+left: 0;
+z-index: 10;
+height: 104px;
+padding-right: 10px;
+padding-left: 10px;
+/* border-bottom: 1px solid #ddd; */
+-webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+
+.test {
+background-color: rgba(2, 12, 29, 0.90);
+
+}
+
+p {
+	color:#DFF8FF;
+	font-family: 'Roboto', sans-serif;
+
+}
+
+
+
+img {
+
+z-index: 2;
+width: 100%;
+overflow: hidden;
+height: 50%;
+border: 3px solid #13161B;
+}
+
+
+#landscape{
+         position: absolute;
+         top: 0px;
+         left: 0px;
+         background: #000000;
+         width: 100%;
+         height: 100%;
+         display: none; 
+         z-index: 20000;
+         opacity: 1;
+         margin:0 auto;
+
+}
+#landscape div{
+
+        color: #FFFFFF;                                  
+        opacity: 1;
+        top: 50%;
+        position: absolute;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+
+}
+
+.drehen {
+font-family: 'pacificoregular', Arial, sans-serif;
+color: #FFFF00;
+font-size: 2em;
+}
+
+.impressum {
+	font-family: 'Roboto', sans-serif;
+	color: #13161B;
+	font-size: 0.9em;
+	line-height: 1.6em;
+}
+
+.buttonstyle {
+	font-family: 'pacificoregular', sans-serif;
+	color: #FFFF00;
+	font-size: 1.3em;
+	line-height: 1.6em;
+
+}
+
+.farbeweiss {
+	color:#DFF8FF;
+	border-color: #DFF8FF;
+}
