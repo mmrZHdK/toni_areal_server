@@ -1,0 +1,14 @@
+<a class="btn-floor-flyout" ng-click="toggleFloorFlyout()">{{ data.handleValue }}</a>
+<div class="floors-flyout " ng-show="data.showFloorFlyout">
+    <div slider ng-model="data.floor" ng-val="data.handleValue" start="8" end="1" step="1" orientation="vertical" callback="change"></div>
+    <ul class="floor-labels">
+    	<li>8</li>
+    	<li>7</li>
+    	<li>6</li>
+    	<li>5</li>
+    	<li>4</li>
+    	<li>3</li>
+    	<li>2</li>
+    	<li>1</li> 
+    </ul>
+</div>

@@ -18,21 +18,18 @@
    xml:space="preserve">
 
 <style type="text/css">
-   .svg-stairway-horz {fill:url(#pattern-stairway-horz); stroke:#414042; stroke-width:0.2; }
-   .svg-stairway-vert {fill:url(#pattern-stairway-vert); stroke:#414042; stroke-width:0.2; }
+   .svg-stairway-horz {fill:url(#pattern-stairway-horz-4); stroke:#414042; stroke-width:0.2; }
+   .svg-stairway-vert {fill:url(#pattern-stairway-vert-4); stroke:#414042; stroke-width:0.2; }
    .svg-stairway-lined{fill:none;stroke:#000000;stroke-width:0.06;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-   .st5{fill:url(#SVGID_1_);}
-   .st6{fill:url(#SVGID_2_);}
-   .st8{fill:url(#SVGID_4_);}
 </style>
 
 
-<pattern id="pattern-stairway-vert" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
+<pattern id="pattern-stairway-vert-4" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
      <rect x="0" y="0" width="3" height="1.5" class="svg-stairway-dark"/>
      <rect x="0" y="1.5" width="3" height="1.5" class="svg-stairway-bright"/>
  </pattern>
 
- <pattern id="pattern-stairway-horz" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
+ <pattern id="pattern-stairway-horz-4" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
      <rect x="0" y="0" width="1.5" height="3" class="svg-stairway-dark"/>
      <rect x="1.5" y="0" width="1.5" height="3" class="svg-stairway-bright"/>
  </pattern>
@@ -58,7 +55,6 @@
       class="svg-air"
    x="242.667"
    y="262.952"
-   class="st24"
    width="85.667"
    height="86.715"
    id="rect28903" />
@@ -66,7 +62,6 @@
       class="svg-air"
    x="223.567"
    y="50.072"
-   class="st24"
    width="37.433"
    height="85.227"
    id="rect28905" />
@@ -74,7 +69,6 @@
       class="svg-air"
    x="242.667"
    y="466.944"
-   class="st24"
    width="85.667"
    height="77.556"
    id="rect28907" />
@@ -82,7 +76,6 @@
       class="svg-air"
    x="437.027"
    y="310.889"
-   class="st24"
    width="91.272"
    height="38.778"
    id="rect28909" />
@@ -892,17 +885,7 @@
    <line class="svg-stairway-lined" x1="395.4" y1="383.732" x2="391.92" y2="384.392"/>
    <line class="svg-stairway-lined" x1="388.38" y1="385.352" x2="388.38" y2="385.352"/>
 
-      <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="382.6577" y1="756.7793" x2="395.9531" y2="756.7793" gradientTransform="matrix(0 -1 1 0 -370.0498 1143.4512)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <rect x="360.33" y="745.833" class="st5" width="52.8" height="19.281"/>
 
-      <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="510.1201" y1="762.1641" x2="523.4155" y2="762.1641" gradientTransform="matrix(0 1 -1 0 1143.5088 123.0928)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <rect x="358.65" y="628.892" class="st6" width="45.39" height="19.281"/>
    <rect x="180.12" y="204.482" class="svg-stairway-vert" width="7.68" height="21.54"/>
    <rect x="188.46" y="204.482" class="svg-stairway-vert" width="7.68" height="21.54"/>
 </g>
@@ -925,18 +908,6 @@
    <rect x="168.39" y="491.912" class="svg-stairway-horz" width="20.58" height="7.38"/>
    <rect x="511.86" y="544.472" class="svg-stairway-horz" width="23.279" height="7.62"/>
    <rect x="511.859" y="536.132" class="svg-stairway-horz" width="19.74" height="7.68"/>
-
-      <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="277.2119" y1="738.5361" x2="295.8727" y2="738.5361" gradientTransform="matrix(1 0 0 1 79.2021 -552.7139)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <rect x="356.76" y="178.51" class="svg-floor" width="19.282" height="14.625"/>
-
-      <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="277.561" y1="720.7456" x2="296.2218" y2="720.7456" gradientTransform="matrix(1 0 0 1 79.2021 -552.7139)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <rect x="357.109" y="160.719" class="st8" width="19.282" height="14.625"/>
 </g>
 <g
    id="OUTSIDE">

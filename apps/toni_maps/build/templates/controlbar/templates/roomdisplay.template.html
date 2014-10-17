@@ -1,4 +1,7 @@
-<div class="room-nr" ng-class="{'special-room' : room.additionalDescription.length > 0}">
-	{{data.room.additionalDescription.length > 0 ? data.room.additionalDescription : data.room.signalRoomNr}}
-</div>
-<div class="room-desc" ng-hide="data.room.additionalDescription.length > 0">{{data.room.additionalDescription.length > 0 ? '' : data.room.roomDescription }}</div>
+<span class="room-nr">
+	{{ data.room.signalRoomNr }}
+</span>
+<span class="room-desc">
+	{{ data.room.roomDescription }}
+</span>
+

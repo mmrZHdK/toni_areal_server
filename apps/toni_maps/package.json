@@ -1,0 +1,29 @@
+{
+    "name" : "grunt-cms-installer",
+    "version" : "0.1.0",
+    "author" : "Robert Krieg",
+    "private" : true,
+
+    "devDependencies" : {
+        "grunt" :                       "*",
+        "grunt-contrib-cssmin":         "*",
+        "grunt-contrib-sass":           "*",
+        "grunt-ng-annotate":            "*",
+        "grunt-contrib-uglify":         "*",
+        "grunt-contrib-watch":          "*",
+        "grunt-cssc":                   "*",
+        "grunt-contrib-copy":           "*",
+        "grunt-contrib-concat":         "*",
+        "grunt-contrib-imagemin":       "*",
+        "grunt-contrib-clean":          "*",
+        "grunt-mkdir":                  "*",
+        "grunt-pngmin":                 "*",
+        "grunt-ftpush":                 "*",
+        "grunt-file-creator":           "*",
+        "grunt-text-replace":           "*",
+        "matchdep":                     "*",
+        "optipng-bin":                  "*",
+        "jpegtran-bin":                 "*",
+        "gifsicle":                     "*"
+    }
+}

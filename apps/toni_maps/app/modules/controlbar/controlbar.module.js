@@ -1,25 +1,14 @@
 var controlBarModule = angular.module('controlBarModule', [] )
 
-.controller('ControlBarController', ['$scope','MapService','$timeout','ControlBarService', function($scope, MapService,$timeout, ControlBarService) {
+.controller('ControlBarController', ['$scope','MapService','$timeout','ControlBarService','RoomSearchService', function($scope, MapService,$timeout, ControlBarService, RoomSearchService) {
 
 
     $scope.init = function() {
         $scope.initializing = true;
         $scope.data = {};
         $scope.data.room = {};
-        $scope.data.showFloorFlyout = false;
         $scope.data.floor = 0;
-        $scope.data.handleValue = 0;
     }
-    
-
-    $scope.toggleFloorFlyout = function() {
-        ControlBarService.toggleFloorFlyout();
-    };
-
-    $scope.closeFloorFlyout = function() {
-        ControlBarService.closeFloorFlyout();
-    };
 
     $scope.toggleSideMenu = function() {
         ControlBarService.toggleSideMenu();
@@ -30,16 +19,24 @@ var controlBarModule = angular.module('controlBarModule', [] )
     };
 
     $scope.startPositioning = function() {
-        ControlBarService.startPositioning();
+        MapService.showMyPosition();
+        $scope.data.isPositioningMode = true;
     };
 
     $scope.stopPositioning = function() {
-        ControlBarService.stopPositioning();
+        $scope.data.isPositioningMode = false;
+    };
+
+    $scope.startRouting = function() {
+        console.log("pressed start route buttn");
+        var startId = 0;
+        var endId = 0;
+        MapService.findRoute(startId, endId);
     };
 
 
-    $scope.changeVal = function() {
-        $scope.data.floor = 2;
+    $scope.setFloor = function(floor) {
+        $scope.data.floor = floor;
     };
 
     $scope.$watch('data.floor', function() {
@@ -47,20 +44,11 @@ var controlBarModule = angular.module('controlBarModule', [] )
             $timeout(function() { $scope.initializing = false; });
         } else {
             MapService.switchFloor($scope.data.floor);
-            $scope.closeFloorFlyout();
         }
-
-    });
-
-    $scope.$watch('data.handleValue', function() {
-        $('.noUi-handle-lower').html($scope.data.handleValue);
-    });
-
-    $scope.$on('floorFlyoutChanged', function() {
-        $scope.data.showFloorFlyout = ControlBarService.showFloorFlyout;
     });
 
     $scope.$on('roomFindingModeStarted', function() {
+        console.log("GO FIND ROOM");
         $scope.data.room = ControlBarService.room;
         $scope.data.roomFindMode = true;
     });
@@ -70,13 +58,12 @@ var controlBarModule = angular.module('controlBarModule', [] )
         $scope.data.roomFindMode = false;
     });
 
-    $scope.$on('positioningModeChanged', function() {
-        $scope.data.isPositioningMode = ControlBarService.isPositioningMode;
+    $scope.$on('mapIsInitialized', function() {
+        $scope.data.floor = MapService.currentFloor;
     });
 
-    $scope.$on('mapIsInitialized', function() {
-        //$scope.data.floor = MapService.currentFloor;
-        $scope.data.handleValue = MapService.currentFloor;
+    $scope.$on('deactivatePositioningButton', function() {
+        $scope.stopPositioning();
     });
 
     $scope.init();
@@ -86,23 +73,10 @@ var controlBarModule = angular.module('controlBarModule', [] )
 }])
 
 
-
 .service('ControlBarService', ['$rootScope', function($rootScope) {
 
-    var showFloorFlyout = false;
     var showSideMenu = false;
-    var isPositioningMode = false;
     var room = null;
-
-    this.closeFloorFlyout = function() {
-        this.showFloorFlyout = false;
-        $rootScope.$broadcast('floorFlyoutChanged');
-    };
-
-    this.toggleFloorFlyout = function() {
-        this.showFloorFlyout = !this.showFloorFlyout;
-        $rootScope.$broadcast('floorFlyoutChanged');
-    };
 
     this.startRoomFindingMode = function(room) {
         this.room = room;
@@ -123,18 +97,11 @@ var controlBarModule = angular.module('controlBarModule', [] )
         $rootScope.$broadcast('sideMenuChanged');
     };
 
-    this.startPositioning = function() {
-        this.isPositioningMode = true;
-        $rootScope.$broadcast('positioningModeChanged');
-    };
-
-    this.stopPositioning = function() {
-        this.isPositioningMode = false;
-        $rootScope.$broadcast('positioningModeChanged');
-    };
+    this.deactivatePositioningButton = function() {
+        $rootScope.$broadcast('deactivatePositioningButton');
+    }
 
 }])
-
 
 
 .directive('tmRoomDisplay', function() {

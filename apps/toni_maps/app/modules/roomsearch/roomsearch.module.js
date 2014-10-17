@@ -5,13 +5,14 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
     $scope.init = function() {
         $scope.resultlistheight = { height: $window.innerHeight - 85 + 'px'};
         $scope.roomFindingActive = false;
+        $scope.roomSearchQuery = '';
 
         $scope.$parent.myScrollOptions = {
             'room-search-result-scroll-pane': {
                 snap: false,
                 click: true,
                 onScrollEnd: function () {
-                   
+
                 }
             }
         };
@@ -22,17 +23,30 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
     }
 
 
+    $scope.magnifierClicked = function() {
+        $('input#room-search-box').focus();
+    }
+
     $scope.roomSearchHasFocus = function() {
+
         RoomSearchService.setSearchActive(true);
         $scope.resizeResultList();
     }
 
-    $scope.roomSearchLoseFocus = function() { 
-        RoomSearchService.setSearchActive(false);
-        $scope.resizeResultList();
+    $scope.roomSearchLoseFocus = function() {
+        if($scope.roomSearchQuery.length <= 0) {
+            RoomSearchService.setSearchActive(false);
+            $scope.resizeResultList();
+        } else {
+            $scope.roomSearchQuery = '';
+        }
+
+        RoomSearchService.rooms = {};
+        RoomSearchService.updateRoomList();
+
     }
 
-    $scope.deactivateInputField = function() { 
+    $scope.deactivateInputField = function() {
         $scope.resizeResultList();
     }
 
@@ -41,14 +55,20 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
         RoomSearchService.setFindingActive(true);
         MapService.highlightRoom(room);
         ControlBarService.startRoomFindingMode(room);
-        $scope.roomSearchQuery = room.signalRoomNr;
+        $scope.roomSearchQuery = (room.additionalDescription != null && room.additionalDescription.length > 0 ? room.additionalDescription : room.signalRoomNr);
+        $scope.isSpecialRoom = (room.additionalDescription != null && room.additionalDescription.length > 0);
     };
 
     $scope.roomFindCancel = function() {
-        RoomSearchService.setFindingActive(false);
-        RoomSearchService.setSearchActive(false);
-        MapService.dehighlightRoom();
-        ControlBarService.cancelRoomFindingMode();
+
+        if(RoomSearchService.roomSearchActive && RoomSearchService.roomFindingActive) {
+            $scope.roomSearchLoseFocus();
+        } else {
+            RoomSearchService.setFindingActive(false);
+            RoomSearchService.setSearchActive(false);
+            MapService.dehighlightRoom();
+            ControlBarService.cancelRoomFindingMode();
+        }
     }
 
     $scope.resizeResultList = function() {
@@ -74,8 +94,6 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
 
         if(!$scope.searchActive) {
             $('#room-search-box').blur();
-        } else {
-            ControlBarService.closeFloorFlyout();
         }
     });
 
@@ -102,8 +120,12 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
 
     this.searchRooms = function(roomSearchQuery) {
         if(roomSearchQuery.length >= 3) {
+
+            var cleanedRoomSearchQuery = roomSearchQuery.split('.').join('');;
+            cleanedRoomSearchQuery = cleanedRoomSearchQuery.replace(/\s/g, '');
+            console.log(cleanedRoomSearchQuery);
             var roomService = $resource("http://exohosting.ch/toniareal/api/v1/rooms/all/:searchQuery", {searchQuery: "@searchQuery"});
-            roomService.query({searchQuery:roomSearchQuery}).$promise.then(function(rooms) {
+            roomService.query({searchQuery:cleanedRoomSearchQuery}).$promise.then(function(rooms) {
                 self.rooms = rooms;
                 self.isFavourites = false;
                 self.updateRoomList();
@@ -144,7 +166,7 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
 .directive('tmRoomSearchResults', function() {
     return {
         restrict: 'E',
-        templateUrl: 'build/templates/roomSearch/templates/results.template.html',
+        templateUrl: 'build/templates/roomsearch/templates/results.template.html',
 
         link: function ($scope, element, attrs) {
 
@@ -156,7 +178,7 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
 .directive('tmRoomSearchResultItem', function() {
     return {
         restrict: 'E',
-        templateUrl: 'build/templates/roomSearch/templates/resultitem.template.html'
+        templateUrl: 'build/templates/roomsearch/templates/resultitem.template.html'
 
     };
 })
@@ -164,7 +186,7 @@ var roomSearchModule = angular.module('roomSearchModule', ['ngResource','ng-iscr
 .directive('tmRoomSearchBox', function() {
     return {
         restrict: 'E',
-        templateUrl: 'build/templates/roomSearch/templates/searchbox.template.html'
+        templateUrl: 'build/templates/roomsearch/templates/searchbox.template.html'
 
 
 

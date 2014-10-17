@@ -18,24 +18,21 @@
    xml:space="preserve">
 
 <style type="text/css">
-   .svg-stairway-horz {fill:url(#pattern-stairway-horz); stroke:#414042; stroke-width:0.2; }
-   .svg-stairway-vert {fill:url(#pattern-stairway-vert); stroke:#414042; stroke-width:0.2; }
+   .svg-stairway-horz {fill:url(#pattern-stairway-horz-3); stroke:#414042; stroke-width:0.2; }
+   .svg-stairway-vert {fill:url(#pattern-stairway-vert-3); stroke:#414042; stroke-width:0.2; }
    .svg-stairway-main-entrance{fill-rule:evenodd;clip-rule:evenodd;fill:url(#SVGID_1_);stroke:#414042;stroke-width:0.2;stroke-miterlimit:10;}
    .svg-stairway-lined{fill:none;stroke:#000000;stroke-width:0.06;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-   .st6{fill:url(#SVGID_2_);}
-   .st7{fill:url(#SVGID_3_);}
-   .st8{fill:url(#SVGID_4_);}
 </style>
 
 
-<pattern id="pattern-stairway-vert" x="1" y="1" width="6" height="6" patternUnits="userSpaceOnUse">
-     <rect x="0" y="0" width="6" height="3" class="svg-stairway-dark"/>
-     <rect x="0" y="3" width="6" height="3" class="svg-stairway-bright"/>
+<pattern id="pattern-stairway-vert-3" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
+     <rect x="0" y="0" width="3" height="1.5" class="svg-stairway-dark"/>
+     <rect x="0" y="1.5" width="3" height="1.5" class="svg-stairway-bright"/>
  </pattern>
 
- <pattern id="pattern-stairway-horz" x="1" y="1" width="6" height="6" patternUnits="userSpaceOnUse">
-     <rect x="0" y="0" width="3" height="6" class="svg-stairway-dark"/>
-     <rect x="3" y="0" width="3" height="6" class="svg-stairway-bright"/>
+ <pattern id="pattern-stairway-horz-3" x="1" y="1" width="3" height="3" patternUnits="userSpaceOnUse">
+     <rect x="0" y="0" width="1.5" height="3" class="svg-stairway-dark"/>
+     <rect x="1.5" y="0" width="1.5" height="3" class="svg-stairway-bright"/>
  </pattern>
 
 <g
@@ -866,7 +863,7 @@
       188.1,951.272  " class="svg-room" id="03.H05.1"/>
 </g>
 <g id="STAIRWAYS_VERT">
-   <pattern  id="SVGID_1_" xlink:href="#pattern-stairway-vert" patternTransform="matrix(3.9848 -0.3486 0.3486 3.9848 24899.3027 15222.4434)">
+   <pattern  id="SVGID_1_" xlink:href="#pattern-stairway-vert-3" patternTransform="matrix(3.9848 -0.3486 0.3486 3.9848 24899.3027 15222.4434)">
    </pattern>
    <polygon class="svg-stairway-main-entrance" points="107.22,1172.852 157.2,1168.112 139.38,920.192 88.86,923.5  "/>
    <rect x="271.68" y="913.172" class="svg-stairway-vert" width="11.1" height="21.54"/>
@@ -972,18 +969,6 @@
       367.32,623.372 367.68,621.992 367.8,620.552  "/>
    <line class="svg-stairway-lined" x1="359.34" y1="620.552" x2="359.34" y2="620.552"/>
    <line class="svg-stairway-lined" x1="359.34" y1="620.552" x2="359.34" y2="620.552"/>
-
-      <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="577.7656" y1="759.9897" x2="606.5737" y2="759.9897" gradientTransform="matrix(0 1 -1 0 1143.5098 123.0928)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <rect x="357.42" y="702.553" class="st6" width="52.2" height="25.159"/>
-
-      <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="896.6543" y1="976.707" x2="1003.5122" y2="976.707" gradientTransform="matrix(-0.143 -0.9897 0.9897 -0.143 -701.6888 2204.5068)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <polygon class="st7" points="100.531,1082.01 107.537,1172.912 157.2,1168.112 150.528,1075.292   "/>
    <rect x="182.37" y="415.092" class="svg-stairway-vert" width="7.68" height="21.54"/>
    <rect x="190.71" y="415.092" class="svg-stairway-vert" width="7.68" height="21.54"/>
    <rect x="182.37" y="670.425" class="svg-stairway-vert" width="7.68" height="21.54"/>
@@ -1015,18 +1000,6 @@
    <rect x="506.83" y="548.462" class="svg-stairway-horz" width="20.58" height="7.38"/>
    <rect x="170.55" y="514.111" class="svg-stairway-horz" width="20.88" height="7.2"/>
    <rect x="170.91" y="505.952" class="svg-stairway-horz" width="20.58" height="7.38"/>
-
-      <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="635.9922" y1="1032.1182" x2="688.8244" y2="1032.1182" gradientTransform="matrix(1 0 0 1 -549.1582 -241.8154)">
-      <stop  offset="0" style="stop-color:#FFFFFF"/>
-      <stop  offset="0.0905" style="stop-color:#F7F7F7;stop-opacity:0.9095"/>
-      <stop  offset="0.2168" style="stop-color:#E7E8E9;stop-opacity:0.7832"/>
-      <stop  offset="0.3642" style="stop-color:#CED0D2;stop-opacity:0.6358"/>
-      <stop  offset="0.5277" style="stop-color:#ACAEB1;stop-opacity:0.4723"/>
-      <stop  offset="0.7044" style="stop-color:#838588;stop-opacity:0.2956"/>
-      <stop  offset="0.8891" style="stop-color:#505153;stop-opacity:0.1109"/>
-      <stop  offset="1" style="stop-color:#000000;stop-opacity:0"/>
-   </linearGradient>
-   <rect x="89.6" y="774.833" class="st8" width="47.9" height="30.939"/>
 </g>
 <g
    id="OUTSIDE">

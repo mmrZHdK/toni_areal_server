@@ -1,14 +1,10 @@
-<a class="btn-floor-flyout" ng-click="toggleFloorFlyout()">{{ data.handleValue }}</a>
-<div class="floors-flyout " ng-show="data.showFloorFlyout">
-    <div slider ng-model="data.floor" ng-val="data.handleValue" start="8" end="1" step="1" orientation="vertical" callback="change"></div>
-    <ul class="floor-labels">
-    	<li>8</li>
-    	<li>7</li>
-    	<li>6</li>
-    	<li>5</li>
-    	<li>4</li>
-    	<li>3</li>
-    	<li>2</li>
-    	<li>1</li> 
-    </ul>
-</div>
+<ul class="floor-labels">
+    <li><a ng-click="setFloor(1)" ng-class="{ 'active' : ( data.floor == 1 ) }">1</a></li>
+    <li><a ng-click="setFloor(2)" ng-class="{ 'active' : ( data.floor == 2 ) }">2</a></li>
+    <li><a ng-click="setFloor(3)" ng-class="{ 'active' : ( data.floor == 3 ) }">3</a></li>
+    <li><a ng-click="setFloor(4)" ng-class="{ 'active' : ( data.floor == 4 ) }">4</a></li>
+    <li><a ng-click="setFloor(5)" ng-class="{ 'active' : ( data.floor == 5 ) }">5</a></li>
+    <li><a ng-click="setFloor(6)" ng-class="{ 'active' : ( data.floor == 6 ) }">6</a></li>
+    <li><a ng-click="setFloor(7)" ng-class="{ 'active' : ( data.floor == 7 ) }">7</a></li>
+    <li><a ng-click="setFloor(8)" ng-class="{ 'active' : ( data.floor == 8 ) }">8</a></li>
+</ul>

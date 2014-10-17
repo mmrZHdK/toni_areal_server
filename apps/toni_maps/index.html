@@ -14,7 +14,7 @@
 
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" manifest="manifest.appcache">
 
     <meta name="msapplication-TileColor" content="#be0415">
     <meta name="msapplication-TileImage" content="build/img/icons/touch_icons/win8-tile-icon.png">
@@ -27,7 +27,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="build/img/icons/touch_icons/apple-touch-icon-144x144-precomposed.png" />
 
 
-    <title>Toni Maps</title>
+        <title>Toni Maps</title>
 
 
 
@@ -55,11 +55,20 @@
             <div class="black-bg" ng-click="toggleSideMenu()"></div>
 
             <div class="room-search-container" ng-controller="RoomSearchController as roomSearchCtrl">
-                <tm-room-search-box class="room-search-box" ng-class="{active: searchActive}"></tm-room-search-box>
+                <tm-room-search-box class="room-search-box" ng-class="{'active': searchActive,'special-room' : isSpecialRoom }"></tm-room-search-box>
                 <tm-room-search-results class="room-search-results" ng-show="searchActive" ng-style="resultlistheight"></tm-room-search-results>
             </div>
 
             <div class="controls-container" ng-controller="ControlBarController as controlBarCtrl">
+
+                <div class="search-detail-pane" ng-show="data.roomFindMode" ng-class="{'special-room' :  data.room.additionalDescription.length > 0 }">
+                    <tm-room-display class="room-display"></tm-room-display>
+                    <a class="btn-route" href="" ng-click="startRouting()">
+                        <i class="fa fa-arrow-right fa-2x fa-inverse"></i><br>
+                        <span class="route-label">Weg zeigen</span>
+                    </a>
+                </div>
+
                 <a class="btn-more" ng-click="toggleSideMenu()">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
@@ -67,7 +76,7 @@
                     </span>
                 </a>
 
-                <a class="btn-my-position" ng-click="startPositioning()" ng-class="{ 'positioning-active' : isPositioningMode }">
+                <a class="btn-my-position" ng-click="startPositioning()" ng-class="{ 'positioning-active' : data.isPositioningMode }">
                     <span class="fa-stack fa-lg">
                         <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
                         <i class="fa fa-location-arrow fa-stack-1x"></i>
@@ -75,12 +84,6 @@
                 </a>
 
                 <div class="bottom-bar container">
-                    <tm-room-display class="room-display" ng-show="data.roomFindMode"></tm-room-display>
-
-                    <a class="btn-route" href="" ng-show="data.roomFindMode">
-                        <i class="fa fa-arrow-right fa-2x fa-inverse"></i>
-                    </a>
-
                     <tm-floor-navigation class="floor-navigation"></tm-floor-navigation>
                 </div>
             </div>
@@ -92,11 +95,9 @@
         <!-- ___________________________________________________________________________________________________________________________ -->
 
         <!-- javascript libraries -->
-
         <script type="text/javascript" src="build/js/libs/switchery/0_switchery.js"></script>
         <script type="text/javascript" src="build/js/libs/libs.js"></script>
         <!-- own scripts -->
         <script type="text/javascript" src="build/js/app.js"></script>
-
     </body>
 </html>
