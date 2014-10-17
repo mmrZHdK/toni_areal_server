@@ -12,7 +12,9 @@ var codes = [   "456",
                 "159",
                 "753",
                 "258",
-                "159"
+                "159",
+                "333",
+                "222"
             ];
 
 var userID;
@@ -123,6 +125,8 @@ function displayArticle(data, key) {
         var $text = $("<p></p>").attr("class", "text").text(data.text[index]);
         $content.append($text);
     });
+
+    console.log($content.html());
 
     if(data.link != "") {
         var $linkDiv = $("<div></div>").attr("id", "linkContainer");

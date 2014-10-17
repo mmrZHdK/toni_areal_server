@@ -277,7 +277,7 @@ p {
     float: left;
     height: 3em;
     width: 100%;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     background-color: lightgrey;
 }
 
@@ -297,10 +297,12 @@ p {
 }
 
 #featureLogoContainer {
-    display: inline-block;
+    display: block;
     margin-top: 0em;
     float: left;
     width: 100%;
+    padding-bottom: 2em;
+    padding-top: 1em;
 }
 
 .featureLogo {
