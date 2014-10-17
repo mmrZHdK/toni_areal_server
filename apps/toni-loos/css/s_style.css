@@ -187,6 +187,12 @@ textarea {
   padding-top: 1em;
   padding-left: 0.75em;
   padding-right: 0.75em;
+  font-family: "Open Sans";
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #f8efef;
+  font-size: 1.5em;
+  color: #065fc6 !important;
 }
 
 .menue ul {
@@ -196,7 +202,7 @@ textarea {
 
 .menue li {
   margin-right: 1.3em;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 3px solid #065fc6;
   list-style: inside none;
 }
 
@@ -204,9 +210,9 @@ textarea {
   word-wrap: break-word;
   display: block;
   padding: 0.5em 0;
-  padding-left: 0.75em;
+  padding-left: 1.3em;
   text-decoration: none;
-  color: white;
+  color: #065fc6;
 }
 
 .scrollbox {
@@ -371,7 +377,7 @@ textarea {
 }
 
 .pushright {
-  -webkit-transform: translate(50%, 0px);
+  -webkit-transform: translate(55%, 0px);
   webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
@@ -384,7 +390,7 @@ textarea {
 
 .hidemenue {
   display: block;
-  -webkit-transform: translate(50%, 0px);
+  -webkit-transform: translate(55%, 0px);
   webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
@@ -490,7 +496,7 @@ button.submit {
 input[type="radio"] {
   content: " ";
   webkit-appearance: none;
-  background: #cf3933;
+  background: #ed3232;
   display: inline-block;
   /*hide the radio button*/
   background-color: none;
@@ -686,7 +692,7 @@ input[type="radio"] {
 #bg_c_rot {
   width: 3.5em;
   height: 3em;
-  background: #cf3933;
+  background: #ed3232;
   margin: 0 0.35em;
   margin-bottom: 1em;
   border: 1px solid #999;
@@ -704,7 +710,7 @@ input[type="radio"] {
 #bg_c_grun {
   width: 3.5em;
   height: 3em;
-  background: #44919a;
+  background: #01bc4b;
   margin: 0 0.35em;
   margin-bottom: 1em;
   border: 1px solid #999;
@@ -746,7 +752,7 @@ input[type="radio"] {
 #font_c_rot {
   width: 3.5em;
   height: 3em;
-  background: #f70707;
+  background: #ed3232;
   margin: 0 0.35em;
   margin-bottom: 1em;
   border: 1px solid #999;
@@ -764,7 +770,7 @@ input[type="radio"] {
 #font_c_pink {
   width: 3.5em;
   height: 3em;
-  background: #f90859;
+  background: #ebd942;
   margin: 0 0.35em;
   margin-bottom: 1em;
   border: 1px solid #999;
@@ -773,14 +779,15 @@ input[type="radio"] {
 #font_c_blue {
   width: 3.5em;
   height: 3em;
-  background: #28aaff;
+  background: #5e9dff;
   margin: 0 0.35em;
   margin-bottom: 1em;
   border: 1px solid #999;
 }
 
 .clickedColor {
-  border: 2px solid #065fc6 !important;
+  border: 4px solid #065fc6 !important;
+  scale: 30% !important;
 }
 
 #submitButton, #cancle {
@@ -793,6 +800,23 @@ input[type="radio"] {
   color: #F8EFEF;
   padding: 1em 0.5em 1em 0.5em;
   margin: 0.7em;
+  border-radius: 0px 0px 0px 0px;
+  -moz-border-radius: 0px 0px 0px 0px;
+  -webkit-border-radius: 0px 0px 0px 0px;
+  border: 0;
+}
+
+#backMainApp {
+  width: 90%;
+  font-family: "Open Sans";
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  font-size: 1.2em;
+  background-color: #065FC6;
+  color: #F8EFEF;
+  padding: 1em 0.5em 1em 0.5em;
+  margin: 0.7em;
+  margin-top: 8em;
   border-radius: 0px 0px 0px 0px;
   -moz-border-radius: 0px 0px 0px 0px;
   -webkit-border-radius: 0px 0px 0px 0px;

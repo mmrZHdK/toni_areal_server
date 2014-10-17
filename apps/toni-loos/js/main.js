@@ -401,6 +401,9 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
         
     });
+              fontColor = 0;
+              bgColor   = 0;
+
               auswahlBGFarbe();
               auswahlFontFarbe();
             console.log( '> complete @ $seite.load' );
@@ -435,7 +438,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
             $( '#formDefault' ).on("click" , "#submitButton", function( e ) {
                 //console.log( "WICHTIG" + '> click @ .menubutton#back' );
                 //console.log("hhz" + $("#title").val())
-                if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()==""  || $("#inkurze").val()==""){
+                if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()==""  || $("#inkurze").val()=="" || bgColor === 0 || fontColor === 0){
                     // Schiebe Seiten wieder raus
                     swal({
                       title: "BITTE ALLE FELDER AUSFÜLLEN",
@@ -482,6 +485,9 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $( ".navi" ).toggleClass( "pushright" );
         $( ".scrollbox" ).toggleClass( "pushright" );
         //window.location.reload(true);
+        $("#backMainApp").click(function(){
+          window.location.href="../../../index.html";
+        });
     });
 
     $(".titel").click(function(){
@@ -503,7 +509,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 // }
     function auswahlBGFarbe(){
         $("#bg_c_rot").on("click",function(e){
-          bgColor = "#CF3933";
+          bgColor = "#ED3232";
           console.log("ischer clicked dr rot")
           
           $( this ).addClass( "clickedColor" );
@@ -521,7 +527,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
           $( "#bg_c_gelb" ).removeClass( "clickedColor" );
         });
         $("#bg_c_grun").click(function(){
-          bgColor = "#44919A";
+          bgColor = "#01BC4B";
           console.log("ischer clicked dr grün")
           $( this ).addClass( "clickedColor" );
           $( "#bg_c_rot" ).removeClass( "clickedColor" );
@@ -649,7 +655,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
     $(document).on("submit", "#formDefault", function (e) {
         e.preventDefault();
-        if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()=="" || $("#landmark").val()=="" || $("#inkurze").val()=="") {
+        if($("#title").val()=="" || $("#etage").val()=="" || $("#raum").val()=="" || $("#landmark").val()=="" || $("#inkurze").val()=="" || bgColor ===0 || fontColor ===0) {
             return
         }
 

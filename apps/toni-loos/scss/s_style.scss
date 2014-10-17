@@ -61,17 +61,22 @@ $font-event-lineheight: 2.2em;
 
 //colors
 //backgrounds edit
-$content_bg_red: #CF3933;
+// $content_bg_red: #CF3933;
+// $content_bg_violet: #720CE8;
+// $content_bg_yellow: #EBD942;
+// $content_bg_green: #44919A;
+
+$content_bg_red: #ED3232;
 $content_bg_violet: #720CE8;
 $content_bg_yellow: #EBD942;
-$content_bg_green: #44919A;
+$content_bg_green: #01BC4B;
 
 
 //fonts edit
-$content_f_red: #F70707;
+$content_f_red: #ED3232;
 $content_f_white: #ffffff;
-$content_f_pink: #F90859;
-$content_f_blue: #28AAFF;
+$content_f_pink: #EBD942;
+$content_f_blue: #5E9DFF;
 
 
 
@@ -315,24 +320,28 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 	padding-top: 1em;
 	padding-left: 0.75em;
 	padding-right: 0.75em;
+	@include navifont;
+	color: $bg-c-navi !important;
+
 	
 }
 .menue ul {
   margin: 0;
   padding: 0;
+
 }
 .menue li {
   margin-right: 1.3em;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 3px solid $bg-c-navi;
   list-style: inside none;
 }
 .menue li a {
   word-wrap:break-word;
   display: block;
   padding: 0.5em 0;
-  padding-left: 0.75em;
+  padding-left: 1.3em;
   text-decoration: none;
-  color: $c-menue;
+  color: $bg-c-navi;
 }
 
 
@@ -550,7 +559,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
 } 
 
 @mixin t-left-to-mid{
-	 -webkit-transform:translate(50%,0px);
+	 -webkit-transform:translate(55%,0px);
 	 webkit-transition-timing-function: 	ease-in-out;
     -moz-transition-timing-function: 		ease-in-out;
     -o-transition-timing-function: 			ease-in-out;
@@ -1080,7 +1089,8 @@ border: 1px solid #999;
 }
 
 .clickedColor{
-	border: 2px solid #065fc6 !important;
+	border: 4px solid #065fc6 !important;
+	scale: 30% !important;
 	//background: #ffffff !important;
 }
 
@@ -1099,6 +1109,25 @@ border: 1px solid #999;
 -webkit-border-radius: 0px 0px 0px 0px;
 	border: 0;
 }
+
+#backMainApp{
+	width: 90%;
+	font-family: $standartFont;
+	font-weight: $bold;
+	letter-spacing: 0.1em;
+	font-size: 1.2em;
+	background-color: #065FC6;
+	color: #F8EFEF;
+	padding: 1em 0.5em 1em 0.5em;
+	margin: 0.7em;
+	margin-top: 8em;
+	border-radius: 0px 0px 0px 0px;
+-moz-border-radius: 0px 0px 0px 0px;
+-webkit-border-radius: 0px 0px 0px 0px;
+	border: 0;
+}
+
+
 // .ed_inkurze,
 // .ed-image,
 // .ed-camera {
