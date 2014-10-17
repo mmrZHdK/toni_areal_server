@@ -39,13 +39,6 @@ body {
   padding-top: 5px;
 }
 
-<<<<<<< Updated upstream
-.swiper-container {
-  top: 50px;
-}
-
-=======
->>>>>>> Stashed changes
 .karte {
   height: 100%;
   margin: 0px;
@@ -57,14 +50,12 @@ body {
   position: relative;
   padding: 10px 0px 10px 25px;
   height: 100px;
-<<<<<<< Updated upstream
   height: 50px;
 }
 .openNewTab p {
   float: left;
   padding-left: 25px;
   width: 150px;
-  text-decoration: underline;
 }
 .openNewTab img {
   float: left;
@@ -72,18 +63,6 @@ body {
   height: 35px;
   padding-top: 3px;
 }
-=======
-  height: 50px; }
-  .openNewTab p {
-    float: left;
-    padding-left: 25px;
-    width: 150px; }
-  .openNewTab img {
-    float: left;
-    width: 35px;
-    height: 35px;
-    padding-top: 3px; }
->>>>>>> Stashed changes
 
 .googleMaps, .detail {
   position: absolute;
@@ -181,16 +160,6 @@ body {
   border: none !important;
 }
 
-<<<<<<< Updated upstream
-.zusatzInfos {
-  border-top: 1px solid #7c7c7c;
-  border-bottom: 1px solid #7c7c7c;
-  margin: 0px 25px 20px 25px;
-  padding-top: 15px;
-}
-
-=======
->>>>>>> Stashed changes
 .mittagsmenu {
   padding-top: 20px;
   background-image: url(../img/pfeilunten.png);
@@ -203,7 +172,8 @@ body {
   border-top: 1px solid #7c7c7c;
   border-bottom: 1px solid #7c7c7c;
   margin: 0px 25px 20px 25px;
-  padding-top: 15px; }
+  padding-top: 15px;
+}
 
 ul {
   list-style-type: none;
