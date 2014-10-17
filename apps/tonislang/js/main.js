@@ -1,4 +1,4 @@
-
+$(document).ready(function() {
 
 
 //Verbindung zu Firebase
@@ -6,9 +6,6 @@ var ref = new Firebase('https://toni-slang.firebaseio.com/');
 
 // Variable für das Firebase Objekt mit allem drin
 var postsRef = ref.child("lexicon");
-
-
-
 
 
 //----------------------------------------------------------------------
@@ -25,7 +22,9 @@ var word = $('#wordInput').val();
 //DescriptionInput Field
 var description = $('#descriptionInput').val();
 
+var file = $('#imageInput').val();
 
+var file = $('#imageInput')[ 0 ].files[ 0 ];
 
 
 function uploadImage() {
@@ -79,14 +78,62 @@ function pushToFirebase(link) {
         var word = $('#wordInput').val();
         var description = $('#descriptionInput').val();    
 
+        
         postsRef.push().setWithPriority({author: author, word: word, description: description, link: link}, word);
 
         $('#wordInput').val('');
         $('#descriptionInput').val('');
         //$('#imageInput').val('');
         $('#settingsModal').removeClass("active");
+
+
+        slangDetailFill(word,description,author);
+
+
+        $('body').css({
+      'backgroundImage': 'url(' + link + ')'
+    });
 }
 
+
+
+
+// Click funktion
+$('#create').on('click', function() {
+  
+  
+
+  var error = false;
+
+  if( '' == $('#authorInput').val()) {
+    alert("Ich brauch nen Namen! Hast du doch? ODER!!!");
+    $('#authorInput').addClass('wtf')
+    
+    error = true
+  }
+
+  else if( '' == $('#wordInput').val()) {
+    alert("Ohne nen Begriff geht bei mir gar nichts! ALLES KLAR?");
+    error = true
+  }
+
+  else if( '' == $('#descriptionInput').val()) {
+    alert("Wir beide wissen du hast was dazu zu sagen!");
+    error = true
+  }
+
+   else if( '' == $('#imageInput').val()) {
+    alert("Wir brauchen auch nicht unbedingt ein NacktSelfie, aber ein Bild wär schon schön! OK?");
+    error = true
+  }
+
+  
+
+  if (!error) {
+    uploadImage();
+      
+  }
+});
 
 
 
@@ -154,7 +201,7 @@ function pushToFirebase(link) {
 
 
 // //Variable für letztes Element
-// var lastElement = $('#last-element');
+// var lastElement = $('#random-element');
 
 // //Funktion letztes Element anzeigen
 // postsRef.endAt().limit(1).on("child_added", function(snapshot) {
@@ -218,7 +265,9 @@ $('#random').click(function() {
     //ruft SlangDetail funktion auf und setzt ein
     slangDetailFill(newPost.word, newPost.description,newPost.author)
 
-    $('body').css({backgroundImage : 'url(' + newPost.link + ')'});
+    $('body').css({
+      'backgroundImage': 'url(' + newPost.link + ')'
+    });
     
 
     
@@ -237,7 +286,7 @@ $('#random').click(function() {
 
 
 
-var nameList = $('#name-list');
+var nameList = $('.name-list');
 
 
 
@@ -249,9 +298,9 @@ postsRef.on('child_added', function (snapshot) {
 
     var ListPost = snapshot.val();
 
-    var messageElement;
+    // var messageElement;
     
-    messageElement = createLI(ListPost);
+    // messageElement = createLI(ListPost);
 
 
     //message Element muss Funktion slangDetailFill auf Click auf Li ausführen
@@ -259,12 +308,32 @@ postsRef.on('child_added', function (snapshot) {
     // console.log(ListPost);
 
     //Element hinzufügen
-    nameList.append(messageElement);
+    //nameList.append('<li><h2 class="wort">'+ListPost.word+'</h2></li><ul style="display: none;"><li><div class="bildliste"><img  src="'+ListPost.link+'"/></div></li><li><p class="beschreibung">'+ListPost.description+'</p></li><li><p class="autor">'+ListPost.author+'</p></li></ul>');
 
-
+    // ('div')
     
 
+    $('<li>' , {
+      class: 'accordionLi',
+      html: '<h2 class="wort">'+ListPost.word+'</h2>'
+    }).appendTo(nameList).on('click', function(){
+      console.log('Test');
 
+      if(false == $(this).next().is(':visible')) {
+        $('.accordionUl').slideUp(300);
+      }
+      $(this).next().slideToggle(300);
+    });
+
+    // $('#accordion ul:eq(0)').show();
+
+    $('<ul>' , {
+      class: 'accordionUl',
+      html: '<li><div class="bildliste"><img  src="'+ListPost.link+'"/></div></li><li><p class="beschreibung">'+ListPost.description+'</p></li><li><p class="autor">'+ListPost.author+'</p></li>',
+      display: 'none'
+    }).appendTo(nameList);
+
+});
 
 
 });
@@ -276,31 +345,64 @@ postsRef.on('child_added', function (snapshot) {
 
 
     // Funktion Liste erstellen
-    function createLI (ListPost) {
+//     function createLI (ListPost) {
         
 
-        // message elemment wird ein listen element
-        var messageElement = $("<li>");
+//         // message elemment wird ein listen element
+//         var messageElement = $("<li>");
         
-        //word element wird mit href versehen
-        // var wordElement = $("<div>");
+//         //word element wird mit href versehen
+//         // var wordElement = $("<div>");
     
-        // word element erhält inhalt
-        // wordElement.html('<h2 class="wort">'+ListPost.word+'</h2><div class="bildliste"><img  src="'+ListPost.link+'"/></div><p class="beschreibung">'+ListPost.description+'</p><p class="autor">'+ListPost.author+'</p>');
-        // messageElement.html(wordElement);
+//         // word element erhält inhalt
+//         // wordElement.html('<h2 class="wort">'+ListPost.word+'</h2><div class="bildliste"><img  src="'+ListPost.link+'"/></div><p class="beschreibung">'+ListPost.description+'</p><p class="autor">'+ListPost.author+'</p>');
+//         // messageElement.html(wordElement);
 
-        messageElement.html('<h2 class="wort">'+ListPost.word+'</h2><div class="bildliste"><img  src="'+ListPost.link+'"/></div><p class="beschreibung">'+ListPost.description+'</p><p class="autor">'+ListPost.author+'</p>');
-        // messageElement.html(wordElement);
+//         messageElement.html('<h2 class="wort">'+ListPost.word+'</h2><div class="bildliste"><img  src="'+ListPost.link+'"/></div><p class="beschreibung">'+ListPost.description+'</p><p class="autor">'+ListPost.author+'</p>');
+//         // messageElement.html(wordElement);
 
-        // console.log(ListPost.link);
+//         // console.log(ListPost.link);
 
 
 
         
-        // funktion gibt message Element zurück
-        return messageElement;
+//         // funktion gibt message Element zurück
+//         return messageElement;
 
-}
+// }
+
+
+//     // Funktion Namens erstellen
+//     function createLI (ListPost) {
+        
+
+//         // message elemment wird ein listen element
+//         // var messageElement = $("<li>");
+//         var messageElement = $("<li>");
+        
+//         //word element wird mit href versehen
+//         // var wordElement = $("<div>");
+    
+//         // word element erhält inhalt
+//         // wordElement.html('<h2 class="wort">'+ListPost.word+'</h2><div class="bildliste"><img  src="'+ListPost.link+'"/></div><p class="beschreibung">'+ListPost.description+'</p><p class="autor">'+ListPost.author+'</p>');
+//         // messageElement.html(wordElement);
+
+//         messageElement.html('<li><h2 class="wort">'+ListPost.word+'</h2></li><ul style="display: none;"><li><div class="bildliste"><img  src="'+ListPost.link+'"/></div></li><li><p class="beschreibung">'+ListPost.description+'</p></li><li><p class="autor">'+ListPost.author+'</p></li></ul>');
+
+//         console.log("jkbhadsvjkhasdv");
+
+//         // messageElement.html(wordElement);
+
+//         // console.log(ListPost.link);
+
+
+
+        
+//         // funktion gibt message Element zurück
+//         return messageElement;
+
+// }
+
   
 
 
@@ -334,19 +436,19 @@ function slangDetailFill (word, description,author) {
 
 }
 
-var mylatesttap = 0
+// var mylatesttap = 0
 
-document.addEventListener( 'touchstart', function (e) {
-var now = new Date().getTime();
-var timesince = now - mylatesttap;
-if((timesince < 350) && (timesince > 0)){
-//DO STUFF
+// document.addEventListener( 'touchstart', function (e) {
+// var now = new Date().getTime();
+// var timesince = now - mylatesttap;
+// if((timesince < 350) && (timesince > 0)){
+// //DO STUFF
 
 
 
-}
-mylatesttap = new Date().getTime()
-}, false );
+// }
+// mylatesttap = new Date().getTime()
+// }, false );
 
 //----------------------------------------------------------------------
 // Search 
@@ -378,5 +480,14 @@ function doOnOrientationChange()
       //Listen to orientation change
       window.addEventListener('orientationchange', doOnOrientationChange); 
 
+$("input[type='text']").change(function(){
+
+    $(this).css({'background-color': '#ffff9d','color': '#00C035'});
+});
 
 
+$("input[type='file']").change(function(){
+
+    $("input[type='button']").css({'background-color': '#ffff9d','color': '#00C035'} );
+    // $("input[type='button']").css('color', '#ffff00');
+});
