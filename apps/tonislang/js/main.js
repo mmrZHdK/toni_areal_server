@@ -90,11 +90,6 @@ function pushToFirebase(link) {
 
 
 
-// Click funktion
-$('#create').click(uploadImage);
-
-
-
 
 
 

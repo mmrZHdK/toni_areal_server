@@ -7,8 +7,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>projectoni</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -18,26 +19,31 @@
         <script src="https://cdn.firebase.com/js/client/1.1.0/firebase.js"></script>
     </head>
     <body>
+                <div class="header">
+            <div class="buttonl"><a href="javascript:history.back()"><img class="naviimg" src="/img/navi-05.png"></img></a></div>
+                 <div class="logo"> 
+                    <a href="index.html"><img class="half center" src="img/logo.png"></img></a>
+                </div>
+            <div class="buttonr"><a href="test.html"><img class="naviimg" src="/img/navi-06.png"></img></a>
+            </div>
+        </div>
         
-        <div class="header"><div class="buttonl"><img src="/img/navi-05.png"></img></div><div class="buttonr"><img src="/img/navi-06.png"></img></div></div>
         <div class="content">
-            <div class="photo"></div>
+        <div id="projects" class="portfolio">my portfolio</div> 
+        <div class="about">About</div> 
+            <div id="profilephoto"></div>
             <div class="info">
-            <div id="name" class="name">Richard</div>
-            <div class="name">Rawlings</div>
-            <div class="descr">Best Interaction Designer in town.</div>
+            <div id="name" class="name">&nbsp;</div>
+            <div id="surname" class="name">&nbsp;</div>
+            <div id="descrp" class="descr">&nbsp;</div>
                 <div class="contact">
-                    <div class="qbutton"></div>
-                    <div class="qbutton"></div>
-                    <div class="qbutton"></div>
-                    <div class="qbutton"></div>
+                    <div class="qbutton"><img class="naviimg" src="/img/icons-02.png"></img></div>
+                    <div id="pwebsite" class="qbutton"></div>
+                    <div class="qbutton"><img class="naviimg" src="/img/icons-03.png"></img></div>
+                    <div class="qbutton"><img class="naviimg" src="/img/icons-04.png"></img></div>
                 </div> 
             </div>
-                <div class="portfolio">my portfolio
-                    <li class="li"></li>
-                    <li class="li"></li>
-                    <li class="li"></li> 
-                </div>  
+                
         </div>
 
         <!--[if lt IE 7]>
@@ -49,7 +55,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/pagescripts/profile.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     </body>
