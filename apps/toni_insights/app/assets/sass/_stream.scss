@@ -1,0 +1,33 @@
+.stream-element {
+    background: $dark;
+    color: $white;
+    float: left;
+
+    .text-teaser {
+        display: block;
+        width: 100%;
+        text-transform: uppercase;
+    }
+
+    .text-content {
+        font-size: 0.8em;
+        line-height: 1em;
+        text-transform: uppercase;
+    }
+}
+
+.stream-element-picture {
+
+    .img-container {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.stream-element-text {
+    font-size: 30px;
+    padding: 10px 10px;
+    @include font-condensed;
+}

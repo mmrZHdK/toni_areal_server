@@ -9,6 +9,7 @@ var $ = require('jquery'),
  */
 require('./vendor/nouislider.js');
 require('./vendor/masonry.js');
+require('./vendor/jquery.getBackgroundSize.js');
 
 Backbone.$ = $;
 

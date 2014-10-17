@@ -8,13 +8,15 @@ var Backbone = require('backbone'),
 
     StreamCollection = require('../../collections/StreamCollection'),
 
-    StreamEntriesView = require('./Stream--Entries'),
+    MainStreamView = require('./MainStream'),
 
     template = require('../../templates/Stream/Stream.hbs');
 
 Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
+
+  lastBeacon: {},
 
   initialize: function() {
     console.log('render::StreamView');
@@ -31,49 +33,55 @@ module.exports = Backbone.View.extend({
   render: function() {
     this.$el.html(template());
 
-    this.streamEntriesView = new StreamEntriesView({
-      el: this.$('#vStreamEntries')
+    this.mainStreamView = new MainStreamView({
+      el: this.$('#vStreamEntries'),
+      collection: this.streamCollection
     });
 
     return this;
   },
 
   getBeaconData: function() {
-    //var rooms = Beacons.getRoomNames();
+    var rooms = Beacons.getRoomNames(),
+        newBeacon = Beacons.getLastBeacon(),
+        newBeaconString = newBeacon.major + '.' + newBeacon.minor,
+        lastBeaconString = this.lastBeacon.major + '.' + this.lastBeacon.minor;
 
-    var rooms = ['4.K20', '4.K21', '4.K22'];
+    console.log('Old Beacon: ' + lastBeaconString + '  ||  New Beacon: ' + newBeaconString);
 
+    // test var
+    // var rooms = ['4.K20', '4.K21', '4.K22'];
 
-    if (rooms.length > 0) {
+    if (lastBeaconString !== newBeaconString || 'undefined' === typeof this.lastBeacon) {
 
-      this.loadStreamEntries(rooms);
+      console.log('>> I have a New Beacon, reset collection');
 
-      var roomObjects = [];
+      if (rooms.length > 0) {
 
-      $.each(rooms, function(i, el) {
-        var n = {
-          name: el
-        };
-        roomObjects.push(n);
-      });
+        console.log('Rooms: ' + rooms.join());
 
-      this.streamEntriesView.render(rooms);
+        /**
+         * fetch new data for collection
+         */
+        this.loadStreamEntries(rooms);
+      }
+      else {
+        console.log('No Rooms for this beacon');
+      }
+      this.lastBeacon = newBeacon;
     }
-
   },
 
   loadStreamEntries: function(rooms) {
-    this.streamCollection.fetch({reset: false, data: {query: rooms}});
+    this.streamCollection.fetch({
+      data: {query: rooms},
+      reset: true
+    });
   },
 
   stop: function() {
-
+    window.clearInterval(this.updateBeaconsTimer);
+    this.mainStreamView.disableStream();
   }
-
-  /**
-   * TODO: unset updateBeaconsTimer when closing view
-   *
-   * close function for every view that is called when view is unset
-   */
 
 });

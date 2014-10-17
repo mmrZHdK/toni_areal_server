@@ -68,7 +68,7 @@ module.exports = Backbone.View.extend({
     var formData = new FormData($(evt.target).get(0));
 
     $.ajax({
-      url: 'http://insights.lukasgaechter.ch/api/post/',
+      url: 'http://insights.dev/api/post/',
       data: formData,
       method: 'POST',
       processData: false,

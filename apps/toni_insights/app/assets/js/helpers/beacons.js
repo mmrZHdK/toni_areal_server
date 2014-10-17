@@ -33,8 +33,43 @@ window.BeaconManager = ( function() {
 
 }());
 
+/**
+ * Map the Beacon numbers to the rooms
+ *
+ * Scheme
+ * ---
+ * 'major': {
+ *   'minor': {
+ *     'Gang1': [raumNrStart, raumNrEnde],
+ *     'Gang1': [[raumNrStart1, raumNrEnde1],[raumNrStart2, raumNrEnde2]]
+ *   }
+ * }
+ * ---
+ *
+ */
 var rooms = {
   '4': {
+    '2': {
+      'C': [1,1],
+      'K': [3,6]
+    },
+    '3': {
+      'C': [[2,3][10,19]]
+    },
+    '5': {
+      'C': [20,23],
+      'E': [1,3]
+    },
+    '6': {
+      'E': [4,6]
+    },
+    '7': {
+      'E': [7,7]
+    },
+    '8': {
+      'E': [8,12],
+      'G': [7,8],
+    },
     '9': {
       'G': [1,6],
       'K': [15,19]
@@ -42,6 +77,32 @@ var rooms = {
     '10': {
       'H': [1,6],
       'K': [20,22],
+    },
+    '11': {
+      'H': [7,17]
+    },
+    '12': {
+      'F': [4,9]
+    },
+    '13': {
+      'D': [[3,5],[20,25]],
+      'F': [1,3]
+    },
+    '14': {
+      'D': [[6,8],[13,19]]
+    },
+    '15': {
+      'D': [9,12]
+    },
+    '16': {
+      'D': [1,2],
+      'K': [4,4]
+    },
+    '17': {
+      'K': [7,13]
+    },
+    '18': {
+      'K': [1,2]
     }
   }
 };
@@ -53,6 +114,10 @@ module.exports = {
 
   getRoomNames: function() {
     return this.roomNames;
+  },
+
+  getLastBeacon: function() {
+    return this.lastBeacon
   },
 
   startBeaconSearchStream: function() {
@@ -144,10 +209,12 @@ module.exports = {
       }
     });
 
-    this.lastBeacon = {
-      major: beacons[0].major,
-      minor: beacons[0].minor
-    };
+    if (beacons.length > 0) {
+      this.lastBeacon = {
+        major: beacons[0].major,
+        minor: beacons[0].minor
+      };
+    }
 
     /**
      * Build Room Strings for Search
@@ -163,10 +230,25 @@ module.exports = {
         var roomStringStart = this.lastBeacon.major + '.' + gang;
 
         for (var i = fromTo[0]; i <= fromTo[1]; i++) {
-          if (i.toString().length == 1) {
-            i = "0" + i;
+
+          /**
+           * check if we have array in array
+           */
+          if (i instanceof Array) {
+            for (var j = i[0]; i <= i[1]; j++) {
+              if (i.toString().length == 1) {
+                i = "0" + i;
+              }
+              roomNames.push(roomStringStart + i);
+            }
           }
-          roomNames.push(roomStringStart + i);
+
+          else {
+            if (i.toString().length == 1) {
+              i = "0" + i;
+            }
+            roomNames.push(roomStringStart + i);
+          }
         }
 
       }, this));

@@ -1,44 +1,56 @@
 <div class="content">
-    <div class="row">
-        <div class="col-xs-8 col-xs-offset-2 text-center">
-            <h1>Insights</h1>
-        </div>
-    </div>
-    <div class="row content-loader">
-        {{#if loadingStatus}}
-            <div class="js-loadingStatus text-center">
-                <div class="col-xs-8 col-xs-offset-2 text-center">
-                    <p class="large"><span class="black">Räume in deiner Umgebung</span><br>werden ermittelt...</p>
-                    {{#if beaconsFound}}
-                        <a href="#" class="button js-startStream">Stream starten</a>
-                    {{else}}
-                        <div class="row">
-                            <div class="col-xs-6 col-xs-offset-3 text-center">
-                                <div class="button button-spinner js-startStream">
-                                    <span class="spin-spin spinner js-spin"></span>
-                                    <span class="button-label">Start!</span>
+    {{#if iOSDevice}}
+        <div class="row content-loader">
+            {{#if loadingStatus}}
+                <div class="js-loadingStatus">
+                    <div class="col-xs-8 col-xs-offset-2 text-center">
+                        <div class="room-bottom">
+                            <p class="large"><span class="black">Räume in deiner Umgebung</span><br>werden ermittelt...</p>
+                        </div>
+                        {{#if beaconsFound}}
+                            <a href="#" class="button js-startStream">Stream starten</a>
+                        {{else}}
+                            <div class="row">
+                                <div class="col-xs-6 col-xs-offset-3 text-center">
+                                    <div class="button button-spinner js-startStream">
+                                        <span class="spin-spin spinner js-spin"></span>
+                                        <span class="button-label">Start!</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {{/if}}
-                    <p class="subtle room-top">Um zu sehen, was in den Räumen um dich herum passiert, wird dein Standort ermittelt. Stelle dich in einen Gang für eine optimale Verbindung.</p>
+                        {{/if}}
+                        <p class="subtle room-top">Um zu sehen, was in den Räumen um dich herum passiert, wird dein Standort ermittelt. Stelle dich in einen Gang für eine optimale Verbindung.</p>
+                    </div>
                 </div>
-            </div>
-        {{else}}
-            <div class="col-xs-8 col-xs-offset-2 text-center">
-                <p class="large"><span class="black">Keine Räume</span> in deiner<br>direkten Umgebung gefunden.</p>
-            </div>
-            <div class="col-xs-6 col-xs-offset-3 text-center">
-                <a href="#" class="button js-loaderTryAgain">Nochmal versuchen</a>
-            </div>
-        {{/if}}
-    </div>
-    <!-- <a href="#" class="button js-startStream">Stream starten</a> -->
-    <div class="row fixed-bottom">
-        <div class="col-xs-8 col-xs-offset-2 text-center">
-            <a href="#" class="button js-searchRoom"><span class="icon-search"></span>Raum suchen</a>
+            {{else}}
+                <div class="col-xs-8 col-xs-offset-2 text-center">
+                    <p class="large"><span class="black">Keine Räume</span> in deiner<br>direkten Umgebung gefunden.</p>
+                </div>
+                <div class="col-xs-6 col-xs-offset-3 text-center">
+                    <a href="#" class="button js-loaderTryAgain">Nochmal versuchen</a>
+                </div>
+                <div class="col-xs-8 col-xs-offset-2 text-center">
+                    <p class="subtle room-top">Bewege dich in den Gängen, und versuche es erneut, um die Chancen auf eine erfolgreiche Verbindung zu erhöhen.</p>
+                </div>
+            {{/if}}
         </div>
-    </div>
+        <div class="row fixed-bottom">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                <a href="#" class="button js-searchRoom">Raum suchen</a>
+            </div>
+        </div>
+    {{else}}
+        <div class="row content-loader room-bottom">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                Dein Gerät ist leider noch nicht fähig, die Räume in deiner Umgebung frei zu erkunden. Stattdessen kannst du gezielt nach einem Raum suchen.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2 text-center">
+                <a href="#" class="button js-searchRoom">Raum suchen</a>
+            </div>
+        </div>
+    {{/if}}
 </div>
 
 

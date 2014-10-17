@@ -20,6 +20,7 @@
         height: $header-height;
         line-height: $header-height;
         width: $header-height;
+        margin-top: -3px;
         color: $white;
         text-transform: uppercase;
         text-align: center;
@@ -35,6 +36,14 @@
         margin: 0;
     }
 
+    &.inverse {
+        background: none;
+        color: $dark;
+
+        a {
+            color: $dark;
+        }
+    }
 }
 
 .header-center {

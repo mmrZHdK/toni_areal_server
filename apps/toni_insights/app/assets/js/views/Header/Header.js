@@ -21,6 +21,13 @@ module.exports = Backbone.View.extend({
 
     this.delegate = options.delegate;
 
+    this.buttonToniApp = new HeaderButton({
+      iconName: 'power',
+      id: 'button-toniapp',
+      className: '',
+      buttonAction: _.bind(this.buttonToniAppAction, this)
+    });
+
     this.buttonUpload = new HeaderButton({
       iconName: 'plus',
       id: 'button-upload',
@@ -36,7 +43,7 @@ module.exports = Backbone.View.extend({
     });
 
     this.buttonStream = new HeaderButton({
-      iconName: 'eye',
+      iconName: 'arrow-left',
       id: 'button-stream',
       className: '',
       buttonAction: _.bind(this.buttonStreamAction, this)
@@ -54,7 +61,7 @@ module.exports = Backbone.View.extend({
      */
     this.actions = {
       'vLoader': {
-        left: null,
+        left: this.buttonToniApp,
         right: null,
         transition: _.bind(this.transitionToLoader, this),
         name: 'Insights'
@@ -176,14 +183,16 @@ module.exports = Backbone.View.extend({
     }
 
     if ('vLoader' == newViewName) {
-      this.hideHeader();
+      this.$el.toggleClass('inverse');
     }
     else {
-      if (this.$el.hasClass('hidden')) {
-        this.$el.removeClass('hidden');
+      if (this.$el.hasClass('inverse')) {
+        this.$el.removeClass('inverse');
       }
-      this.prepare(newViewName);
     }
+
+    this.prepare(newViewName);
+
   },
 
   hideHeader: function() {
@@ -252,6 +261,12 @@ module.exports = Backbone.View.extend({
 
   buttonBackRightAction: function(evt) {
     this.delegate.loadPreviousView();
+  },
+
+  buttonToniAppAction: function(evt) {
+    evt.preventDefault();
+
+    window.location = 'http://data.zhdk.ch/';
   }
 
 });

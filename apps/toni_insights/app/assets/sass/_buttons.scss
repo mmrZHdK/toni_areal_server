@@ -11,6 +11,11 @@
     @include font-bold;
 }
 
+.button-secondary {
+    background: $friar;
+    border-color: darken($friar, 5%);
+}
+
 .button-spinner {
     background: none;
     border-bottom: 3px solid transparent;
@@ -23,5 +28,33 @@
     &.visible {
         background: $dark;
         border-color: #000;
+    }
+
+    .button-label {
+
+    }
+}
+
+.spinner {
+    display: block;
+    color: $dark;
+    font-size: 60px;
+    line-height: 60px;
+
+    @include transition(
+        color 0.3s ease-in-out,
+        font-size 0.3s ease-in-out,
+        height 0.3s ease-in-out,
+        line-height 0.3s ease-in-out
+    );
+    /* @include transition();
+    @include transition(); */
+
+
+    &.small {
+        font-size: 30px;
+        line-height: 45px;
+        height: 30px;
+        color: $white;
     }
 }

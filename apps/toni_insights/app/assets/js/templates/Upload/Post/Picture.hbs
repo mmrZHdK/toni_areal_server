@@ -1,5 +1,12 @@
 <input type="hidden" name="contentType" value="picture">
 
 <div class="col-xs-10 col-xs-offset-1 room-bottom room-top">
-    <span class="button button-file"><span class="fileinput-new">Bild auswählen</span><input type="file" name="file" class="js-fileInput" accept="image/*"></span>
+
+    <div class="js-filePreview">
+        <label>Bildvorschau</label>
+        <div class="img-preview-container">
+            <div class="img-preview js-fileChange"></div>
+        </div>
+    </div>
+    <span class="button button-secondary button-file"><span class="fileinput-new js-buttonText">Bild auswählen</span><input type="file" name="file" class="js-fileInput" accept="image/*"></span>
 </div>

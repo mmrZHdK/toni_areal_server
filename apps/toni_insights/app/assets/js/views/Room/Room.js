@@ -9,7 +9,7 @@ var Backbone = require('backbone'),
 
     EntryCollection = require('../../collections/EntryCollection'),
 
-    StreamView = require('./Stream'),
+    StreamView = require('./Room--Stream'),
 
     template = require('../../templates/Room/Room.hbs');
 
@@ -37,7 +37,7 @@ module.exports = Backbone.View.extend({
   },
 
   stop: function() {
-    this.streamView.disableStream();
+
   },
 
   start: function() {
