@@ -493,8 +493,10 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   border: none;
-  width: 52%;
+  width: 71.25%;
   padding-top: 0.2em;
+  margin-right: 0em;
+  padding-right: 0em;
   font-family: "Open Sans";
   font-weight: 700;
 }
@@ -533,7 +535,7 @@ input[type="radio"] {
 
 .ed_title_titel {
   float: left;
-  width: 35%;
+  width: 33.5%;
 }
 
 .ed_title_titel h4 {
@@ -555,7 +557,7 @@ input[type="radio"] {
 
 .ed-sDate-titel {
   float: left;
-  width: 35%;
+  width: 33%;
 }
 
 .ed-sDate-titel p {
@@ -571,23 +573,23 @@ input[type="radio"] {
 
 .ed-sDate, .ende {
   float: left;
-  width: 57%;
+  width: 61%;
   margin-left: 1em;
   margin-top: 1em;
-}
-
-#startdatum, #enddatum {
-  width: 52%;
 }
 
 #startzeit, #endzeit {
   float: right;
   width: 25%;
+  padding-right: 0em;
+  margin-right: 0em;
+  padding-left: 0.2em;
+  margin-left: 0.2em;
 }
 
 .ed-ort-titel {
   float: left;
-  width: 35%;
+  width: 31%;
 }
 
 .ed-ort-titel p {
@@ -599,12 +601,13 @@ input[type="radio"] {
 .e_wrapper h4 {
   margin-top: -1em;
   margin-bottom: 0em;
+  margin-right: 1em;
   font-size: 0.6em;
 }
 
 .ed-ort {
   float: left;
-  width: 57%;
+  width: 59%;
   margin-left: 1em;
   margin-top: 1em;
 }
@@ -616,12 +619,12 @@ input[type="radio"] {
 
 #raum {
   width: 100%;
-  margin-left: 0.5em;
+  margin-left: 0.2em;
 }
 
 .ed_landmark_titel {
   float: left;
-  width: 35%;
+  width: 32%;
 }
 
 .ed_landmark_titel p {
@@ -637,19 +640,19 @@ input[type="radio"] {
 
 .ed_landmark {
   float: left;
-  width: 57%;
+  width: 59%;
   margin-left: 1em;
   margin-top: 1em;
 }
 
 #landmark {
   width: 100%;
-  margin-left: 0.5em;
+  margin-left: 0.2em;
 }
 
 .ed_inkurze_titel {
   float: left;
-  width: 35%;
+  width: 32%;
 }
 
 .ed_inkurze_titel p {
@@ -665,14 +668,14 @@ input[type="radio"] {
 
 .ed_inkurze {
   float: left;
-  width: 57%;
+  width: 59%;
   margin-left: 1em;
   margin-top: 1em;
 }
 
 #inkurze {
   width: 100%;
-  margin-left: 0.5em;
+  margin-left: 0.2em;
 }
 
 .ed_bgc_titel {

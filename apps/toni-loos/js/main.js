@@ -4,6 +4,7 @@ rootRef = new Firebase('https://incandescent-inferno-8047.firebaseio.com/');
  var fontColor;
  var bgColor;
  var startDatum;
+ var startDatumHeute;
  
 
 //START DER ZEITKISTE
@@ -209,7 +210,7 @@ function displayEventItem(eventItem, htmlPlaceHolderDiv) {
 
 $(document).ready(function(){
 
-
+startDatumHeute = todayDate();
   
     //Hier kommt ein Reload Button hin --> location.reload(true);
     //$seite wird deklariert und initialisiert mit einer html section und zwei klassen sowie einer ID
@@ -285,8 +286,8 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
     $( ".addButton" ).click(function( e ) {
         $(".titel").text("EINTRAG").velocity({
-                             duration: 5000,
-                         },"easeInSine");
+                             duration: 5
+                         },"easeIn");
 
         $(".addButton").hide();
         $(".cancleButton").show();
@@ -297,22 +298,45 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
             //opacity: 0
             
         });
+
+      // $(".addButton").velocity(  {
+      //       display: "block",
+      //       rotateZ: "45deg",
+      //       //duration: 5000
+      //     },{
+      //       complete: function () {$(".addButton").hide()
+      //       $(".cancleButton").velocity(
+      //     {
+      //       display: "block",
+      //       rotateZ: "45deg",
+      //       //duration: 5000
+      //     },{
+      //       display: "block"
+      //     } 
+      //   );
+      //     }
+      //     } 
+      //   );
+
         $(".cancleButton").on("click", function(){
-                         $( '.page#home' ).show().velocity({
-                            duration: 5000
-                         });
-                         $seite.addClass( 'out_right' );
-                         $seite.remove();
-                         $(".titel").text("TONI LOOS").velocity({ 
-                             duration: 5000  
-                         });
+          $seite.addClass( 'out_right' );
+                         $( '.page#home' ).show();
+                             opacity: 1
+                         $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ $seite.remove() });
+                         
+                         $(".titel").text("TONI LOOS").velocity({
+                             duration: 5000
+                         },"easeInSine");
                          $(".cancleButton").hide();
                          
                          $(".addButton").velocity({
                              rotateZ: "0deg",
                              duration: 5000,
                              opacity: 1
-                         }).show();             
+                             
+                         }).show();
+                            
+                               
         });
         //$(".addButton").hide();
     
@@ -326,24 +350,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         
         // Lade die edit-Seite und davon nur die id edit
         $seite.load( 'e_edit.html #edit', function( e ) { 
-            //$(".navi.titel").scrollIntoView(true);
-            $("#cancle").click(function(){
-                        $( '.page#home' ).show();
-                         $seite.addClass( 'out_right' );
-                         
-                         $(".titel").text("TONI LOOS").velocity({
-                             duration: 5000
-                         });
-                         $seite.remove();
-                         $(".cancleButton").hide();
-                         
-                         $(".addButton").velocity({
-                
-                             rotateZ: "0deg",
-                             duration: 5000,
-                             opacity: 1
-                         }).show();
-            });
+            
         fontColor = 0;
         bgColor   = 0;
 
@@ -351,18 +358,17 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         auswahlFontFarbe();
         //console.log( '> complete @ $seite.load' );
         // Seite ist geladen worden, starte Slide Animation
-        $seite.removeClass( 'out_right' );
-        $('.page#home').velocity({
-                        duration: 5000, 
-                     });
-        $('.page#home').hide();
+        $seite.removeClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ $('.page#home').hide()});
+        
+        
 
         //document.getElementById('startdatum').value = new Date().toISOString().substring(0, 10);
 
         var startdatumSelect = document.getElementById("startdatumx");//$('select[name=StartdatumSelecten]')
         startdatumSelect.onchange = function() {
          var startDatum = this.value;
-         startDatumHeute = todayDate();
+         
+         console.log("startdatum Heute 1" + " " + startDatumHeute)
 
           if(startDatum == 1) {
             startDatumHeute = todayDate();
@@ -411,7 +417,9 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                         duration: 5000
                      });
                      //$(".page#home").scrollTop();
-                     $seite.addClass( 'out_right' );
+                     $seite.addClass( 'out_right' ).velocity({
+                        duration: 5000
+                     });
                      //$seite.remove();
                      $(".titel").text("TONI LOOS").velocity({
                         duration: 5000
@@ -424,7 +432,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                          duration: 5000,
                          opacity: 1
                      }).show();
-                     //window.location.reload();
+                     window.location.reload();
 
             }
             //$(".navi.titel").scrollIntoView(true);
