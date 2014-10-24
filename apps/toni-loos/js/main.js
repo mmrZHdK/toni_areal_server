@@ -123,27 +123,6 @@ function creatDateAndTime(sDatesTime){
 /////////
 ///////
 //////
-//Funktion um die Elemente aus der Datenbank zu holen und sie in die
-//Variable events zu schreiben und an renderEventList als Parameter mitzugeben
-//Brauch ich wahrscheinlich nicht mehr --> lädt alle heutigen Events rein!
-/*
-function displayAllEvents() {
-    var events = [];
-    var filterRootRef = rootRef.startAt(todayStartDateAndTime()).endAt(todayEndDateAndTime());
-    filterRootRef.once("value", function(snapshot) {
-        console.log("was passiert hier");
-        //console.log(snapshot.val().startdatum);
-        //Jeder Event wird als Packe abgespeichert
-        snapshot.forEach(function(childSnapshot) {
-            events.push(childSnapshot.val());
-            //console.log("WAS PASSIERT DA" + " " + events);
-        });
-        
-        renderEventList(events);
-
-    });
-}
-*/
 
 function displayEvents(todayStartDateAndTime, todayEndDateAndTime, htmlPlaceHolderDiv) {
         //coverheute();
@@ -212,42 +191,6 @@ $(document).ready(function(){
 
 startDatumHeute = todayDate();
 
-  
-    //Hier kommt ein Reload Button hin --> location.reload(true);
-    //$seite wird deklariert und initialisiert mit einer html section und zwei klassen sowie einer ID
-    // setInterval(function() {
-    // var p = $( ".scrollbox" );
-    // var position = p.position();
-    // console.log("scrollbox position" + position.top);
-    // if(position.top > 80){
-    //     window.location.reload(true);
-    //     console.log("RELOAD GO GOGO OOOO ::::::");
-    // }
-    // }, 500);
-
-//PULL TO REFRESH
-// var RB = new RubberBand(function(e) {
-//         console.log("DOES IT FUCKING WORK WITH THE PULL SHIT?");
-//         // make your call to AJAX or simply reload the page
-//         window.location.reload();
-        
-//         // don't forget to close RubberBand when you're done.
-//         e.close();
-
-//     });
-// $(".scrollbox").on("scroll", function(){
-// if($(".page#home").is(":visible") ){
-//   $('.scrollbox').waypoint(function() {
-//   //$(".titel").text("HEUTE");
-//   alert("does it?");
-//   window.location.reload();
-//   //console.log("heute cover drin ==")
-// }, { offset: 50 });
-// }
-// });
-//PULL TO REFRESH   
-//Gibt dem INPUT Feld das aktuelle Startdatum mit!
-
 
     // swal({
     //   title: "Error!",
@@ -295,34 +238,15 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $(".cancleButton").velocity({
             display: "block",
             rotateZ: "45deg",
-            duration: 5000,
+            duration: 5000
             //opacity: 0
             
         });
 
-      // $(".addButton").velocity(  {
-      //       display: "block",
-      //       rotateZ: "45deg",
-      //       //duration: 5000
-      //     },{
-      //       complete: function () {$(".addButton").hide()
-      //       $(".cancleButton").velocity(
-      //     {
-      //       display: "block",
-      //       rotateZ: "45deg",
-      //       //duration: 5000
-      //     },{
-      //       display: "block"
-      //     } 
-      //   );
-      //     }
-      //     } 
-      //   );
-
         $(".cancleButton").on("click", function(){
           $seite.addClass( 'out_right' );
                          $( '.page#home' ).show();
-                             opacity: 1
+                             
                          $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ $seite.remove() });
                          
                          $(".titel").text("TONI LOOS").velocity({
@@ -383,12 +307,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
           }
           console.log("startdatum" + " " + startDatum);
         } 
-        
-        // $("#startdatum").on("focusout", function(){
-        //   var startzeitDatum = document.getElementById('startdatum').value;
-        //   document.getElementById('enddatum').value = startzeitDatum;
-        //   console.log("enddatum" + " " + enddatum);
-        // })
+
 
         $("#startzeit").on("focusout", function(){
           var startzeitElement = document.getElementById('startzeit').value;
@@ -414,21 +333,18 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                 //$( '.page#edit' ).addClass( 'out_left_new' );
                 //$( '.menubutton#back' ).hide();
             } else {
-                     $( '.page#home' ).show().velocity({
-                        duration: 5000
-                     });
+                     $( '.page#home' ).show();
                      //$(".page#home").scrollTop();
-                     $seite.addClass( 'out_right' ).velocity({
-                        duration: 5000
-                     });
-                     //$seite.remove();
                      $(".titel").text("TONI LOOS").velocity({
                         duration: 5000
                      });
                      $(".cancleButton").hide();
                      
                      $(".addButton").show();
-                     window.location.reload();
+                     $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ window.location.reload() });
+                     //$seite.remove();
+                     
+                     
 
             }
             //$(".navi.titel").scrollIntoView(true);
@@ -470,20 +386,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
     $(".titel").click(function(){
         window.location.reload(true);
     });
-// $content_bg_red: #CF3933;
-// $content_bg_violet: #720CE8;
-// $content_bg_yellow: #EBD942;
-// $content_bg_green: #44919A;
 
-
-// //fonts edit
-// $content_f_red: #F70707;
-// $content_f_white: #ffffff
-// $content_f_pink: #F90859;
-// $content_f_blue: #28AAFF;
-// label{
-//  margin: 1em;
-// }
     function auswahlBGFarbe(){
         $("#bg_c_rot").on("click",function(e){
           bgColor = "#ED3232";
@@ -504,7 +407,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
           $( "#bg_c_gelb" ).removeClass( "clickedColor" );
         });
         $("#bg_c_grun").click(function(){
-          bgColor = "#01BC4B";
+          bgColor = "#05a444";
           //console.log("ischer clicked dr grün")
           $( this ).addClass( "clickedColor" );
           $( "#bg_c_rot" ).removeClass( "clickedColor" );
@@ -529,7 +432,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
     //edit zuklappen
    function auswahlFontFarbe(){
        $("#font_c_rot").on("click",function(e){
-          fontColor = "#931818";
+          fontColor = "#ED3232";
          // console.log("ischer clicked dr rot")
           $( this ).addClass( "clickedColor" );
           $( "#font_c_white" ).removeClass( "clickedColor" );
@@ -545,7 +448,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
           $( "#font_c_blue" ).removeClass( "clickedColor" );
         });
         $("#font_c_pink").on("click",function(e){
-          fontColor = "#E03F75";
+          fontColor = "#EBD942";
          // console.log("ischer clicked dr grün")
           $( this ).addClass( "clickedColor" );
           $( "#font_c_rot" ).removeClass( "clickedColor" );
@@ -561,46 +464,6 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
           $( "#font_c_pink" ).removeClass( "clickedColor" );
         });
    };
-
-
-   // function uploadImage(){
-   //  console.log("uploadImage");
-   //  var file = $("#camera")[ 0 ].files[ 0 ];
-   //  console.log("fill:"+ file);
-
-   //  /* Is the file an image? */
-   //      if (!file || !file.type.match(/image.*/)) return;
-
-   //      /* It is! */
-   //      document.body.className = "uploading";
-
-   //      /* Lets build a FormData object*/
-   //      var fd = new FormData(); // I wrote about it: https://hacks.mozilla.org/2011/01/how-to-develop-a-html5-image-uploader/
-   //      fd.append("image", file); // Append the file
-   //      var xhr = new XMLHttpRequest(); // Create the XHR (Cross-Domain XHR FTW!!!) Thank you sooooo much imgur.com
-   //      xhr.open("POST", "https://api.imgur.com/3/image.json"); // Boooom!
-   //      xhr.onload = function() {
-   //          // Big win!
-   //          // document.querySelector("#link").href = JSON.parse(xhr.responseText).data.link;
-   //          // document.body.className = "uploaded";
-
-   //          var submit = (JSON.parse(xhr.responseText).data.link);
-   //          return submit;
-            
-   //      }
-   //      xhr.setRequestHeader('Authorization', 'Client-ID 19de3012e83ed23'); // Get your own Client-ID at http://api.imgur.com/
-        
-   //      // Ok, I don't handle the errors. An exercise for the reader.
-
-   //      /* And now, we send the formdata */
-   //      xhr.send(fd);
-    
-   // }
-
-   // function sentToSubmitFunkction(link){
-   //  return link;
-
-   // }
 
 
 
@@ -668,11 +531,11 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         console.log(data)
 
        var cnewRootRef = rootRef.push().setWithPriority(data, sDatesTime);
-       var myEvents = JSON.parse(localStorage.getItem('myEvents'));
+       // var myEvents = JSON.parse(localStorage.getItem('myEvents'));
         
-        if(myEvents === null || myEvents === undefined) {
-            myEvents = new Array(); 
-        }
+       //  if(myEvents === null || myEvents === undefined) {
+       //      myEvents = new Array(); 
+       //  }
         
         // myEvents.push(cnewRootRef.name());
         // localStorage.setItem('myEvents',JSON.stringify(myEvents));
@@ -724,7 +587,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
 
         $(".e_content").hide().fadeOut("slow");
         if(!alreadyOpen)
-            element.show().fadeIn().delay(200);
+            element.show();
             // element.show().fadeIn("slow");
             //show().fadeIn("slow");
         this.scrollIntoView(true);

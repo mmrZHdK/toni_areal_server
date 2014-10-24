@@ -352,6 +352,7 @@ textarea {
 
 .e_content {
   display: none;
+  min-height: 150px;
   font-family: "Open Sans";
   font-weight: 800;
   letter-spacing: 0.02em;
@@ -369,7 +370,7 @@ textarea {
 .showmenue {
   display: block;
   -webkit-transform: translate(-50%, 0px);
-  webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -381,7 +382,7 @@ textarea {
 
 .pushright {
   -webkit-transform: translate(55%, 0px);
-  webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -394,7 +395,7 @@ textarea {
 .hidemenue {
   display: block;
   -webkit-transform: translate(55%, 0px);
-  webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -406,7 +407,7 @@ textarea {
 
 .pushleft {
   -webkit-transform: translate(-100%, 0px);
-  webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -418,7 +419,7 @@ textarea {
 
 .left-to-normal {
   -webkit-transform: translate(0%, 0px);
-  webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -430,7 +431,7 @@ textarea {
 
 .out_right {
   -webkit-transform: translate(100%, 0px);
-  webkit-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
   -moz-transition-timing-function: ease-in-out;
   -o-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
@@ -442,7 +443,7 @@ textarea {
 
 .out_left_new {
   -webkit-transform: translate(-100%, 0px);
-  webkit-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
   -o-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
@@ -510,10 +511,9 @@ button.submit {
 
 input[type="radio"] {
   content: " ";
-  webkit-appearance: none;
+  -webkit-appearance: none;
   background: #ed3232;
   display: inline-block;
-  /*hide the radio button*/
   background-color: none;
   border-radius: 0em;
   -moz-border-radius: 0em;
@@ -823,20 +823,29 @@ input[type="radio"] {
 }
 
 #backMainApp {
-  width: 90%;
+  width: 85%;
   font-family: "Open Sans";
   font-weight: 700;
   letter-spacing: 0.1em;
   font-size: 1.2em;
   background-color: #065FC6;
   color: #F8EFEF;
-  padding: 1em 0.5em 1em 0.5em;
-  margin: 0.7em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-left: 1em;
   margin-top: 2em;
   border-radius: 0px 0px 0px 0px;
   -moz-border-radius: 0px 0px 0px 0px;
   -webkit-border-radius: 0px 0px 0px 0px;
   border: 0;
+}
+
+.bezug {
+  font-family: "Open Sans";
+  font-weight: 700;
+  font-size: 0.5em;
+  margin: 1em;
+  padding-top: 17em;
+  padding-left: 1.4em;
 }
 
 #try {
