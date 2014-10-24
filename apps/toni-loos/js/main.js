@@ -246,7 +246,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $(".cancleButton").on("click", function(){
           $seite.addClass( 'out_right' );
                          $( '.page#home' ).show();
-                         $(".scrollbox").scrollTop(10);
+                         $(".scrollbox").scrollTop(0);
                              
                          $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ $seite.remove() });
                          
@@ -267,7 +267,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         //$(".addButton").hide();
     
         
-        $(".scrollbox").scrollTop(10);
+        $(".scrollbox").scrollTop(0);
 
         //console.log( '> click @ Button element' );
         
@@ -362,8 +362,9 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $( ".navi" ).toggleClass( "pushright" );
         $( ".scrollbox" ).toggleClass( "pushright" );
         if($(".navi").hasClass("pushright")){
+
             $(".scrollbox").swipe({
-            swipeLeft:function(event, direction, distance, duration, fingerCount) {
+            swipeLeft:function() {
               //This only fires when the user swipes left
               $( ".navi" ).removeClass( "pushright" );
               $( ".scrollbox" ).removeClass( "pushright" );
@@ -376,7 +377,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         });
         $("#meineEintrage1, #meineEintrage2").click(function (){
           swal({
-                      title: "DIESER BEREICH IST ERST IN V.2 AKTIV",
+                      title: "DIESER BEREICH STEHT IN KÜRZE ZUR VERFÜGUNG",
                       //text: "BITTE ALLE FELDER AUSFÜLLEN!",
                       type: "",
                       confirmButtonText: "OK"

@@ -219,15 +219,15 @@ textarea {
 }
 
 .scrollbox {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch !important;
   position: absolute;
   background-color: #C6C6C6;
   top: 5em;
   left: 0;
   right: 0;
   bottom: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: transparent;
   -webkit-transform: translate(0, 0px);
   -webkit-transition-timing-function: ease-out;
