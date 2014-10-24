@@ -3,7 +3,6 @@
   padding: 1em;
   width: 50%;
   border-color: #EEE8CC;
-  border: none;
   font-size: 1.1em;
   font-family: "Arial", Arial, sans-serif;
   background: #FF9933;
@@ -11,6 +10,22 @@
 }
 
 .backbutton#back a {
+  color: white;
+  text-decoration: none;
+}
+
+.donebutton#done {
+  display: none;
+  padding: 1em;
+  width: 50%;
+  border-color: #EEE8CC;
+  font-size: 1.1em;
+  font-family: "Arial", Arial, sans-serif;
+  background: #FF9933;
+  color: #EEE8CC;
+}
+
+.donebutton#done a {
   color: white;
   text-decoration: none;
 }
@@ -35,7 +50,6 @@
   position: absolute;
   float: right;
   width: 20%;
-  height: 20%;
 }
 
 .arrow img {
@@ -47,155 +61,261 @@
 
 
 #arrow1 {
-  right: 6em;
-  top: 15em;
+  right: 40%;
+  top: 60%;
 }
 
 #arrow2 {
-  right: 2em;
-  top: 14em;
+  right: 16%;
+  top: 52%;
 }
 
 #arrow3 {
-  right: 12em;
-  top: 16em;
+  right: 70%;
+  top: 60%;
 }
 
 #arrow4 {
-  right: 5em;
-  top: 14em;
+  right: 30%;
+  top: 53%;
 }
 
 #arrow5 {
-  right: 0.5em;
-  top: 17em;
+  right: 5%;
+  top: 65%;
 }
 
 #arrow6 {
-  right: 12em;
-  top: 12em;
+  right: 70%;
+  top: 45%;
 }
 
 #arrow7 {
-  right: 6.5em;
-  top: 13em;
+  right: 40%;
+  top: 50%;
 }
 
 #arrow8 {
-  right: 1em;
-  top: 9em;
+  right: 5%;
+  top: 35%;
 }
 
 #arrow9 {
-  right: 3em;
-  top: 14em;
+  right: 15%;
+  top: 53%;
 }
 
 #arrow10 {
-  right: 10em;
-  top: 15em;
+  right: 61%;
+  top: 56%;
 }
 
 #arrow11 {
-  right: 12em;
-  top: 15em;
+  right: 73%;
+  top: 56%;
 }
 
 #arrow12 {
-  right: 6.2em;
-  top: 14em;
+  right: 38%;
+  top: 53%;
 }
 
 #arrow13 {
-  right: 1em;
-  top: 15em;
+  right: 5%;
+  top: 56%;
 }
 
 #arrow14 {
-  right: 1.5em;
-  top: 12em;
+  right: 10%;
+  top: 45%;
 }
 
 #arrow15 {
-  right: 11em;
-  top: 12em;
+  right: 67%;
+  top: 45%;
 }
 
 #arrow16 {
-  right: 6.5em;
-  top: 13em;
+  right: 40%;
+  top: 50%;
 }
 
 #arrow17 {
-  right: 12em;
-  top: 12em;
+  right: 73%;
+  top: 50%;
 }
 
 #arrow18 {
-  right: 7.5em;
-  top: 13.5em;
+  right: 47%;
+  top: 55%;
 }
 
 #arrow19 {
-  right: 12em;
-  top: 13.5em;
+  right: 73%;
+  top: 51%;
 }
 
 #arrow20 {
-  right: 1.5em;
-  top: 9.5em;
+  right: 10%;
+  top: 37%;
 }
 
 #arrow21 {
-  right: 2em;
-  top: 13.5em;
+  right: 12%;
+  top: 55%;
 }
 
 #arrow22 {
-  right: 6.5em;
-  top: 14.5em;
+  right: 40%;
+  top: 55%;
 }
 
 #arrow23 {
-  right: 5em;
-  top: 10.5em;
+  right: 33%;
+  top: 42%;
 }
 
 #arrow24 {
-  right: 12.5em;
-  top: 13em;
+  right: 75%;
+  top: 50%;
 }
 
 #arrow25 {
-  right: 5em;
-  top: 12em;
+  right: 30%;
+  top: 45%;
 }
 
 #arrow26 {
-  right: 8.5em;
-  top: 12em;
+  right: 51%;
+  top: 45%;
 }
 
 #arrow27 {
-  right: 12.7em;
-  top: 14.5em;
+  right: 78%;
+  top: 53%;
 }
 
 #arrow28 {
-  right: 4.5em;
-  top: 11em;
+  right: 29%;
+  top: 41%;
 }
 
 #arrow29 {
-  right: 1.5em;
-  top: 9em;
+  right: 10%;
+  top: 35%;
 }
 
 #arrow30 {
-  right: 1em;
-  top: 14.8em;
+  right: 5%;
+  top: 60%;
 }
 
+#arrow31 {
+  right: 30%;
+  top: 47%;
+}
 
+#arrow32 {
+  right: 48%;
+  top: 47%;
+}
 
+#arrow33 {
+  right: 4%;
+  top: 48%;
+}
 
+#arrow34 {
+  right: 32%;
+  top: 48%;
+}
+
+#arrow35 {
+  right: 70%;
+  top: 48%;
+}
+
+#arrow36 {
+  right: 30%;
+  top: 38%;
+}
+
+#arrow37 {
+  right: 40%;
+  top: 55%;
+}
+
+#arrow38 {
+  right: 8%;
+  top: 55%;
+}
+
+#arrow39 {
+  right: 48%;
+  top: 49%;
+}
+
+#arrow40 {
+  right: 72%;
+  top: 35%;
+}
+
+#arrow41 {
+  right: 75%;
+  top: 65%;
+}
+
+#arrow42 {
+  right: 36%;
+  top: 42%;
+}
+
+#arrow43 {
+  right: 68%;
+  top: 35%;
+}
+
+#arrow44 {
+  right: 43%;
+  top: 50%;
+}
+
+#arrow45 {
+  right: 5%;
+  top: 40%;
+}
+
+#arrow46 {
+  right: 75%;
+  top: 45%;
+}
+
+#arrow47 {
+  right: 65%;
+  top: 35%;
+}
+
+#arrow48 {
+  right: 45%;
+  top: 43%;
+}
+
+#arrow49 {
+  right: 40%;
+  top: 55%;
+}
+
+#arrow50 {
+  right: 55%;
+  top: 45%;
+}
+
+#arrow51 {
+  right: 5%;
+  top: 50%;
+}
+
+#arrow52 {
+  right: 30%;
+  top: 60%;
+}

@@ -530,9 +530,9 @@ var tramToAlt = function(tramToAlt) {
             $('<img>', {
                 src: 'img/NFT.svg',
                 class: 'NFT'
-            }).appendTo('#toAltstetten' + index + ' td:last-child');
+            }).appendTo('#toAltstetten' + index + ' td:nth-child(2)');
         }
-        $('#toAltstetten' + index + ' td:nth-child(2)').html('4');
+        $('#toAltstetten' + index + ' td:last-child').html('4');
         $('#toAltstetten' + index + ' td:nth-child(1)').html(departure);
         $('#toAltstettenTile tr').css({'border-top': '1px solid #b4b4af'});
     });
@@ -553,9 +553,9 @@ var tramToTief = function(tramToTief) {
             $('<img>', {
                 src: 'img/NFT.svg',
                 class: 'NFT'
-            }).appendTo('#toTiefenbrunnen' + index + ' td:last-child');
+            }).appendTo('#toTiefenbrunnen' + index + ' td:nth-child(2)');
         }
-        $('#toTiefenbrunnen' + index + ' td:nth-child(2)').html('4');
+        $('#toTiefenbrunnen' + index + ' td:last-child').html('4');
         $('#toTiefenbrunnen' + index + ' td:nth-child(1)').html(departure);
         $('#toTiefenbrunnenTile tr').css({'border-top': '1px solid #b4b4af'});
     });
@@ -576,9 +576,9 @@ var tramToWerd = function(tramToWerd) {
             $('<img>', {
                 src: 'img/NFT.svg',
                 class: 'NFT'
-            }).appendTo('#toWerdhoelzli' + index + ' td:last-child');
+            }).appendTo('#toWerdhoelzli' + index + ' td:nth-child(2)');
         }
-        $('#toWerdhoelzli' + index + ' td:nth-child(2)').html('17');
+        $('#toWerdhoelzli' + index + ' td:last-child').html('17');
         $('#toWerdhoelzli' + index + ' td:nth-child(1)').html(departure);
         $('#toWerdhoelzliTile tr').css({'border-top': '1px solid #b4b4af'});
     });
@@ -599,9 +599,9 @@ var tramToEsch = function(tramToEsch) {
             $('<img>', {
                 src: 'img/NFT.svg',
                 class: 'NFT'
-            }).appendTo('#toEscherWyssPlatz' + index + ' td:last-child');
+            }).appendTo('#toEscherWyssPlatz' + index + ' td:nth-child(2)');
         }
-        $('#toEscherWyssPlatz' + index + ' td:nth-child(2)').html('17');
+        $('#toEscherWyssPlatz' + index + ' td:last-child').html('17');
         $('#toEscherWyssPlatz' + index + ' td:nth-child(1)').html(departure);
         $('#toEscherWyssPlatzTile tr').css({'border-top': '1px solid #b4b4af'});
     });

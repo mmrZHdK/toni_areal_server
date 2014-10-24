@@ -144,7 +144,7 @@ body {
 #pages #agenda .agendaTile p {
   margin: 0.5em 0;
   font-weight: 300;
-  max-height: 9em;
+  max-height: 6.5em;
   width: 100%;
   white-space: pre-wrap;
   overflow: hidden;
@@ -262,16 +262,16 @@ body {
   display: block;
   width: 1.15em;
   height: 1.15em;
-  margin: 0.25em 0.5em 0.1em 0.5em;
+  margin: 0.25em 0 0.1em 0;
 }
 #pages #tram .tramTile tr {
   width: 100%;
 }
-#pages #tram .tramTile .tramNr {
-  text-align: right;
-  width: 3em;
-}
 #pages #tram .tramTile .tramType {
+  text-align: right;
+  width: 1em;
+}
+#pages #tram .tramTile .tramNr {
   text-align: right;
   width: 2em;
 }

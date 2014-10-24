@@ -120,22 +120,64 @@ body {
   text-align: center;
 }*/
 
+.logo {
+  width: 100%;
+  margin-top: 5%;
+  margin-left:13%;
+  margin-right:15%;
+}
+
+.logo img {
+  width: 70%;
+}
+
+.instructions {
+  margin-top: 5%;
+  margin-left:15%;
+  margin-right:15%;
+  margin-bottom: 13%;
+  width:100%;
+}
+
+.instructions img {
+  width: 70%;
+}
+
 .footer {
   position: absolute;
   bottom: 0px;
   left: 0;
   right: 0;
-  height: 3em;
+  height: 13%;
   background-color: #D6D6D6;
-  border-bottom: 1px solid #D6D6D6;
   overflow: hidden;
   text-align: center;
+  text-decoration: none;
 }
-.footer .backbutton {
-  float: left;
-  width: 3em;
+
+.leadtheway {
+  width: 100;
   margin-top: -0.25em;
-  margin-right: 1em;
+  padding: 1em;
+  color: #EEE8CC;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1em;
+  font-family: "Arial", Arial, sans-serif;
+  background: #FF9933;
+}
+
+.leadtheway a {
+  color: #EEE8CC;
+  text-decoration: none;
+}
+
+.backbutton {
+  float: left;
+  left: 0;
+  color: #EEE8CC;
+  margin-top: -0.25em;
+  margin-right: 0em;
   padding: 0.25em;
   color: white;
   background-color: rgba( 0,0,0,0.2 );
@@ -143,52 +185,28 @@ body {
   text-align: center;
 }
 
-h1 { 
-  top:0;
-  font-weight: 100;
-  font-size: 1em;
-  margin: 0;
+.donebutton {
+  float: right;
+  margin-top: -0.25em;
+  padding: 0.25em;
+  color: white;
+  background-color: rgba( 0,0,0,0.2 );
+  border: 1px solid rgba( 0,0,0,0.5 );
+  text-align: center;
 }
 
+/* --- LEAD THE WAY button --- */
 
-/* --- Scrollbox --- */
 
-.scrollbox {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  bottom: 0;
-  overflow: hidden;
-}
-
-/* --- List --- */
-
-.scrollbox .list {
-  position: center;
-  top:3em;
-  left:3em;
-  margin: 0;
-  padding: 0;
-}
-.scrollbox .list li {
-  list-style: inside none;
-}
-.scrollbox .list li a {
-  display: block;
-  padding: 0.5em;
-  color: black;
-  text-decoration: none;
-}
 .createBox {
-  margin-top: 140px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-top: 3%;
+  margin-left: 20%;
+  margin-right: 20%;
   background: #A5A5A5;
-  padding: 80px 0px 80px 0px;
+  padding: 1em 0em 1em 0em;
   border-radius: 5px;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 100%;
   font-family: "Arial", Arial, sans-serif;
   background: #FF9933;
   color: #EEE8CC;
