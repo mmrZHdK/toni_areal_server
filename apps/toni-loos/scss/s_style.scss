@@ -244,6 +244,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
   color: white;
   background-color: rgba( 0,0,0,0.0 );
   border: 0px solid rgba( 0,0,0,0.0 );
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   
 }
 .addButton{
@@ -263,6 +264,7 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
   color: white;
   background-color: rgba( 0,0,0,0.0 );
   border: 0px solid rgba( 0,0,0,0.0 );
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .menueicon{
@@ -357,10 +359,11 @@ box-shadow: 1px 5px 11px -3px rgba(0,0,0,0.53);
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   //height: auto;
 
     -webkit-transform:translate(0,0px);
-	 webkit-transition-timing-function: 	ease-out;
+	-webkit-transition-timing-function: 	ease-out;
     -moz-transition-timing-function: 		ease-out;
     -o-transition-timing-function: 			ease-out;
     transition-timing-function: 			ease-out;
@@ -1132,7 +1135,7 @@ border: 1px solid #999;
 }
 
 #backMainApp{
-	width: 80%;
+	width: 90%;
 	font-family: $standartFont;
 	font-weight: $bold;
 	letter-spacing: 0.1em;

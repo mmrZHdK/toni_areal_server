@@ -122,6 +122,7 @@ textarea {
   color: white;
   background-color: transparent;
   border: 0px solid transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .addButton {
@@ -137,6 +138,7 @@ textarea {
   color: white;
   background-color: transparent;
   border: 0px solid transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .menueicon {
@@ -225,8 +227,9 @@ textarea {
   overflow-x: hidden;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: transparent;
   -webkit-transform: translate(0, 0px);
-  webkit-transition-timing-function: ease-out;
+  -webkit-transition-timing-function: ease-out;
   -moz-transition-timing-function: ease-out;
   -o-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
@@ -820,7 +823,7 @@ input[type="radio"] {
 }
 
 #backMainApp {
-  width: 80%;
+  width: 90%;
   font-family: "Open Sans";
   font-weight: 700;
   letter-spacing: 0.1em;

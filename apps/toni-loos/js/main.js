@@ -211,6 +211,7 @@ function displayEventItem(eventItem, htmlPlaceHolderDiv) {
 $(document).ready(function(){
 
 startDatumHeute = todayDate();
+
   
     //Hier kommt ein Reload Button hin --> location.reload(true);
     //$seite wird deklariert und initialisiert mit einer html section und zwei klassen sowie einer ID
@@ -426,12 +427,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                      });
                      $(".cancleButton").hide();
                      
-                     $(".addButton").velocity({
-            
-                         rotateZ: "0deg",
-                         duration: 5000,
-                         opacity: 1
-                     }).show();
+                     $(".addButton").show();
                      window.location.reload();
 
             }
@@ -448,6 +444,15 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         //$( ".menue " ).toggleClass( "showmenue" );
         $( ".navi" ).toggleClass( "pushright" );
         $( ".scrollbox" ).toggleClass( "pushright" );
+        if($(".navi").hasClass("pushright")){
+            $(".scrollbox").swipe({
+            swipeLeft:function(event, direction, distance, duration, fingerCount) {
+              //This only fires when the user swipes left
+              $( ".navi" ).removeClass( "pushright" );
+              $( ".scrollbox" ).removeClass( "pushright" );
+            }
+          })
+        }
         //window.location.reload(true);
         $("#backMainApp").click(function(){
           window.location.href="../../";
