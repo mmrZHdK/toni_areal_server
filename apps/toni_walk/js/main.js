@@ -1,3 +1,4 @@
+
 $history = [];
 $btnHistory = [];
 $windowLocation = "";
@@ -141,3 +142,74 @@ function SpitOutURL()
   return $url;
 
 }
+  
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* // Erzeuge neue 'page' Section
+  $seite = $( '<section class="page out_right" id="treppeToni"></section>' );
+  $( '.page#haupt' ).after( $seite );
+
+  // Binde KlickHandler an die Liste
+$( '.list' ).on( 'click', 'li', function( e ) {
+    console.log( '> click @ li element' );
+
+    // Lade Detail-Seite, slide herein
+    $seite.load( '1.html #treppeToni_inhalt', function( e ) {
+      console.log( '> complete @ $seite.load' );
+      // Seite ist geladen worden, starte Slide Animation
+      $seite.removeClass( 'out_right' );
+      $( '.page#haupt' ).addClass( 'out_left' );
+      $( '.backbutton#back' ).show();
+    } );
+    
+  } );
+
+  // Binde KlickHandler an die Menutaste
+  $( '.footer' ).on( 'click', '.backbutton#back', function( e ) {
+    console.log( '> click @ .backbutton#back' );
+    
+    // Schiebe Seiten wieder raus
+    $( '.page#haupt' ).removeClass( 'out_left' );
+    $( '.page#treppeToni' ).addClass( 'out_right' );
+    $( '.backbutton#back' ).hide();
+  } );*/
+  
+
+
+
+
+
+
+   
