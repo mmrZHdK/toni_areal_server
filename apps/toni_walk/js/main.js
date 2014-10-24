@@ -1,4 +1,3 @@
-
 $history = [];
 $btnHistory = [];
 $windowLocation = "";
@@ -6,13 +5,14 @@ $windowLocation = "";
 
 $( document ).ready( function() {
   
-  $( document ).keypress(function(event) {
-    var code = event.keyCode || event.which;
+  $( '#done' ).click(function(event) {
     
+      
       prompt("URL to give to your friend", SpitOutURL());
   });
 
   $windowLocation = window.location.href;
+
   //assign back button functionality
   $('#back').click(BackPage);
   $('#back').hide();
@@ -24,26 +24,57 @@ $( document ).ready( function() {
     });
 } );
 
-
+/*function PrepareShare()
+{
+  if($history.length > 1)
+    $( '#done' ).show();
+  else
+    $( '#done' ).hide();
+}*/
 
 function PreparePage()
 {
   //Possible to go back? (main page?)
   if($history.length > 1)
+  {
     //yes, show the back button
     $( '#back' ).show();
+    //yes, show the done button
+    $( '#done' ).show();
+    //lead the way button hide after title page
+    $( '.leadtheway' ).hide();
+  }  
   else
+  {
     //no, hide back button
     $( '#back' ).hide();
+    //no, hide back button
+    $( '#done' ).hide();
+    //lead the way button main page show
+    $( '.leadtheway' ).show();
+  }
     
+ 
+ //Possible to press done after the main page 
+ /* if($history.length > 1)
+    //yes, show the done button
+    $( '#done' ).show();
+  else
+    //no, hide done button
+    $( '#done' ).hide();*/
+ 
   //(very hacky, very ugly, hardcoded stuff)  
   $currId = "#" + $('.page').not('#haupt').attr('id')
   
   //the lower part reconstructs saved paths from get params
   $getParam = decodeURIComponent($.urlParam($currId.replace('#', "")));
-  if($getParam != "null")
+  if($history.length > 0)
   {
-    $('.navigation').not("#" + $getParam).remove();
+    $lastgetParam = decodeURIComponent($.urlParam($history[$history.length-1].replace('#', "")));
+    if($getParam != "null" || $lastgetParam != "null")
+    {
+      $('.navigation').not("#" + $getParam).remove();
+    }
   }
 
   
@@ -101,80 +132,12 @@ function SpitOutURL()
   
   $url = window.location.href + "?";
   for (var i = 0; i < $btnHistory.length; i++) {
-    $url += $history[i].replace('#', "") + "=" + $btnHistory[i].replace('#', "") + '&';
+    if($btnHistory[i] != undefined)
+    {
+      $url += $history[i+1].replace('#', "") + "=" + $btnHistory[i].replace('#', "") + '&';
+    }
   }
   
   return $url;
 
 }
-  
-
-
-
-
-
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /* // Erzeuge neue 'page' Section
-  $seite = $( '<section class="page out_right" id="treppeToni"></section>' );
-  $( '.page#haupt' ).after( $seite );
-
-  // Binde KlickHandler an die Liste
-$( '.list' ).on( 'click', 'li', function( e ) {
-    console.log( '> click @ li element' );
-
-    // Lade Detail-Seite, slide herein
-    $seite.load( '1.html #treppeToni_inhalt', function( e ) {
-      console.log( '> complete @ $seite.load' );
-      // Seite ist geladen worden, starte Slide Animation
-      $seite.removeClass( 'out_right' );
-      $( '.page#haupt' ).addClass( 'out_left' );
-      $( '.backbutton#back' ).show();
-    } );
-    
-  } );
-
-  // Binde KlickHandler an die Menutaste
-  $( '.footer' ).on( 'click', '.backbutton#back', function( e ) {
-    console.log( '> click @ .backbutton#back' );
-    
-    // Schiebe Seiten wieder raus
-    $( '.page#haupt' ).removeClass( 'out_left' );
-    $( '.page#treppeToni' ).addClass( 'out_right' );
-    $( '.backbutton#back' ).hide();
-  } );*/
-  
-
-
-
-
-
-
-   
