@@ -4,12 +4,16 @@
             {{#if loadingStatus}}
                 <div class="js-loadingStatus">
                     <div class="col-xs-8 col-xs-offset-2 text-center">
-                        <div class="room-bottom">
-                            <p class="large"><span class="black">Räume in deiner Umgebung</span><br>werden ermittelt...</p>
-                        </div>
+
                         {{#if beaconsFound}}
-                            <a href="#" class="button js-startStream">Stream starten</a>
+                            <div class="room-bottom">
+                                <p class="large">Räume gefunden</p>
+                            </div>
+                            <a href="#" class="button js-startStream">Start!</a>
                         {{else}}
+                            <div class="room-bottom">
+                                <p class="large"><span class="black">Räume in deiner Umgebung</span><br>werden ermittelt...</p>
+                            </div>
                             <div class="row">
                                 <div class="col-xs-6 col-xs-offset-3 text-center">
                                     <div class="button button-spinner js-startStream">
@@ -18,8 +22,9 @@
                                     </div>
                                 </div>
                             </div>
+                            <p class="subtle room-top">Um zu sehen, was in den Räumen um dich herum passiert, wird dein Standort ermittelt. Stelle dich in einen Gang für eine optimale Verbindung.</p>
                         {{/if}}
-                        <p class="subtle room-top">Um zu sehen, was in den Räumen um dich herum passiert, wird dein Standort ermittelt. Stelle dich in einen Gang für eine optimale Verbindung.</p>
+
                     </div>
                 </div>
             {{else}}

@@ -2,11 +2,12 @@
 
 var Backbone = require('backbone'),
     $ = require('jquery'),
+    config = require('../config'),
     Room = require('../models/RoomModel');
 
 Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
-  url: 'http://insights.lukasgaechter.ch/api/search/',
+  url: config.baseUrl + '/api/search/',
   model: Room
 });

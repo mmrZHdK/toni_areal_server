@@ -25,6 +25,6 @@
 </head>
 <body>
     <div id="app-container"></div>
-    <script src="./app/build/js/app.js?<?php echo time(); ?>"></script>
+    <script src="./app/build/js/app.min.js?<?php echo time(); ?>"></script>
 </body>
 </html>

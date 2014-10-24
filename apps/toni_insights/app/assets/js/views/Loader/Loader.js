@@ -3,7 +3,7 @@
 var Backbone = require('backbone'),
     $ = require('jquery'),
     _ = require('underscore'),
-
+    config = require('../../config'),
     Beacons = require('../../helpers/beacons'),
 
     template = require('../../templates/Loader/Loader.hbs');
@@ -12,7 +12,7 @@ Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
 
-  loadingTimeout: 3000,
+  loadingTimeout: 5000,
   beaconPingTime: 500,
 
   events: {
@@ -50,9 +50,10 @@ module.exports = Backbone.View.extend({
   },
 
   isiOSDevice: function() {
-    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+    if (config.environment === 'dev' || navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
         return true;
     }
+    return false;
   },
 
   initTimers: function() {
@@ -70,6 +71,7 @@ module.exports = Backbone.View.extend({
       //this.loadStreamButton();
 
       this.stopTimers();
+      this.stopSpinner();
       this.render(true, true);
     }
   },
@@ -97,7 +99,7 @@ module.exports = Backbone.View.extend({
     //this.loadStreamButton();
 
     this.stopTimers();
-    this.$('.js-spin').velocity('stop', true);
+    this.stopSpinner();
     this.render(false, false);
 
   },
@@ -114,8 +116,12 @@ module.exports = Backbone.View.extend({
     this.delegate.loadStreamView();
   },
 
-  stop: function() {
+  stopSpinner: function() {
     this.$('.js-spin').velocity('stop', true);
+  },
+
+  stop: function() {
+    this.stopSpinner();
     this.stopTimers();
   }
 

@@ -3,6 +3,7 @@
 var Backbone = require('backbone'),
     $ = require('jquery'),
     _ = require('underscore'),
+    config = require('../../config'),
 
     UserModel = require('../../models/UserModel'),
     UploadTypes = require('../../collections/UploadCollection'),
@@ -68,7 +69,7 @@ module.exports = Backbone.View.extend({
     var formData = new FormData($(evt.target).get(0));
 
     $.ajax({
-      url: 'http://insights.dev/api/post/',
+      url: config.baseUrl + '/api/post/',
       data: formData,
       method: 'POST',
       processData: false,

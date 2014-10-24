@@ -3,7 +3,7 @@
 var Backbone = require('backbone'),
     $ = require('jquery'),
     _ = require('underscore'),
-
+    config = require('../../config'),
     template = require('../../templates/Entry/Picture.hbs');
 
 Backbone.$ = $;
@@ -27,6 +27,9 @@ module.exports = Backbone.View.extend({
   },
 
   render: function() {
+
+    this.model.attributes.baseUrl = config.baseUrl;
+
     this.$el.html(template(this.model.attributes));
 
     this.$('.img-container').getBackgroundSize(_.bind(function(dimensions) {

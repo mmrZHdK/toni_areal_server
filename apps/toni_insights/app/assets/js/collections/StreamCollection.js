@@ -2,11 +2,12 @@
 
 var Backbone = require('backbone'),
     $ = require('jquery'),
+    config = require('../config'),
     Entry = require('../models/EntryModel');
 
 Backbone.$ = $;
 
 module.exports = Backbone.Collection.extend({
-  url: 'http://insights.lukasgaechter.ch/api/stream/',
+  url: config.baseUrl + '/api/stream/',
   model: Entry
 });

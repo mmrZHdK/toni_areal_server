@@ -1,4 +1,6 @@
 module.exports = {
+  environment: 'prod',
+  baseUrl: 'http://insights.lukasgaechter.ch',
   uploadTypes: [
       {
         'id': 1,

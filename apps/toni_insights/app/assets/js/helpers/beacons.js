@@ -1,7 +1,8 @@
 'use strict';
 
 var $ = require('jquery'),
-    _ = require('underscore');
+    _ = require('underscore'),
+    config = require('../config');
 
 window.BeaconManager = ( function() {
 
@@ -156,6 +157,13 @@ module.exports = {
     var beaconManager = window.BeaconManager;
     var beacons = beaconManager.getBeaconArray();
 
+    /**
+     * debug
+     */
+    if (config.environment === 'dev') {
+      return true;
+    }
+
     if (beacons.length > 0) {
       return true;
     }
@@ -252,6 +260,14 @@ module.exports = {
         }
 
       }, this));
+
+
+      /**
+       * debug
+       */
+      if (config.environment === 'dev') {
+        roomNames = ['4.K22', '4.K21', '4.K20'];
+      }
 
       /**
        * Room string to search are now saved in roomNames

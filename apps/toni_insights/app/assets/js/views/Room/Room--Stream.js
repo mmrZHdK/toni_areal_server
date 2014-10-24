@@ -82,10 +82,8 @@ module.exports = Backbone.View.extend({
         break;
     }
 
-    console.log(model.attributes.id);
-
-    view.$el.attr('data-model-id', model.attributes.id);
-    view.$el.attr('data-model-type', model.attributes.entryType);
+    view.$el.attr('data-entry-id', model.attributes.entryId);
+    view.$el.attr('data-entry-type', model.attributes.entryType);
 
     this.$el.append(view.render().el);
   },

@@ -26,7 +26,6 @@ module.exports = Backbone.View.extend({
   },
 
   render: function() {
-    this.$el.attr('data-id', this.model.attributes.id);
 
     this.$el.css({
       color: this.model.attributes.textColor,

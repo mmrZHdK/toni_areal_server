@@ -3,6 +3,7 @@
 var Backbone = require('backbone'),
     _ = require('underscore'),
     $ = require('jquery'),
+    config = require('../../config'),
 
     Beacons = require('../../helpers/beacons'),
 
@@ -49,8 +50,14 @@ module.exports = Backbone.View.extend({
 
     console.log('Old Beacon: ' + lastBeaconString + '  ||  New Beacon: ' + newBeaconString);
 
-    // test var
-    // var rooms = ['4.K20', '4.K21', '4.K22'];
+    /**
+     * debug
+     */
+    if (config.environment === 'dev') {
+      var rooms = ['4.K20', '4.K21', '4.K22'];
+      this.loadStreamEntries(rooms);
+      return;
+    }
 
     if (lastBeaconString !== newBeaconString || 'undefined' === typeof this.lastBeacon) {
 
