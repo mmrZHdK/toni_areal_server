@@ -246,6 +246,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         $(".cancleButton").on("click", function(){
           $seite.addClass( 'out_right' );
                          $( '.page#home' ).show();
+                         $(".scrollbox").scrollTop(10);
                              
                          $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ $seite.remove() });
                          
@@ -266,7 +267,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         //$(".addButton").hide();
     
         
-        $(".scrollbox").scrollTop();
+        $(".scrollbox").scrollTop(10);
 
         //console.log( '> click @ Button element' );
         
@@ -341,7 +342,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
                      $(".cancleButton").hide();
                      
                      $(".addButton").show();
-                     $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){ window.location.reload() });
+                     $seite.addClass( 'out_right' ).one('transitionend webkitTransitionEnd oTransitionEnd otransitionend', function(){location.reload() });
                      //$seite.remove();
                      
                      
