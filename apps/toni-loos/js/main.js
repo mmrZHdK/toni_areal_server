@@ -585,7 +585,7 @@ $(".cancleButton").load('img/plus2-01.svg',function(response){});
         var element = $(this).closest(".eintrag").find(".e_content");
          var alreadyOpen = element.is(":visible") 
 
-        $(".e_content").hide().fadeOut("slow");
+        $(".e_content").hide();
         if(!alreadyOpen)
             element.show();
             // element.show().fadeIn("slow");

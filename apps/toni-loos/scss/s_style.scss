@@ -259,7 +259,8 @@ textarea {
   position: absolute;
   height: 100%;
   left: 300px;
-  display: block;
+  display: inline-block;
+  overflow-x: hidden;
   width: $width-halfe;
   z-index: -1;
   top: 0;
@@ -311,6 +312,7 @@ textarea {
 
 .scrollbox {
   position: absolute;
+
   background-color: #C6C6C6;
   top: 5em;
   left: 0;
