@@ -45,3 +45,8 @@
 .beaconliste .beacon .balken.far {
   background-color: #a00;
 }
+
+.text #toll,
+.text #mist {
+  display: none;
+}

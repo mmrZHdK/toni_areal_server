@@ -2,7 +2,11 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui, height=device-height, minimum-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="mobile-web-app-capable" content="yes">
+    
 		<link href="../../css/alle.css" type="text/css" rel="stylesheet" media="all">
 		<link href="index.css" type="text/css" rel="stylesheet" media="all">
     
@@ -23,18 +27,37 @@
       <div class="content">
         <ul class="beaconliste">
           <li class="beacon">
-            <div class="ident">4. Stock / Beacon 20</div>
-            <div class="signalstaerke">-67</div>
+            <div class="ident">n. Stock / Beacon m</div>
+            <div class="signalstaerke">-s</div>
             <div class="balken" style="width:45%">&nbsp;</div>
           </li>
         </ul>
         
         <div class="text">
           <h1>Beacon Browser</h1>
-          <p>Im Toni-Areal haben wir kleine Funk-Bojen verteilt, die über Bluetooth ein Positionssignel aussenden.</p>
-          <p>Damit können wir den Menschen, die unsere App nutzen, genauere Informationen über ihren Aufenthaltsort geben.</p>
+          <p>
+            Im Toni-Areal haben wir kleine Funk-Bojen verteilt, die über Bluetooth ein Positionssignel aussenden.
+          </p>
+          <p id="toll">
+            Damit können wir den Menschen, die unsere App nutzen, genauere Informationen über ihren Aufenthaltsort geben. Wenn sie in den Bereich der Funkbojen kommen, sehen sie oben die ungefähre Signalstärke.
+          </p>
+          <p id="mist">
+            Ihr Webbrowser unterstützt keine Beacon-Positionierung.<br/>Nur innerhalb einer speziellen App kann das Positionssignal verwendet werden.
+          </p>
         </div>
       </div>
     </section>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-7535111-4', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
+    
   </body>
 </html>
