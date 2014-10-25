@@ -100,35 +100,53 @@ textarea {
 body {
   box-sizing: border-box;
   
-/*
   padding: 0;
   margin: 0;
-*/
-  padding: 2em;
-  text-align: center;
+  background-color: black;
   
   font-family: Helvetica, Arial, sans-serif;
   font-size: 100%;
+  text-align: center;
 }
-
+a {
+  color: #f90;
+  font-weight: bold;
+  text-decoration: none;
+}
 .menuzeile {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   
-  padding: 1em 0.5em 0.5em;
+  padding: 0.5em 0.5em 0.5em;
   color: white;
-  background-color: black;
   font-size: 1.5em;
-  font-face: bold;
+  font-weight: bold;
   text-align: center;
   overflow: hidden;
+}
+.menuzeile .titel {
+  display: inline-block;
+  margin-top: 0.1em;
+}
+.menuzeile a#about {
+  float: left;
+  width: auto;
+}
+.menuzeile a#info {
+  float: right;
+  width: auto;
+  visibility: hidden;
+}
+.menuzeile a img {
+  width: 1.5em;
+  vertical-align: center;
 }
 
 .scroller {
   position: absolute;
-  top: 3.75em;
+  top: 4em;
   left: 0;
   right: 0;
   bottom: 0;
@@ -136,61 +154,58 @@ body {
   overflow-y: auto;
 }
 .content {
-  background-color: black;
 }
 
 .appliste {
-  margin: 0;
-  padding: 0;
+  margin: 0 0;
+  padding: 1.5%;
   background-color: black;
 }
 .appliste li {
   display: block;
   float: left;
-  width: 49%;
-  margin: 0 0 0.5em;
-  padding: 0;
+  width: 25%;
   list-style: outside none;
-  background-color: white;
-  border-bottom-right-radius: 1em;
-}
-.appliste li:nth-child(2n) {
-  float: right;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 1em;
 }
 .appliste .zeile {
-  color: black;
+  display: block;
+  margin-bottom: 1em;
+  color: white;
   text-decoration: none;  
 }
 .appliste .zeile img {
-  width: 100%;
-  
+  margin-bottom: 0.5em;
+  width: 85%;
+}
+.appliste .zeile img.rund {
+  border-radius: 1.2em;
 }
 .appliste .zeile .titel {
   padding: 0.1em 0.5em;
   overflow: hidden;
-  font-size: 1.2em;
+  font-size: 0.45em;
   font-weight: bold;
+  text-align: center;
   text-decoration: none;
+  text-transform: uppercase;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.appliste li:nth-child(2n) .zeile .titel {
-  text-align: right;
-}
 
 .text {
+  display: block;
   margin: 0;
-  padding: 1.25em;
-  color: #999;
-  background-color: white;
+  padding: 0 1em 1em;
+  color: white;
+  background-color: black;
+  text-align: left;
 }
 .text h1 {
-  margin: 1em 0 0;
-  color: #999;
+  margin: 0;
+  color: white;
   font-size: 1em;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 
