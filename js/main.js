@@ -1,3 +1,5 @@
+// Skript für Mobile App
+
 $( document ).ready( function() {
   // Start des Programme, Dokument geladen
   
