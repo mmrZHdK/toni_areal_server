@@ -7901,7 +7901,7 @@ module.exports = Backbone.View.extend({
   buttonToniAppAction: function(evt) {
     evt.preventDefault();
 
-    window.location = 'http://data.zhdk.ch/';
+    window.location = 'http://mobile.viad.zhdk.ch/';
   }
 
 });
