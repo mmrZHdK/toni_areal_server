@@ -126,8 +126,9 @@ p {
 
 /* ALLES WAS MENU DISPLAY BETRIFFT */
 .menu {
-    position: relative;
+    position: absolute;
     top: 0px;
+    botton: 0px;
     left: -80%;
     width: 80%;
     min-height: 100%;
@@ -139,7 +140,6 @@ p {
     margin: 0;
     width: 100%;
     margin-left: -40px;
-    overflow-y: scroll;
 }
 
 #menu-list a {
@@ -290,10 +290,19 @@ p {
     float: left;
 }
 
+.link img {
+    float: left;
+    width: auto;
+    height: 30%;
+    margin-right: 10px;
+    margin-top: 18px;
+    margin-left: 10px;
+}
+
 #linkP {
+    float: left;
     font-size: 1em;
-    margin-top: 1em;
-    margin-left: 1em;
+    margin-top: 15px;
 }
 
 #featureLogoContainer {
@@ -452,7 +461,7 @@ p {
     float: left;
     display: block;
     width: 65%;
-    height: 72%;
+    height: 71%;
     overflow: hidden;
 
 }

@@ -126,13 +126,13 @@ function displayArticle(data, key) {
         $content.append($text);
     });
 
-    console.log($content.html());
-
     if(data.link != "") {
         var $linkDiv = $("<div></div>").attr("id", "linkContainer");
+        var $linkLogo = $("<img src='logos/logo-arrow.svg'>");
         var $link = $("<a></a>").attr({"href": data.link, class: "link"});
         var $linkP = $("<p></p>").attr("id", "linkP").text("LINK ZUR ORIGINALQUELLE");
-        $link.append($linkP);
+
+        $link.append($linkLogo).append($linkP);
         $linkDiv.append($link);
         $content.append($linkDiv);
     }
@@ -295,7 +295,7 @@ function buildKeyboard() {
 //sachen
 
 var currentScreens = new Array(3);
-var lastScreen, lastScreenType, lastArticle;
+var lastScreen, lastScreenType, lastArticle, currentScreen;
 
 var screenToLogoUrl = {
     "menu": "logos/burger.svg",
@@ -312,6 +312,8 @@ function setView(screenType, inDir,  url) {
     currentScreens[1] = screenType;
     var $screenType = $("." + screenType);
     $.each(mainScreens, hideAndPark);
+
+    currentScreen = screenType;
 
     //Artikel anzeigen aus Keypad heraus
     if(lastScreen == null || lastScreen == "keypad" && screenType == "article") {
@@ -360,6 +362,8 @@ function setView(screenType, inDir,  url) {
         lastScreen = screenType;
         lastScreenType = screenType;
     }
+
+
 }
 
 function setButtonControls(leftButton, rightButton) {
@@ -390,13 +394,7 @@ function setButtonControls(leftButton, rightButton) {
 
     if(leftButton == "back") {
         $leftButton.on("click", function() {
-            console.log(lastScreenType);
-            if(lastArticle == null) {
-                console.log("kaka");
-                goTo("list");
-            } else {
                 goTo(herbert);
-            }
         });
     } else {
         $leftButton.on("click", function() {
@@ -534,7 +532,12 @@ $(document).ready(function() {
         url = "/article/" + bindings.articleId;
         urltolist = "/article/" + bindings.articleId + "/" + bindings.direction
         backToList = bindings.direction;
-        if(backToList == "true") {
+        if(lastScreen == undefined) {
+            console.log("pipipapo");
+            setButtonControls("list/all", "");
+            setButtonViews("back", "");
+            setView("article", "", urltolist);
+        } else if(backToList == "true") {
             setButtonControls("back", "");
             setButtonViews("back", "");
             setView("article", "", urltolist);
@@ -544,6 +547,8 @@ $(document).ready(function() {
             setButtonViews("menu", "keypad");
             setView("article", "", url);
         }
+
+
     });
 
     Finch.route("/menu", function() {
@@ -571,6 +576,8 @@ $(document).ready(function() {
         setButtonViews("menu", "keypad");
         setView("list");
 
+        console.log("Last Screen at / Route: " + lastScreen);
+
     });
 
     Finch.route("/list/:listType", function(bindings) {
@@ -583,6 +590,8 @@ $(document).ready(function() {
         setButtonViews("menu", "keypad");
         url = "/list/" + bindings.listType;
         setView("list", "", url);
+
+        console.log("Last Screen at List Route: " + lastScreen);
 
     });
 
