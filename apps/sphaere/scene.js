@@ -14,17 +14,21 @@ zoomFactor=10,
 camLeft = window.innerWidth * camZoom,
 camTop = window.innerHeight * camZoom,
 
-camera, scene, renderer, controls, group, zvvData, cameraOrtho, sceneOrtho, barGroup, tramMinutes, triangle, redBar, gradient,
-
+camera, scene, renderer, controls, group, zvvData, cameraOrtho, circle, sceneOrtho, barGroup, tramMinutes, triangle, redBar, gradient, restaurantsGroup,
+tramLane4, tramLane14,
 scale = 1,
-multiTouches = [0,0,0,0,0];
-multiTouchId = 0;
+multiTouches = [0,0,0,0,0],
+multiTouchId = 0,
+
+resetTimeTimeOut,
 
 touchstart = {x:0,y:0},
-rotation = {y:0,z:100},
+// rotation = {y:0,z:100},
 
 sunrise = 6,
 sunset = 18,
+
+help = false,
 
 barGroupOffset = 0,
 
@@ -35,11 +39,22 @@ weather = [],
 dropPositions = [],
 restaurantsObj = [],
 
+
 mylatesttap = 0,
 dropIndex = 0,
 
 rainChance = 0,
 snowChance = 0,
+
+camStart = { x: 50, y: 40},
+groupStart = 2.501592654,
+
+target = { x: -Math.PI/2, y: Math.PI},
+targetOnDown = { x: 0, y: 0 },
+mouse = { x: 0, y: 0 }, 
+mouseOnDown = { x: 0, y: 0 },
+distance = 100,
+rotation = { x: -Math.PI/2,  y: Math.PI },
 
 launchTime = new Date().getTime(),
 
@@ -55,6 +70,8 @@ objects = {
         fischerwegA: [],
         fischerwegB: []
     },
+    helper1: undefined,
+    helper2: undefined,
     tramTA: undefined
 },
 
@@ -63,9 +80,23 @@ lastDepartures = {
     toniB: 0
 }
 
+nextTram = {
+    toniA : 0,
+    toniB : 0,
+    fischerwegA : 0,
+    fischerwegB : 0
+},
+
+lastTram = {
+    toniA : 10,
+    toniB : 10,
+    fischerwegA : 10,
+    fischerwegB : 10
+},
+
 stringTime = "",
 
-time = new Date().getTime(),
+time = new Date().getTime()-7200000/2,
 settingTime = false,
 resettingView = false,
 connectionAtCurrentTimeT = 0,
@@ -78,6 +109,10 @@ lastIsDay = false,
 dayLight = 0,
 lastDayLight = 0,
 lastTimeInHours = -1,
+
+selectedObj = new THREE.Object3D(),
+
+info = "",
 
 materialToni = new THREE.MeshBasicMaterial	( {color: new THREE.Color(1,.15,.15)} ),
 materialBack = new THREE.MeshBasicMaterial({ color: 0xffffff }),
@@ -679,58 +714,143 @@ restaurants = [
     "name": "NUOVU",
     "position": [-7,-12],
     "size": [2,1.4],
-    "open": [[[11,12]],[[7,24]],[[0,1],[7,24]],[[0,1],[7,24]],[[0,1],[7,24]],[[0,1],[7,24]],[[0,1][11,12]]]
+    "open": [[[11,24]],[[11,12]],[[7,24]],[[0,1],[7,24]],[[0,1],[7,24]],[[0,1],[7,24]],[[0,1],[7,24]],[[0,1][11,24]]],
+    "isOpen": false
 },{
     "name": "Route twenty-six",
     "position": [-6.5,-14],
     "size": [3,1.4],
-    "open": [[[6.5,14]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,14]]]
+    "open": [[[6.5,14]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,10],[11.5,14],[18.5,23]],[[6.5,14]]],
+    "isOpen": false
 },{
     "name": "Migros Restaurant",
     "position": [-19.5,-19.5],
     "size": [6,4.3],
-    "open": [[],[[6.5,14]],[[6.5,14]],[[6.5,14]],[[6.5,14]],[[6.5,14]],[[6.5,12.25]]]
+    "open": [[],[[6.5,14]],[[6.5,14]],[[6.5,14]],[[6.5,14]],[[6.5,14]],[[6.5,12.25]]],
+    "isOpen": false
 },{
     "name": "Migros",
     "position": [-19.5,-24],
     "size": [6,3.3],
-    "open": [[],[[8,18]],[[8,18]],[[8,18]],[[8,18]],[[8,18]],[[9,14]]]
+    "open": [[],[[8,18]],[[8,18]],[[8,18]],[[8,18]],[[8,18]],[[9,14]]],
+    "isOpen": false
 },{
     "name": "Arno's Bistro",
     "position": [-7,-20.2],
     "size": [2,1.4],
-    "open": [[],[[11,14]],[[11,14]],[[11,14]],[[11,14]],[[11,14]],[]]
+    "open": [[],[[11,14]],[[11,14]],[[11,14]],[[11,14]],[[11,14]],[]],
+    "isOpen": false
 },{
     "name": "naanu",
     "position": [-6.5,-22.5],
     "size": [3,1.8],
-    "open": [[],[[9,17]],[[9,17]],[[9,17]],[[9,14.5],[17,22]],[[9,14.5],[17,22]],[]]
+    "open": [[],[[9,17]],[[9,17]],[[9,17]],[[9,14.5],[17,22]],[[9,14.5],[17,22]],[]],
+    "isOpen": false
 },{
     "name": "Läbis Grill",
     "position": [-7,-24.7],
     "size": [2,1.4],
-    "open": [[],[],[],[],[],[],[]]
+    "open": [[],[],[],[],[],[],[]],
+    "isOpen": false
 },{
     "name": "Caffé Pascucci",
     "position": [-4.3,-18.6],
     "size": [1.4,2],
-    "open": [[],[[9,15]],[[9,15]],[[9,15]],[[9,23]],[[9,23]],[18,24]]
+    "open": [[],[[9,15]],[[9,15]],[[9,15]],[[9,23]],[[9,23]],[18,24]],
+    "isOpen": false
 },{
     "name": "coppolini",
     "position": [-2.4,-18.6],
     "size": [1.4,2],
-    "open": [[],[[9,15]],[[9,15]],[[9,15]],[[9,23]],[[9,23]],[18,24]]
+    "open": [[],[[9,15]],[[9,15]],[[9,15]],[[9,23]],[[9,23]],[18,24]],
+    "isOpen": false
 },{
     "name": "Neni",
     "position": [-2.6,-21.6],
     "size": [1.8,3],
-    "open": [[[7.5,23]],[[6.5,23]],[[6.5,23]],[[6.5,23]],[[6.5,23]],[[6.5,23]],[[7.5,23]]]
+    "open": [[[7.5,23]],[[6.5,23]],[[6.5,23]],[[6.5,23]],[[6.5,23]],[[6.5,23]],[[7.5,23]]],
+    "isOpen": false
+},{
+    "name": "MAX&Moritz",
+    "position": [17,8],
+    "size": [6,2],
+    "open": [[],[[8,20]],[[8,20]],[[8,20]],[[8,24]],[[8,24]],[[17,24]]],
+    "isOpen": false
+},{
+    "name": "Restaurant Lunch 5",
+    "position": [24,13],
+    "size": [5,2],
+    "open": [[],[[7,17]],[[7,17]],[[7,17]],[[7,17]],[[7,17]],[]],
+    "isOpen": false
+},{
+    "name": "Antonio Pizza & Pasta",
+    "position": [29,1],
+    "size": [1.4,2],
+    "open": [[],[[17,22]],[[17,22]],[[17,22]],[[17,22]],[[17,22]],[]],
+    "isOpen": false
+},{
+    "name": "Peking Garden",
+    "position": [29,-11],
+    "size": [1.4,2.6],
+    "open": [[[16,23]],[[11,14.5]],[[11,14.5]],[[11,23]],[[11,23]],[[11,23]],[[11,23]]],
+    "isOpen": false
+},{
+    "name": "Salotto",
+    "position": [28.8,-17],
+    "size": [2,1.4],
+    "open": [[],[[9,15]],[[9,15]],[[9,15]],[[9,15]],[[9,15]],[]],
+    "isOpen": false
+},{
+    "name": "Westend",
+    "position": [14.7,-20],
+    "size": [1.4,5],
+    "open": [[],[[10,15]],[[10,24]],[[10,24]],[[10,24]],[[10,24]],[[18,24]]],
+    "isOpen": false
+},{
+    "name": "Läbis",
+    "position": [40,-6],
+    "size": [1.4,5],
+    "open": [[],[[7,20]],[[7,20]],[[7,20]],[[7,20]],[[7,20]],[[7,18]]],
+    "isOpen": false
+},{
+    "name": "Quartier 5",
+    "position": [45,-10],
+    "size": [2,1.4],
+    "open": [[],[[11,14.5]],[[11,14.5],[17.5,23]],[[11,14.5],[17.5,23]],[[11,14.5],[17.5,23]],[[11,14.5],[17.5,23]],[[17.5,23]]],
+    "isOpen": false
 }
 ]
 
 online = true;
 
+function iOSVersion() {
+  var match = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/)
+        if (!match) {
+            return 0
+        };
+        if (match.length<4) {
+            return 0
+        };
+        var version = [
+            parseInt(match[1], 10),
+            parseInt(match[2], 10),
+            parseInt(match[3] || 0, 10)
+        ];
+ 
+    return parseFloat(version.join('.'));
+}
+
 $(function(){
+    $("#container").css({height: window.innerHeight+"px"})
+
+    if(iOSVersion()<8){
+        $("#time").html("Device not supported</br>tap to go back")
+        $("#time").click(function(){history.back()})
+        $("canvas").click(function(){history.back()})
+        return;
+    }
+
+
   $.get( "http://toni.fidelthomet.com/data/json/data.json", function( data ) {
     zvvData = data[1]
     for (var i=0; i< zvvData.toni.length; i++){
@@ -746,6 +866,7 @@ $(function(){
         }
     }
 
+    console.log("ZVV Loaded")
     getWeatherHistory()
 }).fail(function() {
 
@@ -773,7 +894,7 @@ function getWeatherHistory(){
       for (var i = 0; i < data.list.length; i++) {
           weather.push({"clouds" : data.list[i].clouds.all, "id" : data.list[i].weather[0].id, "date" : data.list[i].dt*1000})
       };
-
+      console.log("Weather History Loaded")
       getWeatherCurrent()
   });
 }
@@ -786,7 +907,7 @@ function getWeatherCurrent(){
       sst = new Date(data.sys.sunset*1000)
       sunset=sst.getHours()+sst.getMinutes()/60+sst.getSeconds()/60/60+sst.getMilliseconds()/60/60/1000
 
-
+      console.log("Current Weather Loaded")
       weather.push({"clouds" : data.clouds.all, "id" : data.weather[0].id, "date" : data.dt*1000})
 
       getWeatherForeCast()
@@ -799,7 +920,7 @@ function getWeatherForeCast(){
       for (var i = 0; i < data.list.length; i++) {
           weather.push({"clouds" : data.list[i].clouds.all, "id" : data.list[i].weather[0].id, "date" : data.list[i].dt*1000})
       };
-
+      console.log("Weather Forecast Loaded")
       init();
       initScene()
       animate();
@@ -828,26 +949,24 @@ function init() {
     group = new THREE.Object3D();
     barGroup = new THREE.Object3D()
     tramMinutes = new THREE.Object3D()
-    // restaurantsObj = new THREE.Object3D()
+    restaurantsGroup = new THREE.Object3D()
     
     renderer = new THREE.WebGLRenderer({  antialias: true  });
     renderer.setSize( window.innerWidth*2, window.innerHeight*2 );
     renderer.autoClear = false;
     container.appendChild( renderer.domElement );
     $("canvas").css({width: (window.innerWidth)+"px", height: (window.innerHeight)+"px"})
-    if(online)
-        $("body").append("<div id='time'>12:30</time>")
-    else
-        $("body").append("<div id='time'>no network connection</br>tap to retry</time>")
-    // $("#time").css({"position": "absolute","font-family": "HelveticaNeue-Bold","bottom": "10px","left": "0px","right": "0px","text-align": "center","font-size": "12px", "color":"rgb(38,38,38)"})
+    if(!online)
+        $("#time").html("no network connection</br>tap to retry")
     
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     document.addEventListener( 'touchstart', rotateStart, false );
     document.addEventListener( 'touchmove', rotate, false );
+    document.addEventListener( 'click', clicktest, false );
     document.addEventListener( 'touchend', rotateFinish, false );
     
     window.addEventListener( 'resize', onWindowResize, false );
     window.addEventListener( 'orientationchange', function(e){
+        $("#container").css({height: window.innerHeight+"px"})
         camZoom*=(window.innerWidth/window.innerHeight)
         camera.left = window.innerWidth*-camZoom
         camera.right = window.innerWidth*camZoom
@@ -860,6 +979,11 @@ function init() {
         cameraOrtho.top= window.innerHeight/2
         cameraOrtho.bottom= -window.innerHeight/2
         cameraOrtho.updateProjectionMatrix()
+
+        circle.position.y=window.innerHeight/2-18;
+    circle.position.x=window.innerWidth/2-18;
+     barGroup.position.y=-window.innerHeight/2
+     triangle.position.y=-window.innerHeight/2
 
     }, false );
     
@@ -883,6 +1007,16 @@ function initScene(){
     
     geom.faces.push( new THREE.Face3( 0, 1, 2 ),new THREE.Face3( 1, 0, 3 ));
     
+    objects.helper1 = new THREE.Object3D()
+    objects.helper1.position.x = -10.6
+    objects.helper1.position.z = -9.05
+
+    objects.helper2 = new THREE.Object3D()
+    objects.helper2.position.x = 36.5
+    objects.helper2.position.z = -9.05
+
+    scene.add(objects.helper1,objects.helper2)
+
     for (var i = 0; i < 90; i++) {
         // var matTA = new.THREE.
         
@@ -973,8 +1107,10 @@ function initScene(){
     
     var circleGeometry = new THREE.CircleGeometry( radius, segments );
     objects.ground = new THREE.Mesh( circleGeometry, materialBack );
-    objects.ground.rotation.x = -Math.PI/2
+    objects.ground.rotation.x = -Math.PI/2  
     // group.add( objects.ground );
+
+
     
     var geometry = new THREE.BoxGeometry( 17, 4, 9 );
     objects.toni.push(new THREE.Mesh( geometry, materialToni ));
@@ -994,7 +1130,7 @@ function initScene(){
     // geom2.faces.push( new THREE.Face3( 1, 2, 0 ));
     // geom2.faces.push( new THREE.Face3( 2, 0, 1 ));
     
-    triangle = new THREE.Mesh( new THREE.BoxGeometry( 10, 10, 2),  materialToni);
+    triangle = new THREE.Mesh( new THREE.BoxGeometry( 15, 15, 2),  materialToni);
     
     triangle.rotation.z = Math.PI*.25
     // triangle.position.x=-9.6;
@@ -1002,39 +1138,51 @@ function initScene(){
     // depTB.position.z=-8.6+.6*i
     
     
-    var tramLaneGeometry = new THREE.BoxGeometry( .08, .1, 90);
-    var tramLane4 = new THREE.Mesh( tramLaneGeometry, materialToni )
-    var tramLane14 = new THREE.Mesh( tramLaneGeometry, materialToni )
+    var tramLaneGeometry = new THREE.BoxGeometry( .08, .1, 86);
+    tramLane4 = new THREE.Mesh( tramLaneGeometry, materialToni )
+    tramLane14 = new THREE.Mesh( tramLaneGeometry, materialToni )
     tramLane4.position.x=-11.1
     tramLane14.position.x=36
     if(online)
         group.add(tramLane4,tramLane14)
     
-    var barGeometry = new THREE.BoxGeometry( 1, 10, 1 );
-    var smallBarGeometry = new THREE.BoxGeometry( 1, 2, 1 );
+    var barGeometry = new THREE.BoxGeometry( 1, 20, 1 );
+    var smallBarGeometry = new THREE.BoxGeometry( 1, 12, 1 );
     
     barGroupOffset= map(time%3600000,0,3600000,barSpace,0)
     
     for (var i = 0; i < 32; i++) {
         var bar = (new THREE.Mesh( barGeometry, materialToni ));
-        bar.position.y=-window.innerHeight/2+2.5;
+        bar.position.y=2.5;
         bar.position.x=-(i-16)*barSpace+barGroupOffset;
         
         
         var barS1 = (new THREE.Mesh( smallBarGeometry, materialToni ));
-        barS1.position.y=-window.innerHeight/2+1;
+        barS1.position.y=1;
         barS1.position.x=-(i-16)*barSpace+barSpace/4+barGroupOffset;
         
         var barS2 = (new THREE.Mesh( smallBarGeometry, materialToni ));
-        barS2.position.y=-window.innerHeight/2+1;
+        barS2.position.y=1;
         barS2.position.x=-(i-16)*barSpace+barSpace/2+barGroupOffset;
         
         var barS3 = (new THREE.Mesh( smallBarGeometry, materialToni ));
-        barS3.position.y=-window.innerHeight/2+1;
+        barS3.position.y=1;
         barS3.position.x=-(i-16)*barSpace+barSpace*.75+barGroupOffset;
         
         barGroup.add(bar,barS1, barS2, barS3)
     };
+
+    barGroup.position.y=-window.innerHeight/2
+
+    var radius = 20;
+    var segments = 32;
+    var circleGeometry = new THREE.CircleGeometry( 11, 30 );
+    circle = new THREE.Mesh( circleGeometry, materialToni );
+    circle.position.y=window.innerHeight/2-18;
+    circle.position.x=window.innerWidth/2-18;
+    circle.rotateZ(Math.PI/4)
+
+    sceneOrtho.add( circle );
     
     
     objects.toni.push(new THREE.Mesh( new THREE.BoxGeometry( 4, 6, 9 ), materialToni ));
@@ -1047,17 +1195,36 @@ function initScene(){
     var t2 = new THREE.Vector3(0,1,.0);
     var t3 = new THREE.Vector3(0,1,5.1);
     var t4 = new THREE.Vector3(0,0,.5);
-    tram.vertices.push(t1,t2,t3,t4);
-    tram.faces.push( new THREE.Face3( 0, 1, 2 ),new THREE.Face3( 1, 0, 3 ));
+    var t5 = new THREE.Vector3(1,0,.5);
+    var t6 = new THREE.Vector3(1,0,5.6);
+    var t7 = new THREE.Vector3(1,1,.0);
+    var t8 = new THREE.Vector3(1,1,5.1);
+    tram.vertices.push(t1,t2,t3,t4,t5,t6,t7,t8);
+    tram.faces.push( new THREE.Face3( 2, 0, 7),  new THREE.Face3( 3, 1, 6), new THREE.Face3( 7, 0, 5), new THREE.Face3( 3, 6, 4), new THREE.Face3( 0, 1, 2 ),new THREE.Face3( 5, 6, 7 ),new THREE.Face3( 6, 5, 4 ),new THREE.Face3( 1, 0, 3 ),new THREE.Face3( 0, 3, 4 ),new THREE.Face3( 0, 4, 5 ),new THREE.Face3( 1, 2, 6 ),new THREE.Face3( 6, 2, 7 ));
     
 
-    objects.tramTA=(new THREE.Mesh( tram, materialToni ));
+    objects.tramTA=(new THREE.Mesh( tram, new THREE.MeshBasicMaterial( {color: new THREE.Color(.15,.15,.15), transparent: true, opacity: 0} ) ));
     objects.tramTA.position.x=-11.6;
     objects.tramTA.position.z=-50
-     objects.tramTA.rotation.z = Math.PI/2
-    group.add( objects.tramTA);
+    objects.tramTA.rotation.z = Math.PI/2
+
+    objects.tramTB=(new THREE.Mesh( tram, new THREE.MeshBasicMaterial( {color: new THREE.Color(.15,.15,.15), transparent: true, opacity: 0} ) ));
+    objects.tramTB.position.x=-9.6;
+    objects.tramTB.position.z=50
+    objects.tramTB.rotation.z = Math.PI/2
+
+    objects.tramFA=(new THREE.Mesh( tram, new THREE.MeshBasicMaterial( {color: new THREE.Color(.15,.15,.15), transparent: true, opacity: 0} ) ));
+    objects.tramFA.position.x=35.5;
+    objects.tramFA.position.z=-50
+    objects.tramFA.rotation.z = Math.PI/2
+
+    objects.tramFB=(new THREE.Mesh( tram, new THREE.MeshBasicMaterial( {color: new THREE.Color(.15,.15,.15), transparent: true, opacity: 0} ) ));
+    objects.tramFB.position.x=37.5;
+    objects.tramFB.position.z=50
+    objects.tramFB.rotation.z = Math.PI/2
     
-    
+    group.add( objects.tramTA, objects.tramTB,objects.tramFA, objects.tramFB);
+
     
     // var light = new THREE.AmbientLight( 0x353535	 );
     // group.add( light );
@@ -1107,7 +1274,7 @@ function initScene(){
         group.add(gradient)
 
     for (var i = 0; i < restaurants.length; i++) {
-        restaurants[i]
+
 
         var geometryR = new THREE.BoxGeometry( restaurants[i].size[0], restaurants[i].size[1] , .5);
         var restaurant = new THREE.Mesh(geometryR,new THREE.MeshBasicMaterial( { color: darkColor} ))
@@ -1118,9 +1285,10 @@ function initScene(){
         restaurant.position.z = restaurants[i].position[1]
         restaurant.position.y = .25
 
-        group.add(restaurantsObj[i])
+        restaurantsGroup.add(restaurantsObj[i])
     };
 
+    group.add(restaurantsGroup)
     
     
 //    var texture1 = THREE.ImageUtils.loadTexture( "gradient.png" );
@@ -1153,8 +1321,7 @@ if(online)
 scene.add(group)
 sceneOrtho.add(barGroup,triangle)
 
-
-resetView()
+window.setTimeout("resetView()",500)
 
 }
 
@@ -1169,25 +1336,22 @@ function onWindowResize() {
     renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
-function onDocumentMouseMove(event) {
-
-}
 
 function createText(text) {
-//    var shape = new THREE.TextGeometry(text, {font: 'helvetiker'});
-//    // var wrapper = new THREE.MeshNormalMaterial({color: 0x00ff00});
-//    // objects.tram1 = new THREE.Mesh(shape, materialToni);
-//    var text = new THREE.Mesh(shape, materialBack);
-//    
-//    text.scale.z=.001
-//    text.scale.x=.014
-//    text.scale.y=.014
-//    text.position.z=-9
-//    text.position.x=-11
-//    text.rotation.z = -Math.PI/2
-//    text.rotation.x = -Math.PI/2
-//    
-//    return text;
+   var shape = new THREE.TextGeometry(text, {font: 'helvetiker'});
+   // var wrapper = new THREE.MeshNormalMaterial({color: 0x00ff00});
+   // objects.tram1 = new THREE.Mesh(shape, materialToni);
+   var text = new THREE.Mesh(shape, materialBack);
+   
+   text.scale.z=.001
+   text.scale.x=.014
+   text.scale.y=.014
+   text.position.z=-9
+   text.position.x=-11
+   text.rotation.z = -Math.PI/2
+   text.rotation.x = -Math.PI/2
+   
+   return text;
 }
 
 function createTextWoPositioning(text) {
@@ -1205,12 +1369,31 @@ function createTextWoPositioning(text) {
 
 }
 
+// function clickTest(e){
+
+//     var B = new THREE.Vector2(e.clientX -window.innerWidth/2,e.clientY -window.innerHeight/2);
+
+//     if(B.x<B.y&&-B.x<B.y)
+//         console.log(1)
+//     if(B.x<B.y&&-B.x>B.y)
+//         console.log(2)
+//     if(B.x>B.y&&-B.x<B.y)
+//         console.log(3)
+//     if(B.x>B.y&&-B.x>B.y)
+//         console.log(4)
+// }
+
 function rotateStart( e ) {
     e.preventDefault()
     
     
-    
-    
+    // if(resetTimeTimeOut){
+    //     clearTimeout(resetTimeTimeOut)
+    //     resetTimeTimeOut=window.setTimeout("resetTime()", 5000)
+    // }
+    if(e.touches.length>2)
+        history.back()
+
     if(e.touches.length>1)
         return
 
@@ -1218,22 +1401,36 @@ function rotateStart( e ) {
     var timesince = now - mylatesttap;
     if((timesince < 350) && (timesince > 0)){
         resettingView = true;
-        resetView()
+        resetViewStart()
         return
     }
     
     mylatesttap = new Date().getTime();
+
+
     
     if(e.touches[0].clientY>window.innerHeight-48){
         settingTime = true
+        $(".arrow").css({opacity:1})
+        $("#arrowLeft").css({"margin-left": -60+"px"})
+        $("#arrowRight").css({"margin-left": 25+"px"})
         $("#time").addClass("active")
         if(!online){
             location.reload()
         }
     }
+
+    mouseOnDown.x = - e.touches[0].clientX;
+    mouseOnDown.y = e.touches[0].clientY;
+
+    targetOnDown.x = target.x;
+    targetOnDown.y = target.y;
     
     touchstart.x=e.touches[0].clientX;
     touchstart.y=e.touches[0].clientY;
+
+    // vTouchStart.set(e.touches[0].clientX -window.innerWidth/2,e.touches[0].clientY -window.innerHeight/2);
+    // vTouchStartLength=vTouchStart.length()
     
 }
 
@@ -1256,32 +1453,66 @@ function rotate(e) {
         setTime(e)
         return
     }
+
+
+    
+
+    // if((B.y<0&&vTouchStart.x<B.x)||(B.y>=0&&vTouchStart.x>=B.x)){
+    //     theta*=-1
+    // }
+
+    
     
     if(resettingView)
         return
 
-        // group.rotation.z=
-        var newCamY = rotation.z-(touchstart.y-e.touches[0].clientY)*.2
-        
-        
-        if(newCamY>100)
-            newCamY=100
-        if(newCamY<0)
-            newCamY=0
 
-        new TWEEN.Tween( {c: camera.position.y, ry: group.rotation.y})
-        .to( {c: newCamY, ry: rotation.y+(touchstart.x-e.touches[0].clientX)*-.01}, 50 )
-        .easing( TWEEN.Easing.Linear.None)
-        .onUpdate(
-          function(){
-              camera.position.setY(this.c)
-              camera.position.setX(100-this.c)
-              camera.lookAt(new THREE.Vector3(0,0,0))
+    mouse.x = - e.touches[0].clientX;
+    mouse.y = e.touches[0].clientY;
 
-              group.rotation.y=this.ry
-          }
-          )
-        .start();
+    var zoomDamp = distance/35;
+
+    target.x = targetOnDown.x + (mouse.x - mouseOnDown.x) * 0.005 * zoomDamp;
+    target.y = targetOnDown.y + (mouse.y - mouseOnDown.y) * 0.005 * zoomDamp;
+
+
+    //     // group.rotation.z=
+    //     var newCamY = rotation.z-(touchstart.y-e.touches[0].clientY)*.2
+
+
+    //     if(newCamY>100)
+    //         newCamY=100
+    //     if(newCamY<0)
+    //         newCamY=0
+
+
+
+    //      var B = new THREE.Vector2(e.touches[0].clientX -window.innerWidth/2,e.touches[0].clientY -window.innerHeight/2);
+
+
+    // var theta = -Math.acos( vTouchStart.dot(B) / vTouchStart.length() / B.length() );
+
+    // if((B.x<B.y&&-B.x<B.y&&vTouchStart.x<B.x)||(B.x<B.y&&-B.x>B.y&&vTouchStart.y<B.y)||(B.x>B.y&&-B.x<B.y&&vTouchStart.y>=B.y)||(B.x>B.y&&-B.x>B.y&&vTouchStart.x>=B.x)){
+    //     theta*=-1
+    //  }
+
+    //     // vTouchStart.set(e.touches[0].clientX -window.innerWidth/2,e.touches[0].clientY -window.innerHeight/2);
+    //     // vTouchStartLength=vTouchStart.length()
+
+    //     new TWEEN.Tween( {vx: vTouchStart.x, vy: vTouchStart.y , ry: group.rotation.y})
+    //     .to( {vx: B.x, vy: B.y, ry: group.rotation.y+theta}, 50 )
+    //     .easing( TWEEN.Easing.Linear.None)
+    //     .onUpdate(
+    //       function(){
+    //           // camera.position.setY(this.c)
+    //           // camera.position.setX(100-this.c)
+    //           // camera.lookAt(new THREE.Vector3(0,0,0))
+    //           vTouchStart.x    = this.vx
+    //           vTouchStart.y    = this.vy
+    //           group.rotation.y = this.ry
+    //       }
+    //       )
+    //     .start();
 
     // camera.position.setY(newCamY)
     // camera.lookAt(new THREE.Vector3(0,0,0))
@@ -1291,8 +1522,69 @@ function rotate(e) {
     
 }
 
+function clicktest(e){
+
+
+}  
+
+var projector = new THREE.Projector();
 function rotateFinish(e) {
     e.preventDefault()
+    var now = new Date().getTime();
+    var timesince = now - mylatesttap;
+    if((timesince < 200) && (timesince > 0)){
+        if(e.changedTouches[0].clientX>window.innerWidth-40&&e.changedTouches[0].clientY<40){
+            toggleHelp()
+        }
+        info = ""
+        $("#info").css({opacity: 0})
+        var vector = new THREE.Vector3(
+            ( e.changedTouches[0].clientX / window.innerWidth ) * 2 - 1,
+            - ( e.changedTouches[0].clientY / window.innerHeight ) * 2 + 1,
+            0.5 );
+
+
+        var ray = projector.pickingRay( vector, camera );
+
+        var intersects = ray.intersectObjects( restaurantsGroup.children );
+
+
+
+        if ( intersects.length > 0 ) {
+            console.log(intersects[0])
+            selectedObj = intersects[0].object
+            for (var i = 0; i < restaurantsObj.length; i++) {
+
+                if(intersects[0].object==restaurantsObj[i]&&restaurants[i].isOpen){
+                    info = restaurants[i].name
+                }
+            }
+        } else {
+            intersects = ray.intersectObjects([objects.tramTA, objects.tramTB,objects.tramFA, objects.tramFB]);
+
+            if ( intersects.length > 0 ) {
+                
+                selectedObj = intersects[0].object
+                
+
+                    switch (selectedObj){
+                        case objects.tramTA:
+                        info = zvvData.toni[nextTram.toniA].number+" "+zvvData.toni[nextTram.toniA].to.slice(7)
+                        break;
+                        case objects.tramTB:
+                        info = zvvData.toni[nextTram.toniB].number+" "+zvvData.toni[nextTram.toniB].to.slice(7)
+                        break;
+                        case objects.tramFA:
+                        info = zvvData.fischerweg[nextTram.fischerwegA].number+" "+zvvData.fischerweg[nextTram.fischerwegA].to.slice(7)
+                        break;
+                        case objects.tramFB:
+                        info = zvvData.fischerweg[nextTram.fischerwegB].number+" "+zvvData.fischerweg[nextTram.fischerwegB].to.slice(7)
+                        break;
+                    }
+            }
+        }
+    }
+
     if(e.touches.length>1)
         return
     for (var i = multiTouches.length - 1; i >= 0; i--) {
@@ -1302,7 +1594,14 @@ function rotateFinish(e) {
     
     if(settingTime){
         finishTime(e)
+        // resetTime()
+        // if(resetTimeTimeOut)
+        //     clearTimeout(resetTimeTimeOut)
+        // resetTimeTimeOut=window.setTimeout("resetTime()", 5000)
         settingTime=false;
+        $(".arrow").css({opacity:0})
+        $("#arrowLeft").css({"margin-left": -20+"px"})
+        $("#arrowRight").css({"margin-left": 5+"px"})
         $("#time").removeClass("active")
         sceneOrtho.remove(objects.time)
         stringTime=""
@@ -1319,26 +1618,54 @@ function rotateFinish(e) {
     if(newCamY<0)
         newCamY=0
 
-    new TWEEN.Tween( {c: camera.position.y, ry: group.rotation.y})
-    .to( {c: newCamY, ry: rotation.y+(touchstart.x-e.changedTouches[0].clientX)*-.01}, 400 )
-    .easing( TWEEN.Easing.Quartic.Out)
-    .onUpdate(
-      function(){
-          camera.position.setY(this.c)
-          camera.position.setX(100-this.c)
-          camera.lookAt(new THREE.Vector3(0,0,0))
 
-          group.rotation.y=this.ry
+    // var B = new THREE.Vector2(e.changedTouches[0].clientX -window.innerWidth/2,e.changedTouches[0].clientY -window.innerHeight/2);
 
-          rotation.y=this.ry;
-          rotation.z=this.c;
-      }
-      )
-    .onComplete(function(){
-        rotation.y=this.ry;
-        rotation.z=this.c;
-    })
-    .start();
+
+    // var theta = -Math.acos( vTouchStart.dot(B) / vTouchStart.length() / B.length() );
+
+    // if((B.x<B.y&&-B.x<B.y&&vTouchStart.x<B.x)||(B.x<B.y&&-B.x>B.y&&vTouchStart.y<B.y)||(B.x>B.y&&-B.x<B.y&&vTouchStart.y>=B.y)||(B.x>B.y&&-B.x>B.y&&vTouchStart.x>=B.x)){
+    //     theta*=-1
+    //  }
+
+        // vTouchStart.set(e.touches[0].clientX -window.innerWidth/2,e.touches[0].clientY -window.innerHeight/2);
+        // vTouchStartLength=vTouchStart.length()
+
+        // new TWEEN.Tween( {vx: vTouchStart.x, vy: vTouchStart.y , ry: group.rotation.y})
+        // .to( {vx: B.x, vy: B.y, ry: group.rotation.y+theta}, 400 )
+        // .easing( TWEEN.Easing.Quartic.Out)
+        // .onUpdate(
+        //   function(){
+        //       camera.position.setY(this.c)
+        //       camera.position.setX(100-this.c)
+        //       camera.lookAt(new THREE.Vector3(0,0,0))
+        //       vTouchStart.x    = this.vx
+        //       vTouchStart.y    = this.vy
+        //       group.rotation.y = this.ry
+        //   }
+        //   )
+        // .start();
+
+    // new TWEEN.Tween( {c: camera.position.y, ry: group.rotation.y})
+    // .to( {c: newCamY, ry: rotation.y+(touchstart.x-e.changedTouches[0].clientX)*-.01}, 400 )
+    // .easing( TWEEN.Easing.Quartic.Out)
+    // .onUpdate(
+    //   function(){
+    //       // camera.position.setY(this.c)
+    //       // camera.position.setX(100-this.c)
+    //       // camera.lookAt(new THREE.Vector3(0,0,0))
+
+    //       group.rotation.y=this.ry
+
+    //       rotation.y=this.ry;
+    //       rotation.z=this.c;
+    //   }
+    //   )
+    // .onComplete(function(){
+    //     rotation.y=this.ry;
+    //     rotation.z=this.c;
+    // })
+    // .start();
     
     
     // camera.position.setY(newCamY)
@@ -1516,18 +1843,22 @@ function updateDay(){
             clearColor = new THREE.Color(r/255,g/255,b/255)
             
             
+
             new TWEEN.Tween( {r: renderer.getClearColor().r, g: renderer.getClearColor().g, b: renderer.getClearColor().b})
             .to( {r: r/255, g: g/255, b: b/255}, 400 )
             .easing( TWEEN.Easing.Quartic.Out)
             .onUpdate(function(){
                       // objects.toni[0].material.color.set(new THREE.Color(this.t,this.t,this.t))
+                      // console.log(".")
                       renderer.setClearColor(new THREE.Color(this.r,this.g,this.b),0);
                       gradient.material.color.set(new THREE.Color(this.r,this.g,this.b),0);
+
                       // objects.ground.material.color.set(new THREE.Color(this.g,this.g,this.g))
                   })
             .onComplete(function(){
                 renderer.setClearColor(new THREE.Color(this.r,this.g,this.b),0);
                 gradient.material.color.set(new THREE.Color(this.r,this.g,this.b),0);
+
             })
             .start();
             
@@ -1552,7 +1883,10 @@ function updateDay(){
         }
         
         isDay = true;
+        $(".arrow").removeClass("night")
         $("#time").removeClass("night")
+        $("#helpQ").removeClass("night")
+        $(".info").removeClass("night")
         new TWEEN.Tween( {t: .95, g: .15 })
         .to( {t: .15, g: .95}, 1000 )
         .easing( TWEEN.Easing.Quartic.Out)
@@ -1560,10 +1894,18 @@ function updateDay(){
           objects.toni[0].material.color.set(new THREE.Color(this.t,this.t,this.t))
                   // renderer.setClearColor(new THREE.Color(this.g,this.g,this.g),0);
                   objects.ground.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramTA.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramTB.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramFA.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramFB.material.color.set(new THREE.Color(this.g,this.g,this.g))
               })
         .onComplete(function(){
             objects.toni[0].material.color.set(new THREE.Color(0.15,0.15,0.15))
             objects.ground.material.color.set(new THREE.Color(0.95,0.95,0.95))
+            objects.tramTA.material.color.set(new THREE.Color(0.15,0.15,0.15))
+            objects.tramTB.material.color.set(new THREE.Color(0.15,0.15,0.15))
+            objects.tramFA.material.color.set(new THREE.Color(0.15,0.15,0.15))
+            objects.tramFB.material.color.set(new THREE.Color(0.15,0.15,0.15))
         })
         .start();
     }
@@ -1578,8 +1920,10 @@ function updateDay(){
         for(var i = 0; i < tramMinutes.children.length; i++){
             tweenDepartureColor(tramMinutes.children[i],lightColor)
         }
-        
+        $(".arrow").addClass("night")
         $("#time").addClass("night")
+        $(".info").addClass("night")
+        $("#helpQ").addClass("night")
         new TWEEN.Tween( {t: .15, g: .95 })
         .to( {t: .95, g: .15}, 1000 )
         .easing( TWEEN.Easing.Quartic.Out)
@@ -1587,10 +1931,19 @@ function updateDay(){
           objects.toni[0].material.color.set(new THREE.Color(this.t,this.t,this.t))
                   // renderer.setClearColor(new THREE.Color(this.g,this.g,this.g),0);
                   objects.ground.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramTA.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramTB.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramFA.material.color.set(new THREE.Color(this.g,this.g,this.g))
+                  objects.tramFB.material.color.set(new THREE.Color(this.g,this.g,this.g))
               })
         .onComplete(function(){
             objects.toni[0].material.color.set(new THREE.Color(0.95,0.95,0.95))
             objects.ground.material.color.set(new THREE.Color(0.15,0.15,0.15))
+
+            objects.tramTA.material.color.set(new THREE.Color(0.95,0.95,0.95))
+            objects.tramTB.material.color.set(new THREE.Color(0.95,0.95,0.95))
+            objects.tramFA.material.color.set(new THREE.Color(0.95,0.95,0.95))
+            objects.tramFB.material.color.set(new THREE.Color(0.95,0.95,0.95))
         })
         .start();
     }
@@ -1611,7 +1964,12 @@ function updateDay(){
             tweenRestaurantOpacity(restaurantsObj[i],1)
         } else {
             tweenRestaurantOpacity(restaurantsObj[i],0)
+            if(selectedObj==restaurantsObj[i]){
+                info=""
+                $("#info").css({opacity: 0})
+            }
         }
+        restaurants[i].isOpen=isOpen
     }
 
     if(stringTime!=newStringTime||isDay!=lastIsDay){
@@ -1649,8 +2007,10 @@ function updateDay(){
 function updateDepartures(){
     // group.remove(tramMinutes);
     // tramMinutes = new THREE.Object3D();
+
+    group.remove(objects.tram1,objects.tram2)
     
-    for (var i = connectionAtCurrentTimeT-5; i < zvvData.toni.length; i++) {
+    for (var i = 0; i < zvvData.toni.length; i++) {
         if(zvvData.toni[i].toCity){
             var inMinutes = Math.floor((new Date(zvvData.toni[i].time*1000).getTime()-time)/60000)
             
@@ -1659,8 +2019,14 @@ function updateDepartures(){
                     // console.log("3")
                     // animateTram(objects.tramTA)
                 }
+                if(inMinutes<3){
+                    nextTram.toniA=i
+                } 
 
-                for (var i = 0; i < objects.departures.toniA.length; i++) {
+//                objects.tram1 = createText(inMinutes+"\'")
+//                objects.tram  1.position.x=-17;
+
+for (var i = 0; i < objects.departures.toniA.length; i++) {
                     // if((i<inMinutes&&isDay)||(i>=inMinutes&&!isDay))
                     // 	tweenDepartureColor(objects.departures.toniA[i],darkColor)
                     // else
@@ -1676,12 +2042,18 @@ function updateDepartures(){
             }
         } 
     }
-    for (var i = connectionAtCurrentTimeT-5; i < zvvData.toni.length; i++) {
+    for (var i = 0; i < zvvData.toni.length; i++) {
         if(!zvvData.toni[i].toCity){
             var inMinutes = Math.floor((new Date(zvvData.toni[i].time*1000).getTime()-time)/60000)
             
             if(inMinutes>=0){
-                for (var i = 0; i < objects.departures.toniB.length; i++) {
+                if(inMinutes<3){
+                    nextTram.toniB=i
+                }
+                connectionAtCurrentTimeT=i
+//                objects.tram2 = createText(inMinutes+"\'")
+//                objects.tram2.position.x=-15;
+for (var i = 0; i < objects.departures.toniB.length; i++) {
                     // 	if((i<inMinutes&&isDay)||(i>=inMinutes&&!isDay))
                     // 		tweenDepartureColor(objects.departures.toniB[i],darkColor)
                     // 	else
@@ -1695,7 +2067,7 @@ function updateDepartures(){
                     }
                 }
                 lastDepartures.toniB=inMinutes;
-                connectionAtCurrentTimeT=i
+                
                 break;
             }
         } 
@@ -1706,6 +2078,10 @@ function updateDepartures(){
             var inMinutes = Math.floor((new Date(zvvData.fischerweg[i].time*1000).getTime()-time)/60000)
             
             if(inMinutes>=0){
+                if(inMinutes<3){
+
+                    nextTram.fischerwegA=i
+                }
                 for (var i = 0; i < objects.departures.fischerwegA.length; i++) {
                     // if((i<inMinutes&&isDay)||(i>=inMinutes&&!isDay))
                     // 	tweenDepartureColor(objects.departures.fischerwegA[i],darkColor)
@@ -1728,11 +2104,17 @@ function updateDepartures(){
             var inMinutes = Math.floor((new Date(zvvData.fischerweg[i].time*1000).getTime()-time)/60000)
             
             if(inMinutes>=0){
+                if(inMinutes<3){
+                    nextTram.fischerwegB=i
+                }
+                connectionAtCurrentTimeF=i
                 for (var i = 0; i < objects.departures.fischerwegB.length; i++) {
                     // if((i<inMinutes&&isDay)||(i>=inMinutes&&!isDay))
                     // 	tweenDepartureColor(objects.departures.fischerwegB[i],darkColor)
                     // else
                     // 	tweenDepartureColor(objects.departures.fischerwegB[i],lightColor)
+
+                    
                     
                     if(i<inMinutes){
                         tweenDepartureOpacity(objects.departures.fischerwegB[i],1)
@@ -1741,45 +2123,116 @@ function updateDepartures(){
                     }
                 };
                 lastDepartures.fischerwegB=inMinutes;
-                connectionAtCurrentTimeF=i
+                
                 break;
             }
         } 
     };
-    
+    // group.add(objects.tram1,objects.tram2);
     // group.add(objects.tram1,objects.tram2);
 }
 
-function animateTram(tram){
-    new TWEEN.Tween( {t: -50 })
-            .to( {t: -50}, 30000 )
-            .easing( TWEEN.Easing.Quartic.In)
-            .onUpdate(function(){
-              tram.position.z=this.t
-    }).onComplete(function(){
-        new TWEEN.Tween( {t: -50 })
-            .to( {t: -14.5}, 10000 )
-            .easing( TWEEN.Easing.Quartic.Out)
-            .onUpdate(function(){
-              tram.position.z=this.t
-        }).onComplete(function(){
-            new TWEEN.Tween( {t: -14.5 })
-                .to( {t: -14.5}, 15000 )
-                .easing( TWEEN.Easing.Quartic.In)
-                .onUpdate(function(){
-                  tram.position.z=this.t
-            }).onComplete(function(){
-                 new TWEEN.Tween( {t: -14.5 })
-                    .to( {t: 50}, 10000 )
-                    .easing( TWEEN.Easing.Quartic.In)
-                    .onUpdate(function(){
-                      tram.position.z=this.t
-                }).onComplete(function(){
-                    tram.position.z=50
-                }).start()
-            }).start()
-        }).start()
-    }).start()
+function animateTram(){
+    var msToDeparture = zvvData.toni[nextTram.toniA].time*1000-time
+    if(msToDeparture < 35000 && msToDeparture > 20000){
+        objects.tramTA.position.z=map(msToDeparture,35000,20000,-50,-14.6)
+        objects.tramTA.material.opacity=map(msToDeparture,35000,32500,0,1)
+        // objects.tramTA.position.y=map(msToDeparture,35000,20000,-2,0)
+    } else if(msToDeparture <= 20000 && msToDeparture > 0){
+        objects.tramTA.position.z=-14.6
+        objects.tramTA.material.opacity=1
+    } else if(msToDeparture <= 0 && msToDeparture > -27500){
+        objects.tramTA.position.z=map(msToDeparture,0,-27500,-14.6,43)
+        objects.tramTA.material.opacity=map(msToDeparture,-25000,-27500,1,0)
+        // objects.tramTA.position.y=map(msToDeparture,0,-27500,0,-2)
+    } else {
+        objects.tramTA.position.z=-49
+        objects.tramTA.material.opacity=0
+    }
+
+    msToDeparture = zvvData.toni[nextTram.toniB].time*1000-time
+    if(msToDeparture < 47500 && msToDeparture > 20000){
+        objects.tramTB.position.z=map(msToDeparture,47500,20000,43,-8.5)
+        objects.tramTB.material.opacity=map(msToDeparture,47500,45000,0,1)
+        // objects.tramTB.position.y=map(msToDeparture,47500,20000,-2,0)
+
+    } else if(msToDeparture <= 20000 && msToDeparture > 0){
+        objects.tramTB.position.z=-8.5
+        objects.tramTB.material.opacity=1
+    } else if(msToDeparture <= 0 && msToDeparture > -15000){
+        objects.tramTB.position.z=map(msToDeparture,0,-15000,-8.5,-50)
+        objects.tramTB.material.opacity=map(msToDeparture,-12500,-15000,1,0)
+        // objects.tramTB.position.y=map(msToDeparture,0,-15000,-2,0)
+    } else {
+        objects.tramTB.position.z=43
+        objects.tramTB.material.opacity=0
+    }
+
+    msToDeparture = zvvData.fischerweg[nextTram.fischerwegA].time*1000-time
+    if(msToDeparture < 35000 && msToDeparture > 20000){
+        objects.tramFA.position.z=map(msToDeparture,35000,20000,-50,-14.6)
+        objects.tramFA.material.opacity=map(msToDeparture,35000,32500,0,1)
+        // objects.tramTA.position.y=map(msToDeparture,35000,20000,-2,0)
+    } else if(msToDeparture <= 20000 && msToDeparture > 0){
+        objects.tramFA.position.z=-14.6
+        objects.tramFA.material.opacity=1
+    } else if(msToDeparture <= 0 && msToDeparture > -27500){
+        objects.tramFA.position.z=map(msToDeparture,0,-27500,-14.6,43)
+        objects.tramFA.material.opacity=map(msToDeparture,-25000,-27500,1,0)
+        // objects.tramTA.position.y=map(msToDeparture,0,-27500,0,-2)
+    } else {
+        objects.tramFA.position.z=-49
+        objects.tramFA.material.opacity=0
+    }
+
+    msToDeparture = zvvData.fischerweg[nextTram.fischerwegB].time*1000-time
+    if(msToDeparture < 47500 && msToDeparture > 20000){
+        objects.tramFB.position.z=map(msToDeparture,47500,20000,43,-8.5)
+        objects.tramFB.material.opacity=map(msToDeparture,47500,45000,0,1)
+        // objects.tramFB.position.y=map(msToDeparture,47500,20000,-2,0)
+    } else if(msToDeparture <= 20000 && msToDeparture > 0){
+        objects.tramFB.position.z=-8.5
+        objects.tramFB.material.opacity=1
+    } else if(msToDeparture <= 0 && msToDeparture > -15000){
+        objects.tramFB.position.z=map(msToDeparture,0,-15000,-8.5,-50)
+        objects.tramFB.material.opacity=map(msToDeparture,-12500,-15000,1,0)
+        // objects.tramFB.position.y=map(msToDeparture,0,-15000,0,-2)
+    } else {
+        objects.tramFB.position.z=43
+        objects.tramFB.material.opacity=0
+    }
+}
+
+// function animateTram(tram){
+//     new TWEEN.Tween( {t: -50 })
+//     .to( {t: -50}, 30000 )
+//     .easing( TWEEN.Easing.Quartic.In)
+//     .onUpdate(function(){
+//       tram.position.z=this.t
+//   }).onComplete(function(){
+//     new TWEEN.Tween( {t: -50 })
+//     .to( {t: -14.5}, 10000 )
+//     .easing( TWEEN.Easing.Quartic.Out)
+//     .onUpdate(function(){
+//       tram.position.z=this.t
+//   }).onComplete(function(){
+//     new TWEEN.Tween( {t: -14.5 })
+//     .to( {t: -14.5}, 15000 )
+//     .easing( TWEEN.Easing.Quartic.In)
+//     .onUpdate(function(){
+//       tram.position.z=this.t
+//   }).onComplete(function(){
+//    new TWEEN.Tween( {t: -14.5 })
+//    .to( {t: 50}, 10000 )
+//    .easing( TWEEN.Easing.Quartic.In)
+//    .onUpdate(function(){
+//       tram.position.z=this.t
+//   }).onComplete(function(){
+//     tram.position.z=50
+// }).start()
+// }).start()
+// }).start()
+// }).start()
 
     // window.setTimeout(
     //     function(){
@@ -1811,7 +2264,7 @@ function animateTram(tram){
     //         .start();
     //     }, 30000
     //     )
-}
+// }
 
 function tweenDepartureColor(item,color){
     new TWEEN.Tween( {t: item.material.color.r })
@@ -1900,77 +2353,411 @@ function tweenRestaurantOpacity(item,opacity){
 
 function resetView(){
 
+    // camera.position.x = distance * Math.sin(Math.PI/2) * Math.cos(Math.PI/2);
+    // camera.position.y = distance * Math.sin(Math.PI/2);
+    // camera.position.z = distance * Math.cos(Math.PI/2) * Math.cos(Math.PI/2);
+
+    
+    $("#loading").css({opacity:0})
+    resetViewStart()
+
+  //   var left=window.innerWidth*-.072
+  //   var top=window.innerHeight*.072
+
+  //   // time = new Date().getTime()
+
+  //   new TWEEN.Tween( {t: time})
+  //   .to( {t: new Date().getTime()}, 400 )
+  //   .easing( TWEEN.Easing.Quartic.Out)
+  //   .onUpdate(function(){
+  //     time = this.t
+  // })
+  //   .start();
+
+  //   new TWEEN.Tween( {l: camera.left, r: camera.right, t: camera.top, b: camera.bottom})
+  //   .to( {l: left, r: -left, t: top, b: -top}, 400 )
+  //   .easing( TWEEN.Easing.Quartic.InOut)
+  //   .onUpdate(function(){
+  //     camera.left = this.l
+  //     camera.right = this.r
+  //     camera.top = this.t
+  //     camera.bottom = this.b
+  //     camera.updateProjectionMatrix()
+  // })
+  //   .onComplete(function(){
+  //       camZoom=-left/window.innerWidth;
+  //       $("#loading").css({opacity:0})
+
+  //       resetViewStart()
+  //   })
+  //   .start();
+
+  //   var newCamY = 100
+
+  //   if(group.rotation.y%(Math.PI*2)>=Math.PI)
+  //       var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)-Math.PI
+  //   else
+  //       var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)+Math.PI
+
+  //   new TWEEN.Tween( {c: camera.position.y, ry: group.rotation.y})
+  //   .to( {c: 100, ry: rotateTo}, 400 )
+  //   .easing( TWEEN.Easing.Quartic.InOut)
+  //   .onUpdate(
+  //     function(){
+  //         camera.position.setY(this.c)
+  //         camera.position.setX(100-this.c)
+  //         camera.lookAt(new THREE.Vector3(0,0,0))
+
+  //         group.rotation.y=this.ry
+  //     }
+  //     )
+  //   .onComplete(function(){
+  //       rotation.y=group.rotation.y;
+  //       rotation.z=camera.position.y;
+  //       resettingView = false;
+  //   })
+
+  //   .start();
+}
+
+function resetTime(){
+    new TWEEN.Tween( {t: time})
+    .to( {t: new Date().getTime()}, 2000 )
+    .easing( TWEEN.Easing.Exponential.InOut)
+    .onUpdate(function(){
+        $("#time").addClass("activeReset")
+        time = this.t
+        connectionAtCurrentTimeF = 6
+        connectionAtCurrentTimeT = 6
+
+    }).onComplete(function(){
+        $("#time").removeClass("activeReset")
+    })
+    .start();
+}
+
+function resetViewForGif(){
+
     var left=window.innerWidth*-.072
     var top=window.innerHeight*.072
     
     // time = new Date().getTime()
     
-    new TWEEN.Tween( {t: time})
-    .to( {t: new Date().getTime()}, 400 )
-    .easing( TWEEN.Easing.Quartic.Out)
+    new TWEEN.Tween( {t: time-43200000})
+    .to( {t: new Date().getTime()+43200000}, 20000 )
+    .easing( TWEEN.Easing.Exponential.Out)
     .onUpdate(function(){
       time = this.t
+      connectionAtCurrentTimeF = 6
+      connectionAtCurrentTimeT = 6
+
   })
     .start();
     
     new TWEEN.Tween( {l: camera.left, r: camera.right, t: camera.top, b: camera.bottom})
-    .to( {l: left, r: -left, t: top, b: -top}, 400 )
-    .easing( TWEEN.Easing.Quartic.InOut)
+    .to( {l: left, r: -left, t: top, b: -top}, 20000 )
+    .easing( TWEEN.Easing.Quadratic.Out)
     .onUpdate(function(){
-      camera.left = this.l
-      camera.right = this.r
-      camera.top = this.t
-      camera.bottom = this.b
-      camera.updateProjectionMatrix()
-  })
+        $("#time").addClass("activeReset")
+        camera.left = this.l
+        camera.right = this.r
+        camera.top = this.t
+        camera.bottom = this.b
+        camera.updateProjectionMatrix()
+    })
     .onComplete(function(){
         camZoom=-left/window.innerWidth;
-        $("#loading").css({opacity:0})
+        // $("#loading").css({opacity:0})
+        $("#time").removeClass("activeReset")
+        resettingView=false;
+
+
+        // resetViewStart()
     })
     .start();
     
     var newCamY = 100
+
+    target.x=-0.6018967339010317
+    target.y=0.4950273470268247
     
-    if(group.rotation.y%(Math.PI*2)>=Math.PI)
-        var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)-Math.PI
-    else
-        var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)+Math.PI
+    // if(group.rotation.y%(Math.PI*2)>=Math.PI)
+    //     var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)-Math.PI
+    // else
+    //     var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)+Math.PI
 
-    new TWEEN.Tween( {c: camera.position.y, ry: group.rotation.y})
-    .to( {c: 100, ry: rotateTo}, 400 )
-    .easing( TWEEN.Easing.Quartic.InOut)
-    .onUpdate(
-      function(){
-          camera.position.setY(this.c)
-          camera.position.setX(100-this.c)
-          camera.lookAt(new THREE.Vector3(0,0,0))
+    // new TWEEN.Tween( {c: camera.position.y, ry: groupStart+Math.PI})
+    // .to( {c: camStart.x, ry: groupStart}, 5000 )
+    // .easing( TWEEN.Easing.Quadratic.Out)
+    // .onUpdate(
+    //   function(){
+    //       camera.position.setY(this.c)
+    //       camera.position.setX(100-this.c)
+    //       camera.lookAt(new THREE.Vector3(0,0,0))
 
-          group.rotation.y=this.ry
-      }
-      )
-    .onComplete(function(){
-        rotation.y=group.rotation.y;
-        rotation.z=camera.position.y;
-        resettingView = false;
-    })
+    //       group.rotation.y=this.ry
+    //   }
+    //   )
+    // .onComplete(function(){
+    //     rotation.y=group.rotation.y;
+    //     rotation.z=camera.position.y;
+    //     resettingView = false;
+    // })
 
+    // .start();
+}
+
+function resetViewStart(){
+
+    var left=window.innerWidth*-.072
+    var top=window.innerHeight*.072
+
+
+    
+    // time = new Date().getTime()
+    
+    new TWEEN.Tween( {t: time})
+    .to( {t: new Date().getTime()}, 2000 )
+    .easing( TWEEN.Easing.Exponential.Out)
+    .onUpdate(function(){
+      time = this.t
+      connectionAtCurrentTimeF = 6
+      connectionAtCurrentTimeT = 6
+
+  })
     .start();
+    
+    new TWEEN.Tween( {l: camera.left, r: camera.right, t: camera.top, b: camera.bottom})
+    .to( {l: left, r: -left, t: top, b: -top}, 2000 )
+    .easing( TWEEN.Easing.Quadratic.Out)
+    .onUpdate(function(){
+        $("#time").addClass("activeReset")
+        camera.left = this.l
+        camera.right = this.r
+        camera.top = this.t
+        camera.bottom = this.b
+        camera.updateProjectionMatrix()
+    })
+    .onComplete(function(){
+        camZoom=-left/window.innerWidth;
+        // $("#loading").css({opacity:0})
+        $("#time").removeClass("activeReset")
+        resettingView=false;
+
+
+        // resetViewStart()
+    })
+    .start();
+    
+    var newCamY = 100
+
+    target.x=-0.6018967339010317
+    target.y=0.4950273470268247
+    
+    // if(group.rotation.y%(Math.PI*2)>=Math.PI)
+    //     var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)-Math.PI
+    // else
+    //     var rotateTo = Math.round(group.rotation.y/(Math.PI*2))*(Math.PI*2)+Math.PI
+
+    // new TWEEN.Tween( {c: camera.position.y, ry: groupStart+Math.PI})
+    // .to( {c: camStart.x, ry: groupStart}, 5000 )
+    // .easing( TWEEN.Easing.Quadratic.Out)
+    // .onUpdate(
+    //   function(){
+    //       camera.position.setY(this.c)
+    //       camera.position.setX(100-this.c)
+    //       camera.lookAt(new THREE.Vector3(0,0,0))
+
+    //       group.rotation.y=this.ry
+    //   }
+    //   )
+    // .onComplete(function(){
+    //     rotation.y=group.rotation.y;
+    //     rotation.z=camera.position.y;
+    //     resettingView = false;
+    // })
+
+    // .start();
+}
+
+
+function toggleHelp(){
+    help=!help
+    if(help){
+         // $("#help").append("<div class='info help'>Toni</div>")
+
+         for (var i = 0; i < restaurants.length; i++) {
+            $("#help").append("<div class='info help'>"+restaurants[i].name+"</div>")
+        }
+
+        $("#help").append("<div class='info help dark'>Toni-Areal</div>")
+        $("#help").append("<div class='info help dark'>Fischerweg</div>")
+
+        $("#help").append("<div class='info help dark'>Linie 4</div>")
+        $("#help").append("<div class='info help dark'>Linie 4</div>")
+        $("#help").append("<div class='info help dark'>Linie 17</div>")
+        $("#help").append("<div class='info help dark'>Linie 17</div>")
+        
+        if(!isDay){
+            $(".help").addClass("night")
+        }
+
+    }
+    else
+        $("#help").html('')
+}
+
+function showHelp(){
+    var widthHalf = window.innerWidth / 2, heightHalf = window.innerHeight / 2;
+
+    var vector = new THREE.Vector3();
+    var projector = new THREE.Projector();
+
+    
+    // projector.projectVector( vector.setFromMatrixPosition( objects.toni[0].matrixWorld ), camera );
+    // vector.x = ( vector.x * widthHalf ) + widthHalf;
+    // vector.y = - ( vector.y * heightHalf ) + heightHalf;
+    // $($(".help")[i]).css({left: vector.x, top: vector.y-14, opacity: 1})
+
+
+    for (var i = 0; i < restaurants.length; i++) {
+        if(restaurants[i].isOpen){
+            projector.projectVector( vector.setFromMatrixPosition( restaurantsObj[i].matrixWorld ), camera );
+            vector.x = ( vector.x * widthHalf ) + widthHalf;
+            vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+            $($(".help")[i]).css({left: vector.x, top: vector.y-14, opacity: 1, "color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+        } else {
+            $($(".help")[i]).css({opacity: 0})
+        }
+    }
+
+
+    projector.projectVector( vector.setFromMatrixPosition( objects.helper1.matrixWorld ), camera );
+    vector.x = ( vector.x * widthHalf ) + widthHalf;
+    vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+    $($(".help")[i]).css({left: vector.x-20, top: vector.y-14, opacity: 1, "background-color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+    i++
+
+    projector.projectVector( vector.setFromMatrixPosition( objects.helper2.matrixWorld ), camera );
+    vector.x = ( vector.x * widthHalf ) + widthHalf;
+    vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+    $($(".help")[i]).css({left: vector.x-20, top: vector.y-14, opacity: 1, "background-color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+    i++
+
+    if(objects.tramTA.material.opacity>.3){
+        projector.projectVector( vector.setFromMatrixPosition( objects.tramTA.matrixWorld ), camera );
+        vector.x = ( vector.x * widthHalf ) + widthHalf;
+        vector.y = - ( vector.y * heightHalf ) + heightHalf;
+        $($(".help")[i]).text(zvvData.toni[nextTram.toniA].number+" "+zvvData.toni[nextTram.toniA].to.slice(7))
+        $($(".help")[i]).css({left: vector.x-20, top: vector.y-14, opacity: 1, "background-color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+    } else {
+        $($(".help")[i]).css({opacity: 0})
+    }
+    i++
+    if(objects.tramTB.material.opacity>.3){
+        projector.projectVector( vector.setFromMatrixPosition( objects.tramTB.matrixWorld ), camera );
+        vector.x = ( vector.x * widthHalf ) + widthHalf;
+        vector.y = - ( vector.y * heightHalf ) + heightHalf;
+        $($(".help")[i]).text(zvvData.toni[nextTram.toniB].number+" "+zvvData.toni[nextTram.toniB].to.slice(7))
+        $($(".help")[i]).css({left: vector.x-20, top: vector.y-14, opacity: 1, "background-color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+    } else {
+        $($(".help")[i]).css({opacity: 0})
+    }
+    i++
+    if(objects.tramFA.material.opacity>.3){
+        projector.projectVector( vector.setFromMatrixPosition( objects.tramFA.matrixWorld ), camera );
+        vector.x = ( vector.x * widthHalf ) + widthHalf;
+        vector.y = - ( vector.y * heightHalf ) + heightHalf;
+        $($(".help")[i]).text(zvvData.fischerweg[nextTram.fischerwegA].number+" "+zvvData.fischerweg[nextTram.fischerwegA].to.slice(7))
+        $($(".help")[i]).css({left: vector.x-20, top: vector.y-14, opacity: 1, "background-color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+    } else {
+        $($(".help")[i]).css({opacity: 0})
+    }
+    i++
+    if(objects.tramFB.material.opacity>.3){
+        projector.projectVector( vector.setFromMatrixPosition( objects.tramFB.matrixWorld ), camera );
+        vector.x = ( vector.x * widthHalf ) + widthHalf;
+        vector.y = - ( vector.y * heightHalf ) + heightHalf;
+        $($(".help")[i]).text(zvvData.fischerweg[nextTram.fischerwegB].number+" "+zvvData.fischerweg[nextTram.fischerwegB].to.slice(7))
+        $($(".help")[i]).css({left: vector.x-20, top: vector.y-14, opacity: 1, "background-color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+    } else {
+        $($(".help")[i]).css({opacity: 0})
+    }
+    i++
+
+
+}
+
+function showInfo(){
+    var widthHalf = window.innerWidth / 2, heightHalf = window.innerHeight / 2;
+
+    var vector = new THREE.Vector3();
+    var projector = new THREE.Projector();
+    projector.projectVector( vector.setFromMatrixPosition( selectedObj.matrixWorld ), camera );
+
+    vector.x = ( vector.x * widthHalf ) + widthHalf;
+    vector.y = - ( vector.y * heightHalf ) + heightHalf;
+
+
+    $("#info").text(info)
+    $("#info").css({left: vector.x, top: vector.y-14, opacity: 1})
+
+
+    // console.log(vector.x+" // "+ vector.y)
 }
 
 function animate(time) {
     requestAnimationFrame( animate );
-    TWEEN.update( time );
+
+    TWEEN.update();
+
     if(online)
         updateDay();
+
+    if(help)
+        showHelp()
+
+    if(info!=""&&!help)
+        showInfo()
+
     render();
 }
 
 function render() {
+
+    $("#helpQ").css({"color": "rgb("+Math.round(clearColor.r*255)+","+Math.round(clearColor.g*255)+","+Math.round(clearColor.b*255)+")"})
+
+    animateTram()
+
+    rotation.x += (target.x - rotation.x) * 0.1;
+    rotation.y += (target.y - rotation.y) * 0.1;
+
+    if (rotation.y<0){
+        rotation.y = 0
+        target.y = 0
+    }
+    if (rotation.y>Math.PI/2){
+        rotation.y = Math.PI/2
+        target.y = Math.PI/2
+    }
+    // distance += (distanceTarget - distance) * 0.3;
+
+    camera.position.x = distance * Math.sin(rotation.x) * Math.cos(rotation.y);
+    camera.position.y = distance * Math.sin(rotation.y);
+    camera.position.z = distance * Math.cos(rotation.x) * Math.cos(rotation.y);    
+
+    camera.lookAt(new THREE.Vector3(0,0,0));
+
     renderer.clear();
     renderer.render( scene, camera );
     renderer.clearDepth();
     if(online)
         renderer.render( sceneOrtho, cameraOrtho );
+
+    
 }
 
 
@@ -1996,7 +2783,7 @@ function createDrop(){
     
     drop.position.y=100
     new TWEEN.Tween( {y: drop.position.y})
-    .to( {y: 1.5}, 400+200*Math.random() )
+    .to( {y: 1.5}, 900+200*Math.random() )
     .easing( TWEEN.Easing.Linear.None)
     .onUpdate(
       function(){

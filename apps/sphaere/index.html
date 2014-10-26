@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!--        <meta name="viewport" content="initial-scale=1.0"/> -->
+
+<!--	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no"> -->
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+	<link rel="apple-touch-icon" href="60.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="76.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="120.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="152.png">
+
+        <!-- <link rel="icon" type="image/png" href="assets/icon.png"> -->
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <!-- <meta name="format-detection" content="telephone=no"> -->
+
+	
+	<title>Sphäre</title>
+	<style type="text/css">
+		canvas{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+		}
+		body{
+			background: #000;
+		}
+		#time{
+			position: absolute;
+			font-family: HelveticaNeue-Bold;
+			bottom: 14px;
+			left: 0px;
+			right: 0px;
+			text-align: center;
+			font-size: 14px;
+			color: rgb(38, 38, 38);
+			transition: all .4s;
+			-webkit-transition: all .4s;
+			z-index: 10004;
+		}
+		#time.night{
+			color: rgb(242,242,242);
+		}
+		#time.active{
+			bottom: 92px;
+			font-size: 16px;
+		}
+		#time.activeReset{
+			bottom: 92px;
+			font-size: 16px;
+		}
+		#loading{
+			position: absolute;
+			background: rgb(38,38,38);
+			transition: all .4s;
+			-webkit-transition: all 1s;
+			left: 0px;
+			top: 0px;
+			height: 100%;
+			width: 100%;
+			z-index: 10000;
+			pointer-events:none;
+		}
+		#toni{
+			position: absolute;
+			background: rgb(242,242,242);
+			transition: all .4s;
+			-webkit-transition: all .4s;
+			left: -31px;
+			top: 50%;
+			margin-top: -59px;
+			margin-left: 50%;
+			height: 118px;
+			width: 62px;
+			pointer-events:none;
+
+			-webkit-animation-name: spin;
+			-webkit-animation-duration: 5000ms;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: linear;
+		}
+		.info{
+			position: absolute;
+			background: rgb(38,38,38);
+			color: rgb(242,242,242);
+			font-family: HelveticaNeue-Bold;
+			font-size: 12px;
+			z-index: 2000;
+			padding: 0px 2px;
+			top: -40px;
+			transition: color .4s, background .4s;
+			-webkit-transition: color .4s, background .4s;
+			white-space: nowrap;
+		}
+		#info{
+			opacity: 0;
+			transition: opacity .4s, color .4s, background .4s;
+			-webkit-transition: opacity .4s, color .4s, background .4s;
+		}
+		.info.night{
+			background: rgb(242,242,242);
+			color: rgb(38,38,38);
+		}
+		#helpQ{
+			position: absolute;
+			color: #f2f2f2;
+			z-index: 5000;
+			/*font-family: AvenirNext-Heavy;*/
+			/*font-family: Futura-CondensedExtraBold;*/
+			font-family: HelveticaNeue-CondensedBlack;
+			/*font-family: Optima-ExtraBlack;*/
+			/*font-family: Verdana-Bold;*/
+			/*transform: rotate(45deg);
+			-webkit-transform: rotate(45deg);*/
+			right: 16.2px;
+			top: 8.2px;
+		}
+		#helpQ.night{
+			color: rgb(38,38,38);
+		}
+		.arrow{
+			position: absolute;
+			height: 18px;
+			width: 35px;
+			bottom: 94px;
+			left: 50%;
+			margin-left: -40px;
+			background: url("arrowDark.svg") center center no-repeat;
+			z-index: 500;
+			background-size: auto 90% ;
+			transition: all .4s;
+			-webkit-transition: all 1s;
+			opacity: 0;
+		}
+		#arrowRight{
+			margin-left: 5px;
+			-webkit-transform: rotate(180deg);
+		}
+
+		#container{
+			position: absolute;
+height: 100%;
+width: 100%;
+top: 0px;
+left: 0px	;
+		}
+
+		.arrow.night{
+			background: url("arrowLight.svg") center center no-repeat;
+			background-size: auto 90% ;
+		}
+		.info.dark{
+			color: rgb(38,38,38);
+			background: rgb(242,242,242);
+		}
+		.info.dark.night{
+			color: rgb(242,242,242);
+			background: rgb(38,38,38);
+		}
+		@-webkit-keyframes spin {
+			from { -webkit-transform: rotate(0deg); }
+			to { -webkit-transform: rotate(360deg); }
+		}
+		@keyframes spin {
+			from {transform:rotate(0deg);}
+			to {transform:rotate(360deg);}
+		}
+	</style>
+	<script type="text/javascript" src="src/jq.min.js"></script>
+	<script type="text/javascript" src="src/three.min.js"></script>
+	<script type="text/javascript" src="src/tween.min.js"></script>
+	<script src="http://mrdoob.github.com/three.js/examples/fonts/helvetiker_regular.typeface.js"></script>
+
+	<script type="text/javascript" src="scene.js"></script>
+<!-- 	<svg viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  		<circle cx="50" cy="50" r="50" fill="#f2f2f2" />
+	</svg> -->
+</head>
+<body>
+	<div id="container">
+	<div id="helpQ">i</div>
+	<div id="loading"> 
+		<div id="toni">
+		</div>
+	</div>
+	<div id="info" class="info"></div>
+	<div id="help"></div>
+	<div id="arrowLeft" class="arrow"></div>
+	<div id="arrowRight" class="arrow"></div>
+	<div id="time" class="night">constructing toni</div>
+	</div>
+</body>
+</html>
