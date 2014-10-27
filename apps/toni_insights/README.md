@@ -1,7 +1,10 @@
-# Toni Insights
+# Insights
 
-## Einrichten
+Insights is a mobile web application to help you discover rooms in the new Toni-Areal at Zurich University of the Arts.
 
-MySQL-Datenbank (utf-8) erstellen und `insights__2014-10-13__02-40-_local.sql.gz` aus dem Verzeichnis `sqldump` importieren.
+This project is the result of the module [Mobile User Interface](http://mobile.viad.zhdk.ch) in the 5th Semester of the [Interaction Design Course](http://iad.zhdk.ch) at ZHdK.
 
-Trage anschliessend die Daten für die Datenbankverbindung in `src/Insights/Database/Query.php` ein.
+Demo: <http://insights.lukasgaechter.ch>.
+
+
+
