@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Toni wie neu | Herzlich Willkommen!</title>
+    <title>Toni wie neu | Neuen Mangel melden</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,7 +22,9 @@
 
     <!-- Add your site or application content here -->
 
-<!--<div class="parentsparent"> <!-- Navigation
+<form action="danke.php" method="post" id="form" enctype="multipart/form-data">
+
+<div class="parentsparent">hallo<!-- Navigation -->
      <div class="nav">
             <div class="mittig"> 
                 <img id="photoIcon" class="transparent" src="img/photo.png" width="40" height="40">
@@ -31,73 +33,60 @@
                 <img id="nameIcon" class="transparent" src="img/name.png" width="40" height="40">
                 <img id="sendIcon" class="transparent" src="img/send.png" width="40" height="40">
             </div>
-    </div>-->
+    </div>
 
 <div class="parent"><!-- Allumfassender Div der Slides -->
    
 
-    <div id="intros"><!-- Zusammenfassung der Intro-Slides -->
-        <div class="intro1"><!-- Text "TONI WIE NEU" -->
-            <div class="mittig" style="font-size:1.5em; font-weight: 400;">
-                <br>Toni wie Neu</a>
-                <br>
-            </div>
-            <div class="mittig" style="font-size:0.8em; font-weight: 300; padding-top: 10px;"><a href="slides.html">
-                Mit dieser App <br>
-                melden Sie Mängel <br>
-                im Toni-Areal in <br>
-                wenigen 5 Schritten<br>
-                <br>
-                <a href="slides.html"> <img src="img/arrow.png" width="20" height="20"> Anfangen</a>
-            </div>
-        </div>
-
-
-       <!-- <div class="intro2"><!-- Intro Text "Mit dieser App..." 
-            <div class="rechts"><a name="intro2"></a></div>
-            <div class="mittig">
-                <br>
-                <a href="#intro3">Mit dieser App <br>
-                melden Sie Mängel <br>
-                im Toni-Areal in <br>
-                wenigen 5 Schritten</a>
-            </div>
-        </div>
-
-
-        <div class="intro3"><!-- Erklärung der App anhand von 5 Schritten 
-            <div class="mittig">
-                <div class="rechts"><a name="intro3"></a></div>
-                <br>
-                <div class ="mittig">
-                    <img src="img/photo.png" width="30" height="30">
-                    <br>1. Foto hinzufügen
-                    <br>
-                    <img src="img/beschreiben.png" width="30" height="30">
-                    <br>2. Mängel beschreiben
-                    <br>
-                    <img src="img/location.png" width="30" height="30">
-                    <br>3. Ort angeben
-                    <br>
-                    <img src="img/name.png" width="30" height="30">
-                    <br>4. Name angeben
-                    <br>
-                    <img src="img/send.png" width="30" height="30">
-                    <br>5. Ab die Post!
-                    <br>
-                    <br>
-                    <a href="slides.html">Start!</a>
-
-                </div>
-            </div>-->
+   
+    <div class="photo"> <!-- Foto-Upload -->
+        <div class="mittig">
+        <div class="rechts"><a name="photo"></a></div>
+            <br>
+            <div class="titel">
+            Foto hinzufügen<br></div>
+            <a href="#mangel"><img src="img/photo.png" height="100px"><br></a> 
+            <br>
+            <br>
+            <label for="file"></label>
+            <input class="button" type="file" name="file" id="file" ><br>
+            <div id="imageerror" class="error"><br>Bitte ein Foto auswählen!</div>
+            <div id="imagepreview"></div>
         </div>
     </div>
- 
 
 
+    <div class="mangel"> <!-- Beschreibung und Kategorie des Mangels -->
+        <div class="mittig">
+        <div class="rechts"><a name="mangel"></a></div>
+            <br>
+            <div class="titel">Mangel beschreiben<br></div>
+            <img src="img/mangel.png" height="100px"><br>
+            <label>
+                <span><br><br></span>
+                    <select name="kategorie" class="dropdown-select">
+                        <option value="1">Art des Mängels auswählen...</option>
+                        <option value="2">Drucker</option>
+                        <option value="3">Fenster</option>
+                        <option value="4">Lüftung / Klimaanlage</option>
+                        <option value="5">Sonnenstoren</option>
+                        <option value="6">Technisches Problem (iMacs, Beamer, Audio-Geräte)</option>
+                        <option value="7">Toiletten</option>
+                        <option value="8">Verschmutzung</option>
+                    </select><br><br>
+            </label>   
+            <label>
+                <textarea data-slide="4" class="required textfeldgross" name="beschreibung" type="text" placeholder="Beschreibung des Mängels" class="feld" size="150" maxlength="100"></textarea>
+                <div class="error">Bitte Beschreibung des Mangels angeben</div>
+
+            </label>
+                                  
+
+        </div>
+    </div>
 
 
-   <!-- <div class="location"> <!-- Ort des Mangels 
+    <div class="location"> <!-- Ort des Mangels -->
         <div class="rechts"><a name="location"></a></div>
         <div class="mittig">
             <br>
@@ -112,7 +101,7 @@
     </div>
 
 
-    <div class="name"><!-- Name und Vorname des Erfassers 
+    <div class="name"><!-- Name und Vorname des Erfassers -->
         <div class="rechts">
             <a name="name"></a>
         </div>
@@ -128,7 +117,7 @@
         </div>
     </div>
 
-    <div class="send"><!-- Formular Absenden 
+    <div class="send"><!-- Formular Absenden -->
         <div class="rechts">
             <a name="send"></a>
         </div>
@@ -140,10 +129,10 @@
         </div>
     </div>
 
-    <div class="danke"><!-- Platzhalter-Div 
+    <div class="danke"><!-- Platzhalter-Div -->
         <div class="mittig">
             <br> Danke
-        </div> -->
+        </div>
     </div>
 
 

@@ -44,41 +44,41 @@ $( document ).ready( function() {
   $('#photoIcon').click(function() {
     
     $('.parent').animate({
-      left: -screenWidth*3
+      left: 0
     }, 400);
-    currentSlide = 3;
+    currentSlide = 1;
   });
 
     $('#mangelIcon').click(function() {
     
     $('.parent').animate({
-      left: -screenWidth*4
+      left: -screenWidth*1
     }, 400);
-    currentSlide = 4;
+    currentSlide = 2;
   });
   
       $('#locationIcon').click(function() {
     
     $('.parent').animate({
-      left: -screenWidth*5
+      left: -screenWidth*2
     }, 400);
-    currentSlide = 5;
+    currentSlide = 3;
   });
 
       $('#nameIcon').click(function() {
-    
+    console.log($('.parent'));
     $('.parent').animate({
-      left: -screenWidth*6
+      left: -screenWidth*3
     }, 400);
-    currentSlide = 6;
+    currentSlide = 4;
   });  
 
       $('#sendIcon').click(function() {
     
     $('.parent').animate({
-      left: -screenWidth*7
+      left: -screenWidth*4
     }, 400);
-    currentSlide = 7;
+    currentSlide = 5;
   });
 
 $(window).on('resize', windowResize);

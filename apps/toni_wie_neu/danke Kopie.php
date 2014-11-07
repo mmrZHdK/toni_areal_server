@@ -7,28 +7,23 @@ $cc = array(
     'hello@lorenastrohner.ch',
 );
 $kategorieEmpfaenger = array(
-    '1'   => 'wackerpascal@gmail.com',
-    '2'   => 'wacker@toasted.ch',
+    'Drucker'   => 'wackerpascal@gmail.com',
+    'Fenster'   => 'wacker@toasted.ch',
 );
 $betreff = 'Neue Mangel-Meldung';
-$filename = 'twn_image';
+$filename = 'TWN_image';
 $kategorieMapping = array(
-    '1' => 'Nicht ausgewählt',
-    '2' => 'Drucker',
-    '3' => 'Fenster',
-    '4' => 'Lueftung / Klimaanlage',
-    '5' => 'Sonnenstoren',
-    '6' => 'Technisches Problem',
-    '7' => 'Toiletten',
-    '8' => 'Verschmutzung'
+    'Drucker'   => 'Drucker',
+    'Fenster'   => 'Fenster',
+    'Auswaehlen'=> 'Nicht ausgewählt',
 );
 
 // Text
-$kategorie = $_POST['kategorie'];
-$beschreibung = $_POST['beschreibung'];
-$location = $_POST['location'];
-$name = $_POST['name'];
-$vorname = $_POST['vorname'];
+$kategorie = $_POST['kategorie'] || '';
+$beschreibung = $_POST['beschreibung'] || '';
+$location = $_POST['location'] || '';
+$name = $_POST['name'] || '';
+$vorname = $_POST['vorname'] || '';
 
 $mailBody = "Guten Tag<br /><br />
 Ueber Toni wie Neu wurde ein Mangel gemeldet:<br /><br />
@@ -38,6 +33,7 @@ Beschreibung: " . $beschreibung . "<br />
 Ort: " . $location . "<br />
 Melder: " . $vorname . " " . $name . "<br />
 <br />
+By Lorena Strohner.
 ";
 
 
@@ -47,24 +43,17 @@ Melder: " . $vorname . " " . $name . "<br />
 // Bild
 $file = $_FILES['file']['tmp_name'];
 $file_type = $_FILES['file']['type'];
-$filename .= '.' . (strtolower($file_type) == 'image/png' ? 'png' : 'jpg');
+$filename .= '.' + (strtolower($file_type) == 'image/png' ? 'png' : 'jpg');
 
 // mail setup
 if (isset($kategorieEmpfaenger[$kategorie])) {
     $empfaenger = $kategorieEmpfaenger[$kategorie];
 }
 
-
-
-
-// ZUM TEST AN LORENA, SPAETER ÄNDERN!!!!
-$empfaenger = 'hello@lorenastrohner.ch';
-
 try {
 require(getcwd() . '/PHPMailer/PHPMailerAutoload.php');
 
 $mail = new PHPMailer();
-$mail->CharSet = 'UTF-8';
 $mail->isMail();
 
 $mail->From = $absenderAdresse;
@@ -77,7 +66,7 @@ $mail->addAddress($empfaenger);
 }*/
 $mail->addReplyTo('noreply@lorenastrohner.ch', 'Noreply');
 
-$mail->addAttachment($file, $filename);
+//$mail->addAttachment($file, $filename)
 $mail->isHTML(true);
 
 $mail->Subject = $betreff;
