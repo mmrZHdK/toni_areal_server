@@ -123,10 +123,10 @@ var getMensaData = function() {
                 }).appendTo('#mensa');
             }
         },
-        timeout: 4000,
+        timeout: 5000,
     });
 }
-getMensaData();
+//getMensaData();
 
 var drawMensaMenu = function($mensaData, mensaDate) {
 
@@ -214,16 +214,16 @@ var drawMensaMenu = function($mensaData, mensaDate) {
 $('#agendaLoadingImg').velocity({ rotateZ: "360deg"}, {loop: true});
 
 var eventsRangeFrom = moment(now).format("YYYY-MM-D");
-var eventsRangeTo = moment(now).add(4, 'M').format("YYYY-MM-D");
+var eventsRangeTo = moment(now).add(1, 'M').format("YYYY-MM-D");
 
 var agendaloadCount = 0;
 var getAgendaData = function() {
-    $.getJSON( "http://www.zhdk.ch/?agenda/feed&mindate=" + eventsRangeFrom + "&maxdate=" + eventsRangeTo + "&format=json", null, function( data ) {
+    $.getJSON( "https://www.zhdk.ch/?agenda/feed&mindate=" + eventsRangeFrom + "&maxdate=" + eventsRangeTo + "&format=json&features=id,v_id,titel,kurzbeschreibung,enddatum,startdatum,loc_shortname,files_info_list,startzeit,endzeit&maxrelated=0&charset=utf8", null, function( data ) {
         drawAgenda(data, 0, 24);
         $('#agendaLoading img').velocity("stop");
         $('#agendaLoading').toggle(false);
     }).fail(function() {
-            if (agendaloadCount < 5) {
+            if (agendaloadCount < 3) {
             agendaloadCount++;
             getAgendaData();
         } else {
