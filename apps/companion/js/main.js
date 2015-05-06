@@ -25,7 +25,7 @@ var today = new Date(moment().valueOf()),
     $pagesWrapper = $('#pagesWrapper'),
     $mensa = $('#mensa'),
     scrollPosX = 0,
-    menuLabel = "mensa",
+    menuLabel = "agenda",
     $menu = $('#menu'),
     $header = $('#header'),
     $menuMensa = $('#menuMensa'),
@@ -59,27 +59,15 @@ var dayOfWeek = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Fre
 // MENU -----------------------------------------------------------------------------------
 mySwiper.wrapperTransitionEnd(function () {
     if(mySwiper.activeIndex == 0) {
-    	menuChar = "mensa";
-        $header.addClass('mensa');
-        $header.removeClass('agenda');
-        $header.removeClass('tram');
-        $menuMensa.toggle(false);
-        $menuAgenda.toggle(true);
-        $menuTram.toggle(true);
-    } else if(mySwiper.activeIndex == 1) {
     	menuChar = "agenda";
         $header.addClass('agenda');
-        $header.removeClass('mensa');
         $header.removeClass('tram');
-        $menuMensa.toggle(true);
         $menuAgenda.toggle(false);
         $menuTram.toggle(true);
-    } else if(mySwiper.activeIndex == 2) {
+    } else if(mySwiper.activeIndex == 1) {
     	menuChar = "tram";
         $header.addClass('tram');
-        $header.removeClass('mensa');
         $header.removeClass('agenda');
-        $menuMensa.toggle(true);
         $menuAgenda.toggle(true);
         $menuTram.toggle(false);
     }
@@ -213,17 +201,24 @@ var drawMensaMenu = function($mensaData, mensaDate) {
 
 $('#agendaLoadingImg').velocity({ rotateZ: "360deg"}, {loop: true});
 
-var eventsRangeFrom = moment(now).format("YYYY-MM-D");
-var eventsRangeTo = moment(now).add(1, 'M').format("YYYY-MM-D");
+var eventsRangeFrom = moment(now).format("YYYY-MM-DD");
+var eventsRangeTo = moment(now).add(10, 'days').format("YYYY-MM-DD");
 
 var agendaloadCount = 0;
 var getAgendaData = function() {
-    $.getJSON( "https://www.zhdk.ch/?agenda/feed&mindate=" + eventsRangeFrom + "&maxdate=" + eventsRangeTo + "&format=json&features=id,v_id,titel,kurzbeschreibung,enddatum,startdatum,loc_shortname,files_info_list,startzeit,endzeit&maxrelated=0&charset=utf8", null, function( data ) {
+    $.getJSON( "https://www.zhdk.ch/?agenda/feed&format=json&mindate=" + eventsRangeFrom + "&maxdate=" + eventsRangeTo + "&maxrelated=0&charset=utf8", null, function( data ) {
+        console.log( "== Agenda Daten empfangen!" );
+        //console.log( data );
+        //console.log( data.events );
+        //console.log( data.events[ 0 ].enddatum );
         drawAgenda(data, 0, 24);
         $('#agendaLoading img').velocity("stop");
         $('#agendaLoading').toggle(false);
-    }).fail(function() {
-            if (agendaloadCount < 3) {
+    }).fail(function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Failed: " + err );
+        
+        if (agendaloadCount < 3) {
             agendaloadCount++;
             getAgendaData();
         } else {
@@ -234,18 +229,22 @@ var getAgendaData = function() {
                 html: 'Daten konnten nicht geladen werden. Bitte Seite neu laden.'
             }).appendTo('#agenda');
         }
-    });
+    }).done( function( jqxhr, textStatus, error ) {
+        var err = textStatus + ", " + error;
+        console.log( "Request Succeeded: " + err );
+    } );
 };
 getAgendaData();
 
 var drawAgenda = function(data, fromEvent, toEvent) {
-    for (indexLoad = fromEvent; indexLoad <= toEvent; ++indexLoad) {
-
+    for (indexLoad = fromEvent; indexLoad <= toEvent && indexLoad < data.events.length; ++indexLoad) {
+        //console.log( "Event " + indexLoad );
         var eventDateAndTime = getEventDate(data, indexLoad);
 
         agendaDayIndex = data.events[indexLoad].startdatum*1000;
         var date = new Date(agendaDayIndex);
-
+        //console.log( date );
+        
         if (agendaDayIndex != agendaDayIndexOld && data.events[indexLoad].enddatum == 0) {
             $('<div>', {
                 id: 'agendaTileDate' + agendaDayIndex,
@@ -400,12 +399,13 @@ function getEventDate(data, index) {
         dateAndTime = moment(data.events[index].startdatum*1000).format("Do MMM YYYY") + " - " + moment(data.events[index].enddatum*1000).format("Do MMM YYYY");
     } else {
         if(data.events[index].endzeit != 0) {
-        dateAndTime = moment(data.events[index].startzeit*1000).format("HH:mm") + " - " + moment(data.events[index].endzeit*1000).format("HH:mm");
+        dateAndTime = moment(data.events[index].startdatum*1000 + data.events[index].startzeit*1000).format("HH:mm") + " - " + moment(data.events[index].startdatum*1000 + data.events[index].endzeit*1000).format("HH:mm");
         } else {
             dateAndTime = moment(data.events[index].startzeit*1000).format("HH:mm");
         }
     }
-    return dateAndTime;   
+    //console.log( "dateAndTime: " + dateAndTime );
+    return dateAndTime;
 }
 function getEventDateDetail(data, index) {
     var dateAndTime;
@@ -623,7 +623,7 @@ $('#menu').click(function() {
         // $('#toToniApps').fadeOut(150);
     } else {
         $hamburger.velocity({rotateZ: "180deg"}, {duration: 300});
-        $('div#header').velocity({ height: '11em'}, {duration: 300});
+        $('div#header').velocity({ height: '8em'}, {duration: 300});
         $('#headerBg').velocity("fadeIn", { duration: 300 });
 
         // $('#info').fadeOut(150);
@@ -643,7 +643,7 @@ $hamburger.click(function() {
         // $('#toToniApps').fadeOut(150);
     } else {
         $hamburger.velocity({rotateZ: "180deg"}, {duration: 300});
-        $('div#header').velocity({ height: '11em'}, {duration: 300});
+        $('div#header').velocity({ height: '8em'}, {duration: 300});
         $('#headerBg').velocity("fadeIn", { duration: 300 });
 
         // $('#info').fadeOut(150);
